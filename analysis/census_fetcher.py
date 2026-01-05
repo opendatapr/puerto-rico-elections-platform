@@ -275,6 +275,86 @@ class CensusFetcher:
 
         return df
 
+    def fetch_block_group_data(self, county_fips: Optional[str] = None) -> pd.DataFrame:
+        """
+        Fetch ACS data at the block group level for Puerto Rico.
+        Block groups are the most granular level available in ACS.
+
+        Args:
+            county_fips: Optional specific county (municipality) FIPS code.
+                        If not provided, fetches all block groups in PR by
+                        iterating through all 78 municipalities.
+
+        Returns:
+            DataFrame with census variables for each block group.
+        """
+        variables = list(ACS_VARIABLES.keys())
+        variables_str = ",".join(["NAME"] + variables)
+
+        url = self._build_url()
+
+        if county_fips:
+            # Single county query
+            params = {
+                "get": variables_str,
+                "for": "block group:*",
+                "in": f"state:{PR_STATE_FIPS} county:{county_fips}"
+            }
+            data = self._make_request(url, params)
+            headers = data[0]
+            rows = data[1:]
+        else:
+            # Must iterate through all counties (Census API limitation)
+            # First, get list of county FIPS codes from municipality data
+            logger.info("Fetching block groups for all 78 municipalities...")
+            all_rows = []
+            headers = None
+
+            # PR county FIPS codes are 001-153 (odd numbers only for municipalities)
+            county_codes = [f"{i:03d}" for i in range(1, 154, 2)]
+
+            for i, county_code in enumerate(county_codes):
+                try:
+                    params = {
+                        "get": variables_str,
+                        "for": "block group:*",
+                        "in": f"state:{PR_STATE_FIPS} county:{county_code}"
+                    }
+                    data = self._make_request(url, params)
+                    if headers is None:
+                        headers = data[0]
+                    all_rows.extend(data[1:])
+                    if (i + 1) % 10 == 0:
+                        logger.info(f"  Processed {i + 1}/78 municipalities...")
+                except Exception as e:
+                    logger.warning(f"Could not fetch block groups for county {county_code}: {e}")
+                    continue
+
+            rows = all_rows
+
+        df = pd.DataFrame(rows, columns=headers)
+
+        # Rename columns
+        rename_map = {var: name for var, name in ACS_VARIABLES.items()}
+        df = df.rename(columns=rename_map)
+
+        # Convert numeric columns
+        numeric_cols = list(ACS_VARIABLES.values())
+        for col in numeric_cols:
+            if col in df.columns:
+                df[col] = pd.to_numeric(df[col], errors='coerce')
+
+        # Build block group GEOID (state + county + tract + block group)
+        df["state_fips"] = df["state"]
+        df["county_fips"] = df["county"]
+        df["tract_code"] = df["tract"]
+        df["block_group_code"] = df["block group"]
+        df["geoid"] = df["state_fips"] + df["county_fips"] + df["tract_code"] + df["block_group_code"]
+
+        df = self._calculate_derived_metrics(df)
+
+        return df
+
 
 def save_data(df: pd.DataFrame, output_dir: Path, filename: str, year: int) -> None:
     """Save DataFrame to CSV and JSON formats."""
@@ -334,9 +414,16 @@ def main():
         help="Output directory (default: data/census/)"
     )
     parser.add_argument(
+        "--granularity",
+        type=str,
+        choices=["municipality", "tract", "block_group", "all"],
+        default="all",
+        help="Geographic granularity level (default: all - fetches all levels)"
+    )
+    parser.add_argument(
         "--include-tracts",
         action="store_true",
-        help="Also fetch tract-level data"
+        help="[DEPRECATED] Use --granularity=tract instead"
     )
 
     args = parser.parse_args()
@@ -353,20 +440,33 @@ def main():
 
     fetcher = CensusFetcher(api_key=args.api_key, year=args.year)
 
-    # Fetch municipality-level data
-    logger.info("Fetching municipality-level data...")
-    municipality_df = fetcher.fetch_municipality_data()
-    save_data(
-        municipality_df,
-        output_dir,
-        f"pr_municipalities_acs{args.year}",
-        args.year
-    )
-
-    logger.info(f"Successfully fetched data for {len(municipality_df)} municipalities")
-
-    # Optionally fetch tract-level data
+    # Determine which granularities to fetch
+    granularity = args.granularity
     if args.include_tracts:
+        granularity = "all"  # Backward compatibility
+
+    fetch_municipalities = granularity in ["municipality", "all"]
+    fetch_tracts = granularity in ["tract", "all"]
+    fetch_block_groups = granularity in ["block_group", "all"]
+
+    municipality_df = None
+    tract_df = None
+    block_group_df = None
+
+    # Fetch municipality-level data
+    if fetch_municipalities:
+        logger.info("Fetching municipality-level data...")
+        municipality_df = fetcher.fetch_municipality_data()
+        save_data(
+            municipality_df,
+            output_dir,
+            f"pr_municipalities_acs{args.year}",
+            args.year
+        )
+        logger.info(f"Successfully fetched data for {len(municipality_df)} municipalities")
+
+    # Fetch tract-level data
+    if fetch_tracts:
         logger.info("Fetching tract-level data...")
         tract_df = fetcher.fetch_tract_data()
         save_data(
@@ -377,15 +477,29 @@ def main():
         )
         logger.info(f"Successfully fetched data for {len(tract_df)} census tracts")
 
+    # Fetch block group-level data (most granular)
+    if fetch_block_groups:
+        logger.info("Fetching block group-level data (most granular)...")
+        block_group_df = fetcher.fetch_block_group_data()
+        save_data(
+            block_group_df,
+            output_dir,
+            f"pr_block_groups_acs{args.year}",
+            args.year
+        )
+        logger.info(f"Successfully fetched data for {len(block_group_df)} block groups")
+
     # Print summary
     print("\n" + "="*60)
     print("Census Data Summary")
     print("="*60)
     print(f"Year: {args.year} (ACS 5-Year Estimates)")
-    print(f"Municipalities: {len(municipality_df)}")
-    print(f"\nVariables included:")
-    for var_name in municipality_df.columns:
-        print(f"  - {var_name}")
+    if municipality_df is not None:
+        print(f"Municipalities: {len(municipality_df)}")
+    if tract_df is not None:
+        print(f"Census Tracts: {len(tract_df)}")
+    if block_group_df is not None:
+        print(f"Block Groups: {len(block_group_df)}")
     print(f"\nData saved to: {output_dir}")
     print("="*60)
 

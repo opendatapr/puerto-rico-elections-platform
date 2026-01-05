@@ -1,0 +1,22 @@
+Package: prelecciones
+Title: Access Puerto Rico Electoral Data
+Version: 0.1.0
+Authors@R: c(
+    person("Open Data Puerto Rico", email = "opendatapr@example.com", role = c("aut", "cre"))
+  )
+Description: Provides functions to access Puerto Rico electoral data including
+    election results and event information. Supports multiple geographic
+    aggregation levels and optional spatial data via 'sf'.
+License: MIT + file LICENSE
+URL: https://github.com/opendatapr/puerto-rico-elections-platform
+BugReports: https://github.com/opendatapr/puerto-rico-elections-platform/issues
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports:
+    jsonlite,
+    arrow
+Suggests:
+    sf,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

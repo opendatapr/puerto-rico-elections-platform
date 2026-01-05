@@ -1,0 +1,20 @@
+# Puerto Rico Elections Platform - Analysis Module Requirements
+# Install with: pip install -r requirements.txt
+
+# Data manipulation
+pandas>=2.0.0
+
+# HTTP requests for Census API
+requests>=2.28.0
+
+# Optional: Data visualization
+# matplotlib>=3.7.0
+# seaborn>=0.12.0
+
+# Optional: Statistical analysis
+# scipy>=1.10.0
+# statsmodels>=0.14.0
+
+# Optional: Geographic data
+# geopandas>=0.13.0
+# shapely>=2.0.0

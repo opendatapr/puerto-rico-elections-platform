@@ -1,6 +1,11 @@
 # Puerto Rico Elections Platform
 
-Open data platform providing access to Puerto Rico electoral data from the [Comisión Estatal de Elecciones (CEE)](https://ww2.ceepur.org/).
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![R](https://img.shields.io/badge/R-4.0+-blue.svg)](https://www.r-project.org/)
+[![Node.js](https://img.shields.io/badge/node.js-18+-green.svg)](https://nodejs.org/)
+
+Open data platform providing access to Puerto Rico electoral data from the [Comision Estatal de Elecciones (CEE)](https://ww2.ceepur.org/).
 
 ## Objectives
 
@@ -87,11 +92,24 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guid
 
 This project is licensed under the GPL-3.0 License - see [LICENSE](LICENSE) for details.
 
+## Documentation
+
+- [Data Dictionary](docs/DATA_DICTIONARY.md) - Complete field documentation in English and Spanish
+- [Methodology](docs/METHODOLOGY.md) - Data collection, cleaning, and validation processes
+- [Installation Guide](docs/INSTALLATION.md) - Setup instructions for all packages
+
+## Example Analyses
+
+The `analysis/examples/` directory contains Python scripts demonstrating common analyses:
+
+- **[voter_turnout_trends.py](analysis/examples/voter_turnout_trends.py)** - Analyze voter turnout from 2000-2024
+- **[party_performance.py](analysis/examples/party_performance.py)** - Party results by municipality over time
+
 ## Related Projects
 
 - [opendatapr](https://github.com/opendatapr) - Open data initiatives for Puerto Rico
 
 ## Acknowledgments
 
-- Comisión Estatal de Elecciones de Puerto Rico for making electoral data publicly available
+- Comision Estatal de Elecciones de Puerto Rico for making electoral data publicly available
 - US Census Bureau for demographic data

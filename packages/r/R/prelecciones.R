@@ -105,11 +105,36 @@ get_results <- function(event_id, level = "precinct", include_geometry = FALSE) 
 
   data_path <- get_data_path()
 
-  # Look for results file
+  # Map level to data_level values
+  level_map <- list(
+    island = "island",
+    district = c("senatorial_district", "representative_district"),
+    municipality = "municipality",
+    precinct = "precinct"
+  )
+
+  # First try unified results.parquet
+  unified_parquet <- file.path(data_path, "results.parquet")
+  if (file.exists(unified_parquet)) {
+    df <- arrow::read_parquet(unified_parquet)
+    df <- df[df$event_id == event_id, ]
+    if (nrow(df) == 0) {
+      stop(
+        sprintf("Event '%s' not found. Use list_events() to see available events.", event_id),
+        call. = FALSE
+      )
+    }
+    level_filter <- level_map[[level]]
+    df <- df[df$data_level %in% level_filter, ]
+    if (!include_geometry && "geometry" %in% names(df)) {
+      df$geometry <- NULL
+    }
+    return(df)
+  }
+
+  # Fallback to per-event file structure
   results_parquet <- file.path(data_path, event_id, paste0("results_", level, ".parquet"))
   results_json <- file.path(data_path, event_id, paste0("results_", level, ".json"))
-
-  # Also check flat file structure
   flat_parquet <- file.path(data_path, paste0(event_id, "_", level, ".parquet"))
   flat_json <- file.path(data_path, paste0(event_id, "_", level, ".json"))
 
@@ -124,26 +149,8 @@ get_results <- function(event_id, level = "precinct", include_geometry = FALSE) 
   } else if (file.exists(flat_json)) {
     df <- jsonlite::fromJSON(flat_json)
   } else {
-    # Check if event exists at all
-    event_dir <- file.path(data_path, event_id)
-    matching_files <- list.files(data_path, pattern = paste0("^", event_id))
-
-    if (!dir.exists(event_dir) && length(matching_files) == 0) {
-      stop(
-        sprintf(
-          "Event '%s' not found. Use list_events() to see available events.",
-          event_id
-        ),
-        call. = FALSE
-      )
-    }
-    # Event exists but level not available
     stop(
-      sprintf(
-        "Results at level '%s' not available for event '%s'.",
-        level,
-        event_id
-      ),
+      sprintf("Event '%s' not found. Use list_events() to see available events.", event_id),
       call. = FALSE
     )
   }

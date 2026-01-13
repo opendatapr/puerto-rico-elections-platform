@@ -1,0 +1,331 @@
+[
+  {
+    "event_id":"acuerdos-2024-01-01",
+    "name":"Acuerdos",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":0
+  },
+  {
+    "event_id":"archivos-2024-01-01",
+    "name":"Archivos",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":0
+  },
+  {
+    "event_id":"comisin-local-2024-01-01",
+    "name":"Comisi\u00f3n Local",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":0
+  },
+  {
+    "event_id":"comunicados-2024-01-01",
+    "name":"Comunicados",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":0
+  },
+  {
+    "event_id":"consulta-al-pueblo-de-vieques-sobre-la-construccin-de-un-puente-entre-vieques-y-ceibaresultadosescrutinio-2024-01-01",
+    "name":"Consulta al Pueblo de Vieques, sobre la Construcci\u00f3n de un Puente entre Vieques y CeibaResultadosEscrutinio",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":0
+  },
+  {
+    "event_id":"documentos-2024-01-01",
+    "name":"Documentos",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":0
+  },
+  {
+    "event_id":"eleccin-especial-de-caguasresultadosescrutinioarchivos-2024-01-01",
+    "name":"Elecci\u00f3n Especial de CaguasResultadosEscrutinioArchivos",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":0
+  },
+  {
+    "event_id":"eleccin-especial-para-cubrir-la-vacante-a-la-alcalda-de-trujillo-alto-ppdresultadosdocumentos-2024-01-01",
+    "name":"Elecci\u00f3n Especial para cubrir la vacante a la alcald\u00eda de Trujillo Alto (PPD)ResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":8
+  },
+  {
+    "event_id":"eleccin-especial-para-cubrir-la-vacante-de-alcalde-de-guayama-ppdresultadosdocumentos-2024-01-01",
+    "name":"Elecci\u00f3n Especial para cubrir la vacante de alcalde de Guayama (PPD)ResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":6
+  },
+  {
+    "event_id":"eleccin-especial-para-cubrir-la-vacante-de-alcalde-de-guaynabo-pnpresultadosdocumentos-2024-01-01",
+    "name":"Elecci\u00f3n Especial para cubrir la vacante de alcalde de Guaynabo (PNP)ResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":8
+  },
+  {
+    "event_id":"eleccin-especial-para-cubrir-la-vacante-de-alcalde-de-hatillo-ppdresultadosdocumentos-2024-01-01",
+    "name":"Elecci\u00f3n Especial para cubrir la vacante de alcalde de Hatillo (PPD)ResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":8
+  },
+  {
+    "event_id":"eleccin-especial-para-cubrir-la-vacante-de-representante-distrito-31-pnp-2025resultadosdocumentos-2025-01-01",
+    "name":"Elecci\u00f3n Especial para cubrir la vacante de Representante Distrito 31  (PNP) 2025ResultadosDocumentos",
+    "event_date":"2025-01-01",
+    "event_type":"special",
+    "contests_count":6
+  },
+  {
+    "event_id":"eleccin-especial-para-cubrir-la-vacante-de-representante-por-acumulacin-pnpresultadosdocumentos-2024-01-01",
+    "name":"Elecci\u00f3n Especial para cubrir la vacante de Representante por Acumulaci\u00f3n (PNP)ResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":472
+  },
+  {
+    "event_id":"eleccin-especial-para-cubrir-la-vacante-de-representante-por-el-distrito-nm-3-pnpresultadosdocumentos-2024-01-01",
+    "name":"Elecci\u00f3n Especial para cubrir la vacante de Representante por el Distrito N\u00fam. 3 (PNP)ResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":8
+  },
+  {
+    "event_id":"eleccin-especial-para-cubrir-la-vacante-de-senador-por-acumulacin-pnpresultadospapeleta-modelo-2024-01-01",
+    "name":"Elecci\u00f3n Especial para cubrir la vacante de Senador por Acumulaci\u00f3n (PNP)ResultadosPapeleta modelo",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":0
+  },
+  {
+    "event_id":"eleccin-especial-para-cubrir-la-vacante-de-senador-por-acumulacin-y-alcalde-de-barranquitas-pnpresultadosdocumentos-2024-01-01",
+    "name":"\u200bElecci\u00f3n Especial para cubrir la vacante de Senador por Acumulaci\u00f3n y Alcalde de Barranquitas (PNP)ResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":486
+  },
+  {
+    "event_id":"eleccin-especial-para-cubrir-la-vacante-de-senador-por-el-distrito-i-san-juan-pnpresultadosdocumentos-2024-01-01",
+    "name":"Elecci\u00f3n Especial para cubrir la vacante de Senador por el Distrito I (San Juan) (PNP)ResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":23
+  },
+  {
+    "event_id":"eleccin-especial-para-cubrir-la-vacante-dealcaldealcadesa-del-municipio-de-gurabo-2025resultadosdocumentos-2025-01-01",
+    "name":"Elecci\u00f3n Especial para cubrir la vacante dealcalde\/alcadesa del municipio de Gurabo 2025ResultadosDocumentos",
+    "event_date":"2025-01-01",
+    "event_type":"special",
+    "contests_count":8
+  },
+  {
+    "event_id":"eleccin-especial-para-cubrir-la-vacante-surgida-para-el-puesto-de-alcalde-y-presidente-del-comit-municipal-de-humacao-ppdresultadosdocumentos-2024-01-01",
+    "name":"Elecci\u00f3n Especial para cubrir la vacante surgida para el puesto de Alcalde y Presidente del Comit\u00e9 Municipal de Humacao (PPD)ResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":486
+  },
+  {
+    "event_id":"eleccin-especial-para-cubrir-las-vacantes-a-las-alcaldas-de-aguas-buenas-pnpresultadosdocumentos-2024-01-01",
+    "name":"Elecci\u00f3n Especial para cubrir las vacantes a las alcald\u00edas de Aguas Buenas (PNP)ResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":8
+  },
+  {
+    "event_id":"eleccin-especial-para-cubrir-las-vacantes-a-las-alcaldas-de-humacao-pnpresultadosdocumentos-2024-01-01",
+    "name":"Elecci\u00f3n Especial para cubrir las vacantes a las alcald\u00edas de Humacao (PNP)ResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":8
+  },
+  {
+    "event_id":"eleccin-especial-para-llenar-la-vacante-de-alcalde-de-guaynaboresultadosdocumentos-2024-01-01",
+    "name":"Elecci\u00f3n Especial para llenar la vacante de alcalde de GuaynaboResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":5
+  },
+  {
+    "event_id":"eleccin-especial-para-llenar-la-vacante-de-alcalde-de-gurabodocumentosresultados-2024-01-01",
+    "name":"Elecci\u00f3n Especial para llenar la vacante de alcalde de GuraboDocumentosResultados",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":0
+  },
+  {
+    "event_id":"eleccin-especial-para-llenar-la-vacante-de-representante-por-distrito-27noche-del-eventoescrutiniodocumentos-2024-01-01",
+    "name":"Elecci\u00f3n Especial para llenar la vacante de Representante por Distrito 27Noche del EventoEscrutinioDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"special",
+    "contests_count":0
+  },
+  {
+    "event_id":"elecciones-generales-2000-2000-01-01",
+    "name":"Elecciones Generales 2000",
+    "event_date":"2000-01-01",
+    "event_type":"general",
+    "contests_count":0
+  },
+  {
+    "event_id":"elecciones-generales-2016resultadosdocumentosinforme-estadstico-parte-1informe-estadstico-parte-2-2016-01-01",
+    "name":"Elecciones Generales 2016ResultadosDocumentosInforme estad\u00edstico parte 1|Informe estad\u00edstico parte 2",
+    "event_date":"2016-01-01",
+    "event_type":"general",
+    "contests_count":2488
+  },
+  {
+    "event_id":"elecciones-generales-2020resultadosdocumentos-2020-01-01",
+    "name":"Elecciones Generales 2020ResultadosDocumentos",
+    "event_date":"2020-01-01",
+    "event_type":"general",
+    "contests_count":2726
+  },
+  {
+    "event_id":"escrutinio-2024-01-01",
+    "name":"Escrutinio",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":0
+  },
+  {
+    "event_id":"juntas-de-inscripcin-permanente-2024-01-01",
+    "name":"Juntas de Inscripci\u00f3n Permanente",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":0
+  },
+  {
+    "event_id":"ley-para-crear-la-delegacin-congresional-de-puerto-ricoresultadosdocumentos-2024-01-01",
+    "name":"Ley para crear la Delegaci\u00f3n Congresional de Puerto RicoResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":944
+  },
+  {
+    "event_id":"ley-para-implementar-la-peticin-de-estadidad-del-plebiscito-de-2020documentos-2020-01-01",
+    "name":"Ley para Implementar la Petici\u00f3n de Estadidad del Plebiscito de 2020Documentos",
+    "event_date":"2020-01-01",
+    "event_type":"plebiscite",
+    "contests_count":0
+  },
+  {
+    "event_id":"noche-del-evento-2024-01-01",
+    "name":"Noche del Evento",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":0
+  },
+  {
+    "event_id":"papeleta-modelo-2024-01-01",
+    "name":"Papeleta modelo",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":0
+  },
+  {
+    "event_id":"plebiscito-para-la-definicin-final-del-estatus-poltico-de-puerto-ricoresultadosdocumentos-2024-01-01",
+    "name":"Plebiscito para la definici\u00f3n final del estatus pol\u00edtico de Puerto RicoResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"plebiscite",
+    "contests_count":0
+  },
+  {
+    "event_id":"plebiscito-para-la-descolonizacin-inmediata-de-puerto-rico-2017documentosresultados-2017-01-01",
+    "name":"Plebiscito para la Descolonizaci\u00f3n Inmediata de Puerto Rico 2017DocumentosResultados",
+    "event_date":"2017-01-01",
+    "event_type":"plebiscite",
+    "contests_count":0
+  },
+  {
+    "event_id":"primaria-presidencial-demcrata-2020resultadosdocumentos-2020-01-01",
+    "name":"Primaria Presidencial Dem\u00f3crata 2020ResultadosDocumentos",
+    "event_date":"2020-01-01",
+    "event_type":"primary",
+    "contests_count":862
+  },
+  {
+    "event_id":"primaria-presidencial-demcrata-2024resultadosdocumentos-2024-01-01",
+    "name":"Primaria Presidencial Dem\u00f3crata 2024ResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"primary",
+    "contests_count":38
+  },
+  {
+    "event_id":"primarias-del-partido-demcrata-2016resultadosescrutiniodocumentos-2016-01-01",
+    "name":"Primarias del Partido Dem\u00f3crata 2016ResultadosEscrutinioDocumentos",
+    "event_date":"2016-01-01",
+    "event_type":"primary",
+    "contests_count":0
+  },
+  {
+    "event_id":"primarias-del-partido-republicano-2016resultadosescrutiniodocumentos-2016-01-01",
+    "name":"Primarias del Partido Republicano 2016ResultadosEscrutinioDocumentos",
+    "event_date":"2016-01-01",
+    "event_type":"primary",
+    "contests_count":0
+  },
+  {
+    "event_id":"primarias-locales-2016resultadosdocumentos-2016-01-01",
+    "name":"Primarias Locales 2016ResultadosDocumentos",
+    "event_date":"2016-01-01",
+    "event_type":"primary",
+    "contests_count":3636
+  },
+  {
+    "event_id":"primarias-locales-2020resultadosdocumentos-2020-01-01",
+    "name":"Primarias Locales 2020ResultadosDocumentos",
+    "event_date":"2020-01-01",
+    "event_type":"primary",
+    "contests_count":3794
+  },
+  {
+    "event_id":"primarias-locales-2024resultadosdocumentos-2024-01-01",
+    "name":"Primarias Locales 2024ResultadosDocumentos",
+    "event_date":"2024-01-01",
+    "event_type":"primary",
+    "contests_count":3542
+  },
+  {
+    "event_id":"rdenes-y-reglamentos-administrativos-2024-01-01",
+    "name":"\u00d3rdenes y Reglamentos Administrativos",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":0
+  },
+  {
+    "event_id":"reglamentos-2024-01-01",
+    "name":"Reglamentos",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":0
+  },
+  {
+    "event_id":"resoluciones-2024-01-01",
+    "name":"Resoluciones",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":0
+  },
+  {
+    "event_id":"resultados-2024-01-01",
+    "name":"Resultados",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":0
+  },
+  {
+    "event_id":"resultados-histricos-2024-01-01",
+    "name":"Resultados Hist\u00f3ricos",
+    "event_date":"2024-01-01",
+    "event_type":"general",
+    "contests_count":0
+  }
+]

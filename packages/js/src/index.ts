@@ -224,7 +224,39 @@ export function getResults(
 
   const dataDir = getDataPath();
 
-  // Look for results file
+  // Map level to data_level values
+  const levelMap: Record<string, string[]> = {
+    island: ["island"],
+    district: ["senatorial_district", "representative_district"],
+    municipality: ["municipality"],
+    precinct: ["precinct"],
+  };
+
+  // First try unified results.json
+  const unifiedJson = join(dataDir, "results.json");
+  if (existsSync(unifiedJson)) {
+    const content = readFileSync(unifiedJson, "utf-8");
+    const allResults = JSON.parse(content) as ElectionResult[];
+
+    // Filter by event_id
+    let filtered = allResults.filter((r) => r.event_id === eventId);
+    if (filtered.length === 0) {
+      throw new Error(
+        `Event '${eventId}' not found. Use listEvents() to see available events.`
+      );
+    }
+
+    // Filter by level
+    const levelFilters = levelMap[level];
+    filtered = filtered.filter((r) => levelFilters.includes(r.data_level as string));
+
+    if (includeGeometry) {
+      return { results: filtered };
+    }
+    return filtered;
+  }
+
+  // Fallback to per-event file structure
   const resultsJson = join(dataDir, eventId, `results_${level}.json`);
   const flatJson = join(dataDir, `${eventId}_${level}.json`);
 
@@ -237,26 +269,8 @@ export function getResults(
     const content = readFileSync(flatJson, "utf-8");
     results = JSON.parse(content) as ElectionResult[];
   } else {
-    // Check if event exists at all
-    const eventDir = join(dataDir, eventId);
-    let matchingFiles: string[] = [];
-
-    try {
-      matchingFiles = readdirSync(dataDir).filter((f) =>
-        f.startsWith(eventId)
-      );
-    } catch {
-      // Directory might not exist
-    }
-
-    if (!existsSync(eventDir) && matchingFiles.length === 0) {
-      throw new Error(
-        `Event '${eventId}' not found. Use listEvents() to see available events.`
-      );
-    }
-
     throw new Error(
-      `Results at level '${level}' not available for event '${eventId}'.`
+      `Event '${eventId}' not found. Use listEvents() to see available events.`
     );
   }
 

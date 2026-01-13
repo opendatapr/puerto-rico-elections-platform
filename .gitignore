@@ -4,6 +4,7 @@ data/raw/*
 data/processed/*
 !data/processed/.gitkeep
 !data/processed/*.parquet
+!data/processed/*.json
 data/census/*
 !data/census/.gitkeep
 

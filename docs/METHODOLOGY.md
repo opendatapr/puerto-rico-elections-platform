@@ -228,16 +228,33 @@ Census: County FIPS 72127 (Trujillo Alto Municipio)
 Confidence: 100%
 ```
 
+#### Precinct Boundaries
+
+We obtain precinct boundaries from two sources:
+
+**2016 Boundaries** (MGGG Shapefiles):
+- Source: [MGGG PR-shapefiles](https://github.com/mggg-states/PR-shapefiles)
+- Format: ESRI Shapefile
+- Coverage: 110 precincts
+- Quality: High accuracy (digitized from official sources)
+
+**2022 Boundaries** (CEE PDF Extraction):
+- Source: CEE District Map PDFs
+- Method: Vector extraction + georeferencing
+- Coverage: 114 precincts
+- Quality: Approximate (~5km average error)
+
+See [PDF Extraction Methodology](PDF_EXTRACTION.md) for details on the 2022 extraction process.
+
 #### Precinct to Census Tract (Medium Confidence)
 
 We use areal interpolation to estimate demographic characteristics:
 
 Usamos interpolacion areal para estimar caracteristicas demograficas:
 
-1. **Obtain precinct boundaries** (when available)
-   - Request from CEE
-   - Digitize from official maps
-   - Estimate from voting unit addresses
+1. **Obtain precinct boundaries** (from MGGG or PDF extraction)
+   - 2016: MGGG shapefiles (high confidence)
+   - 2022: CEE PDF extraction (approximate)
 
 2. **Calculate overlap with census tracts**
    ```
@@ -412,8 +429,16 @@ python -m validator.run --verify
 1. Comision Estatal de Elecciones de Puerto Rico. https://ww2.ceepur.org/
 2. US Census Bureau. American Community Survey. https://www.census.gov/programs-surveys/acs
 3. US Census Bureau. TIGER/Line Shapefiles. https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html
-4. Python Software Foundation. Beautiful Soup Documentation. https://www.crummy.com/software/BeautifulSoup/
-5. Scrapy Documentation. https://docs.scrapy.org/
+4. MGGG Redistricting Lab. PR-shapefiles. https://github.com/mggg-states/PR-shapefiles
+5. Python Software Foundation. Beautiful Soup Documentation. https://www.crummy.com/software/BeautifulSoup/
+6. Scrapy Documentation. https://docs.scrapy.org/
+7. pdfplumber Documentation. https://github.com/jsvine/pdfplumber
+
+### Related Documentation
+
+- [Data Dictionary](DATA_DICTIONARY.md) - Field descriptions for all datasets
+- [Data Provenance](DATA_PROVENANCE.md) - Source documentation for all data
+- [PDF Extraction Methodology](PDF_EXTRACTION.md) - CEE PDF boundary extraction details
 
 ---
 

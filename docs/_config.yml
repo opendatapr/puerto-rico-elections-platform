@@ -1,0 +1,50 @@
+# Puerto Rico Elections Platform - GitHub Pages Configuration
+# Jekyll site settings
+
+# Site settings
+title: Puerto Rico Elections Platform
+description: Open data platform for Puerto Rico electoral data (2000-2025) with census integration and multi-language packages.
+url: "https://opendatapr.github.io"
+baseurl: "/puerto-rico-elections-platform"
+
+# Theme
+# Using minimal theme for clean, professional look
+# See: https://pages-themes.github.io/minimal/
+theme: jekyll-theme-minimal
+
+# GitHub metadata
+repository: opendatapr/puerto-rico-elections-platform
+
+# Social/Project links
+github_username: opendatapr
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Kramdown options for code blocks
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# Exclude from build
+exclude:
+  - PROJECT_PLAN.md
+  - "*.log"
+  - node_modules/
+  - vendor/
+
+# Include additional files
+include:
+  - _pages
+
+# Default layout
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"

@@ -170,6 +170,43 @@ Tipos de contiendas electorales disponibles en los datos.
 
 ---
 
+## Precinct Crosswalk Fields / Campos de Referencia Cruzada de Precintos
+
+The precinct crosswalk tables link electoral precincts to geographic data across years.
+
+Las tablas de referencia cruzada de precintos vinculan los precintos electorales con datos geograficos a traves de los anos.
+
+### 2022 Crosswalk (`precinct_crosswalk_2022.json`)
+
+| Field / Campo | Type / Tipo | Description (EN) | Descripcion (ES) | Example / Ejemplo |
+|---------------|-------------|------------------|------------------|-------------------|
+| `year` | integer | Reference year | Ano de referencia | `2022` |
+| `district` | integer | Representative district number (1-40) | Numero de distrito representativo (1-40) | `5` |
+| `precinct_index` | integer | Precinct index within district | Indice de precinto dentro del distrito | `0` |
+| `municipality` | string | Municipality name | Nombre del municipio | `"Guaynabo"` |
+| `color` | string | Fill color from PDF map (hex) | Color de relleno del mapa PDF (hex) | `"#ffeabe"` |
+| `centroid_lon` | float | Centroid longitude (WGS84) | Longitud del centroide (WGS84) | `-66.1066` |
+| `centroid_lat` | float | Centroid latitude (WGS84) | Latitud del centroide (WGS84) | `18.3645` |
+| `area_sq_deg` | float | Approximate area in square degrees | Area aproximada en grados cuadrados | `0.0079` |
+| `source` | string | Data source identifier | Identificador de fuente de datos | `"2022_cee_pdf"` |
+
+### 2016 Crosswalk (from MGGG Shapefiles)
+
+| Field / Campo | Type / Tipo | Description (EN) | Descripcion (ES) | Example / Ejemplo |
+|---------------|-------------|------------------|------------------|-------------------|
+| `PRECINTO` | string | Precinct identifier | Identificador de precinto | `"127-01"` |
+| `DIST_SENADO` | integer | Senatorial district (1-8) | Distrito senatorial (1-8) | `1` |
+| `DIST_REP` | integer | Representative district (1-40) | Distrito representativo (1-40) | `38` |
+| `MUNICIPIO` | string | Municipality name | Nombre del municipio | `"Carolina"` |
+
+### Unified Crosswalk (`precinct_crosswalk_unified.parquet`)
+
+Combines 2016 and 2022 data for comparative analysis with a `year` field to distinguish sources.
+
+Combina datos de 2016 y 2022 para analisis comparativo con un campo `year` para distinguir fuentes.
+
+---
+
 ## Data Quality Notes / Notas sobre Calidad de Datos
 
 ### Coverage / Cobertura
@@ -210,6 +247,8 @@ Los datos se actualizan despues de cada evento electoral. Verifique el campo `so
 ## Related Resources / Recursos Relacionados
 
 - [Methodology Documentation](METHODOLOGY.md) / [Documentacion de Metodologia](METHODOLOGY.md)
+- [Data Provenance](DATA_PROVENANCE.md) / [Procedencia de Datos](DATA_PROVENANCE.md)
+- [PDF Extraction Methodology](PDF_EXTRACTION.md) / [Metodologia de Extraccion de PDF](PDF_EXTRACTION.md)
 - [Installation Guide](INSTALLATION.md) / [Guia de Instalacion](INSTALLATION.md)
 - [CEE Official Site](https://ww2.ceepur.org/) / [Sitio Oficial de la CEE](https://ww2.ceepur.org/)
 - [US Census Bureau Puerto Rico](https://www.census.gov/programs-surveys/acs/geography-acs/areas-published.html)

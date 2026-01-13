@@ -1,5 +1,5 @@
 # Session: pr-elections-platform
-Updated: 2026-01-05T08:10:00Z
+Updated: 2026-01-13T17:47:20.846Z
 
 ## Goal
 Build open data platform for Puerto Rico electoral data with:
@@ -33,9 +33,16 @@ Done when: Data is scraped, packages serve it, census cross-referencing works.
   - [x] Census fetcher enhanced with block group support
   - [x] Scraper run: 103 events discovered, metadata collected
   - [x] Census data fetched: municipalities, tracts, block groups
-- Now: Infrastructure complete, data collection done
+  - [x] Research notebooks enhanced with brand design:
+    - [x] Created OpenDataPR Altair theme (theme.py)
+    - [x] Converted all 4 notebooks from matplotlib to Altair
+    - [x] Added narrative sections with context and interpretation
+    - [x] Created custom SCSS dark theme (opendatapr.scss)
+    - [x] Created references.bib with 40+ academic/news citations
+    - [x] All notebooks render successfully
+- Now: Research notebooks complete with brand styling
 - Next:
-  - Customize scraper parsers for specific CEE page formats (currently extracts 0 contests due to HTML variation)
+  - Customize scraper parsers for specific CEE page formats
   - Run full scraper on all 103 events
   - Publish packages to PyPI/CRAN/npm
 
@@ -51,9 +58,18 @@ Done when: Data is scraped, packages serve it, census cross-referencing works.
   - `scraper/src/cee_scraper.py` - main scraper
   - `analysis/census_fetcher.py` - census data fetcher (updated with block groups)
   - `packages/python/`, `packages/r/`, `packages/js/`
+  - `analysis/research/` - Quarto research notebooks:
+    - `theme.py` - OpenDataPR Altair theme
+    - `opendatapr.scss` - Custom dark SCSS theme
+    - `references.bib` - Academic bibliography
+    - `01-turnout-patterns.qmd` - Voter turnout analysis
+    - `02-migration-impact.qmd` - Migration and electoral change
+    - `03-spatial-voting.qmd` - Geographic voting patterns
+    - `04-status-referendum.qmd` - 2020 statehood referendum
 - Data collected:
   - `data/raw/events_list.json` - 103 electoral events
   - `data/census/pr_*.csv` - census data at 3 granularity levels
 - Test cmd: `.venv/bin/pytest scraper/tests/`
 - Run scraper: `.venv/bin/python scraper/src/cee_scraper.py --output-dir data/raw`
 - Run census: `.venv/bin/python analysis/census_fetcher.py --output data/census --granularity all`
+- Render notebooks: `source .venv/bin/activate && .local/quarto/bin/quarto render analysis/research/`

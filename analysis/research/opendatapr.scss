@@ -1,0 +1,316 @@
+/*-- scss:defaults --*/
+
+// MojaveDataOps/OpenDataPR Design System
+// Based on brand-and-design-language tokens
+
+// Color palette - Dark theme with warm undertones
+$body-bg: #0c0b0a;
+$body-color: #f5f2ed;
+$code-bg: #161412;
+$code-color: #f5f2ed;
+
+// Brand colors
+$primary: #4a9eda;       // OpenDataPR blue
+$secondary: #d4a373;     // Gold accent
+$success: #6b9080;       // Muted green
+$info: #67a9cf;          // Light blue
+$warning: #d4a373;       // Gold
+$danger: #c9695a;        // Muted red
+
+// Links
+$link-color: $primary;
+$link-hover-color: #8fc4eb;
+
+// Typography
+$font-family-sans-serif: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-family-monospace: 'JetBrains Mono', 'Fira Code', monospace;
+$headings-font-family: 'Fraunces', Georgia, serif;
+$headings-font-weight: 600;
+$headings-color: #f5f2ed;
+
+// Font sizes
+$font-size-root: 16px;
+$h1-font-size: 2.5rem;
+$h2-font-size: 2rem;
+$h3-font-size: 1.5rem;
+$h4-font-size: 1.25rem;
+
+// Borders
+$border-color: #2a2724;
+$border-radius: 8px;
+
+// Cards and surfaces
+$card-bg: #161412;
+$card-border-color: #2a2724;
+
+// Tables
+$table-bg: transparent;
+$table-border-color: #2a2724;
+$table-striped-bg: rgba(255, 255, 255, 0.03);
+$table-hover-bg: rgba(255, 255, 255, 0.05);
+
+// Code blocks
+$pre-bg: #161412;
+$pre-border-color: #2a2724;
+
+// Navigation
+$navbar-bg: #161412;
+$navbar-fg: #f5f2ed;
+
+// TOC
+$toc-color: #a8a098;
+$toc-active-color: $primary;
+
+/*-- scss:rules --*/
+
+// Google Fonts import
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+// Body styling
+body {
+  font-feature-settings: "liga" 1, "kern" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+h1, .h1 {
+  font-weight: 700;
+  color: $primary;
+}
+
+h2, .h2 {
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 0.5rem;
+}
+
+// Links
+a {
+  text-decoration: none;
+  transition: color 200ms ease;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Code styling
+code {
+  background-color: $code-bg;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+pre {
+  background-color: $pre-bg;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: 1rem;
+  overflow-x: auto;
+
+  code {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
+}
+
+// Code fold buttons
+.code-fold-btn {
+  color: #a8a098;
+  background-color: #252320;
+  border: 1px solid $border-color;
+
+  &:hover {
+    background-color: #2a2724;
+    color: $body-color;
+  }
+}
+
+// Blockquotes
+blockquote {
+  border-left: 4px solid $primary;
+  padding-left: 1rem;
+  color: #a8a098;
+  font-style: italic;
+  margin: 1.5rem 0;
+}
+
+// Tables
+table {
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+
+  th {
+    background-color: #161412;
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 2px solid $border-color;
+    padding: 0.75rem;
+  }
+
+  td {
+    border-bottom: 1px solid $border-color;
+    padding: 0.75rem;
+  }
+
+  tr:hover {
+    background-color: $table-hover-bg;
+  }
+}
+
+// Figures and captions
+figure {
+  margin: 2rem 0;
+}
+
+figcaption {
+  color: #a8a098;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+// Sidebar / TOC styling
+.sidebar {
+  background-color: #161412;
+  border-right: 1px solid $border-color;
+}
+
+.sidebar-item-text {
+  color: #a8a098;
+
+  &:hover {
+    color: $body-color;
+  }
+}
+
+.sidebar-item-text.active {
+  color: $primary;
+  font-weight: 500;
+}
+
+// Navbar styling
+.navbar {
+  background-color: $navbar-bg !important;
+  border-bottom: 1px solid $border-color;
+
+  .navbar-brand {
+    font-family: $headings-font-family;
+    font-weight: 600;
+    color: $primary;
+  }
+
+  .nav-link {
+    color: #a8a098;
+
+    &:hover {
+      color: $body-color;
+    }
+
+    &.active {
+      color: $primary;
+    }
+  }
+}
+
+// Callouts
+.callout {
+  border-radius: $border-radius;
+  border-left-width: 4px;
+  background-color: #161412;
+
+  .callout-header {
+    font-family: $headings-font-family;
+    font-weight: 500;
+  }
+}
+
+.callout-note {
+  border-left-color: $primary;
+}
+
+.callout-tip {
+  border-left-color: $success;
+}
+
+.callout-warning {
+  border-left-color: $warning;
+}
+
+.callout-important {
+  border-left-color: $danger;
+}
+
+// Cell output styling
+.cell-output {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #161412;
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+}
+
+.cell-output-stdout pre {
+  margin: 0;
+  border: none;
+  background: transparent;
+}
+
+// Altair chart containers
+.vega-embed {
+  width: 100%;
+
+  .chart-wrapper {
+    background-color: transparent !important;
+  }
+}
+
+// Footer
+.footer {
+  border-top: 1px solid $border-color;
+  padding-top: 2rem;
+  margin-top: 3rem;
+  color: #6d665d;
+  font-size: 0.9rem;
+}
+
+// Utility classes
+.text-muted {
+  color: #a8a098 !important;
+}
+
+.text-primary {
+  color: $primary !important;
+}
+
+.bg-surface {
+  background-color: #161412;
+}
+
+// Print styles
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  pre, code {
+    background-color: #f5f5f5;
+    color: black;
+  }
+
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+}

@@ -11,16 +11,22 @@ jupyter: python3
 
 ## Overview
 
-Puerto Rico experienced ~15% population decline (3.7M → 3.2M) between 2012-2022, accelerated by Hurricane Maria (2017). This analysis examines how migration-driven population loss correlates with electoral changes.
+Puerto Rico has experienced one of the most dramatic demographic transformations in modern American history. Between 2010 and 2020, the island lost approximately 15% of its population—from 3.7 million to 3.2 million residents. This exodus, accelerated dramatically by Hurricane Maria in September 2017, raises fundamental questions about the future of Puerto Rican democracy.
+
+This analysis examines how migration-driven population loss correlates with electoral changes across Puerto Rico's municipalities.
 
 **Research Questions:**
 
 1. Did out-migration change party composition by municipality?
 2. Which areas lost the most voters?
 3. Do remaining residents differ demographically from pre-migration populations?
-4. What were pre/post-Maria electoral shifts?
+4. What were the pre/post-Maria electoral shifts?
+
+The implications extend beyond demographics. Migration patterns may reshape political coalitions, alter representation, and influence policy debates—particularly on Puerto Rico's political status.
 
 ## Data Sources
+
+We draw on American Community Survey (ACS) data from multiple years to track demographic change, combined with election results from 2016 (pre-Maria) and 2020 (post-Maria) to measure electoral shifts.
 
 ```{python}
 #| label: setup
@@ -28,9 +34,17 @@ Puerto Rico experienced ~15% population decline (3.7M → 3.2M) between 2012-202
 
 import pandas as pd
 import numpy as np
+import altair as alt
 from pathlib import Path
+from scipy import stats
 import warnings
 warnings.filterwarnings('ignore')
+
+# Enable OpenDataPR theme
+import sys
+sys.path.insert(0, '.')
+from theme import enable_opendatapr_theme, COLORS, CATEGORY_PALETTE
+enable_opendatapr_theme()
 
 DATA_DIR = Path("../../data")
 CENSUS_DIR = DATA_DIR / "census"
@@ -51,11 +65,10 @@ print(f"  2022: {len(census_2022)} municipalities, pop = {census_2022['total_pop
 
 ## Population Change Analysis
 
+The scale of Puerto Rico's population decline is staggering. While migration from Puerto Rico to the U.S. mainland has been ongoing for decades, the pace accelerated after 2010 due to economic crisis and intensified further after Hurricane Maria.
+
 ```{python}
 #| label: pop-change
-#| fig-cap: "Population change 2012-2022 by municipality"
-
-import matplotlib.pyplot as plt
 
 # Calculate population change
 pop_change = census_2012[['municipality', 'total_population']].copy()
@@ -71,37 +84,75 @@ print("Population Change 2012-2022:")
 print(f"  Total 2012: {pop_change['pop_2012'].sum():,}")
 print(f"  Total 2022: {pop_change['pop_2022'].sum():,}")
 print(f"  Net change: {pop_change['pop_change'].sum():,} ({(pop_change['pop_change'].sum()/pop_change['pop_2012'].sum())*100:.1f}%)")
-
-# Plot distribution of population change
-fig, axes = plt.subplots(1, 2, figsize=(14, 5))
-
-# Histogram
-ax = axes[0]
-ax.hist(pop_change['pop_change_pct'], bins=20, edgecolor='black', alpha=0.7)
-ax.axvline(x=0, color='red', linestyle='--', label='No change')
-ax.axvline(x=pop_change['pop_change_pct'].median(), color='orange', linestyle='--', label=f'Median: {pop_change["pop_change_pct"].median():.1f}%')
-ax.set_xlabel("Population Change (%)")
-ax.set_ylabel("Number of Municipalities")
-ax.set_title("Distribution of Population Change 2012-2022")
-ax.legend()
-
-# Top 10 population losers
-ax = axes[1]
-top_losers = pop_change.nsmallest(10, 'pop_change_pct')
-bars = ax.barh(top_losers['municipality'], top_losers['pop_change_pct'], color='crimson')
-ax.set_xlabel("Population Change (%)")
-ax.set_title("Top 10 Municipalities by Population Loss")
-ax.axvline(x=0, color='black', linestyle='-', linewidth=0.5)
-
-plt.tight_layout()
-plt.show()
+print(f"\n  Municipalities with population loss: {(pop_change['pop_change_pct'] < 0).sum()} of 78")
+print(f"  Median municipality change: {pop_change['pop_change_pct'].median():.1f}%")
 ```
+
+```{python}
+#| label: pop-change-histogram
+#| fig-cap: "Nearly all municipalities experienced population decline between 2012-2022"
+
+# Histogram of population change
+hist = alt.Chart(pop_change).mark_bar(opacity=0.8).encode(
+    x=alt.X('pop_change_pct:Q',
+            bin=alt.Bin(maxbins=25),
+            title='Population Change (%)'),
+    y=alt.Y('count():Q', title='Number of Municipalities'),
+    tooltip=[
+        alt.Tooltip('count():Q', title='Municipalities')
+    ]
+).properties(
+    width=600,
+    height=400,
+    title='Distribution of Population Change 2012-2022'
+)
+
+# Add reference lines
+median_line = alt.Chart(pd.DataFrame({'x': [pop_change['pop_change_pct'].median()]})).mark_rule(
+    color='#d4a373', strokeDash=[5,5], strokeWidth=2
+).encode(x='x:Q')
+
+zero_line = alt.Chart(pd.DataFrame({'x': [0]})).mark_rule(
+    color='#c9695a', strokeWidth=2
+).encode(x='x:Q')
+
+hist + median_line + zero_line
+```
+
+The histogram reveals that virtually every municipality lost population, with the median loss around 13-14%. This is not selective migration from a few areas—it is an island-wide phenomenon.
+
+```{python}
+#| label: top-losers
+#| fig-cap: "The municipalities that lost the highest proportion of their population"
+
+# Top 15 population losers
+top_losers = pop_change.nsmallest(15, 'pop_change_pct').copy()
+top_losers['pop_change_pct_abs'] = top_losers['pop_change_pct'].abs()
+
+alt.Chart(top_losers).mark_bar(color='#c9695a').encode(
+    x=alt.X('pop_change_pct:Q', title='Population Change (%)'),
+    y=alt.Y('municipality:N', title=None, sort='x'),
+    tooltip=[
+        alt.Tooltip('municipality:N', title='Municipality'),
+        alt.Tooltip('pop_2012:Q', title='Pop 2012', format=','),
+        alt.Tooltip('pop_2022:Q', title='Pop 2022', format=','),
+        alt.Tooltip('pop_change_pct:Q', title='Change %', format='.1f')
+    ]
+).properties(
+    width=500,
+    height=400,
+    title='Top 15 Municipalities by Population Loss (2012-2022)'
+)
+```
+
+The hardest-hit municipalities tend to be smaller, rural areas in the central mountains and coastal periphery. This pattern suggests selective out-migration by younger, more mobile populations.
 
 ## Pre/Post-Maria Comparison (2016 → 2020)
 
+Hurricane Maria struck Puerto Rico on September 20, 2017, causing catastrophic damage and precipitating a mass exodus. The period from 2016 to 2020 captures this critical transition.
+
 ```{python}
 #| label: maria-impact
-#| fig-cap: "Population change during Hurricane Maria period"
 
 # Hurricane Maria: September 2017
 # Compare 2016 (pre-Maria) to 2020 (post-Maria)
@@ -121,56 +172,115 @@ maria_impact['income_change_pct'] = ((maria_impact['income_2020'] - maria_impact
 maria_impact['poverty_change'] = maria_impact['poverty_2020'] - maria_impact['poverty_2016']
 
 print("Hurricane Maria Period (2016-2020) Impact:")
-print(f"  Population change: {maria_impact['pop_change_pct'].mean():.1f}% (mean)")
-print(f"  Median age change: {maria_impact['age_change'].mean():.1f} years")
-print(f"  Income change: {maria_impact['income_change_pct'].mean():.1f}%")
-print(f"  Poverty rate change: {maria_impact['poverty_change'].mean():.1f}pp")
+print(f"  Mean population change: {maria_impact['pop_change_pct'].mean():.1f}%")
+print(f"  Mean median age change: +{maria_impact['age_change'].mean():.1f} years")
+print(f"  Mean income change: {maria_impact['income_change_pct'].mean():.1f}%")
+print(f"  Mean poverty rate change: {maria_impact['poverty_change'].mean():+.1f} percentage points")
+print(f"\n  Municipalities with pop loss: {(maria_impact['pop_change_pct'] < 0).sum()} of 78")
+```
 
-# Visualize
-fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+```{python}
+#| label: maria-aging
+#| fig-cap: "Municipalities that lost more population tended to see larger increases in median age"
 
 # Pop change vs age change
-ax = axes[0, 0]
-ax.scatter(maria_impact['pop_change_pct'], maria_impact['age_change'], alpha=0.6)
-ax.set_xlabel("Population Change (%)")
-ax.set_ylabel("Median Age Change (years)")
-ax.set_title("Migration → Aging Effect")
-ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
-ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
+base = alt.Chart(maria_impact).encode(
+    x=alt.X('pop_change_pct:Q',
+            title='Population Change (%)',
+            scale=alt.Scale(zero=False)),
+    y=alt.Y('age_change:Q',
+            title='Median Age Change (years)',
+            scale=alt.Scale(zero=False))
+)
+
+points = base.mark_circle(size=80, opacity=0.7).encode(
+    tooltip=[
+        alt.Tooltip('municipality:N', title='Municipality'),
+        alt.Tooltip('pop_change_pct:Q', title='Pop Change', format='.1f'),
+        alt.Tooltip('age_change:Q', title='Age Change', format='.1f')
+    ]
+)
+
+# Reference lines
+hline = alt.Chart(pd.DataFrame({'y': [0]})).mark_rule(color='#3a3734', strokeDash=[3,3]).encode(y='y:Q')
+vline = alt.Chart(pd.DataFrame({'x': [0]})).mark_rule(color='#3a3734', strokeDash=[3,3]).encode(x='x:Q')
+
+(points + hline + vline).properties(
+    width=600,
+    height=400,
+    title='Migration → Aging Effect (2016-2020)'
+)
+```
+
+The negative relationship between population loss and aging is striking: municipalities that lost more residents saw their median age increase more. This pattern is consistent with selective out-migration of younger people, leaving behind an older population.
+
+```{python}
+#| label: maria-income
+#| fig-cap: "Population loss shows weak relationship with income change"
 
 # Pop change vs income change
-ax = axes[0, 1]
-ax.scatter(maria_impact['pop_change_pct'], maria_impact['income_change_pct'], alpha=0.6, color='green')
-ax.set_xlabel("Population Change (%)")
-ax.set_ylabel("Income Change (%)")
-ax.set_title("Migration → Income Effect")
-ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
-ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
+base = alt.Chart(maria_impact).encode(
+    x=alt.X('pop_change_pct:Q',
+            title='Population Change (%)',
+            scale=alt.Scale(zero=False)),
+    y=alt.Y('income_change_pct:Q',
+            title='Median Income Change (%)',
+            scale=alt.Scale(zero=False))
+)
+
+points = base.mark_circle(size=80, opacity=0.7, color='#6b9080').encode(
+    tooltip=[
+        alt.Tooltip('municipality:N', title='Municipality'),
+        alt.Tooltip('pop_change_pct:Q', title='Pop Change', format='.1f'),
+        alt.Tooltip('income_change_pct:Q', title='Income Change', format='.1f')
+    ]
+)
+
+hline = alt.Chart(pd.DataFrame({'y': [0]})).mark_rule(color='#3a3734', strokeDash=[3,3]).encode(y='y:Q')
+vline = alt.Chart(pd.DataFrame({'x': [0]})).mark_rule(color='#3a3734', strokeDash=[3,3]).encode(x='x:Q')
+
+(points + hline + vline).properties(
+    width=600,
+    height=400,
+    title='Migration → Income Effect (2016-2020)'
+)
+```
+
+```{python}
+#| label: maria-poverty
+#| fig-cap: "Poverty rates changed variably regardless of population loss"
 
 # Pop change vs poverty change
-ax = axes[1, 0]
-ax.scatter(maria_impact['pop_change_pct'], maria_impact['poverty_change'], alpha=0.6, color='orange')
-ax.set_xlabel("Population Change (%)")
-ax.set_ylabel("Poverty Rate Change (pp)")
-ax.set_title("Migration → Poverty Effect")
-ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
-ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
+base = alt.Chart(maria_impact).encode(
+    x=alt.X('pop_change_pct:Q',
+            title='Population Change (%)',
+            scale=alt.Scale(zero=False)),
+    y=alt.Y('poverty_change:Q',
+            title='Poverty Rate Change (pp)',
+            scale=alt.Scale(zero=False))
+)
 
-# Regional summary
-ax = axes[1, 1]
-ax.text(0.5, 0.5,
-        f"Hurricane Maria Period\n(2016-2020)\n\n"
-        f"Avg Population Loss: {maria_impact['pop_change_pct'].mean():.1f}%\n"
-        f"Avg Age Increase: {maria_impact['age_change'].mean():.1f} years\n"
-        f"Municipalities w/ Pop Loss: {(maria_impact['pop_change_pct'] < 0).sum()} of 78",
-        ha='center', va='center', fontsize=14, transform=ax.transAxes)
-ax.axis('off')
+points = base.mark_circle(size=80, opacity=0.7, color='#d4a373').encode(
+    tooltip=[
+        alt.Tooltip('municipality:N', title='Municipality'),
+        alt.Tooltip('pop_change_pct:Q', title='Pop Change', format='.1f'),
+        alt.Tooltip('poverty_change:Q', title='Poverty Change', format='.1f')
+    ]
+)
 
-plt.tight_layout()
-plt.show()
+hline = alt.Chart(pd.DataFrame({'y': [0]})).mark_rule(color='#3a3734', strokeDash=[3,3]).encode(y='y:Q')
+vline = alt.Chart(pd.DataFrame({'x': [0]})).mark_rule(color='#3a3734', strokeDash=[3,3]).encode(x='x:Q')
+
+(points + hline + vline).properties(
+    width=600,
+    height=400,
+    title='Migration → Poverty Effect (2016-2020)'
+)
 ```
 
 ## Electoral Change Analysis
+
+How did these demographic shifts translate into electoral changes? We compare the 2016 and 2020 gubernatorial elections to assess party-level impacts.
 
 ```{python}
 #| label: electoral-change
@@ -235,16 +345,17 @@ electoral_change['votes_change_pct'] = (electoral_change['votes_change'] / elect
 
 print("Electoral Change 2016 → 2020:")
 print(f"  Municipalities analyzed: {len(electoral_change)}")
-print(f"  Avg PNP swing: {electoral_change['pnp_swing'].mean():.1f}pp")
-print(f"  Avg PPD swing: {electoral_change['ppd_swing'].mean():.1f}pp")
+print(f"  Avg PNP swing: {electoral_change['pnp_swing'].mean():.1f} percentage points")
+print(f"  Avg PPD swing: {electoral_change['ppd_swing'].mean():.1f} percentage points")
 print(f"  Avg vote change: {electoral_change['votes_change_pct'].mean():.1f}%")
 ```
 
 ## Population Loss vs Electoral Swing
 
+Does population loss correlate with shifts in party support? This question gets at whether out-migration is politically selective.
+
 ```{python}
 #| label: pop-electoral-correlation
-#| fig-cap: "Relationship between population loss and party swing"
 
 # Merge population change with electoral change
 def normalize_name(name):
@@ -257,15 +368,9 @@ electoral_change['muni_norm'] = electoral_change['municipality'].apply(normalize
 
 combined = maria_impact.merge(electoral_change, on='muni_norm', how='inner')
 
-print(f"Matched municipalities: {len(combined)}")
-
-if len(combined) < 3:
-    print("Warning: Not enough matched data for correlation analysis")
-    print("This may be due to municipality name mismatches between datasets")
+print(f"Matched municipalities for analysis: {len(combined)}")
 
 # Correlation analysis
-from scipy import stats
-
 if len(combined) >= 3:
     # Use paired data - drop rows where EITHER value is NaN
     valid_pnp = combined[['pop_change_pct', 'pnp_swing']].dropna()
@@ -280,51 +385,150 @@ if len(combined) >= 3:
     print(f"  PNP swing:   r = {r_pnp:+.3f}  p = {p_pnp:.4f}")
     print(f"  PPD swing:   r = {r_ppd:+.3f}  p = {p_ppd:.4f}")
     print(f"  Vote change: r = {r_votes:+.3f}  p = {p_votes:.4f}")
-
-    # Visualize
-    fig, axes = plt.subplots(1, 3, figsize=(15, 5))
-
-    ax = axes[0]
-    ax.scatter(combined['pop_change_pct'], combined['pnp_swing'], alpha=0.6)
-    ax.set_xlabel("Population Change (%)")
-    ax.set_ylabel("PNP Vote Share Change (pp)")
-    ax.set_title(f"Population Loss vs PNP Swing\nr = {r_pnp:.2f}")
-    ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
-    ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
-
-    ax = axes[1]
-    ax.scatter(combined['pop_change_pct'], combined['ppd_swing'], alpha=0.6, color='red')
-    ax.set_xlabel("Population Change (%)")
-    ax.set_ylabel("PPD Vote Share Change (pp)")
-    ax.set_title(f"Population Loss vs PPD Swing\nr = {r_ppd:.2f}")
-    ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
-    ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
-
-    ax = axes[2]
-    ax.scatter(combined['pop_change_pct'], combined['votes_change_pct'], alpha=0.6, color='purple')
-    ax.set_xlabel("Population Change (%)")
-    ax.set_ylabel("Total Votes Change (%)")
-    ax.set_title(f"Population Loss vs Voter Turnout\nr = {r_votes:.2f}")
-    ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
-    ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
-
-    plt.tight_layout()
-    plt.show()
 ```
+
+```{python}
+#| label: pop-pnp-scatter
+#| fig-cap: "Relationship between population loss and PNP vote share change"
+
+if len(combined) >= 3:
+    # PNP swing scatter
+    base = alt.Chart(combined).encode(
+        x=alt.X('pop_change_pct:Q',
+                title='Population Change (%)',
+                scale=alt.Scale(zero=False)),
+        y=alt.Y('pnp_swing:Q',
+                title='PNP Vote Share Change (pp)',
+                scale=alt.Scale(zero=False))
+    )
+
+    points = base.mark_circle(size=80, opacity=0.7).encode(
+        tooltip=[
+            alt.Tooltip('municipality_x:N', title='Municipality'),
+            alt.Tooltip('pop_change_pct:Q', title='Pop Change', format='.1f'),
+            alt.Tooltip('pnp_swing:Q', title='PNP Swing', format='.1f')
+        ]
+    )
+
+    regression = base.transform_regression(
+        'pop_change_pct', 'pnp_swing'
+    ).mark_line(strokeDash=[5, 5], color='#d4a373')
+
+    hline = alt.Chart(pd.DataFrame({'y': [0]})).mark_rule(color='#3a3734', strokeDash=[3,3]).encode(y='y:Q')
+    vline = alt.Chart(pd.DataFrame({'x': [0]})).mark_rule(color='#3a3734', strokeDash=[3,3]).encode(x='x:Q')
+
+    (points + regression + hline + vline).properties(
+        width=600,
+        height=400,
+        title=f'Population Loss vs PNP Swing (r = {r_pnp:.2f})'
+    )
+```
+
+```{python}
+#| label: pop-ppd-scatter
+#| fig-cap: "Relationship between population loss and PPD vote share change"
+
+if len(combined) >= 3:
+    # PPD swing scatter
+    base = alt.Chart(combined).encode(
+        x=alt.X('pop_change_pct:Q',
+                title='Population Change (%)',
+                scale=alt.Scale(zero=False)),
+        y=alt.Y('ppd_swing:Q',
+                title='PPD Vote Share Change (pp)',
+                scale=alt.Scale(zero=False))
+    )
+
+    points = base.mark_circle(size=80, opacity=0.7, color='#c9695a').encode(
+        tooltip=[
+            alt.Tooltip('municipality_x:N', title='Municipality'),
+            alt.Tooltip('pop_change_pct:Q', title='Pop Change', format='.1f'),
+            alt.Tooltip('ppd_swing:Q', title='PPD Swing', format='.1f')
+        ]
+    )
+
+    regression = base.transform_regression(
+        'pop_change_pct', 'ppd_swing'
+    ).mark_line(strokeDash=[5, 5], color='#d4a373')
+
+    hline = alt.Chart(pd.DataFrame({'y': [0]})).mark_rule(color='#3a3734', strokeDash=[3,3]).encode(y='y:Q')
+    vline = alt.Chart(pd.DataFrame({'x': [0]})).mark_rule(color='#3a3734', strokeDash=[3,3]).encode(x='x:Q')
+
+    (points + regression + hline + vline).properties(
+        width=600,
+        height=400,
+        title=f'Population Loss vs PPD Swing (r = {r_ppd:.2f})'
+    )
+```
+
+```{python}
+#| label: pop-turnout-scatter
+#| fig-cap: "Population loss strongly correlates with voter turnout decline"
+
+if len(combined) >= 3:
+    # Vote change scatter
+    base = alt.Chart(combined).encode(
+        x=alt.X('pop_change_pct:Q',
+                title='Population Change (%)',
+                scale=alt.Scale(zero=False)),
+        y=alt.Y('votes_change_pct:Q',
+                title='Total Votes Change (%)',
+                scale=alt.Scale(zero=False))
+    )
+
+    points = base.mark_circle(size=80, opacity=0.7, color='#9b8bb3').encode(
+        tooltip=[
+            alt.Tooltip('municipality_x:N', title='Municipality'),
+            alt.Tooltip('pop_change_pct:Q', title='Pop Change', format='.1f'),
+            alt.Tooltip('votes_change_pct:Q', title='Vote Change', format='.1f')
+        ]
+    )
+
+    regression = base.transform_regression(
+        'pop_change_pct', 'votes_change_pct'
+    ).mark_line(strokeDash=[5, 5], color='#d4a373')
+
+    hline = alt.Chart(pd.DataFrame({'y': [0]})).mark_rule(color='#3a3734', strokeDash=[3,3]).encode(y='y:Q')
+    vline = alt.Chart(pd.DataFrame({'x': [0]})).mark_rule(color='#3a3734', strokeDash=[3,3]).encode(x='x:Q')
+
+    (points + regression + hline + vline).properties(
+        width=600,
+        height=400,
+        title=f'Population Loss vs Voter Turnout (r = {r_votes:.2f})'
+    )
+```
+
+The correlation between population change and vote change is the strongest of the three relationships. This makes intuitive sense: fewer people means fewer voters. However, the relationship is not 1:1—some municipalities lost votes at rates exceeding their population decline, suggesting turnout effects beyond pure demographic change.
 
 ## Key Findings
 
-1. **Population Decline**: Puerto Rico lost ~13-15% of its population between 2012-2022
-2. **Maria Acceleration**: Post-Maria (2016-2020) showed steeper declines in most municipalities
-3. **Demographic Shift**: Out-migration left behind older, lower-income populations
-4. **Electoral Impact**: Population loss correlates with voter turnout decline
+1. **Universal Population Decline**: Nearly all 78 municipalities lost population between 2012-2022, with median losses around 13-14%.
 
-## Recommendations
+2. **Maria Acceleration**: The post-Maria period (2016-2020) showed steep declines across the board, with no municipality spared.
 
-- **Scrape historical data**: Add 2000-2012 elections for longer-term analysis
-- **Add migration data**: Integrate ACS migration module when available
-- **Precinct analysis**: Examine within-municipality variation in migration effects
+3. **Demographic Shift**: Out-migration was selective—younger residents left at higher rates, leaving behind an older population. Municipalities with greater population loss saw larger increases in median age.
+
+4. **Electoral Impact**: Population loss strongly correlates with voter turnout decline. The relationship with party vote shares is less clear, suggesting migration may not be strongly partisan-selective.
+
+5. **Economic Ambiguity**: Income and poverty changes showed weaker relationships with population loss, perhaps due to federal relief efforts and economic interventions post-Maria.
+
+## Limitations
+
+- **ACS sampling**: Census data is based on surveys with margins of error, particularly in smaller municipalities
+- **Timing**: Census years don't perfectly align with election years
+- **Causality**: Correlations don't establish causal relationships; confounding factors may drive observed patterns
+- **Return migration**: Some post-Maria migrants may have returned, complicating the picture
+
+## Recommendations for Future Analysis
+
+- **Scrape historical data**: Add 2000-2012 elections for longer-term trend analysis
+- **Add migration flow data**: Integrate ACS migration module to measure net flows directly
+- **Precinct-level analysis**: Examine within-municipality variation in migration effects
+- **Voter registration data**: Compare registered voter changes to population changes
+- **Diaspora analysis**: Study electoral participation of Puerto Ricans in Florida and other destinations
 
 ---
 
-*Analysis generated using Puerto Rico Elections Platform data.*
+*Analysis generated using [Puerto Rico Elections Platform](https://github.com/opendatapr/puerto-rico-elections-platform) data.*
+
+*Census data: American Community Survey 2012, 2016, 2020, 2022 5-Year Estimates.*

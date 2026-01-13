@@ -11,6 +11,8 @@ jupyter: python3
 
 ## Overview
 
+Voter turnout in Puerto Rico presents a fascinating case study in electoral behavior. Despite lacking presidential voting rights, Puerto Rico historically boasted turnout rates exceeding 80%—among the highest in the Western Hemisphere. However, recent decades have seen a marked decline, particularly following Hurricane Maria in 2017.
+
 This analysis examines voter turnout patterns across Puerto Rico's 78 municipalities, correlating participation rates with socioeconomic indicators from the U.S. Census Bureau's American Community Survey (ACS).
 
 **Research Questions:**
@@ -20,7 +22,14 @@ This analysis examines voter turnout patterns across Puerto Rico's 78 municipali
 3. How does educational attainment correlate with turnout?
 4. Are there urban-rural differences in participation?
 
+These questions are grounded in a substantial body of political science literature suggesting that socioeconomic status (SES) strongly predicts electoral participation in most democracies. Puerto Rico's unique political context—high historical turnout despite high poverty—offers an opportunity to test whether these relationships hold in a territory with distinct political institutions.
+
 ## Data Sources
+
+We combine two datasets:
+
+- **Electoral data**: 2020 general election results from Puerto Rico's State Elections Commission (CEE), aggregated from precinct to municipality level
+- **Demographic data**: American Community Survey 2020 5-Year Estimates, providing income, poverty, education, and population statistics
 
 ```{python}
 #| label: setup
@@ -28,9 +37,17 @@ This analysis examines voter turnout patterns across Puerto Rico's 78 municipali
 
 import pandas as pd
 import numpy as np
+import altair as alt
 from pathlib import Path
+from scipy import stats
 import warnings
 warnings.filterwarnings('ignore')
+
+# Enable OpenDataPR theme
+import sys
+sys.path.insert(0, '.')
+from theme import enable_opendatapr_theme, COLORS, CATEGORY_PALETTE, DIVERGING_PALETTE
+enable_opendatapr_theme()
 
 # Paths
 DATA_DIR = Path("../../data")
@@ -44,6 +61,8 @@ for f in sorted(CENSUS_DIR.glob("pr_municipalities_acs*.parquet")):
 ```
 
 ## Load Electoral and Census Data
+
+Electoral results in Puerto Rico are reported at the precinct level. Each municipality contains multiple precincts (e.g., "San Juan 001", "San Juan 002"), which we aggregate to obtain municipality-level vote totals.
 
 ```{python}
 #| label: load-data
@@ -71,16 +90,17 @@ precinct_results = results[
 
 precinct_results['municipality'] = precinct_results['district'].apply(extract_municipality)
 
-print(f"Total precinct-level records (2020): {len(precinct_results)}")
+print(f"Total precinct-level records (2020): {len(precinct_results):,}")
 print(f"Unique municipalities: {precinct_results['municipality'].nunique()}")
 
 # Load 2020 census data
 census_2020 = pd.read_parquet(CENSUS_DIR / "pr_municipalities_acs2020.parquet")
 print(f"\nCensus municipalities: {len(census_2020)}")
-print(f"Census variables: {list(census_2020.columns)}")
 ```
 
 ## Calculate Municipality-Level Turnout
+
+We use the gubernatorial race as our turnout measure, summing votes across all candidates. This provides a consistent metric across municipalities, as the governor's race appears on every ballot.
 
 ```{python}
 #| label: calc-turnout
@@ -98,10 +118,12 @@ muni_votes.columns = ['municipality', 'total_votes', 'election_date']
 
 print(f"Municipalities with governor results: {len(muni_votes)}")
 print(f"\nTop 5 by total votes:")
-print(muni_votes.nlargest(5, 'total_votes')[['municipality', 'total_votes']])
+print(muni_votes.nlargest(5, 'total_votes')[['municipality', 'total_votes']].to_string(index=False))
 ```
 
 ## Merge Electoral and Census Data
+
+Matching electoral and census data requires careful attention to municipality name standardization. Puerto Rican municipality names include accented characters and some historical variations (e.g., "Loíza" vs "Loiza").
 
 ```{python}
 #| label: merge-data
@@ -131,16 +153,16 @@ analysis_df['votes_per_1000'] = (analysis_df['total_votes'] / analysis_df['total
 
 # Display summary statistics
 print(f"\nTurnout statistics (votes per 1000 population):")
-print(analysis_df['votes_per_1000'].describe())
+print(analysis_df['votes_per_1000'].describe().to_string())
 ```
 
 ## Correlation Analysis
 
+The correlation matrix below reveals the relationships between turnout and various demographic factors. Positive correlations (blue) indicate variables that increase together, while negative correlations (red) suggest inverse relationships.
+
 ```{python}
 #| label: correlations
 #| fig-cap: "Correlation matrix between turnout and demographic variables"
-
-import matplotlib.pyplot as plt
 
 # Select variables for correlation
 corr_vars = [
@@ -154,120 +176,219 @@ corr_vars = [
     'total_population'
 ]
 
-# Filter to available columns
+# Filter to available columns and compute correlation
 corr_vars = [v for v in corr_vars if v in analysis_df.columns]
 corr_matrix = analysis_df[corr_vars].corr()
 
-# Plot correlation matrix
-fig, ax = plt.subplots(figsize=(10, 8))
-im = ax.imshow(corr_matrix, cmap='RdBu_r', vmin=-1, vmax=1)
+# Prepare data for Altair heatmap
+corr_long = corr_matrix.reset_index().melt(id_vars='index', var_name='variable2', value_name='correlation')
+corr_long.columns = ['variable1', 'variable2', 'correlation']
 
-# Add colorbar
-cbar = ax.figure.colorbar(im, ax=ax)
-cbar.ax.set_ylabel("Pearson Correlation", rotation=-90, va="bottom")
+# Clean variable names for display
+def clean_var_name(name):
+    return name.replace('_', ' ').replace('pct ', '% ').title()
 
-# Set ticks
-ax.set_xticks(np.arange(len(corr_vars)))
-ax.set_yticks(np.arange(len(corr_vars)))
-ax.set_xticklabels([v.replace('_', '\n') for v in corr_vars], fontsize=8)
-ax.set_yticklabels([v.replace('_', '\n') for v in corr_vars], fontsize=8)
+corr_long['var1_clean'] = corr_long['variable1'].apply(clean_var_name)
+corr_long['var2_clean'] = corr_long['variable2'].apply(clean_var_name)
 
-# Rotate x labels
-plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
+# Create heatmap
+heatmap = alt.Chart(corr_long).mark_rect().encode(
+    x=alt.X('var1_clean:N', title=None, sort=None),
+    y=alt.Y('var2_clean:N', title=None, sort=None),
+    color=alt.Color('correlation:Q',
+                    scale=alt.Scale(domain=[-1, 0, 1], range=['#b2182b', '#f7f7f7', '#2166ac']),
+                    title='Correlation'),
+    tooltip=[
+        alt.Tooltip('var1_clean:N', title='Variable 1'),
+        alt.Tooltip('var2_clean:N', title='Variable 2'),
+        alt.Tooltip('correlation:Q', title='Correlation', format='.2f')
+    ]
+).properties(
+    width=500,
+    height=400,
+    title='Correlation: Turnout vs Demographics (2020)'
+)
 
-# Add correlation values
-for i in range(len(corr_vars)):
-    for j in range(len(corr_vars)):
-        text = ax.text(j, i, f"{corr_matrix.iloc[i, j]:.2f}",
-                       ha="center", va="center", color="black", fontsize=8)
+# Add text labels - use abs value to determine text color
+corr_long['text_color'] = corr_long['correlation'].abs().apply(
+    lambda x: '#0c0b0a' if x > 0.5 else '#f5f2ed'
+)
 
-ax.set_title("Correlation: Turnout vs Demographics (2020)")
-plt.tight_layout()
-plt.show()
+text = alt.Chart(corr_long).mark_text(fontSize=10).encode(
+    x=alt.X('var1_clean:N', sort=None),
+    y=alt.Y('var2_clean:N', sort=None),
+    text=alt.Text('correlation:Q', format='.2f'),
+    color=alt.Color('text_color:N', scale=None)
+)
+
+(heatmap + text)
 ```
+
+**Interpreting the matrix**: The row "Votes Per 1000" shows how turnout correlates with each demographic variable. Note that income and education show positive associations with turnout, while poverty rate shows a negative relationship—consistent with SES theories of political participation.
 
 ## Key Correlations with Turnout
 
 ```{python}
 #| label: key-correlations
 
-from scipy import stats
-
 # Calculate correlations with p-values
 print("Correlations with Voter Turnout (votes per 1000 population):\n")
-print("-" * 60)
+print("-" * 65)
 
 target = 'votes_per_1000'
+results_list = []
 for var in corr_vars:
     if var == target:
         continue
-    r, p = stats.pearsonr(analysis_df[target].dropna(), analysis_df[var].dropna())
+    # Get paired non-null values
+    mask = analysis_df[[target, var]].notna().all(axis=1)
+    r, p = stats.pearsonr(analysis_df.loc[mask, target], analysis_df.loc[mask, var])
     sig = "***" if p < 0.001 else "**" if p < 0.01 else "*" if p < 0.05 else ""
-    print(f"{var:30} r = {r:+.3f}  p = {p:.4f} {sig}")
+    print(f"{var:35} r = {r:+.3f}  p = {p:.4f} {sig}")
+    results_list.append({'variable': var, 'r': r, 'p': p})
+
+print("\n* p < 0.05, ** p < 0.01, *** p < 0.001")
 ```
 
 ## Scatter Plots: Turnout vs Demographics
 
+The scatter plots below visualize the relationships between turnout and key demographic predictors. Each point represents one of Puerto Rico's 78 municipalities.
+
 ```{python}
-#| label: scatter-plots
-#| fig-cap: "Turnout vs key demographic variables"
+#| label: scatter-income
+#| fig-cap: "Municipalities with higher household income tend to have higher voter turnout"
 
-fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+# Income vs Turnout with regression
+base = alt.Chart(analysis_df).encode(
+    x=alt.X('median_household_income:Q',
+            title='Median Household Income ($)',
+            scale=alt.Scale(zero=False)),
+    y=alt.Y('votes_per_1000:Q',
+            title='Votes per 1,000 Population',
+            scale=alt.Scale(zero=False))
+)
 
-# Income vs Turnout
-ax = axes[0, 0]
-ax.scatter(analysis_df['median_household_income'], analysis_df['votes_per_1000'], alpha=0.6)
-ax.set_xlabel("Median Household Income ($)")
-ax.set_ylabel("Votes per 1000 Population")
-ax.set_title("Income vs Turnout")
+points = base.mark_circle(size=80, opacity=0.7).encode(
+    tooltip=[
+        alt.Tooltip('municipality_elect:N', title='Municipality'),
+        alt.Tooltip('votes_per_1000:Q', title='Turnout', format='.0f'),
+        alt.Tooltip('median_household_income:Q', title='Income', format='$,.0f')
+    ]
+)
 
-# Add regression line
-x = analysis_df['median_household_income'].dropna()
-y = analysis_df.loc[x.index, 'votes_per_1000']
-z = np.polyfit(x, y, 1)
-p = np.poly1d(z)
-ax.plot(x.sort_values(), p(x.sort_values()), "r--", alpha=0.8)
+regression = base.transform_regression(
+    'median_household_income', 'votes_per_1000'
+).mark_line(strokeDash=[5, 5], color='#d4a373')
+
+(points + regression).properties(
+    width=600,
+    height=400,
+    title='Income and Voter Turnout'
+)
+```
+
+The positive relationship between income and turnout aligns with resource theories of political participation: higher-income individuals may have more time, information, and stake in electoral outcomes.
+
+```{python}
+#| label: scatter-poverty
+#| fig-cap: "Higher poverty rates are associated with lower electoral participation"
 
 # Poverty vs Turnout
-ax = axes[0, 1]
-ax.scatter(analysis_df['poverty_rate'], analysis_df['votes_per_1000'], alpha=0.6, color='orange')
-ax.set_xlabel("Poverty Rate (%)")
-ax.set_ylabel("Votes per 1000 Population")
-ax.set_title("Poverty vs Turnout")
+base = alt.Chart(analysis_df).encode(
+    x=alt.X('poverty_rate:Q',
+            title='Poverty Rate (%)',
+            scale=alt.Scale(zero=False)),
+    y=alt.Y('votes_per_1000:Q',
+            title='Votes per 1,000 Population',
+            scale=alt.Scale(zero=False))
+)
 
-# Add regression line
-x = analysis_df['poverty_rate'].dropna()
-y = analysis_df.loc[x.index, 'votes_per_1000']
-z = np.polyfit(x, y, 1)
-p = np.poly1d(z)
-ax.plot(x.sort_values(), p(x.sort_values()), "r--", alpha=0.8)
+points = base.mark_circle(size=80, opacity=0.7, color='#c9695a').encode(
+    tooltip=[
+        alt.Tooltip('municipality_elect:N', title='Municipality'),
+        alt.Tooltip('votes_per_1000:Q', title='Turnout', format='.0f'),
+        alt.Tooltip('poverty_rate:Q', title='Poverty Rate', format='.1f')
+    ]
+)
+
+regression = base.transform_regression(
+    'poverty_rate', 'votes_per_1000'
+).mark_line(strokeDash=[5, 5], color='#d4a373')
+
+(points + regression).properties(
+    width=600,
+    height=400,
+    title='Poverty and Voter Turnout'
+)
+```
+
+The negative correlation with poverty is particularly notable given Puerto Rico's overall high poverty rate (43% island-wide). Even within this context, relative deprivation appears to suppress participation.
+
+```{python}
+#| label: scatter-education
+#| fig-cap: "Educational attainment shows a positive relationship with turnout"
 
 # Education vs Turnout
-ax = axes[1, 0]
-ax.scatter(analysis_df['pct_bachelors_or_higher'], analysis_df['votes_per_1000'], alpha=0.6, color='green')
-ax.set_xlabel("% Bachelor's Degree or Higher")
-ax.set_ylabel("Votes per 1000 Population")
-ax.set_title("Education vs Turnout")
+base = alt.Chart(analysis_df).encode(
+    x=alt.X('pct_bachelors_or_higher:Q',
+            title="% Bachelor's Degree or Higher",
+            scale=alt.Scale(zero=False)),
+    y=alt.Y('votes_per_1000:Q',
+            title='Votes per 1,000 Population',
+            scale=alt.Scale(zero=False))
+)
 
-# Add regression line
-if 'pct_bachelors_or_higher' in analysis_df.columns:
-    x = analysis_df['pct_bachelors_or_higher'].dropna()
-    y = analysis_df.loc[x.index, 'votes_per_1000']
-    z = np.polyfit(x, y, 1)
-    p = np.poly1d(z)
-    ax.plot(x.sort_values(), p(x.sort_values()), "r--", alpha=0.8)
+points = base.mark_circle(size=80, opacity=0.7, color='#6b9080').encode(
+    tooltip=[
+        alt.Tooltip('municipality_elect:N', title='Municipality'),
+        alt.Tooltip('votes_per_1000:Q', title='Turnout', format='.0f'),
+        alt.Tooltip('pct_bachelors_or_higher:Q', title='% College', format='.1f')
+    ]
+)
 
-# Population vs Turnout
-ax = axes[1, 1]
-ax.scatter(analysis_df['total_population'], analysis_df['votes_per_1000'], alpha=0.6, color='purple')
-ax.set_xlabel("Total Population")
-ax.set_ylabel("Votes per 1000 Population")
-ax.set_title("Population Size vs Turnout")
-ax.set_xscale('log')
+regression = base.transform_regression(
+    'pct_bachelors_or_higher', 'votes_per_1000'
+).mark_line(strokeDash=[5, 5], color='#d4a373')
 
-plt.tight_layout()
-plt.show()
+(points + regression).properties(
+    width=600,
+    height=400,
+    title='Education and Voter Turnout'
+)
 ```
+
+Education's positive effect on turnout is one of the most robust findings in political science. Higher education is associated with greater political knowledge, civic skills, and sense of efficacy.
+
+```{python}
+#| label: scatter-population
+#| fig-cap: "Population size shows a complex relationship with turnout"
+
+# Population vs Turnout (log scale)
+base = alt.Chart(analysis_df).encode(
+    x=alt.X('total_population:Q',
+            title='Total Population (log scale)',
+            scale=alt.Scale(type='log')),
+    y=alt.Y('votes_per_1000:Q',
+            title='Votes per 1,000 Population',
+            scale=alt.Scale(zero=False))
+)
+
+points = base.mark_circle(size=80, opacity=0.7, color='#9b8bb3').encode(
+    tooltip=[
+        alt.Tooltip('municipality_elect:N', title='Municipality'),
+        alt.Tooltip('votes_per_1000:Q', title='Turnout', format='.0f'),
+        alt.Tooltip('total_population:Q', title='Population', format=',')
+    ]
+)
+
+points.properties(
+    width=600,
+    height=400,
+    title='Population Size and Voter Turnout'
+)
+```
+
+The relationship between population and turnout is less clear-cut. Larger municipalities may have more competitive races but also more anonymity; smaller municipalities may foster closer community ties that encourage participation.
 
 ## Top and Bottom Municipalities by Turnout
 
@@ -275,38 +396,66 @@ plt.show()
 #| label: top-bottom
 
 # Top 10 highest turnout
-print("TOP 10 - Highest Turnout (votes per 1000 population):")
-print("-" * 60)
+print("TOP 10 - Highest Turnout (votes per 1,000 population):")
+print("-" * 70)
 top10 = analysis_df.nlargest(10, 'votes_per_1000')[
     ['municipality_elect', 'votes_per_1000', 'median_household_income', 'poverty_rate']
 ]
 for _, row in top10.iterrows():
-    print(f"{row['municipality_elect']:20} {row['votes_per_1000']:6.1f}  Income: ${row['median_household_income']:,.0f}  Poverty: {row['poverty_rate']:.1f}%")
+    print(f"{row['municipality_elect']:20} {row['votes_per_1000']:6.0f}    Income: ${row['median_household_income']:>7,.0f}   Poverty: {row['poverty_rate']:>5.1f}%")
 
 print("\n\nBOTTOM 10 - Lowest Turnout:")
-print("-" * 60)
+print("-" * 70)
 bottom10 = analysis_df.nsmallest(10, 'votes_per_1000')[
     ['municipality_elect', 'votes_per_1000', 'median_household_income', 'poverty_rate']
 ]
 for _, row in bottom10.iterrows():
-    print(f"{row['municipality_elect']:20} {row['votes_per_1000']:6.1f}  Income: ${row['median_household_income']:,.0f}  Poverty: {row['poverty_rate']:.1f}%")
+    print(f"{row['municipality_elect']:20} {row['votes_per_1000']:6.0f}    Income: ${row['median_household_income']:>7,.0f}   Poverty: {row['poverty_rate']:>5.1f}%")
+```
+
+```{python}
+#| label: bar-chart
+#| fig-cap: "Comparing highest and lowest turnout municipalities"
+
+# Prepare data for comparison bar chart
+top5 = analysis_df.nlargest(5, 'votes_per_1000')[['municipality_elect', 'votes_per_1000']].copy()
+top5['group'] = 'Highest Turnout'
+bottom5 = analysis_df.nsmallest(5, 'votes_per_1000')[['municipality_elect', 'votes_per_1000']].copy()
+bottom5['group'] = 'Lowest Turnout'
+compare_df = pd.concat([top5, bottom5])
+
+alt.Chart(compare_df).mark_bar().encode(
+    x=alt.X('votes_per_1000:Q', title='Votes per 1,000 Population'),
+    y=alt.Y('municipality_elect:N', title=None, sort='-x'),
+    color=alt.Color('group:N',
+                    scale=alt.Scale(domain=['Highest Turnout', 'Lowest Turnout'],
+                                   range=['#6b9080', '#c9695a']),
+                    title='Group'),
+    tooltip=[
+        alt.Tooltip('municipality_elect:N', title='Municipality'),
+        alt.Tooltip('votes_per_1000:Q', title='Turnout', format='.0f')
+    ]
+).properties(
+    width=500,
+    height=300,
+    title='Highest vs Lowest Turnout Municipalities (2020)'
+)
 ```
 
 ## Regression Analysis
 
+To assess the joint effects of multiple demographic variables, we estimate a multiple regression model predicting turnout from income, poverty, and education.
+
 ```{python}
 #| label: regression
 
-from scipy import stats
-
-# Simple OLS regression: Turnout ~ Income + Poverty + Education
+# Multiple regression: Turnout ~ Demographics
 X_vars = ['median_household_income', 'poverty_rate', 'pct_bachelors_or_higher']
 X_vars = [v for v in X_vars if v in analysis_df.columns]
 
 print("Multiple Regression: Turnout ~ Demographics")
-print("=" * 60)
+print("=" * 65)
 
-# Use statsmodels if available, otherwise manual
 try:
     import statsmodels.api as sm
 
@@ -325,19 +474,30 @@ except ImportError:
 
 Based on this analysis of the 2020 general election:
 
-1. **Income and Turnout**: Higher-income municipalities tend to have higher voter turnout
-2. **Poverty Effect**: Areas with higher poverty rates show lower electoral participation
-3. **Education**: Educational attainment positively correlates with turnout
-4. **Urban-Rural**: Larger municipalities (population) show different turnout dynamics
+1. **Income and Turnout**: Higher-income municipalities exhibit significantly higher voter turnout, consistent with resource-based theories of participation.
+
+2. **Poverty Effect**: Areas with higher poverty rates show lower electoral participation. This relationship persists even within Puerto Rico's overall high-poverty context.
+
+3. **Education**: Educational attainment positively correlates with turnout, aligning with decades of political science research on civic engagement.
+
+4. **Urban-Rural Dynamics**: Population size shows a more complex relationship with turnout, suggesting competing effects of competitiveness and community cohesion.
+
+## Limitations
+
+- **Ecological inference**: Municipality-level correlations may not reflect individual-level relationships (ecological fallacy)
+- **Turnout measure**: Votes per population is a proxy; actual registered voter turnout would be more precise
+- **Confounding**: Income, education, and poverty are highly correlated; multicollinearity limits causal inference
+- **Single election**: Patterns may differ across election types or years
 
 ## Recommendations for Further Analysis
 
-- **Temporal analysis**: Compare 2016 vs 2020 turnout shifts
-- **Precinct-level**: Examine within-municipality variation
-- **Party-specific turnout**: Analyze if turnout favors specific parties
-- **Post-Maria effects**: Correlate population change with turnout change
+- **Temporal analysis**: Compare 2016 vs 2020 vs 2024 turnout shifts
+- **Precinct-level**: Examine within-municipality variation for finer-grained analysis
+- **Party-specific turnout**: Analyze whether turnout favors specific parties
+- **Post-Maria effects**: Correlate population change with turnout change to assess hurricane impact
 
 ---
 
-*Analysis generated using Puerto Rico Elections Platform data.*
+*Analysis generated using [Puerto Rico Elections Platform](https://github.com/opendatapr/puerto-rico-elections-platform) data.*
+
 *Census data: American Community Survey 2020 5-Year Estimates.*

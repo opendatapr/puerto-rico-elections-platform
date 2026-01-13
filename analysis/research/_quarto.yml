@@ -4,7 +4,10 @@ project:
 
 website:
   title: "Puerto Rico Elections Research"
+  description: "Quantitative analysis of Puerto Rico electoral dynamics"
   navbar:
+    background: "#161412"
+    foreground: "#f5f2ed"
     left:
       - text: "Turnout Patterns"
         href: 01-turnout-patterns.qmd
@@ -14,16 +17,37 @@ website:
         href: 03-spatial-voting.qmd
       - text: "Status Referendum"
         href: 04-status-referendum.qmd
+    right:
+      - icon: github
+        href: https://github.com/opendatapr/puerto-rico-elections-platform
+  page-footer:
+    left: |
+      Puerto Rico Elections Platform
+    center: |
+      [OpenDataPR](https://opendatapr.org) &copy; 2026
+    right: |
+      Made with [Quarto](https://quarto.org)
 
 format:
   html:
-    theme: cosmo
+    theme:
+      - darkly
+      - opendatapr.scss
     toc: true
     toc-depth: 3
+    toc-location: right
     code-fold: true
     code-summary: "Show code"
+    code-tools: true
     fig-width: 8
     fig-height: 6
+    fig-format: svg
+    fig-responsive: true
+    smooth-scroll: true
+    link-external-newwindow: true
+
+bibliography: references.bib
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 
 execute:
   echo: true

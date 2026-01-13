@@ -11,6 +11,8 @@ jupyter: python3
 
 ## Overview
 
+Puerto Rico's political geography reflects deep historical, economic, and cultural divisions. The island's two major parties—the *Partido Nuevo Progresista* (PNP, pro-statehood) and *Partido Popular Democrático* (PPD, pro-commonwealth)—have traditionally drawn support from different regions and demographic groups.
+
 This analysis examines spatial patterns in Puerto Rico's electoral geography, identifying regional voting clusters and correlating geographic location with party support.
 
 **Research Questions:**
@@ -20,7 +22,11 @@ This analysis examines spatial patterns in Puerto Rico's electoral geography, id
 3. How do voting patterns vary within municipalities?
 4. Where did the largest electoral swings occur 2016→2020?
 
+Understanding these patterns is essential for interpreting Puerto Rican politics and predicting future electoral dynamics.
+
 ## Data Sources
+
+We combine precinct-level election results with geographic crosswalk data to analyze spatial patterns. The 2016 election serves as our baseline, with 2020 comparisons for swing analysis.
 
 ```{python}
 #| label: setup
@@ -28,10 +34,18 @@ This analysis examines spatial patterns in Puerto Rico's electoral geography, id
 
 import pandas as pd
 import numpy as np
+import altair as alt
 from pathlib import Path
 import json
+from scipy import stats
 import warnings
 warnings.filterwarnings('ignore')
+
+# Enable OpenDataPR theme
+import sys
+sys.path.insert(0, '.')
+from theme import enable_opendatapr_theme, COLORS, CATEGORY_PALETTE
+enable_opendatapr_theme()
 
 DATA_DIR = Path("../../data")
 CROSSWALK_DIR = DATA_DIR / "crosswalks"
@@ -40,11 +54,13 @@ CENSUS_DIR = DATA_DIR / "census"
 
 # Check for geographic data
 print("Geographic data available:")
-for f in sorted(CROSSWALK_DIR.glob("*.parquet")) + sorted(CROSSWALK_DIR.glob("*.json")):
+for f in list(CROSSWALK_DIR.glob("*.parquet")) + list(CROSSWALK_DIR.glob("*.json")):
     print(f"  - {f.name}")
 ```
 
 ## Load Precinct-Level Data
+
+Puerto Rico's electoral precincts are the finest geographic unit for which election results are reported. Each municipality contains multiple precincts, allowing for analysis of intra-municipal variation.
 
 ```{python}
 #| label: load-precincts
@@ -56,172 +72,265 @@ try:
     print(f"Columns: {list(precinct_data.columns)[:15]}...")
 except FileNotFoundError:
     # Try JSON format
-    with open(CROSSWALK_DIR / "precinct_census_crosswalk.json") as f:
-        precinct_data = pd.DataFrame(json.load(f))
-    print(f"Loaded {len(precinct_data)} precincts from JSON")
+    try:
+        with open(CROSSWALK_DIR / "precinct_census_crosswalk.json") as f:
+            precinct_data = pd.DataFrame(json.load(f))
+        print(f"Loaded {len(precinct_data)} precincts from JSON")
+    except FileNotFoundError:
+        precinct_data = pd.DataFrame()
+        print("No precinct crosswalk data available")
 
 # Display sample
-print("\nSample precinct data:")
-print(precinct_data.head(3).to_string())
+if len(precinct_data) > 0:
+    print("\nSample precinct data:")
+    print(precinct_data.head(3).to_string())
 ```
 
 ## Party Vote Share by Precinct
 
+The distribution of party vote shares across precincts reveals the competitive landscape of Puerto Rican elections.
+
 ```{python}
 #| label: party-shares
-#| fig-cap: "Distribution of party vote shares across precincts (2016)"
-
-import matplotlib.pyplot as plt
 
 # Check for voting columns (2016 governor race)
-voting_cols = [c for c in precinct_data.columns if c.startswith('GOV16') or 'pnp' in c.lower() or 'ppd' in c.lower()]
-print(f"Voting columns found: {voting_cols}")
+if len(precinct_data) > 0:
+    voting_cols = [c for c in precinct_data.columns if c.startswith('GOV16') or 'pnp' in c.lower() or 'ppd' in c.lower()]
+    print(f"Voting columns found: {voting_cols}")
 
-# Calculate party shares if raw votes available
-if 'GOV16PNP' in precinct_data.columns and 'GOV16PPD' in precinct_data.columns:
-    # Assume these are vote counts or shares
-    if precinct_data['GOV16PNP'].max() > 1:  # Likely vote counts
-        total = precinct_data['GOV16PNP'] + precinct_data['GOV16PPD'] + precinct_data.get('GOV16I', 0)
-        precinct_data['pnp_share'] = precinct_data['GOV16PNP'] / total * 100
-        precinct_data['ppd_share'] = precinct_data['GOV16PPD'] / total * 100
-    else:  # Already shares
-        precinct_data['pnp_share'] = precinct_data['GOV16PNP'] * 100
-        precinct_data['ppd_share'] = precinct_data['GOV16PPD'] * 100
+    # Calculate party shares if raw votes available
+    if 'GOV16PNP' in precinct_data.columns and 'GOV16PPD' in precinct_data.columns:
+        # Assume these are vote counts or shares
+        if precinct_data['GOV16PNP'].max() > 1:  # Likely vote counts
+            total = precinct_data['GOV16PNP'] + precinct_data['GOV16PPD'] + precinct_data.get('GOV16I', 0)
+            precinct_data['pnp_share'] = precinct_data['GOV16PNP'] / total * 100
+            precinct_data['ppd_share'] = precinct_data['GOV16PPD'] / total * 100
+        else:  # Already shares
+            precinct_data['pnp_share'] = precinct_data['GOV16PNP'] * 100
+            precinct_data['ppd_share'] = precinct_data['GOV16PPD'] * 100
 
-# Plot distributions
-if 'pnp_share' in precinct_data.columns:
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-
-    ax = axes[0]
-    ax.hist(precinct_data['pnp_share'].dropna(), bins=20, color='blue', alpha=0.7, edgecolor='black')
-    ax.axvline(x=50, color='red', linestyle='--', label='50%')
-    ax.set_xlabel("PNP Vote Share (%)")
-    ax.set_ylabel("Number of Precincts")
-    ax.set_title("PNP Vote Distribution (2016 Governor)")
-    ax.legend()
-
-    ax = axes[1]
-    ax.hist(precinct_data['ppd_share'].dropna(), bins=20, color='red', alpha=0.7, edgecolor='black')
-    ax.axvline(x=50, color='blue', linestyle='--', label='50%')
-    ax.set_xlabel("PPD Vote Share (%)")
-    ax.set_ylabel("Number of Precincts")
-    ax.set_title("PPD Vote Distribution (2016 Governor)")
-    ax.legend()
-
-    plt.tight_layout()
-    plt.show()
+        print(f"\nPNP vote share: {precinct_data['pnp_share'].mean():.1f}% average")
+        print(f"PPD vote share: {precinct_data['ppd_share'].mean():.1f}% average")
 ```
 
+```{python}
+#| label: pnp-distribution
+#| fig-cap: "Distribution of PNP vote share across precincts (2016 Governor)"
+
+if len(precinct_data) > 0 and 'pnp_share' in precinct_data.columns:
+    # Histogram of PNP support
+    pnp_hist = alt.Chart(precinct_data).mark_bar(opacity=0.8).encode(
+        x=alt.X('pnp_share:Q',
+                bin=alt.Bin(maxbins=25),
+                title='PNP Vote Share (%)'),
+        y=alt.Y('count():Q', title='Number of Precincts')
+    ).properties(
+        width=600,
+        height=400,
+        title='PNP Support Distribution (2016 Governor)'
+    )
+
+    # Add 50% reference line
+    fifty_line = alt.Chart(pd.DataFrame({'x': [50]})).mark_rule(
+        color='#c9695a', strokeWidth=2
+    ).encode(x='x:Q')
+
+    # Add mean line
+    mean_line = alt.Chart(pd.DataFrame({'x': [precinct_data['pnp_share'].mean()]})).mark_rule(
+        color='#d4a373', strokeDash=[5,5], strokeWidth=2
+    ).encode(x='x:Q')
+
+    pnp_hist + fifty_line + mean_line
+```
+
+```{python}
+#| label: ppd-distribution
+#| fig-cap: "Distribution of PPD vote share across precincts (2016 Governor)"
+
+if len(precinct_data) > 0 and 'ppd_share' in precinct_data.columns:
+    # Histogram of PPD support
+    ppd_hist = alt.Chart(precinct_data).mark_bar(opacity=0.8, color='#c9695a').encode(
+        x=alt.X('ppd_share:Q',
+                bin=alt.Bin(maxbins=25),
+                title='PPD Vote Share (%)'),
+        y=alt.Y('count():Q', title='Number of Precincts')
+    ).properties(
+        width=600,
+        height=400,
+        title='PPD Support Distribution (2016 Governor)'
+    )
+
+    # Add 50% reference line
+    fifty_line = alt.Chart(pd.DataFrame({'x': [50]})).mark_rule(
+        color='#4a9eda', strokeWidth=2
+    ).encode(x='x:Q')
+
+    # Add mean line
+    mean_line = alt.Chart(pd.DataFrame({'x': [precinct_data['ppd_share'].mean()]})).mark_rule(
+        color='#d4a373', strokeDash=[5,5], strokeWidth=2
+    ).encode(x='x:Q')
+
+    ppd_hist + fifty_line + mean_line
+```
+
+The bimodal tendencies in these distributions suggest a polarized electorate—precincts tend to lean meaningfully toward one party rather than splitting evenly.
+
 ## Regional Coalition Analysis
+
+Puerto Rico's 78 municipalities can be classified by their partisan lean, revealing the geographic bases of each party's support.
 
 ```{python}
 #| label: regional-coalitions
 
 # Group precincts by municipality
-if 'Municipio' in precinct_data.columns:
-    muni_col = 'Municipio'
-elif 'municipality' in precinct_data.columns:
-    muni_col = 'municipality'
-else:
-    muni_col = None
-    print("Municipality column not found")
+if len(precinct_data) > 0:
+    if 'Municipio' in precinct_data.columns:
+        muni_col = 'Municipio'
+    elif 'municipality' in precinct_data.columns:
+        muni_col = 'municipality'
+    else:
+        muni_col = None
+        print("Municipality column not found")
 
-if muni_col and 'pnp_share' in precinct_data.columns:
-    # Aggregate to municipality level
-    muni_voting = precinct_data.groupby(muni_col).agg({
-        'pnp_share': 'mean',
-        'ppd_share': 'mean',
-        'TOTPOP': 'sum' if 'TOTPOP' in precinct_data.columns else 'count'
-    }).reset_index()
+    if muni_col and 'pnp_share' in precinct_data.columns:
+        # Aggregate to municipality level
+        pop_col = 'TOTPOP' if 'TOTPOP' in precinct_data.columns else None
+        agg_dict = {
+            'pnp_share': 'mean',
+            'ppd_share': 'mean',
+        }
+        if pop_col:
+            agg_dict[pop_col] = 'sum'
 
-    # Classify municipalities
-    muni_voting['lean'] = np.where(
-        muni_voting['pnp_share'] > 50, 'PNP',
-        np.where(muni_voting['ppd_share'] > 50, 'PPD', 'Swing')
-    )
+        muni_voting = precinct_data.groupby(muni_col).agg(agg_dict).reset_index()
 
-    print("Municipality Classification (2016 Governor):")
-    print(muni_voting['lean'].value_counts())
+        # Classify municipalities
+        muni_voting['lean'] = np.where(
+            muni_voting['pnp_share'] > 55, 'Strong PNP',
+            np.where(muni_voting['pnp_share'] > 50, 'Lean PNP',
+                    np.where(muni_voting['ppd_share'] > 55, 'Strong PPD',
+                            np.where(muni_voting['ppd_share'] > 50, 'Lean PPD', 'Swing')))
+        )
 
-    print("\nTop 10 PNP municipalities:")
-    print(muni_voting.nlargest(10, 'pnp_share')[[muni_col, 'pnp_share', 'ppd_share']].to_string())
-
-    print("\nTop 10 PPD municipalities:")
-    print(muni_voting.nlargest(10, 'ppd_share')[[muni_col, 'pnp_share', 'ppd_share']].to_string())
+        print("Municipality Classification (2016 Governor):")
+        print(muni_voting['lean'].value_counts())
 ```
 
-## Spatial Distribution Map (Static)
+```{python}
+#| label: classification-chart
+#| fig-cap: "Classification of municipalities by partisan lean"
+
+if len(precinct_data) > 0 and 'muni_voting' in dir():
+    # Bar chart of classifications
+    lean_counts = muni_voting['lean'].value_counts().reset_index()
+    lean_counts.columns = ['classification', 'count']
+
+    # Order categories
+    order = ['Strong PNP', 'Lean PNP', 'Swing', 'Lean PPD', 'Strong PPD']
+    lean_counts['order'] = lean_counts['classification'].map({c: i for i, c in enumerate(order)})
+    lean_counts = lean_counts.sort_values('order')
+
+    alt.Chart(lean_counts).mark_bar().encode(
+        x=alt.X('classification:N', title=None, sort=order),
+        y=alt.Y('count:Q', title='Number of Municipalities'),
+        color=alt.Color('classification:N',
+                       scale=alt.Scale(domain=['Strong PNP', 'Lean PNP', 'Swing', 'Lean PPD', 'Strong PPD'],
+                                      range=['#2166ac', '#67a9cf', '#d4a373', '#ef8a62', '#b2182b']),
+                       legend=None),
+        tooltip=[
+            alt.Tooltip('classification:N', title='Classification'),
+            alt.Tooltip('count:Q', title='Municipalities')
+        ]
+    ).properties(
+        width=500,
+        height=350,
+        title='Municipality Classification by Partisan Lean (2016)'
+    )
+```
+
+```{python}
+#| label: top-pnp-ppd
+
+if len(precinct_data) > 0 and 'muni_voting' in dir():
+    print("\nTop 10 PNP municipalities:")
+    print(muni_voting.nlargest(10, 'pnp_share')[[muni_col, 'pnp_share', 'ppd_share']].to_string(index=False))
+
+    print("\nTop 10 PPD municipalities:")
+    print(muni_voting.nlargest(10, 'ppd_share')[[muni_col, 'pnp_share', 'ppd_share']].to_string(index=False))
+```
+
+## Spatial Distribution
+
+Geographic location matters in Puerto Rican politics. The island's regions—metro San Juan, the western corridor, the eastern coast, the central mountains, and the southern coast—have distinct political traditions.
 
 ```{python}
 #| label: spatial-map
-#| fig-cap: "Geographic distribution of party support"
+#| fig-cap: "Geographic distribution of party support by precinct location"
 
 # Create a simple spatial visualization using precinct centroids
-if 'centroid_lat' in precinct_data.columns and 'centroid_lon' in precinct_data.columns:
-    fig, ax = plt.subplots(figsize=(12, 8))
-
-    # Color by winner
+if len(precinct_data) > 0 and 'centroid_lat' in precinct_data.columns and 'centroid_lon' in precinct_data.columns:
+    # Determine winner
     precinct_data['winner'] = np.where(
         precinct_data['pnp_share'] > precinct_data['ppd_share'],
         'PNP', 'PPD'
     )
 
-    colors = {'PNP': 'blue', 'PPD': 'red'}
-    for party in ['PNP', 'PPD']:
-        mask = precinct_data['winner'] == party
-        ax.scatter(
-            precinct_data.loc[mask, 'centroid_lon'],
-            precinct_data.loc[mask, 'centroid_lat'],
-            c=colors[party],
-            label=party,
-            alpha=0.6,
-            s=50
-        )
-
-    ax.set_xlabel("Longitude")
-    ax.set_ylabel("Latitude")
-    ax.set_title("Party Support by Precinct Location (2016)")
-    ax.legend()
-    ax.set_aspect('equal')
-
-    plt.tight_layout()
-    plt.show()
-elif 'centroid_lat' not in precinct_data.columns:
+    alt.Chart(precinct_data).mark_circle(size=60, opacity=0.7).encode(
+        x=alt.X('centroid_lon:Q', title='Longitude', scale=alt.Scale(zero=False)),
+        y=alt.Y('centroid_lat:Q', title='Latitude', scale=alt.Scale(zero=False)),
+        color=alt.Color('winner:N',
+                       scale=alt.Scale(domain=['PNP', 'PPD'],
+                                      range=['#2166ac', '#b2182b']),
+                       title='Winner'),
+        tooltip=[
+            alt.Tooltip('Precinct:N', title='Precinct') if 'Precinct' in precinct_data.columns else alt.Tooltip('winner:N'),
+            alt.Tooltip('pnp_share:Q', title='PNP %', format='.1f'),
+            alt.Tooltip('ppd_share:Q', title='PPD %', format='.1f')
+        ]
+    ).properties(
+        width=700,
+        height=500,
+        title='Party Support by Precinct Location (2016)'
+    )
+elif len(precinct_data) > 0:
     print("Note: Centroid coordinates not available for mapping")
     print("Available location columns:", [c for c in precinct_data.columns if 'lat' in c.lower() or 'lon' in c.lower() or 'coord' in c.lower()])
 ```
 
 ## Demographic Correlations by Geography
 
+Party support correlates with demographic characteristics. These relationships reveal which population segments form each party's electoral base.
+
 ```{python}
 #| label: demo-correlations
-#| fig-cap: "Voting patterns correlated with demographics by precinct"
-
-from scipy import stats
 
 # Identify demographic columns
-demo_cols = ['median_household_income', 'poverty_rate', 'TOTPOP', 'HVAP']
-demo_cols = [c for c in demo_cols if c in precinct_data.columns]
+if len(precinct_data) > 0 and 'pnp_share' in precinct_data.columns:
+    demo_cols = ['median_household_income', 'poverty_rate', 'TOTPOP', 'HVAP']
+    demo_cols = [c for c in demo_cols if c in precinct_data.columns]
 
-if 'pnp_share' in precinct_data.columns and len(demo_cols) > 0:
-    print("Demographic Correlations with PNP Support:")
-    print("-" * 50)
+    if len(demo_cols) > 0:
+        print("Demographic Correlations with PNP Support:")
+        print("-" * 55)
 
-    for col in demo_cols:
-        valid = precinct_data[[col, 'pnp_share']].dropna()
-        if len(valid) > 10:
-            r, p = stats.pearsonr(valid[col], valid['pnp_share'])
-            sig = "***" if p < 0.001 else "**" if p < 0.01 else "*" if p < 0.05 else ""
-            print(f"  {col:30} r = {r:+.3f}  p = {p:.4f} {sig}")
+        for col in demo_cols:
+            valid = precinct_data[[col, 'pnp_share']].dropna()
+            if len(valid) > 10:
+                r, p = stats.pearsonr(valid[col], valid['pnp_share'])
+                sig = "***" if p < 0.001 else "**" if p < 0.01 else "*" if p < 0.05 else ""
+                print(f"  {col:30} r = {r:+.3f}  p = {p:.4f} {sig}")
+    else:
+        print("No demographic columns available for correlation analysis")
 ```
 
 ## Intra-Municipal Variation
 
+Large municipalities are not monolithic—they contain precincts with varying political preferences. This internal heterogeneity is particularly pronounced in urban areas.
+
 ```{python}
 #| label: intra-municipal
-#| fig-cap: "Voting variation within large municipalities"
 
-if muni_col and 'pnp_share' in precinct_data.columns:
+if len(precinct_data) > 0 and 'muni_col' in dir() and muni_col and 'pnp_share' in precinct_data.columns:
     # Calculate within-municipality standard deviation
     muni_variation = precinct_data.groupby(muni_col)['pnp_share'].agg(['mean', 'std', 'count']).reset_index()
     muni_variation.columns = [muni_col, 'pnp_mean', 'pnp_std', 'n_precincts']
@@ -229,22 +338,39 @@ if muni_col and 'pnp_share' in precinct_data.columns:
     # Only show municipalities with multiple precincts
     muni_variation = muni_variation[muni_variation['n_precincts'] > 1]
 
-    print("Municipalities with Highest Internal Variation:")
-    print(muni_variation.nlargest(10, 'pnp_std').to_string())
-
-    # Visualize for top varied municipalities
-    fig, ax = plt.subplots(figsize=(10, 6))
-    top_varied = muni_variation.nlargest(10, 'pnp_std')
-    ax.bar(range(len(top_varied)), top_varied['pnp_std'])
-    ax.set_xticks(range(len(top_varied)))
-    ax.set_xticklabels(top_varied[muni_col], rotation=45, ha='right')
-    ax.set_ylabel("Standard Deviation of PNP Share (%)")
-    ax.set_title("Internal Political Variation by Municipality")
-    plt.tight_layout()
-    plt.show()
+    print("Municipalities with Highest Internal Political Variation:")
+    print(muni_variation.nlargest(10, 'pnp_std').to_string(index=False))
 ```
 
+```{python}
+#| label: variation-chart
+#| fig-cap: "Internal political heterogeneity by municipality"
+
+if len(precinct_data) > 0 and 'muni_variation' in dir():
+    top_varied = muni_variation.nlargest(15, 'pnp_std')
+
+    alt.Chart(top_varied).mark_bar().encode(
+        x=alt.X('pnp_std:Q', title='Standard Deviation of PNP Share (%)'),
+        y=alt.Y(f'{muni_col}:N', title=None, sort='-x'),
+        color=alt.value('#4a9eda'),
+        tooltip=[
+            alt.Tooltip(f'{muni_col}:N', title='Municipality'),
+            alt.Tooltip('pnp_std:Q', title='Std Dev', format='.1f'),
+            alt.Tooltip('pnp_mean:Q', title='Mean PNP %', format='.1f'),
+            alt.Tooltip('n_precincts:Q', title='Precincts')
+        ]
+    ).properties(
+        width=500,
+        height=400,
+        title='Internal Political Variation by Municipality'
+    )
+```
+
+Municipalities with high internal variation represent the most politically diverse communities—where neighboring precincts may vote very differently. These are often urban areas with mixed socioeconomic compositions.
+
 ## Electoral Swing Geography (2016→2020)
+
+Electoral swings—changes in party vote shares between elections—reveal where political ground is shifting.
 
 ```{python}
 #| label: swing-geography
@@ -299,30 +425,100 @@ swing_df = swing_df.reset_index()
 swing_df.columns = ['municipality', 'pnp_2016', 'pnp_2020', 'swing']
 
 if len(swing_df) > 0:
-    print("Largest PNP Swings (2016→2020):")
-    print(f"\nTop 10 PNP Gains:")
-    print(swing_df.nlargest(10, 'swing')[['municipality', 'pnp_2016', 'pnp_2020', 'swing']].to_string())
+    print(f"Electoral Swing Analysis (2016 → 2020):")
+    print(f"  Municipalities analyzed: {len(swing_df)}")
+    print(f"  Mean PNP swing: {swing_df['swing'].mean():.1f} pp")
+    print(f"  Median PNP swing: {swing_df['swing'].median():.1f} pp")
+```
 
-    print(f"\nTop 10 PNP Losses:")
-    print(swing_df.nsmallest(10, 'swing')[['municipality', 'pnp_2016', 'pnp_2020', 'swing']].to_string())
-else:
-    print("No swing data available - check if election data contains required years")
+```{python}
+#| label: swing-chart
+#| fig-cap: "Municipalities with largest PNP gains and losses (2016→2020)"
+
+if len(swing_df) > 0:
+    # Combine top gains and losses
+    top_gains = swing_df.nlargest(10, 'swing').copy()
+    top_gains['direction'] = 'PNP Gain'
+    top_losses = swing_df.nsmallest(10, 'swing').copy()
+    top_losses['direction'] = 'PNP Loss'
+    swing_extreme = pd.concat([top_gains, top_losses])
+
+    alt.Chart(swing_extreme).mark_bar().encode(
+        x=alt.X('swing:Q', title='PNP Swing (percentage points)'),
+        y=alt.Y('municipality:N', title=None, sort=alt.SortField('swing', order='descending')),
+        color=alt.Color('direction:N',
+                       scale=alt.Scale(domain=['PNP Gain', 'PNP Loss'],
+                                      range=['#2166ac', '#b2182b']),
+                       title='Direction'),
+        tooltip=[
+            alt.Tooltip('municipality:N', title='Municipality'),
+            alt.Tooltip('pnp_2016:Q', title='PNP 2016', format='.1f'),
+            alt.Tooltip('pnp_2020:Q', title='PNP 2020', format='.1f'),
+            alt.Tooltip('swing:Q', title='Swing', format='+.1f')
+        ]
+    ).properties(
+        width=550,
+        height=500,
+        title='Largest Electoral Swings 2016 → 2020'
+    )
+```
+
+```{python}
+#| label: swing-distribution
+#| fig-cap: "Distribution of PNP swing across all municipalities"
+
+if len(swing_df) > 0:
+    swing_hist = alt.Chart(swing_df).mark_bar(opacity=0.8, color='#6b9080').encode(
+        x=alt.X('swing:Q',
+                bin=alt.Bin(maxbins=20),
+                title='PNP Swing (percentage points)'),
+        y=alt.Y('count():Q', title='Number of Municipalities')
+    ).properties(
+        width=600,
+        height=400,
+        title='Distribution of PNP Swing (2016 → 2020)'
+    )
+
+    # Add zero line
+    zero_line = alt.Chart(pd.DataFrame({'x': [0]})).mark_rule(
+        color='#c9695a', strokeWidth=2
+    ).encode(x='x:Q')
+
+    # Add mean line
+    mean_line = alt.Chart(pd.DataFrame({'x': [swing_df['swing'].mean()]})).mark_rule(
+        color='#d4a373', strokeDash=[5,5], strokeWidth=2
+    ).encode(x='x:Q')
+
+    swing_hist + zero_line + mean_line
 ```
 
 ## Key Findings
 
-1. **Spatial Clustering**: Party support is geographically clustered, with distinct regional coalitions
-2. **Urban-Rural Divide**: Different voting patterns between metro areas and rural municipalities
-3. **Intra-Municipal Variation**: Larger municipalities show significant internal political heterogeneity
-4. **Swing Geography**: Electoral changes 2016→2020 were not uniform across the island
+1. **Spatial Clustering**: Party support is geographically clustered, with distinct regional coalitions. The PNP and PPD each have stronghold areas.
+
+2. **Urban-Rural Patterns**: Different voting patterns emerge between metropolitan areas and rural municipalities, reflecting economic and demographic differences.
+
+3. **Intra-Municipal Variation**: Larger municipalities show significant internal political heterogeneity. San Juan and other urban centers contain precincts spanning the ideological spectrum.
+
+4. **Swing Geography**: Electoral changes 2016→2020 were not uniform across the island. Some municipalities swung significantly while others remained stable.
+
+## Limitations
+
+- **2016 baseline**: Our spatial analysis relies primarily on 2016 data; patterns may have shifted
+- **Centroid approximation**: Precinct locations are approximated by centroids, not full boundaries
+- **Missing demographics**: Not all precincts have demographic overlays
+- **Temporal scope**: Two-election comparison limits generalizability
 
 ## Recommendations for Future Analysis
 
 - **Moran's I Analysis**: Quantify spatial autocorrelation statistically
-- **Hot Spot Analysis**: Identify statistically significant voting clusters
+- **Hot Spot Analysis**: Identify statistically significant voting clusters using LISA
 - **Census Tract Mapping**: Finer-grained analysis using tract-level demographics
-- **Interactive Maps**: Create web-based Leaflet/Mapbox visualizations
+- **Interactive Maps**: Create web-based Leaflet/Mapbox visualizations for exploration
+- **Multi-election trends**: Add more elections to track spatial evolution over time
 
 ---
 
-*Analysis generated using Puerto Rico Elections Platform data.*
+*Analysis generated using [Puerto Rico Elections Platform](https://github.com/opendatapr/puerto-rico-elections-platform) data.*
+
+*Precinct boundaries and demographics from MGGG Redistricting Lab.*

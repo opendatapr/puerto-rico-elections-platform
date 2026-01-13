@@ -6,8 +6,6 @@ date: today
 format:
   html:
     code-fold: true
-  pdf:
-    documentclass: article
 jupyter: python3
 ---
 
@@ -180,16 +178,31 @@ plt.show()
 # Load election results
 results = pd.read_parquet(PROCESSED_DIR / "results.parquet")
 
-# Get 2016 and 2020 governor results by municipality
+# Helper to extract municipality from precinct names (e.g., "San Juan 001" -> "San Juan")
+def extract_municipality(district):
+    if pd.isna(district):
+        return None
+    parts = str(district).rsplit(' ', 1)
+    if len(parts) == 2 and parts[1].isdigit():
+        return parts[0]
+    return district
+
+# Get 2016 and 2020 governor results by municipality (aggregated from precinct level)
 def get_gov_results(year):
     gov = results[
         (results['office'] == 'GOBERNADOR') &
-        (results['data_level'] == 'municipality') &
+        (results['data_level'] == 'precinct') &
         (results['event_date'].str.contains(str(year)))
     ].copy()
 
-    # Pivot to get party vote shares
-    party_votes = gov.groupby(['district', 'party'])['votes'].sum().unstack(fill_value=0)
+    if len(gov) == 0:
+        return pd.DataFrame(columns=['municipality', 'pnp_share', 'ppd_share', 'total'])
+
+    # Extract municipality from precinct district
+    gov['municipality'] = gov['district'].apply(extract_municipality)
+
+    # Pivot to get party vote shares by municipality
+    party_votes = gov.groupby(['municipality', 'party'])['votes'].sum().unstack(fill_value=0)
     party_votes['total'] = party_votes.sum(axis=1)
 
     # Calculate PNP and PPD shares
@@ -246,47 +259,57 @@ combined = maria_impact.merge(electoral_change, on='muni_norm', how='inner')
 
 print(f"Matched municipalities: {len(combined)}")
 
+if len(combined) < 3:
+    print("Warning: Not enough matched data for correlation analysis")
+    print("This may be due to municipality name mismatches between datasets")
+
 # Correlation analysis
 from scipy import stats
 
-r_pnp, p_pnp = stats.pearsonr(combined['pop_change_pct'].dropna(), combined['pnp_swing'].dropna())
-r_ppd, p_ppd = stats.pearsonr(combined['pop_change_pct'].dropna(), combined['ppd_swing'].dropna())
-r_votes, p_votes = stats.pearsonr(combined['pop_change_pct'].dropna(), combined['votes_change_pct'].dropna())
+if len(combined) >= 3:
+    # Use paired data - drop rows where EITHER value is NaN
+    valid_pnp = combined[['pop_change_pct', 'pnp_swing']].dropna()
+    valid_ppd = combined[['pop_change_pct', 'ppd_swing']].dropna()
+    valid_votes = combined[['pop_change_pct', 'votes_change_pct']].dropna()
 
-print(f"\nCorrelations with Population Change:")
-print(f"  PNP swing:   r = {r_pnp:+.3f}  p = {p_pnp:.4f}")
-print(f"  PPD swing:   r = {r_ppd:+.3f}  p = {p_ppd:.4f}")
-print(f"  Vote change: r = {r_votes:+.3f}  p = {p_votes:.4f}")
+    r_pnp, p_pnp = stats.pearsonr(valid_pnp['pop_change_pct'], valid_pnp['pnp_swing'])
+    r_ppd, p_ppd = stats.pearsonr(valid_ppd['pop_change_pct'], valid_ppd['ppd_swing'])
+    r_votes, p_votes = stats.pearsonr(valid_votes['pop_change_pct'], valid_votes['votes_change_pct'])
 
-# Visualize
-fig, axes = plt.subplots(1, 3, figsize=(15, 5))
+    print(f"\nCorrelations with Population Change:")
+    print(f"  PNP swing:   r = {r_pnp:+.3f}  p = {p_pnp:.4f}")
+    print(f"  PPD swing:   r = {r_ppd:+.3f}  p = {p_ppd:.4f}")
+    print(f"  Vote change: r = {r_votes:+.3f}  p = {p_votes:.4f}")
 
-ax = axes[0]
-ax.scatter(combined['pop_change_pct'], combined['pnp_swing'], alpha=0.6)
-ax.set_xlabel("Population Change (%)")
-ax.set_ylabel("PNP Vote Share Change (pp)")
-ax.set_title(f"Population Loss vs PNP Swing\nr = {r_pnp:.2f}")
-ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
-ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
+    # Visualize
+    fig, axes = plt.subplots(1, 3, figsize=(15, 5))
 
-ax = axes[1]
-ax.scatter(combined['pop_change_pct'], combined['ppd_swing'], alpha=0.6, color='red')
-ax.set_xlabel("Population Change (%)")
-ax.set_ylabel("PPD Vote Share Change (pp)")
-ax.set_title(f"Population Loss vs PPD Swing\nr = {r_ppd:.2f}")
-ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
-ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
+    ax = axes[0]
+    ax.scatter(combined['pop_change_pct'], combined['pnp_swing'], alpha=0.6)
+    ax.set_xlabel("Population Change (%)")
+    ax.set_ylabel("PNP Vote Share Change (pp)")
+    ax.set_title(f"Population Loss vs PNP Swing\nr = {r_pnp:.2f}")
+    ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
+    ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
 
-ax = axes[2]
-ax.scatter(combined['pop_change_pct'], combined['votes_change_pct'], alpha=0.6, color='purple')
-ax.set_xlabel("Population Change (%)")
-ax.set_ylabel("Total Votes Change (%)")
-ax.set_title(f"Population Loss vs Voter Turnout\nr = {r_votes:.2f}")
-ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
-ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
+    ax = axes[1]
+    ax.scatter(combined['pop_change_pct'], combined['ppd_swing'], alpha=0.6, color='red')
+    ax.set_xlabel("Population Change (%)")
+    ax.set_ylabel("PPD Vote Share Change (pp)")
+    ax.set_title(f"Population Loss vs PPD Swing\nr = {r_ppd:.2f}")
+    ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
+    ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
 
-plt.tight_layout()
-plt.show()
+    ax = axes[2]
+    ax.scatter(combined['pop_change_pct'], combined['votes_change_pct'], alpha=0.6, color='purple')
+    ax.set_xlabel("Population Change (%)")
+    ax.set_ylabel("Total Votes Change (%)")
+    ax.set_title(f"Population Loss vs Voter Turnout\nr = {r_votes:.2f}")
+    ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
+    ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
+
+    plt.tight_layout()
+    plt.show()
 ```
 
 ## Key Findings

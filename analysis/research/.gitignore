@@ -1,0 +1,10 @@
+/.quarto/
+**/*.quarto_ipynb
+
+# Quarto output
+_output/
+_freeze/
+
+# Temp files
+*.tex
+*_files/

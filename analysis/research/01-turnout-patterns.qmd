@@ -6,8 +6,6 @@ date: today
 format:
   html:
     code-fold: true
-  pdf:
-    documentclass: article
 jupyter: python3
 ---
 
@@ -53,15 +51,28 @@ for f in sorted(CENSUS_DIR.glob("pr_municipalities_acs*.parquet")):
 # Load 2020 general election results
 results = pd.read_parquet(PROCESSED_DIR / "results.parquet")
 
-# Filter to municipality-level 2020 general election
-muni_results = results[
-    (results['data_level'] == 'municipality') &
+# Data is at precinct level - extract municipality from precinct names
+# Format: "Municipality XXX" -> "Municipality"
+def extract_municipality(district):
+    if pd.isna(district):
+        return None
+    # Remove trailing precinct number (e.g., "San Juan 001" -> "San Juan")
+    parts = str(district).rsplit(' ', 1)
+    if len(parts) == 2 and parts[1].isdigit():
+        return parts[0]
+    return district
+
+# Filter to precinct-level 2020 general election
+precinct_results = results[
+    (results['data_level'] == 'precinct') &
     (results['event_date'].str.contains('2020')) &
     (results['event_type'] == 'general')
 ].copy()
 
-print(f"Total municipality-level records (2020): {len(muni_results)}")
-print(f"Unique municipalities: {muni_results['district'].nunique()}")
+precinct_results['municipality'] = precinct_results['district'].apply(extract_municipality)
+
+print(f"Total precinct-level records (2020): {len(precinct_results)}")
+print(f"Unique municipalities: {precinct_results['municipality'].nunique()}")
 
 # Load 2020 census data
 census_2020 = pd.read_parquet(CENSUS_DIR / "pr_municipalities_acs2020.parquet")
@@ -76,10 +87,10 @@ print(f"Census variables: {list(census_2020.columns)}")
 
 # Aggregate votes by municipality (sum across all candidates/parties)
 # Using governor race as proxy for overall turnout
-gov_results = muni_results[muni_results['office'] == 'GOBERNADOR'].copy()
+gov_results = precinct_results[precinct_results['office'] == 'GOBERNADOR'].copy()
 
 # Group by municipality and sum votes
-muni_votes = gov_results.groupby('district').agg({
+muni_votes = gov_results.groupby('municipality').agg({
     'votes': 'sum',
     'event_date': 'first'
 }).reset_index()

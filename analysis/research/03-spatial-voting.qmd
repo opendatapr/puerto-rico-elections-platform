@@ -6,8 +6,6 @@ date: today
 format:
   html:
     code-fold: true
-  pdf:
-    documentclass: article
 jupyter: python3
 ---
 
@@ -254,31 +252,41 @@ if muni_col and 'pnp_share' in precinct_data.columns:
 # Load results and calculate swings
 results = pd.read_parquet(PROCESSED_DIR / "results.parquet")
 
-# Get governor results by municipality for both years
+# Helper to extract municipality from precinct names
+def extract_municipality(district):
+    if pd.isna(district):
+        return None
+    parts = str(district).rsplit(' ', 1)
+    if len(parts) == 2 and parts[1].isdigit():
+        return parts[0]
+    return district
+
+# Get governor results by municipality for both years (aggregated from precinct level)
 def get_party_share(year, party_name):
     gov = results[
         (results['office'] == 'GOBERNADOR') &
-        (results['data_level'] == 'municipality') &
+        (results['data_level'] == 'precinct') &
         (results['event_date'].str.contains(str(year))) &
         (results['party'] == party_name)
-    ]
-    return gov.groupby('district')['votes'].sum()
+    ].copy()
+    gov['municipality'] = gov['district'].apply(extract_municipality)
+    return gov.groupby('municipality')['votes'].sum()
 
 pnp_2016 = get_party_share(2016, 'PARTIDO NUEVO PROGRESISTA')
 pnp_2020 = get_party_share(2020, 'PARTIDO NUEVO PROGRESISTA')
 
 # Calculate totals
-total_2016 = results[
-    (results['office'] == 'GOBERNADOR') &
-    (results['data_level'] == 'municipality') &
-    (results['event_date'].str.contains('2016'))
-].groupby('district')['votes'].sum()
+def get_total(year):
+    gov = results[
+        (results['office'] == 'GOBERNADOR') &
+        (results['data_level'] == 'precinct') &
+        (results['event_date'].str.contains(str(year)))
+    ].copy()
+    gov['municipality'] = gov['district'].apply(extract_municipality)
+    return gov.groupby('municipality')['votes'].sum()
 
-total_2020 = results[
-    (results['office'] == 'GOBERNADOR') &
-    (results['data_level'] == 'municipality') &
-    (results['event_date'].str.contains('2020'))
-].groupby('district')['votes'].sum()
+total_2016 = get_total('2016')
+total_2020 = get_total('2020')
 
 # Calculate shares and swing
 swing_df = pd.DataFrame({
@@ -290,12 +298,15 @@ swing_df['swing'] = swing_df['pnp_2020'] - swing_df['pnp_2016']
 swing_df = swing_df.reset_index()
 swing_df.columns = ['municipality', 'pnp_2016', 'pnp_2020', 'swing']
 
-print("Largest PNP Swings (2016→2020):")
-print(f"\nTop 10 PNP Gains:")
-print(swing_df.nlargest(10, 'swing')[['municipality', 'pnp_2016', 'pnp_2020', 'swing']].to_string())
+if len(swing_df) > 0:
+    print("Largest PNP Swings (2016→2020):")
+    print(f"\nTop 10 PNP Gains:")
+    print(swing_df.nlargest(10, 'swing')[['municipality', 'pnp_2016', 'pnp_2020', 'swing']].to_string())
 
-print(f"\nTop 10 PNP Losses:")
-print(swing_df.nsmallest(10, 'swing')[['municipality', 'pnp_2016', 'pnp_2020', 'swing']].to_string())
+    print(f"\nTop 10 PNP Losses:")
+    print(swing_df.nsmallest(10, 'swing')[['municipality', 'pnp_2016', 'pnp_2020', 'swing']].to_string())
+else:
+    print("No swing data available - check if election data contains required years")
 ```
 
 ## Key Findings

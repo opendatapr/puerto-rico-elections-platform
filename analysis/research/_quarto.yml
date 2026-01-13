@@ -29,5 +29,3 @@ execute:
   echo: true
   warning: false
   freeze: auto
-
-bibliography: references.bib

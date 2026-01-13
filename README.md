@@ -36,9 +36,10 @@ Open data platform providing access to Puerto Rico electoral data from the [Comi
 - **Variables**: Total population, median household income, poverty rate, unemployment rate, educational attainment
 
 ### Geographic Crosswalks
-- **Source**: [MGGG PR-shapefiles](https://github.com/mggg-states/PR-shapefiles)
-- **Coverage**: 110 representative districts → municipalities
-- **Data**: 2010 Census demographics prorated to electoral districts, 2016 election results
+- **2016 Source**: [MGGG PR-shapefiles](https://github.com/mggg-states/PR-shapefiles) - 110 districts
+- **2022 Source**: CEE PDF maps (extracted via `pdf_extractor.py`) - 114 precincts across 40 districts
+- **Unified Crosswalk**: `precinct_crosswalk_unified.parquet` combines both years for comparative analysis
+- **Data**: District boundaries, municipality mapping, centroids (WGS84)
 
 ## Project Structure
 
@@ -58,7 +59,10 @@ puerto-rico-elections-platform/
 │   └── js/               # JavaScript/TypeScript package
 ├── analysis/
 │   ├── census_fetcher.py     # Multi-year census data fetcher
-│   ├── precinct_crosswalk.py # Geographic crosswalk builder
+│   ├── precinct_crosswalk.py # Geographic crosswalk builder (2016 + 2022)
+│   ├── pdf_downloader.py     # Download CEE district map PDFs
+│   ├── pdf_extractor.py      # Extract vector paths from PDFs
+│   ├── pdf_georeferencer.py  # Georeference to WGS84
 │   ├── geo_matching.py       # Municipality-census GEOID mapping
 │   └── examples/             # Example analysis scripts
 └── docs/                 # Documentation and data dictionaries

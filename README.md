@@ -13,26 +13,26 @@ Open data platform providing access to Puerto Rico electoral data from the [Comi
 2. **Data Packages**: Provide easy access via R, Python, and JavaScript packages
 3. **Census Integration**: Cross-reference electoral data with US Census spatial data (income, education, household composition, etc.)
 
-## Data Sources
+## Current Data
 
 ### Electoral Data
 - **Source**: [CEE Puerto Rico - Eventos Electorales](https://ww2.ceepur.org/Home/EventosElectorales)
-- **Coverage**: 2000-2025 (~40+ electoral events)
+- **Coverage**: 22 electoral events (2000-2025) with vote data extracted
+- **Records**: 164,606 vote results across all geographic levels
 - **Event Types**:
   - General Elections (Elecciones Generales)
   - Primary Elections (Primarias)
   - Plebiscites (Plebiscitos)
   - Special Elections (Elecciones Especiales)
+- **Geographic Levels**: Island, senatorial district, representative district, municipality, precinct
 
-### Census Data
-- **Source**: US Census Bureau (American Community Survey)
-- **Variables**:
-  - Income levels
-  - Educational attainment
-  - Household size and composition
-  - Religious affiliation (where available)
-  - Age demographics
-  - Employment statistics
+### Census Data (ACS 2022)
+- **Source**: US Census Bureau (American Community Survey 5-Year Estimates)
+- **Geographic Levels**:
+  - 78 municipalities
+  - 981 census tracts
+  - 2,548 block groups
+- **Variables**: Total population, median household income, educational attainment
 
 ## Project Structure
 
@@ -57,32 +57,65 @@ puerto-rico-elections-platform/
 
 | Package | Language | Status | Installation |
 |---------|----------|--------|--------------|
-| `prelecciones` | R | 🚧 Planned | `remotes::install_github("opendatapr/puerto-rico-elections-platform", subdir="packages/r")` |
-| `prelecciones` | Python | 🚧 Planned | `pip install prelecciones` |
-| `prelecciones` | JavaScript | 🚧 Planned | `npm install prelecciones` |
+| `prelecciones` | R | ✅ Ready | `remotes::install_github("opendatapr/puerto-rico-elections-platform", subdir="packages/r")` |
+| `prelecciones` | Python | ✅ Ready | `pip install git+https://github.com/opendatapr/puerto-rico-elections-platform#subdirectory=packages/python` |
+| `prelecciones` | JavaScript | ✅ Ready | `npm install github:opendatapr/puerto-rico-elections-platform#packages/js` |
+
+### Quick Start
+
+**Python:**
+```python
+import prelecciones as pre
+
+# List available events
+events = pre.list_events()
+
+# Get election results
+results = pre.get_results("elecciones-generales-2020", level="municipality")
+```
+
+**R:**
+```r
+library(prelecciones)
+
+# List available events
+events <- list_events()
+
+# Get election results
+results <- get_results("elecciones-generales-2020", level = "municipality")
+```
+
+**JavaScript:**
+```typescript
+import { listEvents, getResults, setDataPath } from 'prelecciones';
+
+setDataPath('./data/processed');
+const events = listEvents();
+const results = getResults('elecciones-generales-2020', { level: 'municipality' });
+```
 
 ## Roadmap
 
-### Phase 1: Data Infrastructure
-- [ ] Build web scraper for CEE electoral results
-- [ ] Design standardized data schema
-- [ ] Set up automated data pipeline
-- [ ] Create data validation suite
+### Phase 1: Data Infrastructure ✅
+- [x] Build web scraper for CEE electoral results (XML parser for CEE's three-tier architecture)
+- [x] Design standardized data schema
+- [x] Extract electoral data (22 events, 164K+ results)
+- [x] Store as efficient Parquet format
 
-### Phase 2: Core Packages
-- [ ] R package with tidyverse-friendly API
-- [ ] Python package with pandas integration
-- [ ] JavaScript package for web applications
+### Phase 2: Core Packages ✅
+- [x] R package with tidyverse-friendly API
+- [x] Python package with pandas integration
+- [x] JavaScript package for web applications
 
-### Phase 3: Census Integration
-- [ ] Download relevant Census/ACS data
-- [ ] Geographic matching (precincts → census tracts)
-- [ ] Cross-reference analysis tools
+### Phase 3: Census Integration ✅
+- [x] Download ACS 2022 data at 3 geographic levels
+- [x] Geographic matching (municipalities, tracts, block groups)
+- [ ] Cross-reference analysis tools (in progress)
 
 ### Phase 4: Documentation & Outreach
-- [ ] Data dictionary and methodology docs
+- [x] Data dictionary and methodology docs
 - [ ] Example analyses and visualizations
-- [ ] API documentation for packages
+- [x] API documentation for packages
 
 ## Contributing
 

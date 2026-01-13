@@ -7,6 +7,8 @@ data/processed/*
 !data/processed/*.json
 data/census/*
 !data/census/.gitkeep
+!data/census/*.parquet
+!data/census/*_metadata.json
 
 # Python
 __pycache__/

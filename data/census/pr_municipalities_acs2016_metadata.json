@@ -1,0 +1,22 @@
+{
+  "source": "U.S. Census Bureau American Community Survey 5-Year Estimates",
+  "year": 2016,
+  "geography": "Puerto Rico Municipalities",
+  "fetched_at": "2026-01-12T20:42:26.940690",
+  "variables": {
+    "B19013_001E": "median_household_income",
+    "B17001_001E": "poverty_total_population",
+    "B17001_002E": "poverty_below_poverty_level",
+    "B15003_001E": "education_total_population",
+    "B15003_017E": "education_high_school_graduate",
+    "B15003_022E": "education_bachelors_degree",
+    "B15003_023E": "education_masters_degree",
+    "B15003_024E": "education_professional_degree",
+    "B15003_025E": "education_doctorate_degree",
+    "B23025_001E": "employment_total_population",
+    "B23025_005E": "employment_unemployed",
+    "B23025_003E": "employment_in_labor_force",
+    "B01003_001E": "total_population",
+    "B01002_001E": "median_age"
+  }
+}

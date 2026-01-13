@@ -1,0 +1,33 @@
+project:
+  type: website
+  output-dir: _output
+
+website:
+  title: "Puerto Rico Elections Research"
+  navbar:
+    left:
+      - text: "Turnout Patterns"
+        href: 01-turnout-patterns.qmd
+      - text: "Migration Impact"
+        href: 02-migration-impact.qmd
+      - text: "Spatial Analysis"
+        href: 03-spatial-voting.qmd
+      - text: "Status Referendum"
+        href: 04-status-referendum.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-summary: "Show code"
+    fig-width: 8
+    fig-height: 6
+
+execute:
+  echo: true
+  warning: false
+  freeze: auto
+
+bibliography: references.bib

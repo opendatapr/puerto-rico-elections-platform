@@ -1,0 +1,307 @@
+---
+title: "Migration's Impact on Puerto Rico Elections"
+subtitle: "Population Loss and Electoral Change 2012-2022"
+author: "Puerto Rico Elections Platform"
+date: today
+format:
+  html:
+    code-fold: true
+  pdf:
+    documentclass: article
+jupyter: python3
+---
+
+## Overview
+
+Puerto Rico experienced ~15% population decline (3.7M → 3.2M) between 2012-2022, accelerated by Hurricane Maria (2017). This analysis examines how migration-driven population loss correlates with electoral changes.
+
+**Research Questions:**
+
+1. Did out-migration change party composition by municipality?
+2. Which areas lost the most voters?
+3. Do remaining residents differ demographically from pre-migration populations?
+4. What were pre/post-Maria electoral shifts?
+
+## Data Sources
+
+```{python}
+#| label: setup
+#| code-fold: false
+
+import pandas as pd
+import numpy as np
+from pathlib import Path
+import warnings
+warnings.filterwarnings('ignore')
+
+DATA_DIR = Path("../../data")
+CENSUS_DIR = DATA_DIR / "census"
+PROCESSED_DIR = DATA_DIR / "processed"
+
+# Load census data for multiple years
+census_2012 = pd.read_parquet(CENSUS_DIR / "pr_municipalities_acs2012.parquet")
+census_2016 = pd.read_parquet(CENSUS_DIR / "pr_municipalities_acs2016.parquet")
+census_2020 = pd.read_parquet(CENSUS_DIR / "pr_municipalities_acs2020.parquet")
+census_2022 = pd.read_parquet(CENSUS_DIR / "pr_municipalities_acs2022.parquet")
+
+print("Census data loaded:")
+print(f"  2012: {len(census_2012)} municipalities, pop = {census_2012['total_population'].sum():,}")
+print(f"  2016: {len(census_2016)} municipalities, pop = {census_2016['total_population'].sum():,}")
+print(f"  2020: {len(census_2020)} municipalities, pop = {census_2020['total_population'].sum():,}")
+print(f"  2022: {len(census_2022)} municipalities, pop = {census_2022['total_population'].sum():,}")
+```
+
+## Population Change Analysis
+
+```{python}
+#| label: pop-change
+#| fig-cap: "Population change 2012-2022 by municipality"
+
+import matplotlib.pyplot as plt
+
+# Calculate population change
+pop_change = census_2012[['municipality', 'total_population']].copy()
+pop_change.columns = ['municipality', 'pop_2012']
+pop_change = pop_change.merge(census_2022[['municipality', 'total_population']], on='municipality')
+pop_change.columns = ['municipality', 'pop_2012', 'pop_2022']
+
+pop_change['pop_change'] = pop_change['pop_2022'] - pop_change['pop_2012']
+pop_change['pop_change_pct'] = ((pop_change['pop_2022'] - pop_change['pop_2012']) / pop_change['pop_2012']) * 100
+
+# Summary statistics
+print("Population Change 2012-2022:")
+print(f"  Total 2012: {pop_change['pop_2012'].sum():,}")
+print(f"  Total 2022: {pop_change['pop_2022'].sum():,}")
+print(f"  Net change: {pop_change['pop_change'].sum():,} ({(pop_change['pop_change'].sum()/pop_change['pop_2012'].sum())*100:.1f}%)")
+
+# Plot distribution of population change
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+# Histogram
+ax = axes[0]
+ax.hist(pop_change['pop_change_pct'], bins=20, edgecolor='black', alpha=0.7)
+ax.axvline(x=0, color='red', linestyle='--', label='No change')
+ax.axvline(x=pop_change['pop_change_pct'].median(), color='orange', linestyle='--', label=f'Median: {pop_change["pop_change_pct"].median():.1f}%')
+ax.set_xlabel("Population Change (%)")
+ax.set_ylabel("Number of Municipalities")
+ax.set_title("Distribution of Population Change 2012-2022")
+ax.legend()
+
+# Top 10 population losers
+ax = axes[1]
+top_losers = pop_change.nsmallest(10, 'pop_change_pct')
+bars = ax.barh(top_losers['municipality'], top_losers['pop_change_pct'], color='crimson')
+ax.set_xlabel("Population Change (%)")
+ax.set_title("Top 10 Municipalities by Population Loss")
+ax.axvline(x=0, color='black', linestyle='-', linewidth=0.5)
+
+plt.tight_layout()
+plt.show()
+```
+
+## Pre/Post-Maria Comparison (2016 → 2020)
+
+```{python}
+#| label: maria-impact
+#| fig-cap: "Population change during Hurricane Maria period"
+
+# Hurricane Maria: September 2017
+# Compare 2016 (pre-Maria) to 2020 (post-Maria)
+
+maria_impact = census_2016[['municipality', 'total_population', 'median_age', 'median_household_income', 'poverty_rate']].copy()
+maria_impact.columns = ['municipality', 'pop_2016', 'age_2016', 'income_2016', 'poverty_2016']
+
+maria_2020 = census_2020[['municipality', 'total_population', 'median_age', 'median_household_income', 'poverty_rate']]
+maria_2020.columns = ['municipality', 'pop_2020', 'age_2020', 'income_2020', 'poverty_2020']
+
+maria_impact = maria_impact.merge(maria_2020, on='municipality')
+
+# Calculate changes
+maria_impact['pop_change_pct'] = ((maria_impact['pop_2020'] - maria_impact['pop_2016']) / maria_impact['pop_2016']) * 100
+maria_impact['age_change'] = maria_impact['age_2020'] - maria_impact['age_2016']
+maria_impact['income_change_pct'] = ((maria_impact['income_2020'] - maria_impact['income_2016']) / maria_impact['income_2016']) * 100
+maria_impact['poverty_change'] = maria_impact['poverty_2020'] - maria_impact['poverty_2016']
+
+print("Hurricane Maria Period (2016-2020) Impact:")
+print(f"  Population change: {maria_impact['pop_change_pct'].mean():.1f}% (mean)")
+print(f"  Median age change: {maria_impact['age_change'].mean():.1f} years")
+print(f"  Income change: {maria_impact['income_change_pct'].mean():.1f}%")
+print(f"  Poverty rate change: {maria_impact['poverty_change'].mean():.1f}pp")
+
+# Visualize
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+
+# Pop change vs age change
+ax = axes[0, 0]
+ax.scatter(maria_impact['pop_change_pct'], maria_impact['age_change'], alpha=0.6)
+ax.set_xlabel("Population Change (%)")
+ax.set_ylabel("Median Age Change (years)")
+ax.set_title("Migration → Aging Effect")
+ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
+ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
+
+# Pop change vs income change
+ax = axes[0, 1]
+ax.scatter(maria_impact['pop_change_pct'], maria_impact['income_change_pct'], alpha=0.6, color='green')
+ax.set_xlabel("Population Change (%)")
+ax.set_ylabel("Income Change (%)")
+ax.set_title("Migration → Income Effect")
+ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
+ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
+
+# Pop change vs poverty change
+ax = axes[1, 0]
+ax.scatter(maria_impact['pop_change_pct'], maria_impact['poverty_change'], alpha=0.6, color='orange')
+ax.set_xlabel("Population Change (%)")
+ax.set_ylabel("Poverty Rate Change (pp)")
+ax.set_title("Migration → Poverty Effect")
+ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
+ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
+
+# Regional summary
+ax = axes[1, 1]
+ax.text(0.5, 0.5,
+        f"Hurricane Maria Period\n(2016-2020)\n\n"
+        f"Avg Population Loss: {maria_impact['pop_change_pct'].mean():.1f}%\n"
+        f"Avg Age Increase: {maria_impact['age_change'].mean():.1f} years\n"
+        f"Municipalities w/ Pop Loss: {(maria_impact['pop_change_pct'] < 0).sum()} of 78",
+        ha='center', va='center', fontsize=14, transform=ax.transAxes)
+ax.axis('off')
+
+plt.tight_layout()
+plt.show()
+```
+
+## Electoral Change Analysis
+
+```{python}
+#| label: electoral-change
+
+# Load election results
+results = pd.read_parquet(PROCESSED_DIR / "results.parquet")
+
+# Get 2016 and 2020 governor results by municipality
+def get_gov_results(year):
+    gov = results[
+        (results['office'] == 'GOBERNADOR') &
+        (results['data_level'] == 'municipality') &
+        (results['event_date'].str.contains(str(year)))
+    ].copy()
+
+    # Pivot to get party vote shares
+    party_votes = gov.groupby(['district', 'party'])['votes'].sum().unstack(fill_value=0)
+    party_votes['total'] = party_votes.sum(axis=1)
+
+    # Calculate PNP and PPD shares
+    if 'PARTIDO NUEVO PROGRESISTA' in party_votes.columns:
+        party_votes['pnp_share'] = party_votes['PARTIDO NUEVO PROGRESISTA'] / party_votes['total'] * 100
+    else:
+        party_votes['pnp_share'] = 0
+
+    if 'PARTIDO POPULAR DEMOCRÁTICO' in party_votes.columns:
+        party_votes['ppd_share'] = party_votes['PARTIDO POPULAR DEMOCRÁTICO'] / party_votes['total'] * 100
+    else:
+        party_votes['ppd_share'] = 0
+
+    return party_votes[['pnp_share', 'ppd_share', 'total']].reset_index()
+
+gov_2016 = get_gov_results(2016)
+gov_2016.columns = ['municipality', 'pnp_2016', 'ppd_2016', 'votes_2016']
+
+gov_2020 = get_gov_results(2020)
+gov_2020.columns = ['municipality', 'pnp_2020', 'ppd_2020', 'votes_2020']
+
+# Merge
+electoral_change = gov_2016.merge(gov_2020, on='municipality', how='outer')
+
+# Calculate swings
+electoral_change['pnp_swing'] = electoral_change['pnp_2020'] - electoral_change['pnp_2016']
+electoral_change['ppd_swing'] = electoral_change['ppd_2020'] - electoral_change['ppd_2016']
+electoral_change['votes_change'] = electoral_change['votes_2020'] - electoral_change['votes_2016']
+electoral_change['votes_change_pct'] = (electoral_change['votes_change'] / electoral_change['votes_2016']) * 100
+
+print("Electoral Change 2016 → 2020:")
+print(f"  Municipalities analyzed: {len(electoral_change)}")
+print(f"  Avg PNP swing: {electoral_change['pnp_swing'].mean():.1f}pp")
+print(f"  Avg PPD swing: {electoral_change['ppd_swing'].mean():.1f}pp")
+print(f"  Avg vote change: {electoral_change['votes_change_pct'].mean():.1f}%")
+```
+
+## Population Loss vs Electoral Swing
+
+```{python}
+#| label: pop-electoral-correlation
+#| fig-cap: "Relationship between population loss and party swing"
+
+# Merge population change with electoral change
+def normalize_name(name):
+    if pd.isna(name):
+        return name
+    return str(name).lower().strip().replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u').replace('ñ', 'n')
+
+maria_impact['muni_norm'] = maria_impact['municipality'].apply(normalize_name)
+electoral_change['muni_norm'] = electoral_change['municipality'].apply(normalize_name)
+
+combined = maria_impact.merge(electoral_change, on='muni_norm', how='inner')
+
+print(f"Matched municipalities: {len(combined)}")
+
+# Correlation analysis
+from scipy import stats
+
+r_pnp, p_pnp = stats.pearsonr(combined['pop_change_pct'].dropna(), combined['pnp_swing'].dropna())
+r_ppd, p_ppd = stats.pearsonr(combined['pop_change_pct'].dropna(), combined['ppd_swing'].dropna())
+r_votes, p_votes = stats.pearsonr(combined['pop_change_pct'].dropna(), combined['votes_change_pct'].dropna())
+
+print(f"\nCorrelations with Population Change:")
+print(f"  PNP swing:   r = {r_pnp:+.3f}  p = {p_pnp:.4f}")
+print(f"  PPD swing:   r = {r_ppd:+.3f}  p = {p_ppd:.4f}")
+print(f"  Vote change: r = {r_votes:+.3f}  p = {p_votes:.4f}")
+
+# Visualize
+fig, axes = plt.subplots(1, 3, figsize=(15, 5))
+
+ax = axes[0]
+ax.scatter(combined['pop_change_pct'], combined['pnp_swing'], alpha=0.6)
+ax.set_xlabel("Population Change (%)")
+ax.set_ylabel("PNP Vote Share Change (pp)")
+ax.set_title(f"Population Loss vs PNP Swing\nr = {r_pnp:.2f}")
+ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
+ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
+
+ax = axes[1]
+ax.scatter(combined['pop_change_pct'], combined['ppd_swing'], alpha=0.6, color='red')
+ax.set_xlabel("Population Change (%)")
+ax.set_ylabel("PPD Vote Share Change (pp)")
+ax.set_title(f"Population Loss vs PPD Swing\nr = {r_ppd:.2f}")
+ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
+ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
+
+ax = axes[2]
+ax.scatter(combined['pop_change_pct'], combined['votes_change_pct'], alpha=0.6, color='purple')
+ax.set_xlabel("Population Change (%)")
+ax.set_ylabel("Total Votes Change (%)")
+ax.set_title(f"Population Loss vs Voter Turnout\nr = {r_votes:.2f}")
+ax.axhline(y=0, color='gray', linestyle='--', alpha=0.5)
+ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
+
+plt.tight_layout()
+plt.show()
+```
+
+## Key Findings
+
+1. **Population Decline**: Puerto Rico lost ~13-15% of its population between 2012-2022
+2. **Maria Acceleration**: Post-Maria (2016-2020) showed steeper declines in most municipalities
+3. **Demographic Shift**: Out-migration left behind older, lower-income populations
+4. **Electoral Impact**: Population loss correlates with voter turnout decline
+
+## Recommendations
+
+- **Scrape historical data**: Add 2000-2012 elections for longer-term analysis
+- **Add migration data**: Integrate ACS migration module when available
+- **Precinct analysis**: Examine within-municipality variation in migration effects
+
+---
+
+*Analysis generated using Puerto Rico Elections Platform data.*

@@ -33,7 +33,10 @@ list_events <- function(include_geometry = FALSE) {
   events_file <- file.path(data_path, "events.json")
   events_parquet <- file.path(data_path, "events.parquet")
 
-  if (file.exists(events_parquet)) {
+  # Prefer parquet if arrow is available, otherwise fall back to JSON
+  has_arrow <- requireNamespace("arrow", quietly = TRUE)
+
+  if (has_arrow && file.exists(events_parquet)) {
     df <- arrow::read_parquet(events_parquet)
   } else if (file.exists(events_file)) {
     df <- jsonlite::fromJSON(events_file)
@@ -113,10 +116,30 @@ get_results <- function(event_id, level = "precinct", include_geometry = FALSE) 
     precinct = "precinct"
   )
 
-  # First try unified results.parquet
+  # Check if arrow is available
+  has_arrow <- requireNamespace("arrow", quietly = TRUE)
+
+  # First try unified results file (parquet if arrow available, otherwise JSON)
   unified_parquet <- file.path(data_path, "results.parquet")
-  if (file.exists(unified_parquet)) {
+  unified_json <- file.path(data_path, "results.json")
+
+  if (has_arrow && file.exists(unified_parquet)) {
     df <- arrow::read_parquet(unified_parquet)
+    df <- df[df$event_id == event_id, ]
+    if (nrow(df) == 0) {
+      stop(
+        sprintf("Event '%s' not found. Use list_events() to see available events.", event_id),
+        call. = FALSE
+      )
+    }
+    level_filter <- level_map[[level]]
+    df <- df[df$data_level %in% level_filter, ]
+    if (!include_geometry && "geometry" %in% names(df)) {
+      df$geometry <- NULL
+    }
+    return(df)
+  } else if (file.exists(unified_json)) {
+    df <- jsonlite::fromJSON(unified_json)
     df <- df[df$event_id == event_id, ]
     if (nrow(df) == 0) {
       stop(
@@ -140,9 +163,9 @@ get_results <- function(event_id, level = "precinct", include_geometry = FALSE) 
 
   df <- NULL
 
-  if (file.exists(results_parquet)) {
+  if (has_arrow && file.exists(results_parquet)) {
     df <- arrow::read_parquet(results_parquet)
-  } else if (file.exists(flat_parquet)) {
+  } else if (has_arrow && file.exists(flat_parquet)) {
     df <- arrow::read_parquet(flat_parquet)
   } else if (file.exists(results_json)) {
     df <- jsonlite::fromJSON(results_json)

@@ -27,6 +27,7 @@ data/pdf_maps/extracted/*
 !data/pdf_maps/extracted/extraction_summary.json
 data/pdf_maps/georeferenced/*
 !data/pdf_maps/georeferenced/georeferencing_summary.json
+data/pdf_maps/validated/*
 
 # Python
 __pycache__/

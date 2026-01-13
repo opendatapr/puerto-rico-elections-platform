@@ -2,7 +2,14 @@
 CEE Puerto Rico Web Scraper
 
 Scrapes electoral data from the Puerto Rico State Electoral Commission (CEE).
-Handles both modern subdomains and legacy URL formats.
+Handles both modern XML-based subdomains (2016+) and legacy HTML formats.
+
+Modern CEE Architecture (2016+):
+1. Landing page (XML with XSL) - https://elecciones2020.ceepur.org/
+2. SPA shell (JavaScript) - /Escrutinio_General_93/index.html
+3. Data files (XML) - /Escrutinio_General_93/data/NAVIGATION.xml
+
+This scraper directly fetches the XML data files, bypassing the JavaScript SPA.
 
 Usage:
     python cee_scraper.py [--output-dir PATH] [--delay SECONDS] [--max-events N]
@@ -23,13 +30,18 @@ from pathlib import Path
 from typing import Optional
 from urllib.parse import urljoin, urlparse
 
+import warnings
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
+
+# Suppress warning when using HTML parser on XML (we handle XML separately)
+warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 
 from schema import (
     ElectoralEvent, ContestResult, VoteResult, GeographicUnit,
     ScrapedPage, EventType
 )
+from xml_parser import CEEXMLParser, CEESubevent, CEEDataFile
 
 # Configure logging
 logging.basicConfig(
@@ -79,6 +91,7 @@ class CEEScraper:
         self.max_events = max_events
         self.session = self._create_session()
         self._last_request_time = 0.0
+        self.xml_parser = CEEXMLParser()
 
         # Ensure output directory exists
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -437,15 +450,193 @@ class CEEScraper:
             }
         )
 
-        # Extract contests and results
-        contests = self._extract_contests(soup, results_url)
-        electoral_event.contests = contests
+        # Check if this is an XML-based results page (modern CEE)
+        if self.xml_parser.is_xml_content(page.raw_html):
+            logger.info(f"Detected XML-based results page for {event.get('name')}")
+            contests = self._scrape_xml_event(page.raw_html, results_url, electoral_event)
+            electoral_event.contests = contests
+        else:
+            # Try HTML parsing for legacy pages
+            soup = BeautifulSoup(page.raw_html, 'html.parser')
+            contests = self._extract_contests(soup, results_url)
+            electoral_event.contests = contests
 
         # Save event data
         event_filename = f"event_{electoral_event.event_id}.json"
         self._save_electoral_event(electoral_event, event_filename)
 
         return electoral_event
+
+    def _scrape_xml_event(
+        self,
+        landing_content: str,
+        base_url: str,
+        electoral_event: ElectoralEvent
+    ) -> list[ContestResult]:
+        """
+        Scrape a modern XML-based CEE event.
+
+        Handles the three-tier architecture:
+        1. Parse landing page for subevent links
+        2. For each subevent, fetch NAVIGATION.xml
+        3. Fetch and parse all data files
+
+        Args:
+            landing_content: XML content of the landing page
+            base_url: Base URL for the event
+            electoral_event: The electoral event being scraped
+
+        Returns:
+            List of ContestResult objects
+        """
+        all_contests = []
+
+        # Parse landing page for subevents
+        subevents = self.xml_parser.parse_landing_page(landing_content, base_url)
+
+        if not subevents:
+            logger.warning(f"No subevents found in landing page: {base_url}")
+            return all_contests
+
+        logger.info(f"Found {len(subevents)} subevents")
+
+        # Process each subevent (usually "Noche del Evento" and "Escrutinio General")
+        for subevent in subevents:
+            logger.info(f"Processing subevent: {subevent.description}")
+
+            # Fetch NAVIGATION.xml to get list of data files
+            nav_url = f"{subevent.data_url}NAVIGATION.xml"
+            nav_page = self._fetch_page(nav_url)
+
+            if nav_page.error:
+                logger.warning(f"Failed to fetch navigation: {nav_page.error}")
+                continue
+
+            data_files = self.xml_parser.parse_navigation(nav_page.raw_html)
+            logger.info(f"Found {len(data_files)} data files")
+
+            # Group data files by contest
+            contests_data = self._fetch_all_data_levels(
+                data_files,
+                subevent.data_url,
+                subevent.description
+            )
+
+            all_contests.extend(contests_data)
+
+        logger.info(f"Total contests extracted: {len(all_contests)}")
+        return all_contests
+
+    def _fetch_all_data_levels(
+        self,
+        data_files: list[CEEDataFile],
+        data_base_url: str,
+        subevent_name: str
+    ) -> list[ContestResult]:
+        """
+        Fetch and parse all data files for a subevent.
+
+        This fetches:
+        - Summary files (island-wide results)
+        - District files (senatorial, representative)
+        - Municipality files
+        - Precinct files (with links to individual precincts)
+
+        Args:
+            data_files: List of data file references
+            data_base_url: Base URL for data files
+            subevent_name: Name of the subevent for metadata
+
+        Returns:
+            List of ContestResult objects
+        """
+        contests = []
+
+        # Group files by contest
+        contests_by_name = {}
+        for df in data_files:
+            if df.contest_name not in contests_by_name:
+                contests_by_name[df.contest_name] = []
+            contests_by_name[df.contest_name].append(df)
+
+        for contest_name, files in contests_by_name.items():
+            logger.info(f"Processing contest: {contest_name}")
+
+            for data_file in files:
+                # Skip map files for now (they're for visualization)
+                if data_file.data_level == 'map':
+                    continue
+
+                file_url = f"{data_base_url}{data_file.filename}"
+                page = self._fetch_page(file_url)
+
+                if page.error:
+                    logger.debug(f"Failed to fetch {data_file.filename}: {page.error}")
+                    continue
+
+                # Parse based on data level
+                parsed_contests = self._parse_xml_data_file(
+                    page.raw_html,
+                    data_file,
+                    data_base_url
+                )
+
+                for parsed in parsed_contests:
+                    contest_result = self.xml_parser.to_contest_result(parsed)
+                    # Add metadata
+                    contest_result.metadata = {
+                        'subevent': subevent_name,
+                        'source_file': data_file.filename,
+                        'data_level': data_file.data_level
+                    }
+                    contests.append(contest_result)
+
+        return contests
+
+    def _parse_xml_data_file(
+        self,
+        content: str,
+        data_file: CEEDataFile,
+        data_base_url: str
+    ) -> list:
+        """
+        Parse an XML data file based on its type.
+
+        Args:
+            content: XML content
+            data_file: Data file reference
+            data_base_url: Base URL for following links
+
+        Returns:
+            List of ParsedContest objects
+        """
+        xml_type = self.xml_parser.detect_xml_type(content)
+
+        if xml_type == 'default':
+            # Summary file (island-wide)
+            parsed = self.xml_parser.parse_summary(content)
+            return [parsed] if parsed else []
+
+        elif xml_type == 'default_list':
+            # List of results by geographic unit
+            parsed_list = self.xml_parser.parse_list(content)
+
+            # For precinct lists, optionally fetch detailed precinct data
+            if data_file.data_level == 'precinct':
+                # The list contains links to individual precinct files
+                # We can fetch those for more detailed data if needed
+                # For now, use the aggregate data from the list
+                pass
+
+            return parsed_list
+
+        elif xml_type == 'pic_list':
+            # Detailed precinct/unit data
+            return self.xml_parser.parse_precinct_detail(content)
+
+        else:
+            logger.debug(f"Unknown XML type '{xml_type}' for {data_file.filename}")
+            return []
 
     def _extract_contests(self, soup: BeautifulSoup, base_url: str) -> list[ContestResult]:
         """

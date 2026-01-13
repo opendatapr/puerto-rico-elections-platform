@@ -124,6 +124,7 @@ class ContestResult:
     null_votes: int = 0
     registered_voters: Optional[int] = None
     participation_rate: Optional[float] = None
+    metadata: dict = field(default_factory=dict)
 
     def __post_init__(self):
         """Validate contest result data."""

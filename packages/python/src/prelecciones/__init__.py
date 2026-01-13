@@ -184,7 +184,38 @@ def get_results(
 
     data_path = _get_data_path()
 
-    # Look for results file
+    # Map level parameter to data_level values
+    level_map = {
+        "island": "island",
+        "district": ["senatorial_district", "representative_district"],
+        "municipality": "municipality",
+        "precinct": "precinct",
+    }
+
+    # First, try unified results.parquet file
+    unified_parquet = data_path / "results.parquet"
+    if unified_parquet.exists():
+        df = pd.read_parquet(unified_parquet)
+        # Filter by event_id
+        df = df[df["event_id"] == event_id]
+        if df.empty:
+            available = df["event_id"].unique().tolist()[:5]
+            raise ValueError(
+                f"Event '{event_id}' not found. "
+                f"Available events include: {available}"
+            )
+        # Filter by level
+        level_filter = level_map[level]
+        if isinstance(level_filter, list):
+            df = df[df["data_level"].isin(level_filter)]
+        else:
+            df = df[df["data_level"] == level_filter]
+
+        if not include_geometry and "geometry" in df.columns:
+            df = df.drop(columns=["geometry"])
+        return df
+
+    # Fallback to per-event file structure
     results_parquet = data_path / f"{event_id}" / f"results_{level}.parquet"
     results_json = data_path / f"{event_id}" / f"results_{level}.json"
 

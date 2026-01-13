@@ -1,0 +1,789 @@
+{
+  "total_districts": 40,
+  "successful": 40,
+  "failed": 0,
+  "results": [
+    {
+      "district": 1,
+      "status": "success",
+      "control_points_found": 2,
+      "municipalities_matched": [
+        "San Juan",
+        "San Juan"
+      ],
+      "method": "bounds_fallback",
+      "transform_error": {
+        "avg_m": -1,
+        "max_m": -1
+      },
+      "output_file": "distrito_01_wgs84.geojson",
+      "features": 1
+    },
+    {
+      "district": 2,
+      "status": "success",
+      "control_points_found": 2,
+      "municipalities_matched": [
+        "San Juan",
+        "San Juan"
+      ],
+      "method": "bounds_fallback",
+      "transform_error": {
+        "avg_m": -1,
+        "max_m": -1
+      },
+      "output_file": "distrito_02_wgs84.geojson",
+      "features": 1
+    },
+    {
+      "district": 3,
+      "status": "success",
+      "control_points_found": 2,
+      "municipalities_matched": [
+        "San Juan",
+        "San Juan"
+      ],
+      "method": "bounds_fallback",
+      "transform_error": {
+        "avg_m": -1,
+        "max_m": -1
+      },
+      "output_file": "distrito_03_wgs84.geojson",
+      "features": 1
+    },
+    {
+      "district": 4,
+      "status": "success",
+      "control_points_found": 2,
+      "municipalities_matched": [
+        "San Juan",
+        "San Juan"
+      ],
+      "method": "bounds_fallback",
+      "transform_error": {
+        "avg_m": -1,
+        "max_m": -1
+      },
+      "output_file": "distrito_04_wgs84.geojson",
+      "features": 1
+    },
+    {
+      "district": 5,
+      "status": "success",
+      "control_points_found": 6,
+      "municipalities_matched": [
+        "San Juan",
+        "Aguas Buenas",
+        "San Juan",
+        "Aguas Buenas",
+        "Guaynabo",
+        "Guaynabo"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 3959.8,
+        "max_m": 11402.6
+      },
+      "output_file": "distrito_05_wgs84.geojson",
+      "features": 3
+    },
+    {
+      "district": 6,
+      "status": "success",
+      "control_points_found": 6,
+      "municipalities_matched": [
+        "Cata\u00f1o",
+        "Guaynabo",
+        "Bayam\u00f3n",
+        "Guaynabo",
+        "Cata\u00f1o",
+        "Bayam\u00f3n"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 3613.0,
+        "max_m": 5614.0
+      },
+      "output_file": "distrito_06_wgs84.geojson",
+      "features": 3
+    },
+    {
+      "district": 7,
+      "status": "success",
+      "control_points_found": 2,
+      "municipalities_matched": [
+        "Bayam\u00f3n",
+        "Bayam\u00f3n"
+      ],
+      "method": "bounds_fallback",
+      "transform_error": {
+        "avg_m": -1,
+        "max_m": -1
+      },
+      "output_file": "distrito_07_wgs84.geojson",
+      "features": 1
+    },
+    {
+      "district": 8,
+      "status": "success",
+      "control_points_found": 2,
+      "municipalities_matched": [
+        "Bayam\u00f3n",
+        "Bayam\u00f3n"
+      ],
+      "method": "bounds_fallback",
+      "transform_error": {
+        "avg_m": -1,
+        "max_m": -1
+      },
+      "output_file": "distrito_08_wgs84.geojson",
+      "features": 1
+    },
+    {
+      "district": 9,
+      "status": "success",
+      "control_points_found": 4,
+      "municipalities_matched": [
+        "Toa Alta",
+        "Toa Alta",
+        "Bayam\u00f3n",
+        "Bayam\u00f3n"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 3585.6,
+        "max_m": 6241.3
+      },
+      "output_file": "distrito_09_wgs84.geojson",
+      "features": 2
+    },
+    {
+      "district": 10,
+      "status": "success",
+      "control_points_found": 5,
+      "municipalities_matched": [
+        "Toa Baja",
+        "Toa Baja",
+        "Cata\u00f1o",
+        "Cata\u00f1o",
+        "Cata\u00f1o"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 4378.5,
+        "max_m": 7113.7
+      },
+      "output_file": "distrito_10_wgs84.geojson",
+      "features": 2
+    },
+    {
+      "district": 11,
+      "status": "success",
+      "control_points_found": 6,
+      "municipalities_matched": [
+        "Vega Baja",
+        "Vega Alta",
+        "Vega Alta",
+        "Vega Baja",
+        "Dorado",
+        "Dorado"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 3452.3,
+        "max_m": 4642.4
+      },
+      "output_file": "distrito_11_wgs84.geojson",
+      "features": 3
+    },
+    {
+      "district": 12,
+      "status": "success",
+      "control_points_found": 8,
+      "municipalities_matched": [
+        "Vega Baja",
+        "Vega Alta",
+        "Vega Alta",
+        "Vega Baja",
+        "Manat\u00ed",
+        "Morovis",
+        "Morovis",
+        "Manat\u00ed"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 5728.1,
+        "max_m": 9174.4
+      },
+      "output_file": "distrito_12_wgs84.geojson",
+      "features": 4
+    },
+    {
+      "district": 13,
+      "status": "success",
+      "control_points_found": 8,
+      "municipalities_matched": [
+        "Arecibo",
+        "Barceloneta",
+        "Manat\u00ed",
+        "Florida",
+        "Manat\u00ed",
+        "Florida",
+        "Barceloneta",
+        "Arecibo"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 8043.6,
+        "max_m": 16462.6
+      },
+      "output_file": "distrito_13_wgs84.geojson",
+      "features": 4
+    },
+    {
+      "district": 14,
+      "status": "success",
+      "control_points_found": 5,
+      "municipalities_matched": [
+        "Hatillo",
+        "Arecibo",
+        "Hatillo",
+        "Arecibo",
+        "Hatillo"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 4738.3,
+        "max_m": 7539.7
+      },
+      "output_file": "distrito_14_wgs84.geojson",
+      "features": 2
+    },
+    {
+      "district": 15,
+      "status": "success",
+      "control_points_found": 6,
+      "municipalities_matched": [
+        "Hatillo",
+        "Quebradillas",
+        "Camuy",
+        "Hatillo",
+        "Camuy",
+        "Quebradillas"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 3782.0,
+        "max_m": 7486.1
+      },
+      "output_file": "distrito_15_wgs84.geojson",
+      "features": 3
+    },
+    {
+      "district": 16,
+      "status": "success",
+      "control_points_found": 6,
+      "municipalities_matched": [
+        "San Sebasti\u00e1n",
+        "San Sebasti\u00e1n",
+        "Aguadilla",
+        "Isabela",
+        "Isabela",
+        "Aguadilla"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 8061.8,
+        "max_m": 12067.2
+      },
+      "output_file": "distrito_16_wgs84.geojson",
+      "features": 3
+    },
+    {
+      "district": 17,
+      "status": "success",
+      "control_points_found": 4,
+      "municipalities_matched": [
+        "Aguadilla",
+        "Moca",
+        "Aguadilla",
+        "Moca"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 2596.8,
+        "max_m": 3653.7
+      },
+      "output_file": "distrito_17_wgs84.geojson",
+      "features": 2
+    },
+    {
+      "district": 18,
+      "status": "success",
+      "control_points_found": 8,
+      "municipalities_matched": [
+        "Aguada",
+        "Rinc\u00f3n",
+        "Moca",
+        "A\u00f1asco",
+        "Moca",
+        "Aguada",
+        "Rinc\u00f3n",
+        "A\u00f1asco"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 5281.9,
+        "max_m": 9066.2
+      },
+      "output_file": "distrito_18_wgs84.geojson",
+      "features": 4
+    },
+    {
+      "district": 19,
+      "status": "success",
+      "control_points_found": 4,
+      "municipalities_matched": [
+        "San Germ\u00e1n",
+        "San Germ\u00e1n",
+        "Mayag\u00fcez",
+        "Mayag\u00fcez"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 4078.7,
+        "max_m": 7508.3
+      },
+      "output_file": "distrito_19_wgs84.geojson",
+      "features": 2
+    },
+    {
+      "district": 20,
+      "status": "success",
+      "control_points_found": 6,
+      "municipalities_matched": [
+        "San Germ\u00e1n",
+        "Cabo Rojo",
+        "San Germ\u00e1n",
+        "Cabo Rojo",
+        "Hormigueros",
+        "Hormigueros"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 4721.5,
+        "max_m": 6735.2
+      },
+      "output_file": "distrito_20_wgs84.geojson",
+      "features": 3
+    },
+    {
+      "district": 21,
+      "status": "success",
+      "control_points_found": 12,
+      "municipalities_matched": [
+        "Las Mar\u00edas",
+        "Sabana Grande",
+        "Las Mar\u00edas",
+        "Sabana Grande",
+        "Maricao",
+        "Yauco",
+        "Lajas",
+        "Gu\u00e1nica",
+        "Lajas",
+        "Gu\u00e1nica",
+        "Maricao",
+        "Yauco"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 9866.9,
+        "max_m": 18883.3
+      },
+      "output_file": "distrito_21_wgs84.geojson",
+      "features": 6
+    },
+    {
+      "district": 22,
+      "status": "success",
+      "control_points_found": 10,
+      "municipalities_matched": [
+        "Ciales",
+        "Utuado",
+        "Lares",
+        "Jayuya",
+        "Adjuntas",
+        "Ciales",
+        "Lares",
+        "Utuado",
+        "Adjuntas",
+        "Jayuya"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 10323.7,
+        "max_m": 25211.6
+      },
+      "output_file": "distrito_22_wgs84.geojson",
+      "features": 5
+    },
+    {
+      "district": 23,
+      "status": "success",
+      "control_points_found": 10,
+      "municipalities_matched": [
+        "Adjuntas",
+        "Pe\u00f1uelas",
+        "Guayanilla",
+        "Yauco",
+        "Ponce",
+        "Yauco",
+        "Guayanilla",
+        "Pe\u00f1uelas",
+        "Ponce",
+        "Adjuntas"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 7433.9,
+        "max_m": 13815.1
+      },
+      "output_file": "distrito_23_wgs84.geojson",
+      "features": 5
+    },
+    {
+      "district": 24,
+      "status": "success",
+      "control_points_found": 2,
+      "municipalities_matched": [
+        "Ponce",
+        "Ponce"
+      ],
+      "method": "bounds_fallback",
+      "transform_error": {
+        "avg_m": -1,
+        "max_m": -1
+      },
+      "output_file": "distrito_24_wgs84.geojson",
+      "features": 1
+    },
+    {
+      "district": 25,
+      "status": "success",
+      "control_points_found": 6,
+      "municipalities_matched": [
+        "Juana D\u00edaz",
+        "Juana D\u00edaz",
+        "Jayuya",
+        "Ponce",
+        "Jayuya",
+        "Ponce"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 8091.2,
+        "max_m": 15224.6
+      },
+      "output_file": "distrito_25_wgs84.geojson",
+      "features": 3
+    },
+    {
+      "district": 26,
+      "status": "success",
+      "control_points_found": 10,
+      "municipalities_matched": [
+        "Corozal",
+        "Orocovis",
+        "Barranquitas",
+        "Villalba",
+        "Coamo",
+        "Villalba",
+        "Orocovis",
+        "Coamo",
+        "Barranquitas",
+        "Corozal"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 8886.3,
+        "max_m": 19626.1
+      },
+      "output_file": "distrito_26_wgs84.geojson",
+      "features": 5
+    },
+    {
+      "district": 27,
+      "status": "success",
+      "control_points_found": 8,
+      "municipalities_matched": [
+        "Juana D\u00edaz",
+        "Santa Isabel",
+        "Juana D\u00edaz",
+        "santa Isabel",
+        "Aibonito",
+        "Coamo",
+        "Aibonito",
+        "Coamo"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 8272.7,
+        "max_m": 15373.4
+      },
+      "output_file": "distrito_27_wgs84.geojson",
+      "features": 4
+    },
+    {
+      "district": 28,
+      "status": "success",
+      "control_points_found": 8,
+      "municipalities_matched": [
+        "Corozal",
+        "Naranjito",
+        "Barranquitas",
+        "Comer\u00edo",
+        "Barranquitas",
+        "Corozal",
+        "Naranjito",
+        "Comer\u00edo"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 6791.0,
+        "max_m": 11378.1
+      },
+      "output_file": "distrito_28_wgs84.geojson",
+      "features": 4
+    },
+    {
+      "district": 29,
+      "status": "success",
+      "control_points_found": 4,
+      "municipalities_matched": [
+        "Cidra",
+        "Cayey",
+        "Cayey",
+        "Cidra"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 1996.6,
+        "max_m": 3706.4
+      },
+      "output_file": "distrito_29_wgs84.geojson",
+      "features": 2
+    },
+    {
+      "district": 30,
+      "status": "success",
+      "control_points_found": 8,
+      "municipalities_matched": [
+        "Santa Isabel",
+        "Santa Isabel",
+        "Salinas",
+        "Arroyo",
+        "Guayama",
+        "Salinas",
+        "Guayama",
+        "Arroyo"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 8748.2,
+        "max_m": 18119.5
+      },
+      "output_file": "distrito_30_wgs84.geojson",
+      "features": 4
+    },
+    {
+      "district": 31,
+      "status": "success",
+      "control_points_found": 3,
+      "municipalities_matched": [
+        "Gurabo",
+        "Caguas",
+        "Gurabo"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 0.0,
+        "max_m": 0.0
+      },
+      "output_file": "distrito_31_wgs84.geojson",
+      "features": 2
+    },
+    {
+      "district": 32,
+      "status": "success",
+      "control_points_found": 2,
+      "municipalities_matched": [
+        "Caguas",
+        "Caguas"
+      ],
+      "method": "bounds_fallback",
+      "transform_error": {
+        "avg_m": -1,
+        "max_m": -1
+      },
+      "output_file": "distrito_32_wgs84.geojson",
+      "features": 1
+    },
+    {
+      "district": 33,
+      "status": "success",
+      "control_points_found": 7,
+      "municipalities_matched": [
+        "San Lorenzo",
+        "Las Piedras",
+        "Las Piedras",
+        "San Lorenzo",
+        "Gurabo",
+        "Juncos",
+        "Juncos"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 3603.3,
+        "max_m": 6352.8
+      },
+      "output_file": "distrito_33_wgs84.geojson",
+      "features": 4
+    },
+    {
+      "district": 34,
+      "status": "success",
+      "control_points_found": 8,
+      "municipalities_matched": [
+        "San Lorenzo",
+        "San Lorenzo",
+        "Yabucoa",
+        "Patillas",
+        "Maunabo",
+        "Maunabo",
+        "Patillas",
+        "Yabucoa"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 8072.5,
+        "max_m": 15051.6
+      },
+      "output_file": "distrito_34_wgs84.geojson",
+      "features": 4
+    },
+    {
+      "district": 35,
+      "status": "success",
+      "control_points_found": 6,
+      "municipalities_matched": [
+        "Las Piedras",
+        "Las Piedras",
+        "Naguabo",
+        "Humacao",
+        "Humacao",
+        "Naguabo"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 4964.8,
+        "max_m": 8678.0
+      },
+      "output_file": "distrito_35_wgs84.geojson",
+      "features": 3
+    },
+    {
+      "district": 36,
+      "status": "success",
+      "control_points_found": 6,
+      "municipalities_matched": [
+        "R\u00edo Grande",
+        "Luquillo",
+        "Culebra",
+        "Fajardo",
+        "Ceiba",
+        "Vieques"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 1889.0,
+        "max_m": 4066.4
+      },
+      "output_file": "distrito_36_wgs84.geojson",
+      "features": 6
+    },
+    {
+      "district": 37,
+      "status": "success",
+      "control_points_found": 6,
+      "municipalities_matched": [
+        "R\u00edo Grande",
+        "R\u00edo Grande",
+        "Lo\u00edza",
+        "Can\u00f3vanas",
+        "Can\u00f3vanas",
+        "Lo\u00edza"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 3555.6,
+        "max_m": 4910.6
+      },
+      "output_file": "distrito_37_wgs84.geojson",
+      "features": 3
+    },
+    {
+      "district": 38,
+      "status": "success",
+      "control_points_found": 6,
+      "municipalities_matched": [
+        "Trujillo Alto",
+        "Trujillo Alto",
+        "Can\u00f3vanas",
+        "Carolina",
+        "Can\u00f3vanas",
+        "Carolina"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 2466.6,
+        "max_m": 5383.2
+      },
+      "output_file": "distrito_38_wgs84.geojson",
+      "features": 3
+    },
+    {
+      "district": 39,
+      "status": "success",
+      "control_points_found": 4,
+      "municipalities_matched": [
+        "Trujillo Alto",
+        "Trujillo Alto",
+        "Carolina",
+        "Carolina"
+      ],
+      "method": "affine",
+      "transform_error": {
+        "avg_m": 1514.0,
+        "max_m": 2960.1
+      },
+      "output_file": "distrito_39_wgs84.geojson",
+      "features": 2
+    },
+    {
+      "district": 40,
+      "status": "success",
+      "control_points_found": 2,
+      "municipalities_matched": [
+        "Carolina",
+        "Carolina"
+      ],
+      "method": "bounds_fallback",
+      "transform_error": {
+        "avg_m": -1,
+        "max_m": -1
+      },
+      "output_file": "distrito_40_wgs84.geojson",
+      "features": 1
+    }
+  ]
+}

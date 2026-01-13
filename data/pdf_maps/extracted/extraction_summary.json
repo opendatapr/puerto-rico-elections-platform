@@ -1,0 +1,1125 @@
+{
+  "total_districts": 40,
+  "districts": [
+    {
+      "district": 1,
+      "precinct_count": 1,
+      "total_points": 7259,
+      "label_count": 4,
+      "labels": [
+        {
+          "municipality": "San Juan",
+          "precinct_code": "001"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones\nPrecinto\nOficina de Planificaci\u00f3n Geolectoral\nSeg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "San Juan",
+          "precinct_code": "001"
+        },
+        {
+          "municipality": "de julio de",
+          "precinct_code": "202"
+        }
+      ],
+      "output_file": "distrito_01_paths.geojson"
+    },
+    {
+      "district": 2,
+      "precinct_count": 1,
+      "total_points": 1477,
+      "label_count": 4,
+      "labels": [
+        {
+          "municipality": "San Juan",
+          "precinct_code": "002"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nPrecintos\nComisi\u00f3n Estatal de Elecciones\nOficina de Planificaci\u00f3n Geolectoral\nSan Juan",
+          "precinct_code": "002"
+        },
+        {
+          "municipality": "Seg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "de julio de",
+          "precinct_code": "202"
+        }
+      ],
+      "output_file": "distrito_02_paths.geojson"
+    },
+    {
+      "district": 3,
+      "precinct_count": 1,
+      "total_points": 886,
+      "label_count": 4,
+      "labels": [
+        {
+          "municipality": "San Juan",
+          "precinct_code": "003"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones\nPrecinto\nOficina de Planificaci\u00f3n Geolectoral\nSeg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "San Juan",
+          "precinct_code": "003"
+        },
+        {
+          "municipality": "de julio de",
+          "precinct_code": "202"
+        }
+      ],
+      "output_file": "distrito_03_paths.geojson"
+    },
+    {
+      "district": 4,
+      "precinct_count": 1,
+      "total_points": 1123,
+      "label_count": 4,
+      "labels": [
+        {
+          "municipality": "San Juan",
+          "precinct_code": "004"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones\nOficina de Planificaci\u00f3n Geolectoral Precinto\nSeg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "de julio de",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "San Juan",
+          "precinct_code": "004"
+        }
+      ],
+      "output_file": "distrito_04_paths.geojson"
+    },
+    {
+      "district": 5,
+      "precinct_count": 3,
+      "total_points": 3063,
+      "label_count": 8,
+      "labels": [
+        {
+          "municipality": "San Juan",
+          "precinct_code": "005"
+        },
+        {
+          "municipality": "Guaynabo",
+          "precinct_code": "006"
+        },
+        {
+          "municipality": "Aguas Buenas",
+          "precinct_code": "081"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales Precinto\nComisi\u00f3n Estatal de Elecciones\nSan Juan",
+          "precinct_code": "005"
+        },
+        {
+          "municipality": "Oficina de Planificaci\u00f3n Geolectoral\nGuaynabo",
+          "precinct_code": "006"
+        }
+      ],
+      "output_file": "distrito_05_paths.geojson"
+    },
+    {
+      "district": 6,
+      "precinct_count": 3,
+      "total_points": 4582,
+      "label_count": 8,
+      "labels": [
+        {
+          "municipality": "Cata\u00f1o",
+          "precinct_code": "008"
+        },
+        {
+          "municipality": "Guaynabo",
+          "precinct_code": "007"
+        },
+        {
+          "municipality": "Bayam\u00f3n",
+          "precinct_code": "041"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales Precinto\nComisi\u00f3n Estatal de Elecciones\nGuaynabo",
+          "precinct_code": "007"
+        },
+        {
+          "municipality": "Oficina de Planificaci\u00f3n Geolectoral\nSeg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        }
+      ],
+      "output_file": "distrito_06_paths.geojson"
+    },
+    {
+      "district": 7,
+      "precinct_count": 1,
+      "total_points": 874,
+      "label_count": 4,
+      "labels": [
+        {
+          "municipality": "Bayam\u00f3n",
+          "precinct_code": "010"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones\nPrecinto\nOficina de Planificaci\u00f3n Geolectoral\nSeg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "Bayam\u00f3n",
+          "precinct_code": "010"
+        },
+        {
+          "municipality": "de julio de",
+          "precinct_code": "202"
+        }
+      ],
+      "output_file": "distrito_07_paths.geojson"
+    },
+    {
+      "district": 8,
+      "precinct_count": 1,
+      "total_points": 1086,
+      "label_count": 4,
+      "labels": [
+        {
+          "municipality": "Bayam\u00f3n",
+          "precinct_code": "011"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones\nOficina de Planificaci\u00f3n Geolectoral\nPrecinto\nSeg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "de julio de",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "Bayam\u00f3n",
+          "precinct_code": "011"
+        }
+      ],
+      "output_file": "distrito_08_paths.geojson"
+    },
+    {
+      "district": 9,
+      "precinct_count": 2,
+      "total_points": 2028,
+      "label_count": 6,
+      "labels": [
+        {
+          "municipality": "Toa Alta",
+          "precinct_code": "013"
+        },
+        {
+          "municipality": "Bayam\u00f3n",
+          "precinct_code": "012"
+        },
+        {
+          "municipality": "Precinto\nDistrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones Bayam\u00f3n",
+          "precinct_code": "012"
+        },
+        {
+          "municipality": "Oficina de Planificaci\u00f3n Geolectoral\nSeg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "Toa Alta",
+          "precinct_code": "013"
+        }
+      ],
+      "output_file": "distrito_09_paths.geojson"
+    },
+    {
+      "district": 10,
+      "precinct_count": 2,
+      "total_points": 5059,
+      "label_count": 7,
+      "labels": [
+        {
+          "municipality": "Cata\u00f1o",
+          "precinct_code": "009"
+        },
+        {
+          "municipality": "Cata\u00f1o",
+          "precinct_code": "009"
+        },
+        {
+          "municipality": "Toa Baja",
+          "precinct_code": "014"
+        },
+        {
+          "municipality": "Precinto\nDistrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones Cata\u00f1o",
+          "precinct_code": "009"
+        },
+        {
+          "municipality": "Oficina de Planificaci\u00f3n Geolectoral\nSeg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        }
+      ],
+      "output_file": "distrito_10_paths.geojson"
+    },
+    {
+      "district": 11,
+      "precinct_count": 3,
+      "total_points": 7502,
+      "label_count": 8,
+      "labels": [
+        {
+          "municipality": "Vega Baja",
+          "precinct_code": "018"
+        },
+        {
+          "municipality": "Dorado",
+          "precinct_code": "015"
+        },
+        {
+          "municipality": "Vega Alta",
+          "precinct_code": "016"
+        },
+        {
+          "municipality": "Precinto\nDorado",
+          "precinct_code": "015"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones Vega Alta",
+          "precinct_code": "016"
+        }
+      ],
+      "output_file": "distrito_11_paths.geojson"
+    },
+    {
+      "district": 12,
+      "precinct_count": 4,
+      "total_points": 3384,
+      "label_count": 10,
+      "labels": [
+        {
+          "municipality": "Vega Baja",
+          "precinct_code": "019"
+        },
+        {
+          "municipality": "Manat\u00ed",
+          "precinct_code": "021"
+        },
+        {
+          "municipality": "Vega Alta",
+          "precinct_code": "017"
+        },
+        {
+          "municipality": "Morovis",
+          "precinct_code": "020"
+        },
+        {
+          "municipality": "Precinto\nVega Alta",
+          "precinct_code": "017"
+        }
+      ],
+      "output_file": "distrito_12_paths.geojson"
+    },
+    {
+      "district": 13,
+      "precinct_count": 4,
+      "total_points": 8175,
+      "label_count": 10,
+      "labels": [
+        {
+          "municipality": "Arecibo",
+          "precinct_code": "026"
+        },
+        {
+          "municipality": "Barceloneta",
+          "precinct_code": "025"
+        },
+        {
+          "municipality": "Manat\u00ed",
+          "precinct_code": "022"
+        },
+        {
+          "municipality": "Florida",
+          "precinct_code": "024"
+        },
+        {
+          "municipality": "Precinto\nManat\u00ed",
+          "precinct_code": "022"
+        }
+      ],
+      "output_file": "distrito_13_paths.geojson"
+    },
+    {
+      "district": 14,
+      "precinct_count": 2,
+      "total_points": 3175,
+      "label_count": 7,
+      "labels": [
+        {
+          "municipality": "Hatillo",
+          "precinct_code": "028"
+        },
+        {
+          "municipality": "Arecibo",
+          "precinct_code": "027"
+        },
+        {
+          "municipality": "Hatillo",
+          "precinct_code": "028"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones Precinto\nOficina de Planificaci\u00f3n Geolectoral\nArecibo",
+          "precinct_code": "027"
+        },
+        {
+          "municipality": "Seg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        }
+      ],
+      "output_file": "distrito_14_paths.geojson"
+    },
+    {
+      "district": 15,
+      "precinct_count": 3,
+      "total_points": 5684,
+      "label_count": 8,
+      "labels": [
+        {
+          "municipality": "Hatillo",
+          "precinct_code": "029"
+        },
+        {
+          "municipality": "Quebradillas",
+          "precinct_code": "031"
+        },
+        {
+          "municipality": "Camuy",
+          "precinct_code": "030"
+        },
+        {
+          "municipality": "Precinto\nDistrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones Hatillo",
+          "precinct_code": "029"
+        },
+        {
+          "municipality": "Oficina de Planificaci\u00f3n Geolectoral\nCamuy",
+          "precinct_code": "030"
+        }
+      ],
+      "output_file": "distrito_15_paths.geojson"
+    },
+    {
+      "district": 16,
+      "precinct_count": 3,
+      "total_points": 5426,
+      "label_count": 8,
+      "labels": [
+        {
+          "municipality": "Aguadilla",
+          "precinct_code": "085"
+        },
+        {
+          "municipality": "Isabela",
+          "precinct_code": "032"
+        },
+        {
+          "municipality": "San Sebasti\u00e1n",
+          "precinct_code": "033"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales Precinto\nComisi\u00f3n Estatal de Elecciones\nIsabela",
+          "precinct_code": "032"
+        },
+        {
+          "municipality": "Oficina de Planificaci\u00f3n Geolectoral\nSeg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        }
+      ],
+      "output_file": "distrito_16_paths.geojson"
+    },
+    {
+      "district": 17,
+      "precinct_count": 2,
+      "total_points": 4676,
+      "label_count": 6,
+      "labels": [
+        {
+          "municipality": "Aguadilla",
+          "precinct_code": "035"
+        },
+        {
+          "municipality": "Moca",
+          "precinct_code": "036"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones\nPrecinto\nOficina de Planificaci\u00f3n Geolectoral\nSeg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "Aguadilla",
+          "precinct_code": "035"
+        },
+        {
+          "municipality": "de julio de",
+          "precinct_code": "202"
+        }
+      ],
+      "output_file": "distrito_17_paths.geojson"
+    },
+    {
+      "district": 18,
+      "precinct_count": 4,
+      "total_points": 7571,
+      "label_count": 10,
+      "labels": [
+        {
+          "municipality": "Aguada",
+          "precinct_code": "038"
+        },
+        {
+          "municipality": "Rinc\u00f3n",
+          "precinct_code": "039"
+        },
+        {
+          "municipality": "Moca",
+          "precinct_code": "037"
+        },
+        {
+          "municipality": "A\u00f1asco",
+          "precinct_code": "040"
+        },
+        {
+          "municipality": "Precinto\nMoca",
+          "precinct_code": "037"
+        }
+      ],
+      "output_file": "distrito_18_paths.geojson"
+    },
+    {
+      "district": 19,
+      "precinct_count": 2,
+      "total_points": 4945,
+      "label_count": 4,
+      "labels": [
+        {
+          "municipality": "San Germ\u00e1n",
+          "precinct_code": "043"
+        },
+        {
+          "municipality": "Oficina de Planificaci\u00f3n Geolectoral\nSeg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "San Germ\u00e1n",
+          "precinct_code": "043"
+        },
+        {
+          "municipality": "de julio de",
+          "precinct_code": "202"
+        }
+      ],
+      "output_file": "distrito_19_paths.geojson"
+    },
+    {
+      "district": 20,
+      "precinct_count": 3,
+      "total_points": 11289,
+      "label_count": 8,
+      "labels": [
+        {
+          "municipality": "Hormigueros",
+          "precinct_code": "045"
+        },
+        {
+          "municipality": "San Germ\u00e1n",
+          "precinct_code": "044"
+        },
+        {
+          "municipality": "Cabo Rojo",
+          "precinct_code": "046"
+        },
+        {
+          "municipality": "Precinto\nDistrito Representativo con sus Precintos Electorales\nSan Germ\u00e1n",
+          "precinct_code": "044"
+        },
+        {
+          "municipality": "Comisi\u00f3n Estatal de Elecciones\nOficina de Planificaci\u00f3n Geolectoral Hormigueros",
+          "precinct_code": "045"
+        }
+      ],
+      "output_file": "distrito_20_paths.geojson"
+    },
+    {
+      "district": 21,
+      "precinct_count": 6,
+      "total_points": 16241,
+      "label_count": 14,
+      "labels": [
+        {
+          "municipality": "Las Mar\u00edas",
+          "precinct_code": "034"
+        },
+        {
+          "municipality": "Maricao",
+          "precinct_code": "050"
+        },
+        {
+          "municipality": "Yauco",
+          "precinct_code": "051"
+        },
+        {
+          "municipality": "Sabana Grande",
+          "precinct_code": "049"
+        },
+        {
+          "municipality": "Lajas",
+          "precinct_code": "047"
+        }
+      ],
+      "output_file": "distrito_21_paths.geojson"
+    },
+    {
+      "district": 22,
+      "precinct_count": 5,
+      "total_points": 11339,
+      "label_count": 12,
+      "labels": [
+        {
+          "municipality": "Ciales",
+          "precinct_code": "023"
+        },
+        {
+          "municipality": "Utuado",
+          "precinct_code": "054"
+        },
+        {
+          "municipality": "Lares",
+          "precinct_code": "053"
+        },
+        {
+          "municipality": "Jayuya",
+          "precinct_code": "056"
+        },
+        {
+          "municipality": "Adjuntas",
+          "precinct_code": "055"
+        }
+      ],
+      "output_file": "distrito_22_paths.geojson"
+    },
+    {
+      "district": 23,
+      "precinct_count": 5,
+      "total_points": 13897,
+      "label_count": 12,
+      "labels": [
+        {
+          "municipality": "Adjuntas",
+          "precinct_code": "111"
+        },
+        {
+          "municipality": "Pe\u00f1uelas",
+          "precinct_code": "059"
+        },
+        {
+          "municipality": "Guayanilla",
+          "precinct_code": "058"
+        },
+        {
+          "municipality": "Yauco",
+          "precinct_code": "052"
+        },
+        {
+          "municipality": "Ponce",
+          "precinct_code": "060"
+        }
+      ],
+      "output_file": "distrito_23_paths.geojson"
+    },
+    {
+      "district": 24,
+      "precinct_count": 1,
+      "total_points": 3852,
+      "label_count": 4,
+      "labels": [
+        {
+          "municipality": "Ponce",
+          "precinct_code": "061"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones Precinto\nOficina de Planificaci\u00f3n Geolectoral\nSeg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "Ponce",
+          "precinct_code": "061"
+        },
+        {
+          "municipality": "de julio de",
+          "precinct_code": "202"
+        }
+      ],
+      "output_file": "distrito_24_paths.geojson"
+    },
+    {
+      "district": 25,
+      "precinct_count": 3,
+      "total_points": 6643,
+      "label_count": 8,
+      "labels": [
+        {
+          "municipality": "Jayuya",
+          "precinct_code": "057"
+        },
+        {
+          "municipality": "Ponce",
+          "precinct_code": "062"
+        },
+        {
+          "municipality": "Juana D\u00edaz",
+          "precinct_code": "063"
+        },
+        {
+          "municipality": "Precintos\nDistrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones Jayuya",
+          "precinct_code": "057"
+        },
+        {
+          "municipality": "Oficina de Planificaci\u00f3n Geolectoral\nPonce",
+          "precinct_code": "062"
+        }
+      ],
+      "output_file": "distrito_25_paths.geojson"
+    },
+    {
+      "district": 26,
+      "precinct_count": 5,
+      "total_points": 8610,
+      "label_count": 12,
+      "labels": [
+        {
+          "municipality": "Corozal",
+          "precinct_code": "112"
+        },
+        {
+          "municipality": "Orocovis",
+          "precinct_code": "066"
+        },
+        {
+          "municipality": "Barranquitas",
+          "precinct_code": "070"
+        },
+        {
+          "municipality": "Villalba",
+          "precinct_code": "065"
+        },
+        {
+          "municipality": "Coamo",
+          "precinct_code": "068"
+        }
+      ],
+      "output_file": "distrito_26_paths.geojson"
+    },
+    {
+      "district": 27,
+      "precinct_count": 4,
+      "total_points": 5995,
+      "label_count": 10,
+      "labels": [
+        {
+          "municipality": "Aibonito",
+          "precinct_code": "069"
+        },
+        {
+          "municipality": "Coamo",
+          "precinct_code": "075"
+        },
+        {
+          "municipality": "Juana D\u00edaz",
+          "precinct_code": "064"
+        },
+        {
+          "municipality": "Santa Isabel",
+          "precinct_code": "067"
+        },
+        {
+          "municipality": "Precintos\nJuana D\u00edaz",
+          "precinct_code": "064"
+        }
+      ],
+      "output_file": "distrito_27_paths.geojson"
+    },
+    {
+      "district": 28,
+      "precinct_count": 4,
+      "total_points": 3805,
+      "label_count": 10,
+      "labels": [
+        {
+          "municipality": "Corozal",
+          "precinct_code": "072"
+        },
+        {
+          "municipality": "Naranjito",
+          "precinct_code": "073"
+        },
+        {
+          "municipality": "Barranquitas",
+          "precinct_code": "071"
+        },
+        {
+          "municipality": "Comer\u00edo",
+          "precinct_code": "074"
+        },
+        {
+          "municipality": "Precintos\nBarranquitas",
+          "precinct_code": "071"
+        }
+      ],
+      "output_file": "distrito_28_paths.geojson"
+    },
+    {
+      "district": 29,
+      "precinct_count": 2,
+      "total_points": 3988,
+      "label_count": 6,
+      "labels": [
+        {
+          "municipality": "Cidra",
+          "precinct_code": "076"
+        },
+        {
+          "municipality": "Cayey",
+          "precinct_code": "077"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nPrecintos\nComisi\u00f3n Estatal de Elecciones\nOficina de Planificaci\u00f3n Geolectoral Cayey",
+          "precinct_code": "077"
+        },
+        {
+          "municipality": "Seg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "Cidra",
+          "precinct_code": "076"
+        }
+      ],
+      "output_file": "distrito_29_paths.geojson"
+    },
+    {
+      "district": 30,
+      "precinct_count": 4,
+      "total_points": 16963,
+      "label_count": 10,
+      "labels": [
+        {
+          "municipality": "Salinas",
+          "precinct_code": "078"
+        },
+        {
+          "municipality": "Arroyo",
+          "precinct_code": "080"
+        },
+        {
+          "municipality": "Guayama",
+          "precinct_code": "079"
+        },
+        {
+          "municipality": "Santa Isabel",
+          "precinct_code": "113"
+        },
+        {
+          "municipality": "Precintos\nSalinas",
+          "precinct_code": "078"
+        }
+      ],
+      "output_file": "distrito_30_paths.geojson"
+    },
+    {
+      "district": 31,
+      "precinct_count": 2,
+      "total_points": 2747,
+      "label_count": 6,
+      "labels": [
+        {
+          "municipality": "Gurabo",
+          "precinct_code": "084"
+        },
+        {
+          "municipality": "Caguas",
+          "precinct_code": "082"
+        },
+        {
+          "municipality": "Precintos\nDistrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones Cagaus",
+          "precinct_code": "082"
+        },
+        {
+          "municipality": "Oficina de Planificaci\u00f3n Geolectoral\nSeg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "Gurabo",
+          "precinct_code": "084"
+        }
+      ],
+      "output_file": "distrito_31_paths.geojson"
+    },
+    {
+      "district": 32,
+      "precinct_count": 1,
+      "total_points": 1427,
+      "label_count": 4,
+      "labels": [
+        {
+          "municipality": "Caguas",
+          "precinct_code": "083"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones\nOficina de Planificaci\u00f3n Geolectoral Precinto\nSeg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "Caguas",
+          "precinct_code": "083"
+        },
+        {
+          "municipality": "de julio de",
+          "precinct_code": "202"
+        }
+      ],
+      "output_file": "distrito_32_paths.geojson"
+    },
+    {
+      "district": 33,
+      "precinct_count": 4,
+      "total_points": 3729,
+      "label_count": 9,
+      "labels": [
+        {
+          "municipality": "Gurabo",
+          "precinct_code": "114"
+        },
+        {
+          "municipality": "Juncos",
+          "precinct_code": "088"
+        },
+        {
+          "municipality": "San Lorenzo",
+          "precinct_code": "086"
+        },
+        {
+          "municipality": "Las Piedras",
+          "precinct_code": "089"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones Juncos",
+          "precinct_code": "088"
+        }
+      ],
+      "output_file": "distrito_33_paths.geojson"
+    },
+    {
+      "district": 34,
+      "precinct_count": 4,
+      "total_points": 10130,
+      "label_count": 10,
+      "labels": [
+        {
+          "municipality": "San Lorenzo",
+          "precinct_code": "087"
+        },
+        {
+          "municipality": "Yabucoa",
+          "precinct_code": "093"
+        },
+        {
+          "municipality": "Patillas",
+          "precinct_code": "091"
+        },
+        {
+          "municipality": "Maunabo",
+          "precinct_code": "092"
+        },
+        {
+          "municipality": "Precintos\nMaunabo",
+          "precinct_code": "092"
+        }
+      ],
+      "output_file": "distrito_34_paths.geojson"
+    },
+    {
+      "district": 35,
+      "precinct_count": 3,
+      "total_points": 6169,
+      "label_count": 8,
+      "labels": [
+        {
+          "municipality": "Las Piedras",
+          "precinct_code": "090"
+        },
+        {
+          "municipality": "Naguabo",
+          "precinct_code": "095"
+        },
+        {
+          "municipality": "Humacao",
+          "precinct_code": "094"
+        },
+        {
+          "municipality": "Precintos\nDistrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones Humacao",
+          "precinct_code": "094"
+        },
+        {
+          "municipality": "Oficina de Planificaci\u00f3n Geolectoral\nLas Piedras",
+          "precinct_code": "090"
+        }
+      ],
+      "output_file": "distrito_35_paths.geojson"
+    },
+    {
+      "district": 36,
+      "precinct_count": 6,
+      "total_points": 22859,
+      "label_count": 8,
+      "labels": [
+        {
+          "municipality": "R\u00edo Grande",
+          "precinct_code": "101"
+        },
+        {
+          "municipality": "Luquillo",
+          "precinct_code": "100"
+        },
+        {
+          "municipality": "Culebra",
+          "precinct_code": "097"
+        },
+        {
+          "municipality": "Fajardo",
+          "precinct_code": "099"
+        },
+        {
+          "municipality": "Ceiba",
+          "precinct_code": "098"
+        }
+      ],
+      "output_file": "distrito_36_paths.geojson"
+    },
+    {
+      "district": 37,
+      "precinct_count": 3,
+      "total_points": 7199,
+      "label_count": 8,
+      "labels": [
+        {
+          "municipality": "Lo\u00edza",
+          "precinct_code": "103"
+        },
+        {
+          "municipality": "R\u00edo Grande",
+          "precinct_code": "102"
+        },
+        {
+          "municipality": "Can\u00f3vanas",
+          "precinct_code": "104"
+        },
+        {
+          "municipality": "Precintos\nCan\u00f3vanas",
+          "precinct_code": "104"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones Lo\u00edza",
+          "precinct_code": "103"
+        }
+      ],
+      "output_file": "distrito_37_paths.geojson"
+    },
+    {
+      "district": 38,
+      "precinct_count": 3,
+      "total_points": 3831,
+      "label_count": 8,
+      "labels": [
+        {
+          "municipality": "Can\u00f3vanas",
+          "precinct_code": "105"
+        },
+        {
+          "municipality": "Carolina",
+          "precinct_code": "106"
+        },
+        {
+          "municipality": "Trujillo Alto",
+          "precinct_code": "109"
+        },
+        {
+          "municipality": "Precintos\nCan\u00f3vanas",
+          "precinct_code": "105"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones Carolina",
+          "precinct_code": "106"
+        }
+      ],
+      "output_file": "distrito_38_paths.geojson"
+    },
+    {
+      "district": 39,
+      "precinct_count": 2,
+      "total_points": 1579,
+      "label_count": 6,
+      "labels": [
+        {
+          "municipality": "Carolina",
+          "precinct_code": "107"
+        },
+        {
+          "municipality": "Trujillo Alto",
+          "precinct_code": "110"
+        },
+        {
+          "municipality": "Precintos\nDistrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones Carolina",
+          "precinct_code": "107"
+        },
+        {
+          "municipality": "Oficina de Planificaci\u00f3n Geolectoral\nTrujillo Alto",
+          "precinct_code": "110"
+        },
+        {
+          "municipality": "Seg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        }
+      ],
+      "output_file": "distrito_39_paths.geojson"
+    },
+    {
+      "district": 40,
+      "precinct_count": 1,
+      "total_points": 1382,
+      "label_count": 4,
+      "labels": [
+        {
+          "municipality": "Carolina",
+          "precinct_code": "108"
+        },
+        {
+          "municipality": "Distrito Representativo con sus Precintos Electorales\nComisi\u00f3n Estatal de Elecciones Precinto\nOficina de Planificaci\u00f3n Geolectoral\nSeg\u00fan Redistribuci\u00f3n Electoral",
+          "precinct_code": "202"
+        },
+        {
+          "municipality": "Carolina",
+          "precinct_code": "108"
+        },
+        {
+          "municipality": "de julio de",
+          "precinct_code": "202"
+        }
+      ],
+      "output_file": "distrito_40_paths.geojson"
+    }
+  ]
+}

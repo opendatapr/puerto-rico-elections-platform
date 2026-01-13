@@ -19,6 +19,15 @@ data/shapes/*
 !data/shapes/*.prj
 !data/shapes/*.cpg
 
+# PDF maps (can be re-downloaded, keep inventory and summaries)
+data/pdf_maps/*
+!data/pdf_maps/pdf_inventory.json
+!data/pdf_maps/pr_municipality_centroids.json
+data/pdf_maps/extracted/*
+!data/pdf_maps/extracted/extraction_summary.json
+data/pdf_maps/georeferenced/*
+!data/pdf_maps/georeferenced/georeferencing_summary.json
+
 # Python
 __pycache__/
 *.py[cod]

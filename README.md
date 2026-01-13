@@ -26,13 +26,19 @@ Open data platform providing access to Puerto Rico electoral data from the [Comi
   - Special Elections (Elecciones Especiales)
 - **Geographic Levels**: Island, senatorial district, representative district, municipality, precinct
 
-### Census Data (ACS 2022)
+### Census Data (ACS 2012-2023)
 - **Source**: US Census Bureau (American Community Survey 5-Year Estimates)
+- **Years Available**: 2012, 2016, 2020, 2022, 2023 (matching election cycles)
 - **Geographic Levels**:
-  - 78 municipalities
-  - 981 census tracts
-  - 2,548 block groups
-- **Variables**: Total population, median household income, educational attainment
+  - 78 municipalities (all years)
+  - 981 census tracts (2022)
+  - 2,548 block groups (2022)
+- **Variables**: Total population, median household income, poverty rate, unemployment rate, educational attainment
+
+### Geographic Crosswalks
+- **Source**: [MGGG PR-shapefiles](https://github.com/mggg-states/PR-shapefiles)
+- **Coverage**: 110 representative districts → municipalities
+- **Data**: 2010 Census demographics prorated to electoral districts, 2016 election results
 
 ## Project Structure
 
@@ -40,16 +46,21 @@ Open data platform providing access to Puerto Rico electoral data from the [Comi
 puerto-rico-elections-platform/
 ├── data/
 │   ├── raw/              # Original scraped data
-│   ├── processed/        # Cleaned, standardized data
-│   └── census/           # Census data downloads
+│   ├── processed/        # Cleaned election data (Parquet/JSON)
+│   ├── census/           # ACS data by year (Parquet)
+│   ├── crosswalks/       # Geographic crosswalk tables
+│   └── shapes/           # MGGG precinct shapefiles
 ├── scraper/              # Web scraping pipeline
-│   ├── src/
-│   └── tests/
+│   └── src/
 ├── packages/
 │   ├── r/                # R package (prelecciones)
 │   ├── python/           # Python package (prelecciones)
 │   └── js/               # JavaScript/TypeScript package
-├── analysis/             # Cross-reference analysis tools
+├── analysis/
+│   ├── census_fetcher.py     # Multi-year census data fetcher
+│   ├── precinct_crosswalk.py # Geographic crosswalk builder
+│   ├── geo_matching.py       # Municipality-census GEOID mapping
+│   └── examples/             # Example analysis scripts
 └── docs/                 # Documentation and data dictionaries
 ```
 
@@ -108,13 +119,14 @@ const results = getResults('elecciones-generales-2020', { level: 'municipality' 
 - [x] JavaScript package for web applications
 
 ### Phase 3: Census Integration ✅
-- [x] Download ACS 2022 data at 3 geographic levels
+- [x] Download ACS data for multiple years (2012-2023)
 - [x] Geographic matching (municipalities, tracts, block groups)
-- [ ] Cross-reference analysis tools (in progress)
+- [x] Cross-reference analysis tools
+- [x] Precinct-to-municipality crosswalk (via MGGG shapefiles)
 
-### Phase 4: Documentation & Outreach
+### Phase 4: Documentation & Outreach ✅
 - [x] Data dictionary and methodology docs
-- [ ] Example analyses and visualizations
+- [x] Example analyses (election + census correlation)
 - [x] API documentation for packages
 
 ## Contributing
@@ -135,8 +147,41 @@ This project is licensed under the GPL-3.0 License - see [LICENSE](LICENSE) for 
 
 The `analysis/examples/` directory contains Python scripts demonstrating common analyses:
 
-- **[voter_turnout_trends.py](analysis/examples/voter_turnout_trends.py)** - Analyze voter turnout from 2000-2024
-- **[party_performance.py](analysis/examples/party_performance.py)** - Party results by municipality over time
+- **[election_census_analysis.py](analysis/examples/election_census_analysis.py)** - Correlate election results with census demographics
+
+### Combining Election + Census Data
+
+```python
+import pandas as pd
+
+# Load data
+elections = pd.read_parquet('data/processed/results.parquet')
+census_2020 = pd.read_parquet('data/census/pr_municipalities_acs2020.parquet')
+
+# Filter to municipality level
+muni_results = elections[elections['data_level'] == 'municipality']
+
+# Join on municipality name
+merged = muni_results.merge(
+    census_2020,
+    left_on='district',  # municipality name in election data
+    right_on='municipality',
+    how='left'
+)
+
+# Analyze: votes vs income correlation
+print(merged[['votes', 'median_household_income']].corr())
+```
+
+### Fetching Additional Census Years
+
+```bash
+# Fetch census data for specific years
+python analysis/census_fetcher.py --years 2012,2016,2020
+
+# Fetch all election-matching years
+python analysis/census_fetcher.py --election-years --granularity municipality
+```
 
 ## Related Projects
 

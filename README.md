@@ -146,12 +146,17 @@ This project is licensed under the GPL-3.0 License - see [LICENSE](LICENSE) for 
 - [Data Dictionary](docs/DATA_DICTIONARY.md) - Complete field documentation in English and Spanish
 - [Methodology](docs/METHODOLOGY.md) - Data collection, cleaning, and validation processes
 - [Installation Guide](docs/INSTALLATION.md) - Setup instructions for all packages
+- [PDF Extraction](docs/PDF_EXTRACTION.md) - How precinct boundaries are extracted from CEE PDFs
+- [Data Provenance](docs/DATA_PROVENANCE.md) - Sources, licenses, and freshness for all data
 
 ## Example Analyses
 
 The `analysis/examples/` directory contains Python scripts demonstrating common analyses:
 
-- **[election_census_analysis.py](analysis/examples/election_census_analysis.py)** - Correlate election results with census demographics
+- **[election_census_analysis.py](analysis/examples/election_census_analysis.py)** - Basic election + census correlation
+- **[precinct_demographic_analysis.py](analysis/examples/precinct_demographic_analysis.py)** - Precinct-level voting patterns vs demographics (income, poverty, education)
+- **[election_trends_analysis.py](analysis/examples/election_trends_analysis.py)** - Multi-year comparison of party vote shares (2016 vs 2020)
+- **[geographic_voting_patterns.py](analysis/examples/geographic_voting_patterns.py)** - Choropleth maps of voting patterns using precinct boundaries
 
 ### Combining Election + Census Data
 

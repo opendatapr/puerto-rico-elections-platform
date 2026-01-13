@@ -10,6 +10,15 @@ data/census/*
 !data/census/*.parquet
 !data/census/*_metadata.json
 
+# Crosswalks (keep parquet)
+data/crosswalks/*
+!data/crosswalks/*.parquet
+
+# Shapefiles (keep small metadata, exclude large .shp/.zip)
+data/shapes/*
+!data/shapes/*.prj
+!data/shapes/*.cpg
+
 # Python
 __pycache__/
 *.py[cod]

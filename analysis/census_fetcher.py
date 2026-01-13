@@ -6,10 +6,14 @@ using the Census Bureau API.
 
 USAGE:
     python census_fetcher.py [--year YEAR] [--api-key KEY] [--output DIR]
+    python census_fetcher.py --years 2012,2016,2020,2022 --granularity municipality
+    python census_fetcher.py --election-years  # Fetches years matching elections
 
 Requirements:
     - Census API key (get one at https://api.census.gov/data/key_signup.html)
     - Set CENSUS_API_KEY environment variable or pass via --api-key
+
+Available ACS 5-Year Estimates: 2009-2023
 """
 
 import argparse
@@ -31,6 +35,21 @@ logger = logging.getLogger(__name__)
 
 # Puerto Rico FIPS code
 PR_STATE_FIPS = "72"
+
+# Available ACS 5-Year estimate years (2009-2023)
+AVAILABLE_ACS_YEARS = list(range(2009, 2024))
+
+# Election years and their matching ACS years
+# (ACS year should cover the election year in its 5-year window)
+ELECTION_YEAR_ACS_MAP = {
+    2000: 2010,  # Earliest available ACS proxy
+    2004: 2010,  # Earliest available ACS proxy
+    2008: 2010,  # 2006-2010 covers 2008
+    2012: 2012,  # 2008-2012 covers 2012
+    2016: 2016,  # 2012-2016 covers 2016
+    2020: 2020,  # 2016-2020 covers 2020 (COVID caveats)
+    2024: 2023,  # 2019-2023 is closest available
+}
 
 # ACS variables to fetch with their human-readable names
 # Based on ACS 5-Year Estimates Subject Tables and Data Profiles
@@ -398,8 +417,19 @@ def main():
     parser.add_argument(
         "--year",
         type=int,
-        default=2022,
-        help="ACS 5-year estimate year (default: 2022)"
+        default=None,
+        help="Single ACS 5-year estimate year (2009-2023)"
+    )
+    parser.add_argument(
+        "--years",
+        type=str,
+        default=None,
+        help="Comma-separated list of years to fetch (e.g., '2012,2016,2020,2022')"
+    )
+    parser.add_argument(
+        "--election-years",
+        action="store_true",
+        help="Fetch ACS years that match major election years (2010,2012,2016,2020,2023)"
     )
     parser.add_argument(
         "--api-key",
@@ -428,6 +458,22 @@ def main():
 
     args = parser.parse_args()
 
+    # Determine which years to fetch
+    if args.election_years:
+        years_to_fetch = sorted(set(ELECTION_YEAR_ACS_MAP.values()))
+    elif args.years:
+        years_to_fetch = [int(y.strip()) for y in args.years.split(",")]
+    elif args.year:
+        years_to_fetch = [args.year]
+    else:
+        years_to_fetch = [2022]  # Default
+
+    # Validate years
+    for year in years_to_fetch:
+        if year not in AVAILABLE_ACS_YEARS:
+            logger.error(f"Year {year} not available. Must be in {min(AVAILABLE_ACS_YEARS)}-{max(AVAILABLE_ACS_YEARS)}")
+            return
+
     # Determine output directory
     if args.output:
         output_dir = Path(args.output)
@@ -435,10 +481,6 @@ def main():
         # Default to data/census/ relative to repo root
         script_dir = Path(__file__).parent
         output_dir = script_dir.parent / "data" / "census"
-
-    logger.info(f"Fetching ACS {args.year} data for Puerto Rico")
-
-    fetcher = CensusFetcher(api_key=args.api_key, year=args.year)
 
     # Determine which granularities to fetch
     granularity = args.granularity
@@ -449,57 +491,81 @@ def main():
     fetch_tracts = granularity in ["tract", "all"]
     fetch_block_groups = granularity in ["block_group", "all"]
 
-    municipality_df = None
-    tract_df = None
-    block_group_df = None
+    logger.info(f"Fetching ACS data for years: {years_to_fetch}")
+    all_summaries = []
 
-    # Fetch municipality-level data
-    if fetch_municipalities:
-        logger.info("Fetching municipality-level data...")
-        municipality_df = fetcher.fetch_municipality_data()
-        save_data(
-            municipality_df,
-            output_dir,
-            f"pr_municipalities_acs{args.year}",
-            args.year
-        )
-        logger.info(f"Successfully fetched data for {len(municipality_df)} municipalities")
+    for year in years_to_fetch:
+        logger.info(f"\n{'='*60}\nFetching ACS {year} data for Puerto Rico\n{'='*60}")
 
-    # Fetch tract-level data
-    if fetch_tracts:
-        logger.info("Fetching tract-level data...")
-        tract_df = fetcher.fetch_tract_data()
-        save_data(
-            tract_df,
-            output_dir,
-            f"pr_tracts_acs{args.year}",
-            args.year
-        )
-        logger.info(f"Successfully fetched data for {len(tract_df)} census tracts")
+        fetcher = CensusFetcher(api_key=args.api_key, year=year)
+        year_summary = {"year": year}
 
-    # Fetch block group-level data (most granular)
-    if fetch_block_groups:
-        logger.info("Fetching block group-level data (most granular)...")
-        block_group_df = fetcher.fetch_block_group_data()
-        save_data(
-            block_group_df,
-            output_dir,
-            f"pr_block_groups_acs{args.year}",
-            args.year
-        )
-        logger.info(f"Successfully fetched data for {len(block_group_df)} block groups")
+        # Fetch municipality-level data
+        if fetch_municipalities:
+            logger.info(f"[{year}] Fetching municipality-level data...")
+            try:
+                municipality_df = fetcher.fetch_municipality_data()
+                save_data(
+                    municipality_df,
+                    output_dir,
+                    f"pr_municipalities_acs{year}",
+                    year
+                )
+                year_summary["municipalities"] = len(municipality_df)
+                logger.info(f"[{year}] Successfully fetched data for {len(municipality_df)} municipalities")
+            except Exception as e:
+                logger.error(f"[{year}] Failed to fetch municipalities: {e}")
+                year_summary["municipalities"] = "ERROR"
+
+        # Fetch tract-level data
+        if fetch_tracts:
+            logger.info(f"[{year}] Fetching tract-level data...")
+            try:
+                tract_df = fetcher.fetch_tract_data()
+                save_data(
+                    tract_df,
+                    output_dir,
+                    f"pr_tracts_acs{year}",
+                    year
+                )
+                year_summary["tracts"] = len(tract_df)
+                logger.info(f"[{year}] Successfully fetched data for {len(tract_df)} census tracts")
+            except Exception as e:
+                logger.error(f"[{year}] Failed to fetch tracts: {e}")
+                year_summary["tracts"] = "ERROR"
+
+        # Fetch block group-level data (most granular)
+        if fetch_block_groups:
+            logger.info(f"[{year}] Fetching block group-level data (most granular)...")
+            try:
+                block_group_df = fetcher.fetch_block_group_data()
+                save_data(
+                    block_group_df,
+                    output_dir,
+                    f"pr_block_groups_acs{year}",
+                    year
+                )
+                year_summary["block_groups"] = len(block_group_df)
+                logger.info(f"[{year}] Successfully fetched data for {len(block_group_df)} block groups")
+            except Exception as e:
+                logger.error(f"[{year}] Failed to fetch block groups: {e}")
+                year_summary["block_groups"] = "ERROR"
+
+        all_summaries.append(year_summary)
 
     # Print summary
     print("\n" + "="*60)
-    print("Census Data Summary")
+    print("Census Data Fetch Summary")
     print("="*60)
-    print(f"Year: {args.year} (ACS 5-Year Estimates)")
-    if municipality_df is not None:
-        print(f"Municipalities: {len(municipality_df)}")
-    if tract_df is not None:
-        print(f"Census Tracts: {len(tract_df)}")
-    if block_group_df is not None:
-        print(f"Block Groups: {len(block_group_df)}")
+    for summary in all_summaries:
+        year = summary["year"]
+        print(f"\nYear {year} (ACS 5-Year Estimates):")
+        if "municipalities" in summary:
+            print(f"  Municipalities: {summary['municipalities']}")
+        if "tracts" in summary:
+            print(f"  Census Tracts: {summary['tracts']}")
+        if "block_groups" in summary:
+            print(f"  Block Groups: {summary['block_groups']}")
     print(f"\nData saved to: {output_dir}")
     print("="*60)
 

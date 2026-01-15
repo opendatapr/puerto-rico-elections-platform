@@ -76,7 +76,7 @@
 	}
 
 	.step-content :global(.highlight) {
-		color: var(--color-primary);
+		color: var(--color-accent);
 		font-weight: var(--font-semibold);
 	}
 

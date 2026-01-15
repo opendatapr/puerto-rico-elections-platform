@@ -86,7 +86,7 @@
 	}
 
 	function getSeriesColor(s: Series): string {
-		return s.color || 'var(--color-primary)';
+		return s.color || 'var(--color-accent)';
 	}
 </script>
 

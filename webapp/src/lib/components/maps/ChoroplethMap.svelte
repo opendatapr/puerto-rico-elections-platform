@@ -178,7 +178,7 @@
 	}
 
 	.municipality:focus-visible {
-		stroke: var(--color-primary);
+		stroke: var(--color-accent);
 		stroke-width: 2;
 	}
 

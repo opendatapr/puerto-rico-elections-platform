@@ -90,7 +90,7 @@
 	}
 
 	function getPointColor(d: DataPoint): string {
-		return d.color || 'var(--color-primary)';
+		return d.color || 'var(--color-accent)';
 	}
 
 	function getPointSize(d: DataPoint): number {

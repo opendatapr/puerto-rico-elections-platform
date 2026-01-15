@@ -70,7 +70,7 @@
 	}
 
 	.logo-accent {
-		color: var(--color-primary);
+		color: var(--color-accent);
 	}
 
 	.nav-links {

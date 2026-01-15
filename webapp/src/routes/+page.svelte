@@ -182,7 +182,7 @@
 		font-family: var(--font-display);
 		font-size: var(--text-4xl);
 		font-weight: var(--font-bold);
-		color: var(--color-primary);
+		color: var(--color-accent);
 		line-height: 1;
 	}
 
@@ -238,7 +238,7 @@
 	.chapter-num {
 		font-family: var(--font-mono);
 		font-size: var(--text-xs);
-		color: var(--color-primary);
+		color: var(--color-accent);
 		margin-bottom: var(--space-sm);
 		display: block;
 	}
@@ -264,7 +264,7 @@
 	}
 
 	.chapter-card:hover .chapter-arrow {
-		color: var(--color-primary);
+		color: var(--color-accent);
 		transform: translateX(4px);
 	}
 

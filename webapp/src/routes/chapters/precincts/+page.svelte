@@ -401,7 +401,7 @@
 				Hato Rey, with more mixed-income housing and a younger population.
 			</p>
 			<p>
-				What does this mean for voting? Let's see.
+				The voting patterns tell the rest of the story.
 			</p>
 		</Step>
 
@@ -523,7 +523,7 @@
 		<Step active={currentStep === 8} index={8}>
 			<h3>What Aggregate Data Hides</h3>
 			<p>
-				When we only look at municipal averages, we miss crucial insights:
+				Municipal averages hide important details:
 			</p>
 			<p>
 				<span class="highlight">Gerrymandering detection:</span> Precinct-level data
@@ -588,6 +588,16 @@
 					<li>Las Piedras has the largest internal variation: <span class="stat">{formatChange(lasPiedrasSpread)}pp</span></li>
 					<li><span class="stat">{mostCompetitivePrecinct}</span> was the most competitive precinct (0.0pp margin)</li>
 					<li>Large competitive precincts like Caguas 083 (30K votes, 1.4pp margin) are key targets</li>
+				</ul>
+			</div>
+
+			<div class="sources">
+				<h3>Sources</h3>
+				<ul>
+					<li>Comision Estatal de Elecciones de Puerto Rico (CEE) - Precinct-level election results 2016-2024</li>
+					<li>CEE - Precinct boundary definitions and voter registration by precinct</li>
+					<li>U.S. Census Bureau - Block group population data for precinct analysis</li>
+					<li>Puerto Rico Planning Board - Geographic information systems data</li>
 				</ul>
 			</div>
 
@@ -694,7 +704,7 @@
 	}
 
 	.zoom-icon, .microscope-icon {
-		color: var(--color-primary);
+		color: var(--color-accent);
 		margin-bottom: var(--space-lg);
 		opacity: 0.8;
 	}
@@ -779,7 +789,7 @@
 	}
 
 	.spread-label {
-		color: var(--color-primary);
+		color: var(--color-accent);
 		font-weight: var(--font-medium);
 	}
 
@@ -803,7 +813,7 @@
 
 	:global(.step) .stat {
 		font-weight: var(--font-semibold);
-		color: var(--color-primary);
+		color: var(--color-accent);
 	}
 
 	:global(.step) .highlight {
@@ -814,7 +824,7 @@
 	:global(.step) .emphasis {
 		font-style: italic;
 		color: var(--color-text-light);
-		border-left: 3px solid var(--color-primary);
+		border-left: 3px solid var(--color-accent);
 		padding-left: var(--space-md);
 	}
 
@@ -862,7 +872,7 @@
 
 	.key-takeaways .stat {
 		font-weight: var(--font-semibold);
-		color: var(--color-primary);
+		color: var(--color-accent);
 	}
 
 	.chapter-nav {
@@ -900,6 +910,32 @@
 		font-size: var(--text-lg);
 		font-weight: var(--font-semibold);
 		color: var(--color-text);
+	}
+
+	.sources {
+		margin-top: var(--space-2xl);
+		padding-top: var(--space-xl);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.sources h3 {
+		font-size: var(--text-lg);
+		margin-bottom: var(--space-md);
+		color: var(--color-text-muted);
+	}
+
+	.sources ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.sources li {
+		font-size: var(--text-sm);
+		color: var(--color-text-light);
+		margin-bottom: var(--space-sm);
+		padding-left: var(--space-md);
+		border-left: 2px solid var(--color-border);
 	}
 
 	@media (max-width: 768px) {

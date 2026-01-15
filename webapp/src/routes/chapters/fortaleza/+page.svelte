@@ -557,6 +557,16 @@
 				</div>
 			</div>
 
+			<div class="sources">
+				<h3>Sources</h3>
+				<ul>
+					<li>Comision Estatal de Elecciones de Puerto Rico (CEE) - Official gubernatorial election results 1948-2024</li>
+					<li>El Nuevo Dia Archives - Historical election coverage and analysis</li>
+					<li>University of Puerto Rico - Electoral Studies Program historical data</li>
+					<li>Centro de Estudios Puertorriquenos - Political party evolution in Puerto Rico</li>
+				</ul>
+			</div>
+
 			<nav class="chapter-nav">
 				<a href="{base}/chapters/geography" class="nav-link prev">
 					<span class="nav-direction">Previous</span>
@@ -638,7 +648,7 @@
 		padding: var(--space-xl);
 		width: 200px;
 		text-align: center;
-		border-top: 4px solid var(--party-color, var(--color-primary));
+		border-top: 4px solid var(--party-color, var(--color-accent));
 		box-shadow: var(--shadow-md);
 	}
 
@@ -756,7 +766,7 @@
 		font-family: var(--font-display);
 		font-size: var(--text-3xl);
 		font-weight: var(--font-bold);
-		color: var(--color-primary);
+		color: var(--color-accent);
 		margin-bottom: var(--space-sm);
 	}
 
@@ -810,6 +820,33 @@
 	.party-info span {
 		font-size: var(--text-sm);
 		color: var(--color-text-muted);
+	}
+
+	/* Sources */
+	.sources {
+		margin-top: var(--space-2xl);
+		padding-top: var(--space-xl);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.sources h3 {
+		font-size: var(--text-lg);
+		margin-bottom: var(--space-md);
+		color: var(--color-text-muted);
+	}
+
+	.sources ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.sources li {
+		font-size: var(--text-sm);
+		color: var(--color-text-light);
+		margin-bottom: var(--space-sm);
+		padding-left: var(--space-md);
+		border-left: 2px solid var(--color-border);
 	}
 
 	/* Navigation */

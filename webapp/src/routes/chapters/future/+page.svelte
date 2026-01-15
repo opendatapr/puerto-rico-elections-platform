@@ -581,6 +581,17 @@
 				</ol>
 			</div>
 
+			<div class="sources">
+				<h3>Sources</h3>
+				<ul>
+					<li>Comision Estatal de Elecciones de Puerto Rico (CEE) - Historical election data 2000-2024</li>
+					<li>U.S. Census Bureau - Population projections for Puerto Rico 2020-2050</li>
+					<li>Puerto Rico Institute of Statistics - Demographic trend analysis and forecasts</li>
+					<li>Center for Puerto Rican Studies - Future of Puerto Rican politics research</li>
+					<li>Brookings Institution - Puerto Rico economic and political outlook</li>
+				</ul>
+			</div>
+
 			<nav class="chapter-nav">
 				<a href="{base}/chapters/house" class="nav-link prev">
 					<span class="nav-direction">Previous</span>
@@ -962,5 +973,32 @@
 		.cta-section {
 			flex-direction: column;
 		}
+	}
+
+	/* Sources Section */
+	.sources {
+		margin-top: var(--space-2xl);
+		padding-top: var(--space-xl);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.sources h3 {
+		font-size: var(--text-lg);
+		margin-bottom: var(--space-md);
+		color: var(--color-text-muted);
+	}
+
+	.sources ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.sources li {
+		font-size: var(--text-sm);
+		color: var(--color-text-light);
+		margin-bottom: var(--space-sm);
+		padding-left: var(--space-md);
+		border-left: 2px solid var(--color-border);
 	}
 </style>

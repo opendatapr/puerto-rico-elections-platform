@@ -702,7 +702,7 @@
 			</p>
 			<p>
 				The political implications are profound. A smaller, older, poorer electorate
-				will shape Puerto Rico's future. In the next chapter, we'll examine how these
+				will shape Puerto Rico's future. The next chapter examines how these
 				demographic shifts have affected voter turnout and civic participation across
 				the island.
 			</p>
@@ -715,6 +715,18 @@
 					<li>Hurricane Maria triggered <span class="stat">{formatNumber(mariaExodus)}</span> departures in one year</li>
 					<li>Poverty and population loss are strongly correlated</li>
 					<li>The median age rose from 36.9 to {medianAge2020} years</li>
+				</ul>
+			</div>
+
+			<div class="sources">
+				<h3>Sources</h3>
+				<ul>
+					<li>U.S. Census Bureau - Decennial Census 2010, 2020; Population Estimates Program 2004-2020</li>
+					<li>American Community Survey 5-Year Estimates - Poverty rates, demographic characteristics by municipality</li>
+					<li>Puerto Rico Institute of Statistics - Migration data and demographic trends</li>
+					<li>Pew Research Center - "Puerto Rican Population Declines on Island, Grows on U.S. Mainland" (2022)</li>
+					<li>Center for Puerto Rican Studies - Post-Hurricane Maria migration analysis (2018)</li>
+					<li>Federal Reserve Bank of New York - Economic conditions in Puerto Rico (2014-2020)</li>
 				</ul>
 			</div>
 
@@ -918,7 +930,7 @@
 
 	:global(.step) .stat {
 		font-weight: var(--font-semibold);
-		color: var(--color-primary);
+		color: var(--color-accent);
 	}
 
 	:global(.step) .highlight {
@@ -929,7 +941,7 @@
 	:global(.step) .emphasis {
 		font-style: italic;
 		color: var(--color-text-light);
-		border-left: 3px solid var(--color-primary);
+		border-left: 3px solid var(--color-accent);
 		padding-left: var(--space-md);
 	}
 
@@ -976,7 +988,33 @@
 
 	.key-takeaways .stat {
 		font-weight: var(--font-semibold);
-		color: var(--color-primary);
+		color: var(--color-accent);
+	}
+
+	.sources {
+		margin-top: var(--space-2xl);
+		padding-top: var(--space-xl);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.sources h3 {
+		font-size: var(--text-lg);
+		margin-bottom: var(--space-md);
+		color: var(--color-text-muted);
+	}
+
+	.sources ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.sources li {
+		font-size: var(--text-sm);
+		color: var(--color-text-light);
+		margin-bottom: var(--space-sm);
+		padding-left: var(--space-md);
+		border-left: 2px solid var(--color-border);
 	}
 
 	.chapter-nav {

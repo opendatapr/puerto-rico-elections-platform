@@ -553,7 +553,7 @@
 				<span class="highlight">Ponce/South</span> regions lean PPD.
 			</p>
 			<p>
-				These regional patterns are remarkably stable. A municipality's geographic
+				These regional patterns have proven durable across elections. A municipality's geographic
 				location predicts its partisan lean better than most demographic variables.
 				Your neighbors shape your politics, and regional identity reinforces
 				party loyalty across generations.
@@ -624,7 +624,7 @@
 		<Step active={currentStep === 11} index={11}>
 			<h3>The Stakes of the Map</h3>
 			<p>
-				Understanding Puerto Rico's electoral geography is essential because
+				Puerto Rico's electoral geography matters because
 				<span class="highlight">the map itself is contested terrain</span>.
 				Proposals to consolidate municipalities, redraw district lines, or change
 				the at-large vs. district balance would reshape political power.
@@ -661,6 +661,16 @@
 					<li><strong>Regional Blocs:</strong> Neighboring municipalities vote alike, creating persistent geographic coalitions</li>
 					<li><strong>Class Geography:</strong> Wealthier areas lean PNP; poorer areas lean PPD, with exceptions</li>
 					<li><strong>Mixed Representation:</strong> The combination of district and at-large seats creates complex campaign incentives</li>
+				</ul>
+			</div>
+
+			<div class="sources">
+				<h3>Sources</h3>
+				<ul>
+					<li>Comision Estatal de Elecciones de Puerto Rico (CEE) - Municipality-level election results 2016-2024</li>
+					<li>U.S. Census Bureau - Puerto Rico geographic definitions and TIGER/Line shapefiles</li>
+					<li>Puerto Rico Planning Board - Regional classifications and urban/rural definitions</li>
+					<li>American Community Survey - Population and demographic data by municipality</li>
 				</ul>
 			</div>
 
@@ -809,4 +819,30 @@
 	.nav-link.next { text-align: right; }
 	.nav-direction { font-size: var(--text-sm); color: var(--color-text-muted); }
 	.nav-title { font-family: var(--font-display); font-size: var(--text-lg); font-weight: var(--font-semibold); color: var(--color-text); }
+
+	.sources {
+		margin-top: var(--space-2xl);
+		padding-top: var(--space-xl);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.sources h3 {
+		font-size: var(--text-lg);
+		margin-bottom: var(--space-md);
+		color: var(--color-text-muted);
+	}
+
+	.sources ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.sources li {
+		font-size: var(--text-sm);
+		color: var(--color-text-light);
+		margin-bottom: var(--space-sm);
+		padding-left: var(--space-md);
+		border-left: 2px solid var(--color-border);
+	}
 </style>

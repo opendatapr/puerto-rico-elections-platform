@@ -393,7 +393,7 @@
 				strongholds surprised with Yes majorities.
 			</p>
 			<p>
-				Let's see where statehood found its strongest support.
+				The map shows where statehood found its strongest support.
 			</p>
 		</Step>
 
@@ -562,6 +562,16 @@
 				</div>
 			</div>
 
+			<div class="sources">
+				<h3>Sources</h3>
+				<ul>
+					<li>Comisión Estatal de Elecciones de Puerto Rico (CEE) - 2020 Referendum results by municipality</li>
+					<li>U.S. Census Bureau - Puerto Rico population and demographic data</li>
+					<li>Brexit referendum data from UK Electoral Commission (2016)</li>
+					<li>Scottish Independence referendum data from Electoral Management Board for Scotland (2014)</li>
+				</ul>
+			</div>
+
 			<nav class="chapter-nav">
 				<a href="{base}/chapters/plebiscites" class="nav-link prev">
 					<span class="nav-direction">Previous</span>
@@ -641,7 +651,7 @@
 		color: var(--color-text);
 		line-height: 1.4;
 		padding: var(--space-lg);
-		border-left: 4px solid var(--color-primary);
+		border-left: 4px solid var(--color-accent);
 		background: var(--color-surface);
 		border-radius: var(--radius-md);
 		margin: 0;
@@ -662,7 +672,7 @@
 		font-family: var(--font-display);
 		font-size: 6rem;
 		font-weight: var(--font-bold);
-		color: var(--color-primary);
+		color: var(--color-accent);
 		line-height: 1;
 	}
 
@@ -774,7 +784,7 @@
 		font-family: var(--font-display);
 		font-size: var(--text-3xl);
 		font-weight: var(--font-bold);
-		color: var(--color-primary);
+		color: var(--color-accent);
 	}
 
 	.margin-label {
@@ -808,7 +818,7 @@
 	}
 
 	.turnout-bar.governor {
-		background: var(--color-primary);
+		background: var(--color-accent);
 		opacity: 0.8;
 	}
 
@@ -900,7 +910,7 @@
 		font-family: var(--font-display);
 		font-size: var(--text-3xl);
 		font-weight: var(--font-bold);
-		color: var(--color-primary);
+		color: var(--color-accent);
 		margin-bottom: var(--space-sm);
 	}
 
@@ -981,5 +991,33 @@
 		font-size: var(--text-lg);
 		font-weight: var(--font-semibold);
 		color: var(--color-text);
+	}
+
+	/* Sources */
+	.sources {
+		margin-top: var(--space-2xl);
+		padding-top: var(--space-xl);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.sources h3 {
+		font-size: var(--text-sm);
+		font-weight: var(--font-semibold);
+		color: var(--color-text-muted);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin-bottom: var(--space-md);
+	}
+
+	.sources ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.sources li {
+		font-size: var(--text-sm);
+		color: var(--color-text-light);
+		padding: var(--space-xs) 0;
 	}
 </style>

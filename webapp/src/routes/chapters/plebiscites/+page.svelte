@@ -620,6 +620,15 @@
 				</ul>
 			</div>
 
+			<div class="sources">
+				<h3>Sources</h3>
+				<ul>
+					<li>Comisión Estatal de Elecciones de Puerto Rico (CEE) - Official plebiscite results 1967-2020</li>
+					<li>U.S. Government Accountability Office - "Puerto Rico: Information on How Statehood Would Potentially Affect Selected Federal Programs and Revenue Sources" (2014)</li>
+					<li>Congressional Research Service - "Political Status of Puerto Rico: Options for Congress" (2017)</li>
+				</ul>
+			</div>
+
 			<nav class="chapter-nav">
 				<a href="{base}/chapters/shrinking" class="nav-link prev">
 					<span class="nav-direction">Previous</span>
@@ -663,7 +672,7 @@
 		font-family: var(--font-display);
 		font-size: var(--text-4xl);
 		font-weight: var(--font-bold);
-		color: var(--color-primary);
+		color: var(--color-accent);
 		line-height: 1;
 	}
 
@@ -756,9 +765,9 @@
 		width: 16px;
 		height: 16px;
 		border-radius: 50%;
-		background: var(--color-primary);
+		background: var(--color-accent);
 		border: 3px solid var(--color-bg);
-		box-shadow: 0 0 0 2px var(--color-primary);
+		box-shadow: 0 0 0 2px var(--color-accent);
 	}
 
 	.timeline-node.boycott .node-dot {
@@ -805,7 +814,7 @@
 	}
 
 	.legend-item .dot.active {
-		background: var(--color-primary);
+		background: var(--color-accent);
 	}
 
 	.legend-item .dot.boycott {
@@ -926,7 +935,7 @@
 		color: var(--color-text);
 		background: var(--color-surface-elevated);
 		padding: var(--space-md) var(--space-lg);
-		border-left: 4px solid var(--color-primary);
+		border-left: 4px solid var(--color-accent);
 		border-radius: 0 var(--radius-md) var(--radius-md) 0;
 		margin: var(--space-md) 0;
 	}
@@ -971,7 +980,7 @@
 	.col-year {
 		font-family: var(--font-display);
 		font-weight: var(--font-bold);
-		color: var(--color-primary);
+		color: var(--color-accent);
 	}
 
 	.col-result {
@@ -1013,11 +1022,11 @@
 		padding: var(--space-md);
 		background: var(--color-surface-elevated);
 		border-radius: var(--radius-md);
-		border-left: 4px solid var(--color-primary);
+		border-left: 4px solid var(--color-accent);
 	}
 
 	.key-takeaways li strong {
-		color: var(--color-primary);
+		color: var(--color-accent);
 	}
 
 	/* Navigation */
@@ -1056,6 +1065,34 @@
 		font-size: var(--text-lg);
 		font-weight: var(--font-semibold);
 		color: var(--color-text);
+	}
+
+	/* Sources */
+	.sources {
+		margin-top: var(--space-2xl);
+		padding-top: var(--space-xl);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.sources h3 {
+		font-size: var(--text-sm);
+		font-weight: var(--font-semibold);
+		color: var(--color-text-muted);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin-bottom: var(--space-md);
+	}
+
+	.sources ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.sources li {
+		font-size: var(--text-sm);
+		color: var(--color-text-light);
+		padding: var(--space-xs) 0;
 	}
 
 	/* Responsive */

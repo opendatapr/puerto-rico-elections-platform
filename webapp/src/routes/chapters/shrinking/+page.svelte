@@ -375,7 +375,7 @@
 			<h3>The Rolls Are Shrinking</h3>
 			<p>
 				In 2004, Puerto Rico had <span class="stat">2.44 million</span> registered voters -
-				a remarkably engaged electorate for an island of 3.8 million people. Voting was a
+				a deeply engaged electorate for an island of 3.8 million people. Voting was a
 				civic tradition, a family ritual, a statement of identity.
 			</p>
 			<p>
@@ -596,6 +596,16 @@
 					that ask whether Puerto Rico should become a state, gain independence,
 					or maintain its current relationship with the United States.
 				</p>
+			</div>
+
+			<div class="sources">
+				<h3>Sources</h3>
+				<ul>
+					<li>Comision Estatal de Elecciones de Puerto Rico (CEE) - Voter registration statistics 2000-2024</li>
+					<li>Puerto Rico Office of the Comptroller - Electoral participation reports</li>
+					<li>U.S. Census Bureau - Population estimates and projections for Puerto Rico</li>
+					<li>Puerto Rico Institute of Statistics - Demographic trends analysis</li>
+				</ul>
 			</div>
 
 			<nav class="chapter-nav">
@@ -873,7 +883,7 @@
 		font-family: var(--font-display);
 		font-size: var(--text-3xl);
 		font-weight: var(--font-bold);
-		color: var(--color-primary);
+		color: var(--color-accent);
 		margin-bottom: var(--space-sm);
 	}
 
@@ -887,7 +897,7 @@
 		padding: var(--space-xl);
 		background: var(--color-bg);
 		border-radius: var(--radius-lg);
-		border-left: 4px solid var(--color-primary);
+		border-left: 4px solid var(--color-accent);
 	}
 
 	.conclusion-text h3 {
@@ -939,6 +949,33 @@
 		font-size: var(--text-lg);
 		font-weight: var(--font-semibold);
 		color: var(--color-text);
+	}
+
+	/* Sources section */
+	.sources {
+		margin-top: var(--space-2xl);
+		padding-top: var(--space-xl);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.sources h3 {
+		font-size: var(--text-lg);
+		margin-bottom: var(--space-md);
+		color: var(--color-text-muted);
+	}
+
+	.sources ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.sources li {
+		font-size: var(--text-sm);
+		color: var(--color-text-light);
+		margin-bottom: var(--space-sm);
+		padding-left: var(--space-md);
+		border-left: 2px solid var(--color-border);
 	}
 
 	/* Responsive adjustments */

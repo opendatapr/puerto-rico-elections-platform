@@ -404,8 +404,8 @@
 			<p>
 				The at-large design was intentional: framers wanted senators who would represent
 				all of Puerto Rico, not just their district. In theory, this creates legislators
-				with broader perspectives and reduces parochialism. In practice, it produces
-				fascinating dynamics around name recognition, party loyalty, and vote accumulation.
+				with broader perspectives and reduces parochialism. In practice, it rewards
+				name recognition, tests party loyalty, and makes vote accumulation an art form.
 			</p>
 			<p>
 				The 2020 Senate shows the system in action: <span class="stat">6 parties</span> won
@@ -439,7 +439,7 @@
 			<p>
 				In 2020, the top vote-getter was <span class="highlight">Maria de Lourdes Santiago</span>
 				(PIP) with nearly <span class="stat">269,000</span> votes, outpacing candidates from
-				both major parties. Her success demonstrates how the at-large system can elevate
+				both major parties. Her success shows how the at-large system can elevate
 				candidates with strong personal brands.
 			</p>
 			<p>
@@ -673,6 +673,16 @@
 				</table>
 			</div>
 
+			<div class="sources">
+				<h3>Sources</h3>
+				<ul>
+					<li>Comision Estatal de Elecciones de Puerto Rico (CEE) - Senate election results 2000-2024</li>
+					<li>Senado de Puerto Rico - Historical composition and party affiliation data</li>
+					<li>Puerto Rico Constitution - Senate structure and at-large seat requirements</li>
+					<li>University of Puerto Rico - Political Science Department electoral analysis</li>
+				</ul>
+			</div>
+
 			<nav class="chapter-nav">
 				<a href="{base}/chapters/precincts" class="nav-link prev">
 					<span class="nav-direction">Previous</span>
@@ -886,5 +896,32 @@
 		font-size: var(--text-lg);
 		font-weight: var(--font-semibold);
 		color: var(--color-text);
+	}
+
+	/* Sources section */
+	.sources {
+		margin-top: var(--space-2xl);
+		padding-top: var(--space-xl);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.sources h3 {
+		font-size: var(--text-lg);
+		margin-bottom: var(--space-md);
+		color: var(--color-text-muted);
+	}
+
+	.sources ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.sources li {
+		font-size: var(--text-sm);
+		color: var(--color-text-light);
+		margin-bottom: var(--space-sm);
+		padding-left: var(--space-md);
+		border-left: 2px solid var(--color-border);
 	}
 </style>

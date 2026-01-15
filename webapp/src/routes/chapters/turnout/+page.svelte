@@ -465,7 +465,7 @@
 			</p>
 			<p>
 				This pattern holds across the entire island, from the rural highlands to the urban
-				coast. Let's look at the extremes.
+				coast. The extremes tell the story.
 			</p>
 		</Step>
 
@@ -619,6 +619,17 @@
 				</blockquote>
 			</div>
 
+			<div class="sources">
+				<h3>Sources</h3>
+				<ul>
+					<li>Comision Estatal de Elecciones de Puerto Rico (CEE) - Official voter turnout data 2000-2024</li>
+					<li>U.S. Census Bureau - Voting and Registration data for Puerto Rico</li>
+					<li>American Community Survey - Household income by municipality</li>
+					<li>U.S. Election Assistance Commission - Election Administration and Voting Survey</li>
+					<li>Inter-University Consortium for Political and Social Research - Puerto Rico electoral data</li>
+				</ul>
+			</div>
+
 			<nav class="chapter-nav">
 				<a href="{base}/chapters/exodus" class="nav-link prev">
 					<span class="nav-direction">Previous</span>
@@ -646,7 +657,7 @@
 		margin-top: var(--space-xl);
 		padding: var(--space-lg);
 		background: var(--color-surface);
-		border-left: 4px solid var(--color-primary);
+		border-left: 4px solid var(--color-accent);
 		border-radius: var(--radius-md);
 		display: flex;
 		flex-direction: column;
@@ -664,7 +675,7 @@
 		font-family: var(--font-display);
 		font-size: var(--text-4xl);
 		font-weight: var(--font-bold);
-		color: var(--color-primary);
+		color: var(--color-accent);
 		line-height: 1;
 	}
 
@@ -768,7 +779,7 @@
 	}
 
 	.findings-list strong {
-		color: var(--color-primary);
+		color: var(--color-accent);
 	}
 
 	.pullquote {
@@ -823,5 +834,31 @@
 		font-size: var(--text-lg);
 		font-weight: var(--font-semibold);
 		color: var(--color-text);
+	}
+
+	.sources {
+		margin-top: var(--space-2xl);
+		padding-top: var(--space-xl);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.sources h3 {
+		font-size: var(--text-lg);
+		margin-bottom: var(--space-md);
+		color: var(--color-text-muted);
+	}
+
+	.sources ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.sources li {
+		font-size: var(--text-sm);
+		color: var(--color-text-light);
+		margin-bottom: var(--space-sm);
+		padding-left: var(--space-md);
+		border-left: 2px solid var(--color-border);
 	}
 </style>

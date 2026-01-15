@@ -1,0 +1,484 @@
+{
+  "turnout_series": [
+    {
+      "year": 2016,
+      "total_votes": 1580184,
+      "turnout_pct": 67.2
+    },
+    {
+      "year": 2020,
+      "total_votes": 1284630,
+      "turnout_pct": 55.9
+    }
+  ],
+  "income_turnout": [
+    {
+      "municipality": "Las Mar\u00edas",
+      "income": 16170,
+      "turnout": 53.1,
+      "poverty_rate": 53.97
+    },
+    {
+      "municipality": "Gu\u00e1nica",
+      "income": 16210,
+      "turnout": 53.1,
+      "poverty_rate": 64.75
+    },
+    {
+      "municipality": "Comer\u00edo",
+      "income": 17254,
+      "turnout": 53.6,
+      "poverty_rate": 53.01
+    },
+    {
+      "municipality": "Vieques",
+      "income": 17531,
+      "turnout": 53.8,
+      "poverty_rate": 59.53
+    },
+    {
+      "municipality": "Utuado",
+      "income": 17624,
+      "turnout": 53.8,
+      "poverty_rate": 53.49
+    },
+    {
+      "municipality": "San Sebasti\u00e1n",
+      "income": 17834,
+      "turnout": 53.9,
+      "poverty_rate": 52.39
+    },
+    {
+      "municipality": "San Germ\u00e1n",
+      "income": 17921,
+      "turnout": 54.0,
+      "poverty_rate": 51.92
+    },
+    {
+      "municipality": "Mayag\u00fcez",
+      "income": 17963,
+      "turnout": 54.0,
+      "poverty_rate": 53.02
+    },
+    {
+      "municipality": "Jayuya",
+      "income": 18413,
+      "turnout": 54.2,
+      "poverty_rate": 54.92
+    },
+    {
+      "municipality": "Adjuntas",
+      "income": 18605,
+      "turnout": 54.3,
+      "poverty_rate": 61.95
+    },
+    {
+      "municipality": "Ponce",
+      "income": 18827,
+      "turnout": 54.4,
+      "poverty_rate": 50.94
+    },
+    {
+      "municipality": "Lajas",
+      "income": 18920,
+      "turnout": 54.5,
+      "poverty_rate": 52.97
+    },
+    {
+      "municipality": "Arroyo",
+      "income": 18931,
+      "turnout": 54.5,
+      "poverty_rate": 54.44
+    },
+    {
+      "municipality": "Orocovis",
+      "income": 19062,
+      "turnout": 54.5,
+      "poverty_rate": 52.53
+    },
+    {
+      "municipality": "Lares",
+      "income": 19323,
+      "turnout": 54.7,
+      "poverty_rate": 54.87
+    },
+    {
+      "municipality": "Maunabo",
+      "income": 19363,
+      "turnout": 54.7,
+      "poverty_rate": 52.85
+    },
+    {
+      "municipality": "Aguadilla",
+      "income": 19826,
+      "turnout": 55.3,
+      "poverty_rate": 47.92
+    },
+    {
+      "municipality": "Guayama",
+      "income": 20273,
+      "turnout": 55.4,
+      "poverty_rate": 48.59
+    },
+    {
+      "municipality": "Manat\u00ed",
+      "income": 20352,
+      "turnout": 56.0,
+      "poverty_rate": 45.94
+    },
+    {
+      "municipality": "Isabela",
+      "income": 20484,
+      "turnout": 55.9,
+      "poverty_rate": 46.67
+    },
+    {
+      "municipality": "Maricao",
+      "income": 20541,
+      "turnout": 55.3,
+      "poverty_rate": 52.65
+    },
+    {
+      "municipality": "Sabana Grande",
+      "income": 20564,
+      "turnout": 56.4,
+      "poverty_rate": 44.51
+    },
+    {
+      "municipality": "Ciales",
+      "income": 20614,
+      "turnout": 55.3,
+      "poverty_rate": 58.24
+    },
+    {
+      "municipality": "Coamo",
+      "income": 20797,
+      "turnout": 55.4,
+      "poverty_rate": 51.96
+    },
+    {
+      "municipality": "Pe\u00f1uelas",
+      "income": 20959,
+      "turnout": 55.5,
+      "poverty_rate": 51.0
+    },
+    {
+      "municipality": "Florida",
+      "income": 21213,
+      "turnout": 55.6,
+      "poverty_rate": 50.6
+    },
+    {
+      "municipality": "Yabucoa",
+      "income": 21279,
+      "turnout": 55.7,
+      "poverty_rate": 49.72
+    },
+    {
+      "municipality": "San Lorenzo",
+      "income": 21320,
+      "turnout": 56.7,
+      "poverty_rate": 44.61
+    },
+    {
+      "municipality": "Naranjito",
+      "income": 21399,
+      "turnout": 55.7,
+      "poverty_rate": 50.55
+    },
+    {
+      "municipality": "Guayanilla",
+      "income": 21400,
+      "turnout": 55.7,
+      "poverty_rate": 50.18
+    },
+    {
+      "municipality": "Moca",
+      "income": 21415,
+      "turnout": 56.5,
+      "poverty_rate": 46.0
+    },
+    {
+      "municipality": "Naguabo",
+      "income": 21416,
+      "turnout": 56.1,
+      "poverty_rate": 48.0
+    },
+    {
+      "municipality": "Salinas",
+      "income": 21611,
+      "turnout": 56.2,
+      "poverty_rate": 48.03
+    },
+    {
+      "municipality": "Aguada",
+      "income": 21694,
+      "turnout": 56.6,
+      "poverty_rate": 46.47
+    },
+    {
+      "municipality": "Aibonito",
+      "income": 21714,
+      "turnout": 56.9,
+      "poverty_rate": 44.64
+    },
+    {
+      "municipality": "Barceloneta",
+      "income": 21750,
+      "turnout": 56.8,
+      "poverty_rate": 45.41
+    },
+    {
+      "municipality": "Yauco",
+      "income": 21918,
+      "turnout": 57.0,
+      "poverty_rate": 44.56
+    },
+    {
+      "municipality": "Barranquitas",
+      "income": 22167,
+      "turnout": 56.2,
+      "poverty_rate": 49.55
+    },
+    {
+      "municipality": "Aguas Buenas",
+      "income": 22361,
+      "turnout": 57.5,
+      "poverty_rate": 43.63
+    },
+    {
+      "municipality": "Lo\u00edza",
+      "income": 22500,
+      "turnout": 57.3,
+      "poverty_rate": 44.81
+    },
+    {
+      "municipality": "Morovis",
+      "income": 23010,
+      "turnout": 56.8,
+      "poverty_rate": 48.69
+    },
+    {
+      "municipality": "Arecibo",
+      "income": 23175,
+      "turnout": 58.0,
+      "poverty_rate": 42.9
+    },
+    {
+      "municipality": "Santa Isabel",
+      "income": 23197,
+      "turnout": 57.5,
+      "poverty_rate": 45.74
+    },
+    {
+      "municipality": "Ceiba",
+      "income": 23204,
+      "turnout": 58.3,
+      "poverty_rate": 41.61
+    },
+    {
+      "municipality": "Patillas",
+      "income": 23422,
+      "turnout": 57.2,
+      "poverty_rate": 47.77
+    },
+    {
+      "municipality": "A\u00f1asco",
+      "income": 23591,
+      "turnout": 57.8,
+      "poverty_rate": 44.92
+    },
+    {
+      "municipality": "Quebradillas",
+      "income": 23624,
+      "turnout": 57.8,
+      "poverty_rate": 45.05
+    },
+    {
+      "municipality": "Luquillo",
+      "income": 23769,
+      "turnout": 58.1,
+      "poverty_rate": 43.8
+    },
+    {
+      "municipality": "Juana D\u00edaz",
+      "income": 23823,
+      "turnout": 58.3,
+      "poverty_rate": 42.86
+    },
+    {
+      "municipality": "Vega Baja",
+      "income": 23877,
+      "turnout": 58.5,
+      "poverty_rate": 42.28
+    },
+    {
+      "municipality": "Corozal",
+      "income": 23933,
+      "turnout": 58.1,
+      "poverty_rate": 44.15
+    },
+    {
+      "municipality": "Cata\u00f1o",
+      "income": 24307,
+      "turnout": 58.3,
+      "poverty_rate": 44.22
+    },
+    {
+      "municipality": "Hormigueros",
+      "income": 24862,
+      "turnout": 59.4,
+      "poverty_rate": 40.05
+    },
+    {
+      "municipality": "Villalba",
+      "income": 24882,
+      "turnout": 59.1,
+      "poverty_rate": 41.83
+    },
+    {
+      "municipality": "Fajardo",
+      "income": 25170,
+      "turnout": 59.3,
+      "poverty_rate": 41.48
+    },
+    {
+      "municipality": "Rinc\u00f3n",
+      "income": 25223,
+      "turnout": 58.7,
+      "poverty_rate": 44.58
+    },
+    {
+      "municipality": "Vega Alta",
+      "income": 25235,
+      "turnout": 59.4,
+      "poverty_rate": 41.26
+    },
+    {
+      "municipality": "Las Piedras",
+      "income": 25697,
+      "turnout": 60.3,
+      "poverty_rate": 37.55
+    },
+    {
+      "municipality": "Cabo Rojo",
+      "income": 25720,
+      "turnout": 60.2,
+      "poverty_rate": 38.46
+    },
+    {
+      "municipality": "Humacao",
+      "income": 26083,
+      "turnout": 60.3,
+      "poverty_rate": 38.53
+    },
+    {
+      "municipality": "Camuy",
+      "income": 26094,
+      "turnout": 60.2,
+      "poverty_rate": 38.99
+    },
+    {
+      "municipality": "R\u00edo Grande",
+      "income": 26745,
+      "turnout": 61.0,
+      "poverty_rate": 37.01
+    },
+    {
+      "municipality": "San Juan",
+      "income": 26981,
+      "turnout": 60.6,
+      "poverty_rate": 39.48
+    },
+    {
+      "municipality": "Cidra",
+      "income": 27149,
+      "turnout": 61.3,
+      "poverty_rate": 36.25
+    },
+    {
+      "municipality": "Can\u00f3vanas",
+      "income": 27278,
+      "turnout": 61.9,
+      "poverty_rate": 33.87
+    },
+    {
+      "municipality": "Culebra",
+      "income": 27614,
+      "turnout": 64.6,
+      "poverty_rate": 20.84
+    },
+    {
+      "municipality": "Hatillo",
+      "income": 28001,
+      "turnout": 61.7,
+      "poverty_rate": 36.36
+    },
+    {
+      "municipality": "Juncos",
+      "income": 28196,
+      "turnout": 62.3,
+      "poverty_rate": 34.0
+    },
+    {
+      "municipality": "Cayey",
+      "income": 28461,
+      "turnout": 61.7,
+      "poverty_rate": 37.9
+    },
+    {
+      "municipality": "Toa Baja",
+      "income": 29648,
+      "turnout": 63.1,
+      "poverty_rate": 33.83
+    },
+    {
+      "municipality": "Caguas",
+      "income": 30113,
+      "turnout": 62.7,
+      "poverty_rate": 36.65
+    },
+    {
+      "municipality": "Bayam\u00f3n",
+      "income": 30729,
+      "turnout": 63.5,
+      "poverty_rate": 34.44
+    },
+    {
+      "municipality": "Toa Alta",
+      "income": 33349,
+      "turnout": 64.9,
+      "poverty_rate": 33.83
+    },
+    {
+      "municipality": "Dorado",
+      "income": 33388,
+      "turnout": 65.9,
+      "poverty_rate": 29.22
+    },
+    {
+      "municipality": "Carolina",
+      "income": 35126,
+      "turnout": 66.7,
+      "poverty_rate": 29.31
+    },
+    {
+      "municipality": "Trujillo Alto",
+      "income": 38773,
+      "turnout": 68.8,
+      "poverty_rate": 28.16
+    },
+    {
+      "municipality": "Gurabo",
+      "income": 39532,
+      "turnout": 68.4,
+      "poverty_rate": 32.0
+    },
+    {
+      "municipality": "Guaynabo",
+      "income": 46048,
+      "turnout": 70,
+      "poverty_rate": 24.3
+    }
+  ]
+}

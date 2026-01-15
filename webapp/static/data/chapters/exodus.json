@@ -1,0 +1,692 @@
+{
+  "metadata": {
+    "title": "The Great Exodus",
+    "description": "Puerto Rico's population decline from 2006-2020",
+    "sources": [
+      "US Census Bureau",
+      "Puerto Rico Institute of Statistics",
+      "American Community Survey"
+    ]
+  },
+  "island_timeline": {
+    "data": [
+      { "year": 2000, "population": 3808610 },
+      { "year": 2004, "population": 3826878 },
+      { "year": 2006, "population": 3805214 },
+      { "year": 2008, "population": 3760582 },
+      { "year": 2010, "population": 3725789 },
+      { "year": 2012, "population": 3634488 },
+      { "year": 2014, "population": 3534874 },
+      { "year": 2016, "population": 3411307 },
+      { "year": 2017, "population": 3337177 },
+      { "year": 2018, "population": 3195153 },
+      { "year": 2020, "population": 3285874 }
+    ],
+    "peak_year": 2004,
+    "peak_population": 3826878,
+    "current_population": 3285874,
+    "total_loss": 541004,
+    "percent_decline": -14.1
+  },
+  "key_events": [
+    { "year": 2006, "event": "Economic recession begins", "impact": "Start of sustained population decline" },
+    { "year": 2014, "event": "PROMESA debt control board", "impact": "Austerity measures accelerate emigration" },
+    { "year": 2017, "event": "Hurricane Maria", "impact": "130,000+ leave in following year" },
+    { "year": 2020, "event": "COVID-19 pandemic", "impact": "Mixed effects - some return, others leave" }
+  ],
+  "municipalities": {
+    "Adjuntas": {
+      "population_2010": 19483,
+      "population_2020": 17975,
+      "population_change": -1508,
+      "percent_change": -7.7,
+      "median_income": 18605,
+      "poverty_rate": 61.95
+    },
+    "Aguada": {
+      "population_2010": 41959,
+      "population_2020": 37904,
+      "population_change": -4055,
+      "percent_change": -9.7,
+      "median_income": 21694,
+      "poverty_rate": 46.47
+    },
+    "Aguadilla": {
+      "population_2010": 60949,
+      "population_2020": 54486,
+      "population_change": -6463,
+      "percent_change": -10.6,
+      "median_income": 19826,
+      "poverty_rate": 47.92
+    },
+    "Aguas Buenas": {
+      "population_2010": 28659,
+      "population_2020": 23888,
+      "population_change": -4771,
+      "percent_change": -16.6,
+      "median_income": 22361,
+      "poverty_rate": 43.63
+    },
+    "Aibonito": {
+      "population_2010": 25900,
+      "population_2020": 24610,
+      "population_change": -1290,
+      "percent_change": -5.0,
+      "median_income": 21714,
+      "poverty_rate": 44.64
+    },
+    "Arecibo": {
+      "population_2010": 96440,
+      "population_2020": 86875,
+      "population_change": -9565,
+      "percent_change": -9.9,
+      "median_income": 23175,
+      "poverty_rate": 42.9
+    },
+    "Arroyo": {
+      "population_2010": 19575,
+      "population_2020": 15573,
+      "population_change": -4002,
+      "percent_change": -20.4,
+      "median_income": 18931,
+      "poverty_rate": 54.44
+    },
+    "Anasco": {
+      "population_2010": 29261,
+      "population_2020": 25316,
+      "population_change": -3945,
+      "percent_change": -13.5,
+      "median_income": 23591,
+      "poverty_rate": 44.92
+    },
+    "Barceloneta": {
+      "population_2010": 24816,
+      "population_2020": 22565,
+      "population_change": -2251,
+      "percent_change": -9.1,
+      "median_income": 21750,
+      "poverty_rate": 45.41
+    },
+    "Barranquitas": {
+      "population_2010": 30318,
+      "population_2020": 28984,
+      "population_change": -1334,
+      "percent_change": -4.4,
+      "median_income": 22167,
+      "poverty_rate": 49.55
+    },
+    "Bayamon": {
+      "population_2010": 208116,
+      "population_2020": 183456,
+      "population_change": -24660,
+      "percent_change": -11.8,
+      "median_income": 30729,
+      "poverty_rate": 34.44
+    },
+    "Cabo Rojo": {
+      "population_2010": 50917,
+      "population_2020": 46955,
+      "population_change": -3962,
+      "percent_change": -7.8,
+      "median_income": 25720,
+      "poverty_rate": 38.46
+    },
+    "Caguas": {
+      "population_2010": 142893,
+      "population_2020": 126239,
+      "population_change": -16654,
+      "percent_change": -11.7,
+      "median_income": 30113,
+      "poverty_rate": 36.65
+    },
+    "Camuy": {
+      "population_2010": 35159,
+      "population_2020": 32753,
+      "population_change": -2406,
+      "percent_change": -6.8,
+      "median_income": 26094,
+      "poverty_rate": 38.99
+    },
+    "Canovanas": {
+      "population_2010": 47648,
+      "population_2020": 42037,
+      "population_change": -5611,
+      "percent_change": -11.8,
+      "median_income": 27278,
+      "poverty_rate": 33.87
+    },
+    "Carolina": {
+      "population_2010": 176762,
+      "population_2020": 153226,
+      "population_change": -23536,
+      "percent_change": -13.3,
+      "median_income": 35126,
+      "poverty_rate": 29.31
+    },
+    "Catano": {
+      "population_2010": 28140,
+      "population_2020": 22768,
+      "population_change": -5372,
+      "percent_change": -19.1,
+      "median_income": 24307,
+      "poverty_rate": 44.22
+    },
+    "Cayey": {
+      "population_2010": 48119,
+      "population_2020": 41231,
+      "population_change": -6888,
+      "percent_change": -14.3,
+      "median_income": 28461,
+      "poverty_rate": 37.9
+    },
+    "Ceiba": {
+      "population_2010": 13631,
+      "population_2020": 11128,
+      "population_change": -2503,
+      "percent_change": -18.4,
+      "median_income": 23204,
+      "poverty_rate": 41.61
+    },
+    "Ciales": {
+      "population_2010": 18782,
+      "population_2020": 16874,
+      "population_change": -1908,
+      "percent_change": -10.2,
+      "median_income": 20614,
+      "poverty_rate": 58.24
+    },
+    "Cidra": {
+      "population_2010": 43480,
+      "population_2020": 39765,
+      "population_change": -3715,
+      "percent_change": -8.5,
+      "median_income": 27149,
+      "poverty_rate": 36.25
+    },
+    "Coamo": {
+      "population_2010": 40512,
+      "population_2020": 34294,
+      "population_change": -6218,
+      "percent_change": -15.4,
+      "median_income": 20797,
+      "poverty_rate": 51.96
+    },
+    "Comerio": {
+      "population_2010": 20778,
+      "population_2020": 18775,
+      "population_change": -2003,
+      "percent_change": -9.6,
+      "median_income": 17254,
+      "poverty_rate": 53.01
+    },
+    "Corozal": {
+      "population_2010": 37142,
+      "population_2020": 34474,
+      "population_change": -2668,
+      "percent_change": -7.2,
+      "median_income": 23933,
+      "poverty_rate": 44.15
+    },
+    "Culebra": {
+      "population_2010": 1818,
+      "population_2020": 1281,
+      "population_change": -537,
+      "percent_change": -29.5,
+      "median_income": 27614,
+      "poverty_rate": 20.84
+    },
+    "Dorado": {
+      "population_2010": 38165,
+      "population_2020": 35816,
+      "population_change": -2349,
+      "percent_change": -6.2,
+      "median_income": 33388,
+      "poverty_rate": 29.22
+    },
+    "Fajardo": {
+      "population_2010": 36993,
+      "population_2020": 31756,
+      "population_change": -5237,
+      "percent_change": -14.2,
+      "median_income": 25170,
+      "poverty_rate": 41.48
+    },
+    "Florida": {
+      "population_2010": 12680,
+      "population_2020": 11624,
+      "population_change": -1056,
+      "percent_change": -8.3,
+      "median_income": 21213,
+      "poverty_rate": 50.6
+    },
+    "Guayama": {
+      "population_2010": 45362,
+      "population_2020": 35845,
+      "population_change": -9517,
+      "percent_change": -21.0,
+      "median_income": 20273,
+      "poverty_rate": 48.59
+    },
+    "Guayanilla": {
+      "population_2010": 21581,
+      "population_2020": 17418,
+      "population_change": -4163,
+      "percent_change": -19.3,
+      "median_income": 21400,
+      "poverty_rate": 50.18
+    },
+    "Guaynabo": {
+      "population_2010": 97924,
+      "population_2020": 89503,
+      "population_change": -8421,
+      "percent_change": -8.6,
+      "median_income": 46048,
+      "poverty_rate": 24.3
+    },
+    "Gurabo": {
+      "population_2010": 45369,
+      "population_2020": 40383,
+      "population_change": -4986,
+      "percent_change": -11.0,
+      "median_income": 39532,
+      "poverty_rate": 32.0
+    },
+    "Guanica": {
+      "population_2010": 19427,
+      "population_2020": 13266,
+      "population_change": -6161,
+      "percent_change": -31.7,
+      "median_income": 16210,
+      "poverty_rate": 64.75
+    },
+    "Hatillo": {
+      "population_2010": 41953,
+      "population_2020": 38266,
+      "population_change": -3687,
+      "percent_change": -8.8,
+      "median_income": 28001,
+      "poverty_rate": 36.36
+    },
+    "Hormigueros": {
+      "population_2010": 17250,
+      "population_2020": 15520,
+      "population_change": -1730,
+      "percent_change": -10.0,
+      "median_income": 24862,
+      "poverty_rate": 40.05
+    },
+    "Humacao": {
+      "population_2010": 58466,
+      "population_2020": 50441,
+      "population_change": -8025,
+      "percent_change": -13.7,
+      "median_income": 26083,
+      "poverty_rate": 38.53
+    },
+    "Isabela": {
+      "population_2010": 45631,
+      "population_2020": 42878,
+      "population_change": -2753,
+      "percent_change": -6.0,
+      "median_income": 20484,
+      "poverty_rate": 46.67
+    },
+    "Jayuya": {
+      "population_2010": 16642,
+      "population_2020": 14653,
+      "population_change": -1989,
+      "percent_change": -12.0,
+      "median_income": 18413,
+      "poverty_rate": 54.92
+    },
+    "Juana Diaz": {
+      "population_2010": 50747,
+      "population_2020": 46276,
+      "population_change": -4471,
+      "percent_change": -8.8,
+      "median_income": 23823,
+      "poverty_rate": 42.86
+    },
+    "Juncos": {
+      "population_2010": 40290,
+      "population_2020": 36895,
+      "population_change": -3395,
+      "percent_change": -8.4,
+      "median_income": 28196,
+      "poverty_rate": 34.0
+    },
+    "Lajas": {
+      "population_2010": 25753,
+      "population_2020": 23133,
+      "population_change": -2620,
+      "percent_change": -10.2,
+      "median_income": 18920,
+      "poverty_rate": 52.97
+    },
+    "Lares": {
+      "population_2010": 30753,
+      "population_2020": 27944,
+      "population_change": -2809,
+      "percent_change": -9.1,
+      "median_income": 19323,
+      "poverty_rate": 54.87
+    },
+    "Las Marias": {
+      "population_2010": 9881,
+      "population_2020": 8790,
+      "population_change": -1091,
+      "percent_change": -11.0,
+      "median_income": 16170,
+      "poverty_rate": 53.97
+    },
+    "Las Piedras": {
+      "population_2010": 38675,
+      "population_2020": 35034,
+      "population_change": -3641,
+      "percent_change": -9.4,
+      "median_income": 25697,
+      "poverty_rate": 37.55
+    },
+    "Loiza": {
+      "population_2010": 30060,
+      "population_2020": 23176,
+      "population_change": -6884,
+      "percent_change": -22.9,
+      "median_income": 22500,
+      "poverty_rate": 44.81
+    },
+    "Luquillo": {
+      "population_2010": 20068,
+      "population_2020": 17631,
+      "population_change": -2437,
+      "percent_change": -12.1,
+      "median_income": 23769,
+      "poverty_rate": 43.8
+    },
+    "Manati": {
+      "population_2010": 44113,
+      "population_2020": 39152,
+      "population_change": -4961,
+      "percent_change": -11.2,
+      "median_income": 20352,
+      "poverty_rate": 45.94
+    },
+    "Maricao": {
+      "population_2010": 6276,
+      "population_2020": 5176,
+      "population_change": -1100,
+      "percent_change": -17.5,
+      "median_income": 20541,
+      "poverty_rate": 52.65
+    },
+    "Maunabo": {
+      "population_2010": 12225,
+      "population_2020": 10482,
+      "population_change": -1743,
+      "percent_change": -14.3,
+      "median_income": 19363,
+      "poverty_rate": 52.85
+    },
+    "Mayaguez": {
+      "population_2010": 89080,
+      "population_2020": 71824,
+      "population_change": -17256,
+      "percent_change": -19.4,
+      "median_income": 17963,
+      "poverty_rate": 53.02
+    },
+    "Moca": {
+      "population_2010": 40109,
+      "population_2020": 37402,
+      "population_change": -2707,
+      "percent_change": -6.7,
+      "median_income": 21415,
+      "poverty_rate": 46.0
+    },
+    "Morovis": {
+      "population_2010": 32610,
+      "population_2020": 28534,
+      "population_change": -4076,
+      "percent_change": -12.5,
+      "median_income": 23010,
+      "poverty_rate": 48.69
+    },
+    "Naguabo": {
+      "population_2010": 26720,
+      "population_2020": 23205,
+      "population_change": -3515,
+      "percent_change": -13.2,
+      "median_income": 21416,
+      "poverty_rate": 48.0
+    },
+    "Naranjito": {
+      "population_2010": 30402,
+      "population_2020": 29246,
+      "population_change": -1156,
+      "percent_change": -3.8,
+      "median_income": 21399,
+      "poverty_rate": 50.55
+    },
+    "Orocovis": {
+      "population_2010": 23423,
+      "population_2020": 21351,
+      "population_change": -2072,
+      "percent_change": -8.8,
+      "median_income": 19062,
+      "poverty_rate": 52.53
+    },
+    "Patillas": {
+      "population_2010": 19277,
+      "population_2020": 15753,
+      "population_change": -3524,
+      "percent_change": -18.3,
+      "median_income": 23422,
+      "poverty_rate": 47.77
+    },
+    "Penuelas": {
+      "population_2010": 24282,
+      "population_2020": 20082,
+      "population_change": -4200,
+      "percent_change": -17.3,
+      "median_income": 20959,
+      "poverty_rate": 51.0
+    },
+    "Ponce": {
+      "population_2010": 166327,
+      "population_2020": 134676,
+      "population_change": -31651,
+      "percent_change": -19.0,
+      "median_income": 18827,
+      "poverty_rate": 50.94
+    },
+    "Quebradillas": {
+      "population_2010": 25919,
+      "population_2020": 23486,
+      "population_change": -2433,
+      "percent_change": -9.4,
+      "median_income": 23624,
+      "poverty_rate": 45.05
+    },
+    "Rincon": {
+      "population_2010": 15200,
+      "population_2020": 15276,
+      "population_change": 76,
+      "percent_change": 0.5,
+      "median_income": 25223,
+      "poverty_rate": 44.58
+    },
+    "Rio Grande": {
+      "population_2010": 54304,
+      "population_2020": 46478,
+      "population_change": -7826,
+      "percent_change": -14.4,
+      "median_income": 26745,
+      "poverty_rate": 37.01
+    },
+    "Sabana Grande": {
+      "population_2010": 25265,
+      "population_2020": 22541,
+      "population_change": -2724,
+      "percent_change": -10.8,
+      "median_income": 20564,
+      "poverty_rate": 44.51
+    },
+    "Salinas": {
+      "population_2010": 31078,
+      "population_2020": 25397,
+      "population_change": -5681,
+      "percent_change": -18.3,
+      "median_income": 21611,
+      "poverty_rate": 48.03
+    },
+    "San German": {
+      "population_2010": 35527,
+      "population_2020": 31514,
+      "population_change": -4013,
+      "percent_change": -11.3,
+      "median_income": 17921,
+      "poverty_rate": 51.92
+    },
+    "San Juan": {
+      "population_2010": 395326,
+      "population_2020": 338661,
+      "population_change": -56665,
+      "percent_change": -14.3,
+      "median_income": 26981,
+      "poverty_rate": 39.48
+    },
+    "San Lorenzo": {
+      "population_2010": 41058,
+      "population_2020": 37515,
+      "population_change": -3543,
+      "percent_change": -8.6,
+      "median_income": 21320,
+      "poverty_rate": 44.61
+    },
+    "San Sebastian": {
+      "population_2010": 42430,
+      "population_2020": 39168,
+      "population_change": -3262,
+      "percent_change": -7.7,
+      "median_income": 17834,
+      "poverty_rate": 52.39
+    },
+    "Santa Isabel": {
+      "population_2010": 23274,
+      "population_2020": 20064,
+      "population_change": -3210,
+      "percent_change": -13.8,
+      "median_income": 23197,
+      "poverty_rate": 45.74
+    },
+    "Toa Alta": {
+      "population_2010": 74066,
+      "population_2020": 66536,
+      "population_change": -7530,
+      "percent_change": -10.2,
+      "median_income": 33349,
+      "poverty_rate": 33.83
+    },
+    "Toa Baja": {
+      "population_2010": 89609,
+      "population_2020": 73987,
+      "population_change": -15622,
+      "percent_change": -17.4,
+      "median_income": 29648,
+      "poverty_rate": 33.83
+    },
+    "Trujillo Alto": {
+      "population_2010": 74842,
+      "population_2020": 67329,
+      "population_change": -7513,
+      "percent_change": -10.0,
+      "median_income": 38773,
+      "poverty_rate": 28.16
+    },
+    "Utuado": {
+      "population_2010": 33149,
+      "population_2020": 27896,
+      "population_change": -5253,
+      "percent_change": -15.8,
+      "median_income": 17624,
+      "poverty_rate": 53.49
+    },
+    "Vega Alta": {
+      "population_2010": 39951,
+      "population_2020": 35114,
+      "population_change": -4837,
+      "percent_change": -12.1,
+      "median_income": 25235,
+      "poverty_rate": 41.26
+    },
+    "Vega Baja": {
+      "population_2010": 59662,
+      "population_2020": 54058,
+      "population_change": -5604,
+      "percent_change": -9.4,
+      "median_income": 23877,
+      "poverty_rate": 42.28
+    },
+    "Vieques": {
+      "population_2010": 9301,
+      "population_2020": 8147,
+      "population_change": -1154,
+      "percent_change": -12.4,
+      "median_income": 17531,
+      "poverty_rate": 59.53
+    },
+    "Villalba": {
+      "population_2010": 26073,
+      "population_2020": 21778,
+      "population_change": -4295,
+      "percent_change": -16.5,
+      "median_income": 24882,
+      "poverty_rate": 41.83
+    },
+    "Yabucoa": {
+      "population_2010": 37941,
+      "population_2020": 29868,
+      "population_change": -8073,
+      "percent_change": -21.3,
+      "median_income": 21279,
+      "poverty_rate": 49.72
+    },
+    "Yauco": {
+      "population_2010": 42043,
+      "population_2020": 33509,
+      "population_change": -8534,
+      "percent_change": -20.3,
+      "median_income": 21918,
+      "poverty_rate": 44.56
+    }
+  },
+  "summary_stats": {
+    "total_municipalities": 78,
+    "municipalities_with_loss": 77,
+    "municipalities_with_gain": 1,
+    "average_percent_change": -12.5,
+    "most_affected_municipality": "Guanica",
+    "most_affected_percent": -31.7,
+    "least_affected_municipality": "Rincon",
+    "least_affected_percent": 0.5,
+    "total_population_loss_2010_2020": 439915
+  },
+  "metro_san_juan": {
+    "municipalities": ["San Juan", "Bayamon", "Carolina", "Guaynabo", "Catano", "Trujillo Alto"],
+    "combined_loss": -125767,
+    "combined_2010": 980110,
+    "combined_2020": 854943,
+    "percent_change": -12.8
+  },
+  "post_maria_exodus": {
+    "estimated_departures_2017_2018": 130000,
+    "top_destinations": ["Florida", "Pennsylvania", "Texas", "New York"],
+    "florida_puerto_rican_pop_2020": 1200000
+  },
+  "demographic_shifts": {
+    "median_age_2010": 36.9,
+    "median_age_2020": 43.8,
+    "working_age_decline_percent": -18.5,
+    "elderly_growth_percent": 22.3
+  }
+}

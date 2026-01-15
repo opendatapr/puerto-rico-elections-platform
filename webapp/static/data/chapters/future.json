@@ -1,0 +1,142 @@
+{
+  "population_projection": {
+    "historical": [
+      { "year": 2000, "population": 3808610 },
+      { "year": 2005, "population": 3821362 },
+      { "year": 2010, "population": 3725789 },
+      { "year": 2015, "population": 3474182 },
+      { "year": 2020, "population": 3285874 },
+      { "year": 2024, "population": 3205691 }
+    ],
+    "projected": [
+      { "year": 2028, "population": 3050000, "low": 2950000, "high": 3150000 },
+      { "year": 2032, "population": 2900000, "low": 2750000, "high": 3050000 },
+      { "year": 2036, "population": 2750000, "low": 2550000, "high": 2950000 },
+      { "year": 2040, "population": 2600000, "low": 2350000, "high": 2850000 }
+    ],
+    "note": "Projections based on Census Bureau population estimates and migration trends"
+  },
+  "electorate_projection": {
+    "historical": [
+      { "year": 2004, "registered_voters": 2438000, "turnout_pct": 81.5, "votes_cast": 1987000 },
+      { "year": 2008, "registered_voters": 2405000, "turnout_pct": 80.5, "votes_cast": 1935000 },
+      { "year": 2012, "registered_voters": 2380000, "turnout_pct": 78.9, "votes_cast": 1878000 },
+      { "year": 2016, "registered_voters": 2256000, "turnout_pct": 69.0, "votes_cast": 1557000 },
+      { "year": 2020, "registered_voters": 2081000, "turnout_pct": 61.7, "votes_cast": 1284000 },
+      { "year": 2024, "registered_voters": 1985000, "turnout_pct": 61.2, "votes_cast": 1216000 }
+    ],
+    "projected": [
+      { "year": 2028, "registered_voters": 1850000, "turnout_pct": 60.0, "votes_cast": 1110000 },
+      { "year": 2032, "registered_voters": 1720000, "turnout_pct": 58.5, "votes_cast": 1006000 },
+      { "year": 2036, "registered_voters": 1590000, "turnout_pct": 57.0, "votes_cast": 906000 },
+      { "year": 2040, "registered_voters": 1460000, "turnout_pct": 55.0, "votes_cast": 803000 }
+    ]
+  },
+  "party_vote_share_trend": {
+    "historical": [
+      { "year": 2012, "pnp": 47.1, "ppd": 48.2, "third_parties": 4.7 },
+      { "year": 2016, "pnp": 41.8, "ppd": 38.9, "third_parties": 19.3 },
+      { "year": 2020, "pnp": 33.2, "ppd": 31.8, "third_parties": 35.0 },
+      { "year": 2024, "pnp": 39.4, "ppd": 32.8, "third_parties": 27.8 }
+    ],
+    "projected": [
+      { "year": 2028, "pnp": 35.0, "ppd": 30.0, "third_parties": 35.0, "note": "Most likely scenario" }
+    ]
+  },
+  "demographic_shift": {
+    "median_voter_age": [
+      { "year": 2012, "age": 42 },
+      { "year": 2016, "age": 45 },
+      { "year": 2020, "age": 48 },
+      { "year": 2024, "age": 51 },
+      { "year": 2028, "age": 54, "projected": true },
+      { "year": 2032, "age": 56, "projected": true }
+    ],
+    "age_distribution_2024": {
+      "under_35": 18.2,
+      "35_to_50": 24.5,
+      "50_to_65": 30.2,
+      "over_65": 27.1
+    },
+    "age_distribution_2012": {
+      "under_35": 28.5,
+      "35_to_50": 28.0,
+      "50_to_65": 25.2,
+      "over_65": 18.3
+    }
+  },
+  "scenarios": {
+    "status_quo": {
+      "name": "Continuation",
+      "probability": 60,
+      "description": "Current trends continue. Population and electorate shrink, third parties stabilize at ~30%",
+      "population_2040": 2600000,
+      "voters_2040": 1460000,
+      "turnout_2040": 55,
+      "third_party_share": 32,
+      "key_assumptions": ["No major policy changes", "Migration patterns persist", "Economic stagnation continues"]
+    },
+    "statehood": {
+      "name": "Statehood",
+      "probability": 15,
+      "description": "Congress admits PR as 51st state. Federal investment boosts economy, migration stabilizes",
+      "population_2040": 3100000,
+      "voters_2040": 2100000,
+      "turnout_2040": 68,
+      "third_party_share": 25,
+      "key_assumptions": ["Congressional action by 2030", "Full federal voting rights", "Economic revitalization"]
+    },
+    "independence": {
+      "name": "Independence",
+      "probability": 5,
+      "description": "PR becomes sovereign nation. Short-term disruption, long-term divergence from US political patterns",
+      "population_2040": 2800000,
+      "voters_2040": 1900000,
+      "turnout_2040": 72,
+      "third_party_share": 50,
+      "key_assumptions": ["Negotiated transition period", "Trade agreements with US", "New political party system"]
+    },
+    "economic_crisis": {
+      "name": "Accelerated Decline",
+      "probability": 20,
+      "description": "Climate disasters or economic shocks accelerate exodus. PR becomes geriatric society",
+      "population_2040": 2100000,
+      "voters_2040": 1000000,
+      "turnout_2040": 48,
+      "third_party_share": 40,
+      "key_assumptions": ["Major hurricane", "Debt restructuring failure", "Infrastructure collapse"]
+    }
+  },
+  "status_question": {
+    "referendums": [
+      { "year": 2012, "statehood_pct": 61.1, "turnout_pct": 78.0, "boycott": false },
+      { "year": 2017, "statehood_pct": 97.2, "turnout_pct": 23.0, "boycott": true },
+      { "year": 2020, "statehood_pct": 52.5, "turnout_pct": 55.0, "boycott": false }
+    ],
+    "congressional_bills": [
+      { "year": 2022, "name": "PR Status Act", "passed_house": true, "passed_senate": false },
+      { "year": 2024, "name": "PR Admission Act", "passed_house": false, "passed_senate": false }
+    ]
+  },
+  "key_metrics_summary": {
+    "population_change_2010_2024": -14.0,
+    "voter_change_2004_2024": -18.6,
+    "turnout_change_2004_2024": -24.9,
+    "third_party_growth_2012_2024": 491.5,
+    "median_age_increase_2012_2024": 9,
+    "municipalities_lost_majority": 78
+  },
+  "what_if_statehood": {
+    "electoral_votes": 5,
+    "house_seats": 4,
+    "senators": 2,
+    "comparison": "More than Wyoming, Vermont, Alaska, and DC combined",
+    "swing_state_potential": "Lean Democratic based on current voting patterns"
+  },
+  "diaspora_voting": {
+    "mainland_population": 5700000,
+    "eligible_voters_mainland": 3200000,
+    "could_vote_in_pr": false,
+    "note": "Puerto Ricans on mainland can vote for President; those on island cannot"
+  }
+}

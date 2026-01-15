@@ -1,0 +1,1864 @@
+{
+  "at_large_by_year": {
+    "2016": [
+      {
+        "candidate": "José Antonio Vargas Vidot",
+        "party": "INDEPENDIENTE",
+        "votes": 314887,
+        "percentage": 118.32
+      },
+      {
+        "candidate": "Thomas Rivera Schatz",
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 302450,
+        "percentage": 113.64
+      },
+      {
+        "candidate": "Juan Dalmau Ramírez",
+        "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+        "votes": 260585,
+        "percentage": 97.91
+      },
+      {
+        "candidate": "Lawrence (Larry) Seilhamer Rodríguez",
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 211922,
+        "percentage": 79.63
+      },
+      {
+        "candidate": "Eduardo Bhatia",
+        "party": "PARTIDO POPULAR DEMOCRÁTICO",
+        "votes": 211287,
+        "percentage": 79.39
+      },
+      {
+        "candidate": "Itzamar Peña Ramírez",
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 210383,
+        "percentage": 79.05
+      },
+      {
+        "candidate": "Zoé Laboy",
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 202838,
+        "percentage": 76.21
+      },
+      {
+        "candidate": "Abel Nazario Quiñones",
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 201564,
+        "percentage": 75.74
+      },
+      {
+        "candidate": "Margarita Nolasco Santiago",
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 197433,
+        "percentage": 74.18
+      },
+      {
+        "candidate": "Rossana López León",
+        "party": "PARTIDO POPULAR DEMOCRÁTICO",
+        "votes": 168915,
+        "percentage": 63.47
+      },
+      {
+        "candidate": "Aníbal José (Jossie) Torres",
+        "party": "PARTIDO POPULAR DEMOCRÁTICO",
+        "votes": 164352,
+        "percentage": 61.75
+      },
+      {
+        "candidate": "José Nadal Power",
+        "party": "PARTIDO POPULAR DEMOCRÁTICO",
+        "votes": 162115,
+        "percentage": 60.91
+      },
+      {
+        "candidate": "Miguel A. Pereira Castillo",
+        "party": "PARTIDO POPULAR DEMOCRÁTICO",
+        "votes": 151355,
+        "percentage": 56.87
+      },
+      {
+        "candidate": "Cirilo Tirado Rivera",
+        "party": "PARTIDO POPULAR DEMOCRÁTICO",
+        "votes": 147616,
+        "percentage": 55.47
+      },
+      {
+        "candidate": "Amárilis Pagán Jiménez",
+        "party": "PARTIDO PUEBLO TRABAJADOR",
+        "votes": 19833,
+        "percentage": 7.45
+      }
+    ],
+    "2020": [
+      {
+        "candidate": "María De Lourdes Santiago",
+        "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+        "votes": 268887,
+        "percentage": 124.72
+      },
+      {
+        "candidate": "Joanne Rodríguez Veve",
+        "party": "PROYECTO DIGNIDAD",
+        "votes": 174943,
+        "percentage": 81.15
+      },
+      {
+        "candidate": "William Villafañe",
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 158124,
+        "percentage": 73.34
+      },
+      {
+        "candidate": "Thomas Rivera Schatz",
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 156653,
+        "percentage": 72.66
+      },
+      {
+        "candidate": "Juan Zaragoza Gómez",
+        "party": "PARTIDO POPULAR DEMOCRÁTICO",
+        "votes": 142903,
+        "percentage": 66.28
+      },
+      {
+        "candidate": "José Luis Dalmau Santiago",
+        "party": "PARTIDO POPULAR DEMOCRÁTICO",
+        "votes": 139837,
+        "percentage": 64.86
+      },
+      {
+        "candidate": "José Antonio Vargas Vidot",
+        "party": "INDEPENDIENTE",
+        "votes": 136961,
+        "percentage": 63.53
+      },
+      {
+        "candidate": "Ana Irma Rivera Lassén",
+        "party": "MOVIMIENTO VICTORIA CIUDADANA",
+        "votes": 135899,
+        "percentage": 63.04
+      },
+      {
+        "candidate": "Rafael Bernabe",
+        "party": "MOVIMIENTO VICTORIA CIUDADANA",
+        "votes": 127235,
+        "percentage": 59.02
+      },
+      {
+        "candidate": "Gregorio Matías Rosario",
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 125705,
+        "percentage": 58.31
+      },
+      {
+        "candidate": "Keren Riquelme",
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 122183,
+        "percentage": 56.67
+      },
+      {
+        "candidate": "Aníbal José (Jossie) Torres",
+        "party": "PARTIDO POPULAR DEMOCRÁTICO",
+        "votes": 119665,
+        "percentage": 55.51
+      },
+      {
+        "candidate": "Brenda López De Arrarás",
+        "party": "PARTIDO POPULAR DEMOCRÁTICO",
+        "votes": 117568,
+        "percentage": 54.53
+      },
+      {
+        "candidate": "Itzamar Peña Ramírez",
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 114838,
+        "percentage": 53.27
+      },
+      {
+        "candidate": "Ada Álvarez Conde",
+        "party": "PARTIDO POPULAR DEMOCRÁTICO",
+        "votes": 112897,
+        "percentage": 52.37
+      },
+      {
+        "candidate": "Carlos Rodríguez Mateo",
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 110377,
+        "percentage": 51.2
+      },
+      {
+        "candidate": "Luis Vega Ramos",
+        "party": "PARTIDO POPULAR DEMOCRÁTICO",
+        "votes": 106831,
+        "percentage": 49.55
+      }
+    ]
+  },
+  "district_results_by_year": {
+    "2016": {
+      "San Juan I": [
+        {
+          "candidate": "Henry Neumann",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 82541,
+          "percentage": 25.01
+        },
+        {
+          "candidate": "Henry Neumann",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 82192,
+          "percentage": 25.01
+        },
+        {
+          "candidate": "Miguel  Romero",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 80844,
+          "percentage": 24.49
+        },
+        {
+          "candidate": "Miguel  Romero",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 80502,
+          "percentage": 24.49
+        },
+        {
+          "candidate": "Ramón Luis Nieves",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 66544,
+          "percentage": 20.16
+        },
+        {
+          "candidate": "Ada Álvarez Conde",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 66368,
+          "percentage": 20.11
+        },
+        {
+          "candidate": "Ramón Luis Nieves",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 66298,
+          "percentage": 20.17
+        },
+        {
+          "candidate": "Ada Álvarez Conde",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 66124,
+          "percentage": 20.12
+        },
+        {
+          "candidate": "Edda I. López Serrano",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 10681,
+          "percentage": 3.24
+        },
+        {
+          "candidate": "Edda I. López Serrano",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 10614,
+          "percentage": 3.23
+        },
+        {
+          "candidate": "Ángel L. (Luigi) Alicea Montañez",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 10519,
+          "percentage": 3.19
+        },
+        {
+          "candidate": "Ángel L. (Luigi) Alicea Montañez",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 10459,
+          "percentage": 3.18
+        },
+        {
+          "candidate": "Maritza Stanchich",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 6823,
+          "percentage": 2.07
+        },
+        {
+          "candidate": "Maritza Stanchich",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 6770,
+          "percentage": 2.06
+        },
+        {
+          "candidate": "María Gisela Rosado Almedina",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 5771,
+          "percentage": 1.75
+        },
+        {
+          "candidate": "María Gisela Rosado Almedina",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 5722,
+          "percentage": 1.74
+        }
+      ],
+      "Bayamón II": [
+        {
+          "candidate": "Carmelo Ríos",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 93915,
+          "percentage": 28.35
+        },
+        {
+          "candidate": "Carmelo Ríos",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 93188,
+          "percentage": 28.34
+        },
+        {
+          "candidate": "Migdalia Padilla Alvelo",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 91729,
+          "percentage": 27.69
+        },
+        {
+          "candidate": "Migdalia Padilla Alvelo",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 91015,
+          "percentage": 27.68
+        },
+        {
+          "candidate": "Ana Lydia Robles De Jesús",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 58495,
+          "percentage": 17.66
+        },
+        {
+          "candidate": "Ana Lydia Robles De Jesús",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 58127,
+          "percentage": 17.68
+        },
+        {
+          "candidate": "Antonio J. Serrano Rodríguez",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 54977,
+          "percentage": 16.6
+        },
+        {
+          "candidate": "Antonio J. Serrano Rodríguez",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 54653,
+          "percentage": 16.62
+        },
+        {
+          "candidate": "Noel Berríos Díaz",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 10319,
+          "percentage": 3.11
+        },
+        {
+          "candidate": "Noel Berríos Díaz",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 10220,
+          "percentage": 3.11
+        },
+        {
+          "candidate": "José A. Ojeda Santos",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 8982,
+          "percentage": 2.71
+        },
+        {
+          "candidate": "José A. Ojeda Santos",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 8900,
+          "percentage": 2.71
+        },
+        {
+          "candidate": "Ivette M. Torres Roig",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 6551,
+          "percentage": 1.98
+        },
+        {
+          "candidate": "Ivette M. Torres Roig",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 6478,
+          "percentage": 1.97
+        },
+        {
+          "candidate": "Carlos E. Córdova Iturregui",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 6310,
+          "percentage": 1.9
+        },
+        {
+          "candidate": "Carlos E. Córdova Iturregui",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 6243,
+          "percentage": 1.9
+        }
+      ],
+      "Arecibo III": [
+        {
+          "candidate": "José (Joito) Pérez Rosa",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 104303,
+          "percentage": 27.38
+        },
+        {
+          "candidate": "Ángel Chayanne Martínez",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 104282,
+          "percentage": 27.38
+        },
+        {
+          "candidate": "José (Joito) Pérez Rosa",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 103995,
+          "percentage": 27.39
+        },
+        {
+          "candidate": "Ángel Chayanne Martínez",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 103975,
+          "percentage": 27.38
+        },
+        {
+          "candidate": "Rubén Soto",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 77391,
+          "percentage": 20.32
+        },
+        {
+          "candidate": "Elizabeth Rosa",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 77318,
+          "percentage": 20.3
+        },
+        {
+          "candidate": "Rubén Soto",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 77160,
+          "percentage": 20.32
+        },
+        {
+          "candidate": "Elizabeth Rosa",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 77076,
+          "percentage": 20.3
+        },
+        {
+          "candidate": "Ángel Negrón",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 8904,
+          "percentage": 2.34
+        },
+        {
+          "candidate": "Ángel Negrón",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 8847,
+          "percentage": 2.33
+        },
+        {
+          "candidate": "Jaime Bonel González Maldonado",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 8733,
+          "percentage": 2.29
+        },
+        {
+          "candidate": "Jaime Bonel González Maldonado",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 8682,
+          "percentage": 2.29
+        }
+      ],
+      "Mayagüez IV": [
+        {
+          "candidate": "Luis Daniel Muñiz Cortés",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 94424,
+          "percentage": 25.11
+        },
+        {
+          "candidate": "Luis Daniel Muñiz Cortés",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 94245,
+          "percentage": 25.12
+        },
+        {
+          "candidate": "Evelyn Vázquez",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 91452,
+          "percentage": 24.32
+        },
+        {
+          "candidate": "Evelyn Vázquez",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 91295,
+          "percentage": 24.33
+        },
+        {
+          "candidate": "Gilberto Rodríguez Valle",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 82593,
+          "percentage": 21.96
+        },
+        {
+          "candidate": "Gilberto Rodríguez Valle",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 82413,
+          "percentage": 21.96
+        },
+        {
+          "candidate": "Efraín De Jesús Rodríguez",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 79647,
+          "percentage": 21.18
+        },
+        {
+          "candidate": "Efraín De Jesús Rodríguez",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 79482,
+          "percentage": 21.18
+        },
+        {
+          "candidate": "Juan Raul Mari Pesquera",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 12543,
+          "percentage": 3.34
+        },
+        {
+          "candidate": "Juan Raul Mari Pesquera",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 12496,
+          "percentage": 3.33
+        },
+        {
+          "candidate": "Samuel Soto Bosques",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 8636,
+          "percentage": 2.3
+        },
+        {
+          "candidate": "Samuel Soto Bosques",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 8612,
+          "percentage": 2.3
+        },
+        {
+          "candidate": "Pedro Resto Batalla",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 3737,
+          "percentage": 0.99
+        },
+        {
+          "candidate": "Pedro Resto Batalla",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 3710,
+          "percentage": 0.99
+        },
+        {
+          "candidate": "Edwin Morales Pérez",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 2995,
+          "percentage": 0.8
+        },
+        {
+          "candidate": "Edwin Morales Pérez",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 2973,
+          "percentage": 0.79
+        }
+      ],
+      "Ponce V": [
+        {
+          "candidate": "Luis Berdiel",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 93392,
+          "percentage": 25.36
+        },
+        {
+          "candidate": "Luis Berdiel",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 93141,
+          "percentage": 25.36
+        },
+        {
+          "candidate": "Nelson Cruz",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 90934,
+          "percentage": 24.69
+        },
+        {
+          "candidate": "Nelson Cruz",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 90666,
+          "percentage": 24.69
+        },
+        {
+          "candidate": "Ramón (Ramoncito) Ruíz Nieves",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 83214,
+          "percentage": 22.6
+        },
+        {
+          "candidate": "Ramón (Ramoncito) Ruíz Nieves",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 82998,
+          "percentage": 22.6
+        },
+        {
+          "candidate": "Ángel (Tito) Fourquet Cordero",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 79360,
+          "percentage": 21.55
+        },
+        {
+          "candidate": "Ángel (Tito) Fourquet Cordero",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 79147,
+          "percentage": 21.55
+        },
+        {
+          "candidate": "Juan Rafael Rosario Ramos",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 9509,
+          "percentage": 2.58
+        },
+        {
+          "candidate": "Juan Rafael Rosario Ramos",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 9473,
+          "percentage": 2.58
+        },
+        {
+          "candidate": "Luis E. Martínez Acosta",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 8441,
+          "percentage": 2.29
+        },
+        {
+          "candidate": "Luis E. Martínez Acosta",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 8412,
+          "percentage": 2.29
+        },
+        {
+          "candidate": "Heriberto Quiles Loucil",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 3399,
+          "percentage": 0.92
+        },
+        {
+          "candidate": "Heriberto Quiles Loucil",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 3382,
+          "percentage": 0.92
+        }
+      ],
+      "Guayama VI": [
+        {
+          "candidate": "Axel (Chino) Roque",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 96321,
+          "percentage": 24.65
+        },
+        {
+          "candidate": "Axel (Chino) Roque",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 96032,
+          "percentage": 24.66
+        },
+        {
+          "candidate": "Carlos Rodríguez Mateo",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 95933,
+          "percentage": 24.55
+        },
+        {
+          "candidate": "Carlos Rodríguez Mateo",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 95655,
+          "percentage": 24.56
+        },
+        {
+          "candidate": "Juan Pablo Hernández",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 90898,
+          "percentage": 23.26
+        },
+        {
+          "candidate": "Juan Pablo Hernández",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 90587,
+          "percentage": 23.26
+        },
+        {
+          "candidate": "Ángel M. Rodríguez Otero",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 89389,
+          "percentage": 22.87
+        },
+        {
+          "candidate": "Ángel M. Rodríguez Otero",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 89083,
+          "percentage": 22.87
+        },
+        {
+          "candidate": "María Yadira Díaz Santos",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 9700,
+          "percentage": 2.48
+        },
+        {
+          "candidate": "María Yadira Díaz Santos",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 9629,
+          "percentage": 2.47
+        },
+        {
+          "candidate": "José Bonilla Colón",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 8574,
+          "percentage": 2.19
+        },
+        {
+          "candidate": "José Bonilla Colón",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 8505,
+          "percentage": 2.18
+        }
+      ],
+      "Humacao VII": [
+        {
+          "candidate": "José L. Dalmau Santiago",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 88739,
+          "percentage": 24.74
+        },
+        {
+          "candidate": "José L. Dalmau Santiago",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 88615,
+          "percentage": 24.75
+        },
+        {
+          "candidate": "Miguel Laureano",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 83910,
+          "percentage": 23.4
+        },
+        {
+          "candidate": "Miguel Laureano",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 83791,
+          "percentage": 23.4
+        },
+        {
+          "candidate": "Luis (Pickie) Díaz",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 82252,
+          "percentage": 22.93
+        },
+        {
+          "candidate": "Luis (Pickie) Díaz",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 82128,
+          "percentage": 22.93
+        },
+        {
+          "candidate": "Jorge Suárez Cáceres",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 78152,
+          "percentage": 21.79
+        },
+        {
+          "candidate": "Jorge Suárez Cáceres",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 78046,
+          "percentage": 21.79
+        },
+        {
+          "candidate": "Lydia E. Ortiz Flores",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 9840,
+          "percentage": 2.74
+        },
+        {
+          "candidate": "Lydia E. Ortiz Flores",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 9813,
+          "percentage": 2.74
+        },
+        {
+          "candidate": "Olivero (Oli) Rivera Dávila",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 8156,
+          "percentage": 2.27
+        },
+        {
+          "candidate": "Olivero (Oli) Rivera Dávila",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 8134,
+          "percentage": 2.27
+        },
+        {
+          "candidate": "Javier Córdova Iturregui",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 3864,
+          "percentage": 1.08
+        },
+        {
+          "candidate": "Javier Córdova Iturregui",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 3850,
+          "percentage": 1.08
+        },
+        {
+          "candidate": "José O. Sotero Esteva",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 3728,
+          "percentage": 1.04
+        },
+        {
+          "candidate": "José O. Sotero Esteva",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 3718,
+          "percentage": 1.04
+        }
+      ],
+      "Carolina VIII": [
+        {
+          "candidate": "Nayda Venegas Brown",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 77253,
+          "percentage": 24.21
+        },
+        {
+          "candidate": "Nayda Venegas Brown",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 76964,
+          "percentage": 24.21
+        },
+        {
+          "candidate": "Eric Correa Rivera",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 76565,
+          "percentage": 23.99
+        },
+        {
+          "candidate": "Eric Correa Rivera",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 76276,
+          "percentage": 23.99
+        },
+        {
+          "candidate": "Pedro (Pedrito) Rodríguez",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 69917,
+          "percentage": 21.91
+        },
+        {
+          "candidate": "Pedro (Pedrito) Rodríguez",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 69676,
+          "percentage": 21.91
+        },
+        {
+          "candidate": "Luis Daniel Rivera Filomeno",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 67901,
+          "percentage": 21.27
+        },
+        {
+          "candidate": "Luis Daniel Rivera Filomeno",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 67660,
+          "percentage": 21.28
+        },
+        {
+          "candidate": "Marisol Quiñones Algarín",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 9967,
+          "percentage": 3.12
+        },
+        {
+          "candidate": "Marisol Quiñones Algarín",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 9918,
+          "percentage": 3.12
+        },
+        {
+          "candidate": "Albert Santana Dávila",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 7400,
+          "percentage": 2.32
+        },
+        {
+          "candidate": "Albert Santana Dávila",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 7357,
+          "percentage": 2.31
+        },
+        {
+          "candidate": "Angélica Molina Sánchez",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 6040,
+          "percentage": 1.89
+        },
+        {
+          "candidate": "Angélica Molina Sánchez",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 5998,
+          "percentage": 1.89
+        },
+        {
+          "candidate": "Isaac Ronaldo Santiago Pabón",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 4117,
+          "percentage": 1.29
+        },
+        {
+          "candidate": "Isaac Ronaldo Santiago Pabón",
+          "party": "PARTIDO PUEBLO TRABAJADOR",
+          "votes": 4089,
+          "percentage": 1.29
+        }
+      ]
+    },
+    "2020": {
+      "San Juan I": [
+        {
+          "candidate": "Henry Neumann",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 55005,
+          "percentage": 20.05
+        },
+        {
+          "candidate": "Henry Neumann",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 52492,
+          "percentage": 19.81
+        },
+        {
+          "candidate": "Nitza Morán",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 45783,
+          "percentage": 16.69
+        },
+        {
+          "candidate": "Nitza Morán",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 44063,
+          "percentage": 16.63
+        },
+        {
+          "candidate": "Rosa Seguí",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 36504,
+          "percentage": 13.31
+        },
+        {
+          "candidate": "Jesús Manuel Laboy",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 36005,
+          "percentage": 13.12
+        },
+        {
+          "candidate": "Rosa Seguí",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 35739,
+          "percentage": 13.49
+        },
+        {
+          "candidate": "Jesús Manuel Laboy",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 34639,
+          "percentage": 13.07
+        },
+        {
+          "candidate": "Claribel Martínez Marmolejos",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 34570,
+          "percentage": 12.6
+        },
+        {
+          "candidate": "Claribel Martínez Marmolejos",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 33313,
+          "percentage": 12.57
+        },
+        {
+          "candidate": "Marilú Guzmán",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 32411,
+          "percentage": 11.81
+        },
+        {
+          "candidate": "Marilú Guzmán",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 31651,
+          "percentage": 11.94
+        },
+        {
+          "candidate": "Adriana Gutiérrez Colón",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 18616,
+          "percentage": 6.79
+        },
+        {
+          "candidate": "Adriana Gutiérrez Colón",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 18091,
+          "percentage": 6.83
+        },
+        {
+          "candidate": "Andrés González Berdecía",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 15465,
+          "percentage": 5.64
+        },
+        {
+          "candidate": "Andrés González Berdecía",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 15037,
+          "percentage": 5.67
+        }
+      ],
+      "Bayamón II": [
+        {
+          "candidate": "Carmelo Ríos",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 54322,
+          "percentage": 20.83
+        },
+        {
+          "candidate": "Carmelo Ríos",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 52108,
+          "percentage": 20.69
+        },
+        {
+          "candidate": "Migdalia Padilla Alvelo",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 52029,
+          "percentage": 19.95
+        },
+        {
+          "candidate": "Migdalia Padilla Alvelo",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 50009,
+          "percentage": 19.86
+        },
+        {
+          "candidate": "Magdiel Colón",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 34124,
+          "percentage": 13.09
+        },
+        {
+          "candidate": "Carlos Roberto Hyland",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 33353,
+          "percentage": 12.79
+        },
+        {
+          "candidate": "Magdiel Colón",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 32978,
+          "percentage": 13.1
+        },
+        {
+          "candidate": "Carlos Roberto Hyland",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 32239,
+          "percentage": 12.8
+        },
+        {
+          "candidate": "Myrna Conty",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 27401,
+          "percentage": 10.51
+        },
+        {
+          "candidate": "Myrna Conty",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 26712,
+          "percentage": 10.61
+        },
+        {
+          "candidate": "Ruthie Arroyo",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 23714,
+          "percentage": 9.09
+        },
+        {
+          "candidate": "Ruthie Arroyo",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 23108,
+          "percentage": 9.18
+        },
+        {
+          "candidate": "Hugo Rodríguez Díaz",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 18094,
+          "percentage": 6.94
+        },
+        {
+          "candidate": "Yelitza Lucena Quiles",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 17709,
+          "percentage": 6.79
+        },
+        {
+          "candidate": "Hugo Rodríguez Díaz",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 17520,
+          "percentage": 6.96
+        },
+        {
+          "candidate": "Yelitza Lucena Quiles",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 17136,
+          "percentage": 6.81
+        }
+      ],
+      "Arecibo III": [
+        {
+          "candidate": "Elizabeth Rosa Vélez",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 58813,
+          "percentage": 19.2
+        },
+        {
+          "candidate": "Rubén Soto Rivera",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 58187,
+          "percentage": 19.0
+        },
+        {
+          "candidate": "Ángel (Chayanne) Martínez",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 58136,
+          "percentage": 18.98
+        },
+        {
+          "candidate": "José (Joito) Peréz Rosa",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 58104,
+          "percentage": 18.97
+        },
+        {
+          "candidate": "Elizabeth Rosa Vélez",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 55592,
+          "percentage": 19.09
+        },
+        {
+          "candidate": "Rubén Soto Rivera",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 55051,
+          "percentage": 18.91
+        },
+        {
+          "candidate": "Ángel (Chayanne) Martínez",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 54824,
+          "percentage": 18.83
+        },
+        {
+          "candidate": "José (Joito) Peréz Rosa",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 54744,
+          "percentage": 18.8
+        },
+        {
+          "candidate": "Yamira Colón Rosa",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 20101,
+          "percentage": 6.56
+        },
+        {
+          "candidate": "Yamira Colón Rosa",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 19649,
+          "percentage": 6.75
+        },
+        {
+          "candidate": "Annette Y Jiménez Collet",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 17433,
+          "percentage": 5.69
+        },
+        {
+          "candidate": "Annette Y Jiménez Collet",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 17041,
+          "percentage": 5.85
+        },
+        {
+          "candidate": "Arnaldo L López Rosado",
+          "party": "PROYECTO DIGNIDAD",
+          "votes": 16364,
+          "percentage": 5.34
+        },
+        {
+          "candidate": "Arnaldo L López Rosado",
+          "party": "PROYECTO DIGNIDAD",
+          "votes": 15881,
+          "percentage": 5.45
+        },
+        {
+          "candidate": "Luis Enrique Romero Nieves",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 11475,
+          "percentage": 3.75
+        },
+        {
+          "candidate": "Luis Enrique Romero Nieves",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 11042,
+          "percentage": 3.79
+        },
+        {
+          "candidate": "Roberto Rivera Olivencia",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 7668,
+          "percentage": 2.5
+        },
+        {
+          "candidate": "Roberto Rivera Olivencia",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 7357,
+          "percentage": 2.53
+        }
+      ],
+      "Mayagüez IV": [
+        {
+          "candidate": "Ada García Montes",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 64408,
+          "percentage": 21.13
+        },
+        {
+          "candidate": "Migdalia González",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 63481,
+          "percentage": 20.82
+        },
+        {
+          "candidate": "Ada García Montes",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 60068,
+          "percentage": 21.07
+        },
+        {
+          "candidate": "Migdalia González",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 59204,
+          "percentage": 20.77
+        },
+        {
+          "candidate": "Marcos Fabián González",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 58794,
+          "percentage": 19.29
+        },
+        {
+          "candidate": "Luis Daniel Muñiz",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 58629,
+          "percentage": 19.23
+        },
+        {
+          "candidate": "Marcos Fabián González",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 54332,
+          "percentage": 19.06
+        },
+        {
+          "candidate": "Luis Daniel Muñiz",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 54111,
+          "percentage": 18.98
+        },
+        {
+          "candidate": "Marisol Vega Muñiz",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 18337,
+          "percentage": 6.01
+        },
+        {
+          "candidate": "Marisol Vega Muñiz",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 17743,
+          "percentage": 6.22
+        },
+        {
+          "candidate": "Luis Antonio Ferrer Rivera",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 16131,
+          "percentage": 5.29
+        },
+        {
+          "candidate": "Luis Antonio Ferrer Rivera",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 15664,
+          "percentage": 5.5
+        },
+        {
+          "candidate": "Luis Ibrahyn Casiano Rodríguez",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 13087,
+          "percentage": 4.29
+        },
+        {
+          "candidate": "Luis Ibrahyn Casiano Rodríguez",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 12556,
+          "percentage": 4.4
+        },
+        {
+          "candidate": "Juan R. Mari Pesquera",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 11999,
+          "percentage": 3.94
+        },
+        {
+          "candidate": "Juan R. Mari Pesquera",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 11375,
+          "percentage": 3.99
+        }
+      ],
+      "Ponce V": [
+        {
+          "candidate": "Marially González",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 60162,
+          "percentage": 20.3
+        },
+        {
+          "candidate": "Marially González",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 56846,
+          "percentage": 20.07
+        },
+        {
+          "candidate": "Ramón (Ramoncito) Ruiz",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 54423,
+          "percentage": 18.36
+        },
+        {
+          "candidate": "Luis Berdiel",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 52596,
+          "percentage": 17.75
+        },
+        {
+          "candidate": "Ramón (Ramoncito) Ruiz",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 51465,
+          "percentage": 18.17
+        },
+        {
+          "candidate": "Nelson Cruz (El Vigilante)",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 50430,
+          "percentage": 17.02
+        },
+        {
+          "candidate": "Luis Berdiel",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 50091,
+          "percentage": 17.68
+        },
+        {
+          "candidate": "Nelson Cruz (El Vigilante)",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 48224,
+          "percentage": 17.03
+        },
+        {
+          "candidate": "Elaine M. Arrufat Berastaín",
+          "party": "PROYECTO DIGNIDAD",
+          "votes": 16659,
+          "percentage": 5.62
+        },
+        {
+          "candidate": "Elaine M. Arrufat Berastaín",
+          "party": "PROYECTO DIGNIDAD",
+          "votes": 16217,
+          "percentage": 5.73
+        },
+        {
+          "candidate": "Daniel (Danny) Ortiz",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 15030,
+          "percentage": 5.07
+        },
+        {
+          "candidate": "Maikel González Alvarado",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 14910,
+          "percentage": 5.03
+        },
+        {
+          "candidate": "Daniel (Danny) Ortiz",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 14626,
+          "percentage": 5.16
+        },
+        {
+          "candidate": "Maikel González Alvarado",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 14562,
+          "percentage": 5.14
+        },
+        {
+          "candidate": "Luis Yordán Frau",
+          "party": "PROYECTO DIGNIDAD",
+          "votes": 12272,
+          "percentage": 4.14
+        },
+        {
+          "candidate": "Luis Yordán Frau",
+          "party": "PROYECTO DIGNIDAD",
+          "votes": 11976,
+          "percentage": 4.23
+        },
+        {
+          "candidate": "Ángel Comas",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 10368,
+          "percentage": 3.5
+        },
+        {
+          "candidate": "Ángel Comas",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 10060,
+          "percentage": 3.55
+        },
+        {
+          "candidate": "José (Maché) Ortiz",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 9529,
+          "percentage": 3.22
+        },
+        {
+          "candidate": "José (Maché) Ortiz",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 9181,
+          "percentage": 3.24
+        }
+      ],
+      "Guayama VI": [
+        {
+          "candidate": "Gretchen Hau",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 69552,
+          "percentage": 23.57
+        },
+        {
+          "candidate": "Gretchen Hau",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 69386,
+          "percentage": 23.63
+        },
+        {
+          "candidate": "Albert Torres Berrios",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 67465,
+          "percentage": 22.86
+        },
+        {
+          "candidate": "Albert Torres Berrios",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 67419,
+          "percentage": 22.96
+        },
+        {
+          "candidate": "Axel (Chino) Roque",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 58235,
+          "percentage": 19.73
+        },
+        {
+          "candidate": "Axel (Chino) Roque",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 57943,
+          "percentage": 19.73
+        },
+        {
+          "candidate": "Wanda Cruz",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 57686,
+          "percentage": 19.55
+        },
+        {
+          "candidate": "Wanda Cruz",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 57300,
+          "percentage": 19.51
+        },
+        {
+          "candidate": "Tomás Flores Torres",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 19120,
+          "percentage": 6.48
+        },
+        {
+          "candidate": "Tomás Flores Torres",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 18866,
+          "percentage": 6.42
+        },
+        {
+          "candidate": "Víctor Alvarado Guzmán",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 13454,
+          "percentage": 4.56
+        },
+        {
+          "candidate": "Víctor Alvarado Guzmán",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 13240,
+          "percentage": 4.51
+        },
+        {
+          "candidate": "Justo Echevarría",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 9624,
+          "percentage": 3.26
+        },
+        {
+          "candidate": "Justo Echevarría",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 9485,
+          "percentage": 3.23
+        }
+      ],
+      "Humacao VII": [
+        {
+          "candidate": "Rosamar Trujillo Plumey",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 57004,
+          "percentage": 19.77
+        },
+        {
+          "candidate": "(Wandy) Wanda Soto",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 54822,
+          "percentage": 19.01
+        },
+        {
+          "candidate": "Hill Román Abreu",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 54780,
+          "percentage": 19.0
+        },
+        {
+          "candidate": "Miguel  Laureano",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 54688,
+          "percentage": 18.96
+        },
+        {
+          "candidate": "Rosamar Trujillo Plumey",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 53583,
+          "percentage": 19.72
+        },
+        {
+          "candidate": "Hill Román Abreu",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 51572,
+          "percentage": 18.98
+        },
+        {
+          "candidate": "(Wandy) Wanda Soto",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 50933,
+          "percentage": 18.74
+        },
+        {
+          "candidate": "Miguel  Laureano",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 50683,
+          "percentage": 18.65
+        },
+        {
+          "candidate": "Mayra Vicil Bernier",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 22999,
+          "percentage": 7.98
+        },
+        {
+          "candidate": "Mayra Vicil Bernier",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 22254,
+          "percentage": 8.19
+        },
+        {
+          "candidate": "Xander Torres",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 17509,
+          "percentage": 6.07
+        },
+        {
+          "candidate": "Xander Torres",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 16990,
+          "percentage": 6.25
+        },
+        {
+          "candidate": "Edda I. López Serrano",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 15154,
+          "percentage": 5.25
+        },
+        {
+          "candidate": "Edda I. López Serrano",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 14652,
+          "percentage": 5.39
+        },
+        {
+          "candidate": "Juan (Cholo) Lebrón López",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 11431,
+          "percentage": 3.96
+        },
+        {
+          "candidate": "Juan (Cholo) Lebrón López",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 11052,
+          "percentage": 4.07
+        }
+      ],
+      "Carolina VIII": [
+        {
+          "candidate": "Javier Aponte Dalmau",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 47031,
+          "percentage": 18.15
+        },
+        {
+          "candidate": "Marissa (Marissita) Jiménez",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 46649,
+          "percentage": 18.0
+        },
+        {
+          "candidate": "Nayda Venegas Brown",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 43811,
+          "percentage": 16.91
+        },
+        {
+          "candidate": "Christian Rodríguez",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 43531,
+          "percentage": 16.8
+        },
+        {
+          "candidate": "Javier Aponte Dalmau",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 43473,
+          "percentage": 17.97
+        },
+        {
+          "candidate": "Marissa (Marissita) Jiménez",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 42740,
+          "percentage": 17.66
+        },
+        {
+          "candidate": "Christian Rodríguez",
+          "party": "PARTIDO POPULAR DEMOCRÁTICO",
+          "votes": 40375,
+          "percentage": 16.69
+        },
+        {
+          "candidate": "Nayda Venegas Brown",
+          "party": "PARTIDO NUEVO PROGRESISTA",
+          "votes": 40344,
+          "percentage": 16.67
+        },
+        {
+          "candidate": "Alice G Pérez Fernández",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 22718,
+          "percentage": 8.77
+        },
+        {
+          "candidate": "Alice G Pérez Fernández",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 21952,
+          "percentage": 9.07
+        },
+        {
+          "candidate": "Reginald (Reggie) Smith Pizarro",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 20001,
+          "percentage": 7.72
+        },
+        {
+          "candidate": "Reginald (Reggie) Smith Pizarro",
+          "party": "MOVIMIENTO VICTORIA CIUDADANA",
+          "votes": 19374,
+          "percentage": 8.01
+        },
+        {
+          "candidate": "Janise Santiago",
+          "party": "PROYECTO DIGNIDAD",
+          "votes": 13894,
+          "percentage": 5.36
+        },
+        {
+          "candidate": "Janise Santiago",
+          "party": "PROYECTO DIGNIDAD",
+          "votes": 13391,
+          "percentage": 5.53
+        },
+        {
+          "candidate": "Marisol Quiñones Algarín",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 11760,
+          "percentage": 4.54
+        },
+        {
+          "candidate": "Marisol Quiñones Algarín",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 11136,
+          "percentage": 4.6
+        },
+        {
+          "candidate": "Wanda N. Alemán Alemán",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 9704,
+          "percentage": 3.75
+        },
+        {
+          "candidate": "Wanda N. Alemán Alemán",
+          "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+          "votes": 9173,
+          "percentage": 3.79
+        }
+      ]
+    }
+  },
+  "seat_composition": {},
+  "party_vote_share": {
+    "2016": [
+      {
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 1326590,
+        "percentage": 45.31
+      },
+      {
+        "party": "PARTIDO POPULAR DEMOCRÁTICO",
+        "votes": 1005640,
+        "percentage": 34.35
+      },
+      {
+        "party": "INDEPENDIENTE",
+        "votes": 314887,
+        "percentage": 10.76
+      },
+      {
+        "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+        "votes": 260585,
+        "percentage": 8.9
+      },
+      {
+        "party": "PARTIDO PUEBLO TRABAJADOR",
+        "votes": 19833,
+        "percentage": 0.68
+      }
+    ],
+    "2020": [
+      {
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 787880,
+        "percentage": 33.22
+      },
+      {
+        "party": "PARTIDO POPULAR DEMOCRÁTICO",
+        "votes": 739701,
+        "percentage": 31.19
+      },
+      {
+        "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUEÑO",
+        "votes": 268887,
+        "percentage": 11.34
+      },
+      {
+        "party": "MOVIMIENTO VICTORIA CIUDADANA",
+        "votes": 263134,
+        "percentage": 11.1
+      },
+      {
+        "party": "PROYECTO DIGNIDAD",
+        "votes": 174943,
+        "percentage": 7.38
+      },
+      {
+        "party": "INDEPENDIENTE",
+        "votes": 136961,
+        "percentage": 5.78
+      }
+    ]
+  },
+  "total_votes_by_year": {
+    "2016": {
+      "total_votes_cast": 2927535,
+      "estimated_unique_voters": 266139
+    },
+    "2020": {
+      "total_votes_cast": 2371506,
+      "estimated_unique_voters": 215591
+    }
+  },
+  "years": [
+    2016,
+    2020
+  ],
+  "districts": [
+    "I - San Juan",
+    "II - Bayamón",
+    "III - Arecibo",
+    "IV - Mayagüez",
+    "V - Ponce",
+    "VI - Guayama",
+    "VII - Humacao",
+    "VIII - Carolina"
+  ],
+  "historical_composition": {
+    "2012": {
+      "PNP": 16,
+      "PPD": 10,
+      "PIP": 1
+    },
+    "2016": {
+      "PNP": 21,
+      "PPD": 5,
+      "PIP": 1
+    },
+    "2020": {
+      "PNP": 9,
+      "PPD": 8,
+      "MVC": 2,
+      "PIP": 2,
+      "PD": 1,
+      "IND": 1
+    },
+    "2024": {
+      "PPD": 13,
+      "PNP": 9,
+      "MVC": 2,
+      "PIP": 1,
+      "PD": 1,
+      "IND": 1
+    }
+  }
+}

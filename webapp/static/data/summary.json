@@ -1,0 +1,15 @@
+{
+  "municipalities": 78,
+  "years": [
+    2016,
+    2020,
+    2024,
+    2025
+  ],
+  "event_types": [
+    "special",
+    "general",
+    "primary"
+  ],
+  "last_updated": "2026-01-13T11:36:14.724861"
+}

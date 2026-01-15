@@ -1,0 +1,84 @@
+{
+  "results_by_year": {
+    "2016": [
+      {
+        "candidate": "Ricardo Rossell\u00f3 Nevares",
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 660510,
+        "percentage": 41.8
+      },
+      {
+        "candidate": "David Bernier",
+        "party": "PARTIDO POPULAR DEMOCR\u00c1TICO",
+        "votes": 614190,
+        "percentage": 38.87
+      },
+      {
+        "candidate": "Alexandra L\u00fagaro",
+        "party": "INDEPENDIENTE",
+        "votes": 175831,
+        "percentage": 11.13
+      },
+      {
+        "candidate": "Manuel Cidre",
+        "party": "INDEPENDIENTE",
+        "votes": 90494,
+        "percentage": 5.73
+      },
+      {
+        "candidate": "Mar\u00eda De Lourdes Santiago",
+        "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUE\u00d1O",
+        "votes": 33729,
+        "percentage": 2.13
+      },
+      {
+        "candidate": "Rafael Bernabe Riefkohl",
+        "party": "PARTIDO PUEBLO TRABAJADOR",
+        "votes": 5430,
+        "percentage": 0.34
+      }
+    ],
+    "2020": [
+      {
+        "candidate": "Pedro Pierluisi",
+        "party": "PARTIDO NUEVO PROGRESISTA",
+        "votes": 427016,
+        "percentage": 33.24
+      },
+      {
+        "candidate": "Carlos (Charlie) Delgado Altieri",
+        "party": "PARTIDO POPULAR DEMOCR\u00c1TICO",
+        "votes": 407817,
+        "percentage": 31.75
+      },
+      {
+        "candidate": "Alexandra L\u00fagaro",
+        "party": "MOVIMIENTO VICTORIA CIUDADANA",
+        "votes": 179265,
+        "percentage": 13.95
+      },
+      {
+        "candidate": "Juan Dalmau Ram\u00edrez",
+        "party": "PARTIDO INDEPENDENTISTA PUERTORRIQUE\u00d1O",
+        "votes": 174402,
+        "percentage": 13.58
+      },
+      {
+        "candidate": "C\u00e9sar  Augusto V\u00e1zquez Mu\u00f1iz",
+        "party": "PROYECTO DIGNIDAD",
+        "votes": 87379,
+        "percentage": 6.8
+      },
+      {
+        "candidate": "Eliezer Molina P\u00e9rez",
+        "party": "INDEPENDIENTE",
+        "votes": 8751,
+        "percentage": 0.68
+      }
+    ]
+  },
+  "years": [
+    2016,
+    2020
+  ]
+}

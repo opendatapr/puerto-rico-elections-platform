@@ -1,0 +1,1833 @@
+{
+  "municipalities": [
+    {
+      "name": "San Juan",
+      "population": 395305,
+      "vap": 309488,
+      "precincts": 5,
+      "pnp_share_2016": 39.9,
+      "ppd_share_2016": 39.5,
+      "margin_2016": 0.4,
+      "house_districts": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "senate_district": 1,
+      "senate_name": "San Juan",
+      "region": "San Juan Metro",
+      "classification": "urban",
+      "median_income": 26981,
+      "poverty_rate": 39.48,
+      "bachelors_or_higher": 42.16,
+      "pop_share": 10.61
+    },
+    {
+      "name": "Bayam\u00f3n",
+      "population": 208116,
+      "vap": 161123,
+      "precincts": 4,
+      "pnp_share_2016": 44.2,
+      "ppd_share_2016": 35.8,
+      "margin_2016": 8.3,
+      "house_districts": [
+        8,
+        9,
+        6,
+        7
+      ],
+      "senate_district": 2,
+      "senate_name": "Bayam\u00f3n",
+      "region": "Bayam\u00f3n/North",
+      "classification": "urban",
+      "median_income": 30729,
+      "poverty_rate": 34.44,
+      "bachelors_or_higher": 32.07,
+      "pop_share": 5.59
+    },
+    {
+      "name": "Carolina",
+      "population": 176762,
+      "vap": 136059,
+      "precincts": 3,
+      "pnp_share_2016": 38.8,
+      "ppd_share_2016": 40.6,
+      "margin_2016": -1.8,
+      "house_districts": [
+        40,
+        38,
+        39
+      ],
+      "senate_district": 8,
+      "senate_name": "Carolina",
+      "region": "Carolina/Northeast",
+      "classification": "urban",
+      "median_income": 35126,
+      "poverty_rate": 29.31,
+      "bachelors_or_higher": 34.77,
+      "pop_share": 4.74
+    },
+    {
+      "name": "Ponce",
+      "population": 166327,
+      "vap": 125722,
+      "precincts": 3,
+      "pnp_share_2016": 41.7,
+      "ppd_share_2016": 37.7,
+      "margin_2016": 4.0,
+      "house_districts": [
+        24,
+        25,
+        23
+      ],
+      "senate_district": 5,
+      "senate_name": "Ponce",
+      "region": "Ponce/South",
+      "classification": "urban",
+      "median_income": 18827,
+      "poverty_rate": 50.94,
+      "bachelors_or_higher": 30.48,
+      "pop_share": 4.46
+    },
+    {
+      "name": "Caguas",
+      "population": 142933,
+      "vap": 108377,
+      "precincts": 2,
+      "pnp_share_2016": 35.8,
+      "ppd_share_2016": 41.6,
+      "margin_2016": -5.8,
+      "house_districts": [
+        32,
+        31
+      ],
+      "senate_district": 7,
+      "senate_name": "Humacao",
+      "region": "Caguas/Central",
+      "classification": "urban",
+      "median_income": 30113,
+      "poverty_rate": 36.65,
+      "bachelors_or_higher": 34.85,
+      "pop_share": 3.84
+    },
+    {
+      "name": "Guaynabo",
+      "population": 97945,
+      "vap": 76873,
+      "precincts": 2,
+      "pnp_share_2016": 44.1,
+      "ppd_share_2016": 32.6,
+      "margin_2016": 11.6,
+      "house_districts": [
+        5,
+        6
+      ],
+      "senate_district": 1,
+      "senate_name": "San Juan",
+      "region": "San Juan Metro",
+      "classification": "suburban",
+      "median_income": 46048,
+      "poverty_rate": 24.3,
+      "bachelors_or_higher": 49.12,
+      "pop_share": 2.63
+    },
+    {
+      "name": "Arecibo",
+      "population": 96440,
+      "vap": 74264,
+      "precincts": 2,
+      "pnp_share_2016": 50.9,
+      "ppd_share_2016": 32.4,
+      "margin_2016": 18.5,
+      "house_districts": [
+        13,
+        14
+      ],
+      "senate_district": 3,
+      "senate_name": "Arecibo",
+      "region": "Arecibo/Northwest",
+      "classification": "suburban",
+      "median_income": 23175,
+      "poverty_rate": 42.9,
+      "bachelors_or_higher": 27.46,
+      "pop_share": 2.59
+    },
+    {
+      "name": "Toa Baja",
+      "population": 89609,
+      "vap": 67780,
+      "precincts": 1,
+      "pnp_share_2016": 41.7,
+      "ppd_share_2016": 36.8,
+      "margin_2016": 5.0,
+      "house_districts": [
+        10
+      ],
+      "senate_district": 2,
+      "senate_name": "Bayam\u00f3n",
+      "region": "Bayam\u00f3n/North",
+      "classification": "suburban",
+      "median_income": 29648,
+      "poverty_rate": 33.83,
+      "bachelors_or_higher": 27.66,
+      "pop_share": 2.41
+    },
+    {
+      "name": "Mayag\u00fcez",
+      "population": 89080,
+      "vap": 71118,
+      "precincts": 2,
+      "pnp_share_2016": 37.7,
+      "ppd_share_2016": 44.1,
+      "margin_2016": -6.3,
+      "house_districts": [
+        18,
+        19
+      ],
+      "senate_district": 4,
+      "senate_name": "Mayag\u00fcez",
+      "region": "Mayag\u00fcez/West",
+      "classification": "suburban",
+      "median_income": 17963,
+      "poverty_rate": 53.02,
+      "bachelors_or_higher": 27.47,
+      "pop_share": 2.39
+    },
+    {
+      "name": "Trujillo Alto",
+      "population": 74842,
+      "vap": 56027,
+      "precincts": 2,
+      "pnp_share_2016": 37.0,
+      "ppd_share_2016": 40.4,
+      "margin_2016": -3.4,
+      "house_districts": [
+        38,
+        39
+      ],
+      "senate_district": 8,
+      "senate_name": "Carolina",
+      "region": "Carolina/Northeast",
+      "classification": "suburban",
+      "median_income": 38773,
+      "poverty_rate": 28.16,
+      "bachelors_or_higher": 39.9,
+      "pop_share": 2.01
+    },
+    {
+      "name": "Toa Alta",
+      "population": 74066,
+      "vap": 53742,
+      "precincts": 1,
+      "pnp_share_2016": 41.0,
+      "ppd_share_2016": 38.2,
+      "margin_2016": 2.8,
+      "house_districts": [
+        9
+      ],
+      "senate_district": 2,
+      "senate_name": "Bayam\u00f3n",
+      "region": "Bayam\u00f3n/North",
+      "classification": "suburban",
+      "median_income": 33349,
+      "poverty_rate": 33.83,
+      "bachelors_or_higher": 28.41,
+      "pop_share": 1.99
+    },
+    {
+      "name": "Aguadilla",
+      "population": 60949,
+      "vap": 46516,
+      "precincts": 1,
+      "pnp_share_2016": 48.8,
+      "ppd_share_2016": 34.5,
+      "margin_2016": 14.2,
+      "house_districts": [
+        17
+      ],
+      "senate_district": 4,
+      "senate_name": "Mayag\u00fcez",
+      "region": "Mayag\u00fcez/West",
+      "classification": "suburban",
+      "median_income": 19826,
+      "poverty_rate": 47.92,
+      "bachelors_or_higher": 25.47,
+      "pop_share": 1.64
+    },
+    {
+      "name": "Vega Baja",
+      "population": 59662,
+      "vap": 44549,
+      "precincts": 2,
+      "pnp_share_2016": 40.3,
+      "ppd_share_2016": 42.1,
+      "margin_2016": -1.8,
+      "house_districts": [
+        11,
+        12
+      ],
+      "senate_district": 3,
+      "senate_name": "Arecibo",
+      "region": "Arecibo/Northwest",
+      "classification": "suburban",
+      "median_income": 23877,
+      "poverty_rate": 42.28,
+      "bachelors_or_higher": 24.95,
+      "pop_share": 1.6
+    },
+    {
+      "name": "Humacao",
+      "population": 58466,
+      "vap": 44621,
+      "precincts": 1,
+      "pnp_share_2016": 38.4,
+      "ppd_share_2016": 46.0,
+      "margin_2016": -7.6,
+      "house_districts": [
+        35
+      ],
+      "senate_district": 7,
+      "senate_name": "Humacao",
+      "region": "Caguas/Central",
+      "classification": "suburban",
+      "median_income": 26083,
+      "poverty_rate": 38.53,
+      "bachelors_or_higher": 26.78,
+      "pop_share": 1.57
+    },
+    {
+      "name": "R\u00edo Grande",
+      "population": 54294,
+      "vap": 40818,
+      "precincts": 2,
+      "pnp_share_2016": 44.8,
+      "ppd_share_2016": 38.2,
+      "margin_2016": 6.6,
+      "house_districts": [
+        36,
+        37
+      ],
+      "senate_district": 8,
+      "senate_name": "Carolina",
+      "region": "Carolina/Northeast",
+      "classification": "suburban",
+      "median_income": 26745,
+      "poverty_rate": 37.01,
+      "bachelors_or_higher": 26.22,
+      "pop_share": 1.46
+    },
+    {
+      "name": "Cabo Rojo",
+      "population": 50917,
+      "vap": 39012,
+      "precincts": 1,
+      "pnp_share_2016": 37.3,
+      "ppd_share_2016": 40.3,
+      "margin_2016": -3.0,
+      "house_districts": [
+        20
+      ],
+      "senate_district": 4,
+      "senate_name": "Mayag\u00fcez",
+      "region": "Mayag\u00fcez/West",
+      "classification": "suburban",
+      "median_income": 25720,
+      "poverty_rate": 38.46,
+      "bachelors_or_higher": 28.59,
+      "pop_share": 1.37
+    },
+    {
+      "name": "Juana D\u00edaz",
+      "population": 50747,
+      "vap": 36912,
+      "precincts": 2,
+      "pnp_share_2016": 43.4,
+      "ppd_share_2016": 40.7,
+      "margin_2016": 2.7,
+      "house_districts": [
+        25,
+        26
+      ],
+      "senate_district": 5,
+      "senate_name": "Guayama",
+      "region": "Ponce/South",
+      "classification": "suburban",
+      "median_income": 23823,
+      "poverty_rate": 42.86,
+      "bachelors_or_higher": 27.86,
+      "pop_share": 1.36
+    },
+    {
+      "name": "Cayey",
+      "population": 48119,
+      "vap": 36702,
+      "precincts": 1,
+      "pnp_share_2016": 31.8,
+      "ppd_share_2016": 48.8,
+      "margin_2016": -17.0,
+      "house_districts": [
+        29
+      ],
+      "senate_district": 6,
+      "senate_name": "Guayama",
+      "region": "Guayama/Southeast",
+      "classification": "town",
+      "median_income": 28461,
+      "poverty_rate": 37.9,
+      "bachelors_or_higher": 29.0,
+      "pop_share": 1.29
+    },
+    {
+      "name": "Can\u00f3vanas",
+      "population": 47658,
+      "vap": 34937,
+      "precincts": 2,
+      "pnp_share_2016": 45.6,
+      "ppd_share_2016": 37.2,
+      "margin_2016": 8.4,
+      "house_districts": [
+        37,
+        38
+      ],
+      "senate_district": 8,
+      "senate_name": "Carolina",
+      "region": "Carolina/Northeast",
+      "classification": "town",
+      "median_income": 27278,
+      "poverty_rate": 33.87,
+      "bachelors_or_higher": 27.53,
+      "pop_share": 1.28
+    },
+    {
+      "name": "Isabela",
+      "population": 45631,
+      "vap": 34758,
+      "precincts": 1,
+      "pnp_share_2016": 43.1,
+      "ppd_share_2016": 41.3,
+      "margin_2016": 1.8,
+      "house_districts": [
+        16
+      ],
+      "senate_district": 4,
+      "senate_name": "Mayag\u00fcez",
+      "region": "Mayag\u00fcez/West",
+      "classification": "town",
+      "median_income": 20484,
+      "poverty_rate": 46.67,
+      "bachelors_or_higher": 25.45,
+      "pop_share": 1.22
+    },
+    {
+      "name": "Gurabo",
+      "population": 45369,
+      "vap": 33549,
+      "precincts": 1,
+      "pnp_share_2016": 43.5,
+      "ppd_share_2016": 36.5,
+      "margin_2016": 7.0,
+      "house_districts": [
+        31
+      ],
+      "senate_district": 7,
+      "senate_name": "Humacao",
+      "region": "Caguas/Central",
+      "classification": "town",
+      "median_income": 39532,
+      "poverty_rate": 32.0,
+      "bachelors_or_higher": 33.83,
+      "pop_share": 1.22
+    },
+    {
+      "name": "Guayama",
+      "population": 45362,
+      "vap": 33678,
+      "precincts": 1,
+      "pnp_share_2016": 41.4,
+      "ppd_share_2016": 45.0,
+      "margin_2016": -3.7,
+      "house_districts": [
+        30
+      ],
+      "senate_district": 6,
+      "senate_name": "Guayama",
+      "region": "Guayama/Southeast",
+      "classification": "town",
+      "median_income": 20273,
+      "poverty_rate": 48.59,
+      "bachelors_or_higher": 22.47,
+      "pop_share": 1.22
+    },
+    {
+      "name": "Manat\u00ed",
+      "population": 44113,
+      "vap": 32967,
+      "precincts": 2,
+      "pnp_share_2016": 51.3,
+      "ppd_share_2016": 31.1,
+      "margin_2016": 20.2,
+      "house_districts": [
+        12,
+        13
+      ],
+      "senate_district": 3,
+      "senate_name": "Arecibo",
+      "region": "Arecibo/Northwest",
+      "classification": "town",
+      "median_income": 20352,
+      "poverty_rate": 45.94,
+      "bachelors_or_higher": 23.77,
+      "pop_share": 1.18
+    },
+    {
+      "name": "Cidra",
+      "population": 43480,
+      "vap": 32631,
+      "precincts": 1,
+      "pnp_share_2016": 42.3,
+      "ppd_share_2016": 37.0,
+      "margin_2016": 5.3,
+      "house_districts": [
+        29
+      ],
+      "senate_district": 6,
+      "senate_name": "Guayama",
+      "region": "Guayama/Southeast",
+      "classification": "town",
+      "median_income": 27149,
+      "poverty_rate": 36.25,
+      "bachelors_or_higher": 26.18,
+      "pop_share": 1.17
+    },
+    {
+      "name": "Las Mar\u00edas",
+      "population": 42430,
+      "vap": 32339,
+      "precincts": 1,
+      "pnp_share_2016": 49.4,
+      "ppd_share_2016": 43.2,
+      "margin_2016": 6.3,
+      "house_districts": [
+        16
+      ],
+      "senate_district": 4,
+      "senate_name": "Mayag\u00fcez",
+      "region": "Mayag\u00fcez/West",
+      "classification": "town",
+      "median_income": 16170,
+      "poverty_rate": 53.97,
+      "bachelors_or_higher": 16.57,
+      "pop_share": 1.14
+    },
+    {
+      "name": "Aguada",
+      "population": 41959,
+      "vap": 32033,
+      "precincts": 1,
+      "pnp_share_2016": 44.7,
+      "ppd_share_2016": 36.3,
+      "margin_2016": 8.4,
+      "house_districts": [
+        18
+      ],
+      "senate_district": 4,
+      "senate_name": "Mayag\u00fcez",
+      "region": "Mayag\u00fcez/West",
+      "classification": "town",
+      "median_income": 21694,
+      "poverty_rate": 46.47,
+      "bachelors_or_higher": 23.62,
+      "pop_share": 1.13
+    },
+    {
+      "name": "Hatillo",
+      "population": 41953,
+      "vap": 31754,
+      "precincts": 2,
+      "pnp_share_2016": 45.1,
+      "ppd_share_2016": 39.5,
+      "margin_2016": 5.6,
+      "house_districts": [
+        14,
+        15
+      ],
+      "senate_district": 3,
+      "senate_name": "Arecibo",
+      "region": "Arecibo/Northwest",
+      "classification": "town",
+      "median_income": 28001,
+      "poverty_rate": 36.36,
+      "bachelors_or_higher": 31.42,
+      "pop_share": 1.13
+    },
+    {
+      "name": "San Lorenzo",
+      "population": 41018,
+      "vap": 31050,
+      "precincts": 2,
+      "pnp_share_2016": 41.7,
+      "ppd_share_2016": 40.1,
+      "margin_2016": 1.6,
+      "house_districts": [
+        33,
+        34
+      ],
+      "senate_district": 7,
+      "senate_name": "Humacao",
+      "region": "Caguas/Central",
+      "classification": "town",
+      "median_income": 21320,
+      "poverty_rate": 44.61,
+      "bachelors_or_higher": 19.91,
+      "pop_share": 1.1
+    },
+    {
+      "name": "Coamo",
+      "population": 40509,
+      "vap": 29714,
+      "precincts": 2,
+      "pnp_share_2016": 41.2,
+      "ppd_share_2016": 46.8,
+      "margin_2016": -5.6,
+      "house_districts": [
+        26,
+        27
+      ],
+      "senate_district": 6,
+      "senate_name": "Guayama",
+      "region": "Guayama/Southeast",
+      "classification": "town",
+      "median_income": 20797,
+      "poverty_rate": 51.96,
+      "bachelors_or_higher": 22.73,
+      "pop_share": 1.09
+    },
+    {
+      "name": "Juncos",
+      "population": 40290,
+      "vap": 29595,
+      "precincts": 1,
+      "pnp_share_2016": 42.0,
+      "ppd_share_2016": 41.8,
+      "margin_2016": 0.2,
+      "house_districts": [
+        33
+      ],
+      "senate_district": 7,
+      "senate_name": "Humacao",
+      "region": "Caguas/Central",
+      "classification": "town",
+      "median_income": 28196,
+      "poverty_rate": 34.0,
+      "bachelors_or_higher": 22.73,
+      "pop_share": 1.08
+    },
+    {
+      "name": "Moca",
+      "population": 40109,
+      "vap": 29757,
+      "precincts": 2,
+      "pnp_share_2016": 52.1,
+      "ppd_share_2016": 35.7,
+      "margin_2016": 16.4,
+      "house_districts": [
+        17,
+        18
+      ],
+      "senate_district": 4,
+      "senate_name": "Mayag\u00fcez",
+      "region": "Mayag\u00fcez/West",
+      "classification": "town",
+      "median_income": 21415,
+      "poverty_rate": 46.0,
+      "bachelors_or_higher": 24.78,
+      "pop_share": 1.08
+    },
+    {
+      "name": "Vega Alta",
+      "population": 39951,
+      "vap": 29525,
+      "precincts": 2,
+      "pnp_share_2016": 42.7,
+      "ppd_share_2016": 41.5,
+      "margin_2016": 1.1,
+      "house_districts": [
+        11,
+        12
+      ],
+      "senate_district": 3,
+      "senate_name": "Arecibo",
+      "region": "Arecibo/Northwest",
+      "classification": "town",
+      "median_income": 25235,
+      "poverty_rate": 41.26,
+      "bachelors_or_higher": 24.73,
+      "pop_share": 1.07
+    },
+    {
+      "name": "Las Piedras",
+      "population": 38675,
+      "vap": 28922,
+      "precincts": 2,
+      "pnp_share_2016": 46.8,
+      "ppd_share_2016": 36.1,
+      "margin_2016": 10.8,
+      "house_districts": [
+        33,
+        35
+      ],
+      "senate_district": 7,
+      "senate_name": "Humacao",
+      "region": "Caguas/Central",
+      "classification": "town",
+      "median_income": 25697,
+      "poverty_rate": 37.55,
+      "bachelors_or_higher": 28.92,
+      "pop_share": 1.04
+    },
+    {
+      "name": "Dorado",
+      "population": 38165,
+      "vap": 28109,
+      "precincts": 1,
+      "pnp_share_2016": 37.2,
+      "ppd_share_2016": 42.3,
+      "margin_2016": -5.1,
+      "house_districts": [
+        11
+      ],
+      "senate_district": 3,
+      "senate_name": "Arecibo",
+      "region": "Arecibo/Northwest",
+      "classification": "town",
+      "median_income": 33388,
+      "poverty_rate": 29.22,
+      "bachelors_or_higher": 36.29,
+      "pop_share": 1.02
+    },
+    {
+      "name": "Yabucoa",
+      "population": 37941,
+      "vap": 28453,
+      "precincts": 1,
+      "pnp_share_2016": 44.6,
+      "ppd_share_2016": 44.3,
+      "margin_2016": 0.4,
+      "house_districts": [
+        34
+      ],
+      "senate_district": 7,
+      "senate_name": "Humacao",
+      "region": "Caguas/Central",
+      "classification": "town",
+      "median_income": 21279,
+      "poverty_rate": 49.72,
+      "bachelors_or_higher": 18.36,
+      "pop_share": 1.02
+    },
+    {
+      "name": "Corozal",
+      "population": 37142,
+      "vap": 27498,
+      "precincts": 1,
+      "pnp_share_2016": 44.8,
+      "ppd_share_2016": 42.2,
+      "margin_2016": 2.6,
+      "house_districts": [
+        28
+      ],
+      "senate_district": 6,
+      "senate_name": "Guayama",
+      "region": "Guayama/Southeast",
+      "classification": "town",
+      "median_income": 23933,
+      "poverty_rate": 44.15,
+      "bachelors_or_higher": 21.86,
+      "pop_share": 1.0
+    },
+    {
+      "name": "Fajardo",
+      "population": 36993,
+      "vap": 27733,
+      "precincts": 1,
+      "pnp_share_2016": 48.2,
+      "ppd_share_2016": 33.2,
+      "margin_2016": 14.9,
+      "house_districts": [
+        36
+      ],
+      "senate_district": 8,
+      "senate_name": "Carolina",
+      "region": "Carolina/Northeast",
+      "classification": "town",
+      "median_income": 25170,
+      "poverty_rate": 41.48,
+      "bachelors_or_higher": 29.88,
+      "pop_share": 0.99
+    },
+    {
+      "name": "San Germ\u00e1n",
+      "population": 35527,
+      "vap": 27537,
+      "precincts": 2,
+      "pnp_share_2016": 41.0,
+      "ppd_share_2016": 41.1,
+      "margin_2016": -0.2,
+      "house_districts": [
+        19,
+        20
+      ],
+      "senate_district": 4,
+      "senate_name": "Mayag\u00fcez",
+      "region": "Mayag\u00fcez/West",
+      "classification": "town",
+      "median_income": 17921,
+      "poverty_rate": 51.92,
+      "bachelors_or_higher": 24.29,
+      "pop_share": 0.95
+    },
+    {
+      "name": "Camuy",
+      "population": 35113,
+      "vap": 26469,
+      "precincts": 1,
+      "pnp_share_2016": 51.9,
+      "ppd_share_2016": 34.9,
+      "margin_2016": 17.0,
+      "house_districts": [
+        15
+      ],
+      "senate_district": 3,
+      "senate_name": "Arecibo",
+      "region": "Arecibo/Northwest",
+      "classification": "town",
+      "median_income": 26094,
+      "poverty_rate": 38.99,
+      "bachelors_or_higher": 21.25,
+      "pop_share": 0.94
+    },
+    {
+      "name": "Utuado",
+      "population": 33149,
+      "vap": 24995,
+      "precincts": 1,
+      "pnp_share_2016": 48.9,
+      "ppd_share_2016": 41.5,
+      "margin_2016": 7.4,
+      "house_districts": [
+        22
+      ],
+      "senate_district": 5,
+      "senate_name": "Ponce",
+      "region": "Ponce/South",
+      "classification": "town",
+      "median_income": 17624,
+      "poverty_rate": 53.49,
+      "bachelors_or_higher": 22.74,
+      "pop_share": 0.89
+    },
+    {
+      "name": "Morovis",
+      "population": 32610,
+      "vap": 23553,
+      "precincts": 1,
+      "pnp_share_2016": 44.1,
+      "ppd_share_2016": 44.2,
+      "margin_2016": -0.1,
+      "house_districts": [
+        12
+      ],
+      "senate_district": 3,
+      "senate_name": "Arecibo",
+      "region": "Arecibo/Northwest",
+      "classification": "town",
+      "median_income": 23010,
+      "poverty_rate": 48.69,
+      "bachelors_or_higher": 20.66,
+      "pop_share": 0.88
+    },
+    {
+      "name": "Salinas",
+      "population": 31078,
+      "vap": 22647,
+      "precincts": 2,
+      "pnp_share_2016": 39.5,
+      "ppd_share_2016": 46.3,
+      "margin_2016": -6.8,
+      "house_districts": [
+        27,
+        30
+      ],
+      "senate_district": 6,
+      "senate_name": "Guayama",
+      "region": "Guayama/Southeast",
+      "classification": "town",
+      "median_income": 21611,
+      "poverty_rate": 48.03,
+      "bachelors_or_higher": 19.35,
+      "pop_share": 0.83
+    },
+    {
+      "name": "Lares",
+      "population": 30753,
+      "vap": 23382,
+      "precincts": 1,
+      "pnp_share_2016": 49.4,
+      "ppd_share_2016": 40.6,
+      "margin_2016": 8.8,
+      "house_districts": [
+        22
+      ],
+      "senate_district": 5,
+      "senate_name": "Ponce",
+      "region": "Ponce/South",
+      "classification": "town",
+      "median_income": 19323,
+      "poverty_rate": 54.87,
+      "bachelors_or_higher": 21.3,
+      "pop_share": 0.83
+    },
+    {
+      "name": "Naranjito",
+      "population": 30402,
+      "vap": 22845,
+      "precincts": 1,
+      "pnp_share_2016": 41.1,
+      "ppd_share_2016": 46.3,
+      "margin_2016": -5.2,
+      "house_districts": [
+        28
+      ],
+      "senate_district": 6,
+      "senate_name": "Guayama",
+      "region": "Guayama/Southeast",
+      "classification": "town",
+      "median_income": 21399,
+      "poverty_rate": 50.55,
+      "bachelors_or_higher": 19.76,
+      "pop_share": 0.82
+    },
+    {
+      "name": "Barranquitas",
+      "population": 30318,
+      "vap": 21961,
+      "precincts": 2,
+      "pnp_share_2016": 48.2,
+      "ppd_share_2016": 40.1,
+      "margin_2016": 8.1,
+      "house_districts": [
+        26,
+        28
+      ],
+      "senate_district": 6,
+      "senate_name": "Guayama",
+      "region": "Guayama/Southeast",
+      "classification": "town",
+      "median_income": 22167,
+      "poverty_rate": 49.55,
+      "bachelors_or_higher": 22.34,
+      "pop_share": 0.81
+    },
+    {
+      "name": "Lo\u00edza",
+      "population": 30060,
+      "vap": 21928,
+      "precincts": 1,
+      "pnp_share_2016": 53.1,
+      "ppd_share_2016": 35.0,
+      "margin_2016": 18.1,
+      "house_districts": [
+        37
+      ],
+      "senate_district": 8,
+      "senate_name": "Carolina",
+      "region": "Carolina/Northeast",
+      "classification": "town",
+      "median_income": 22500,
+      "poverty_rate": 44.81,
+      "bachelors_or_higher": 18.48,
+      "pop_share": 0.81
+    },
+    {
+      "name": "A\u00f1asco",
+      "population": 29261,
+      "vap": 22262,
+      "precincts": 1,
+      "pnp_share_2016": 44.2,
+      "ppd_share_2016": 40.2,
+      "margin_2016": 3.9,
+      "house_districts": [
+        18
+      ],
+      "senate_district": 4,
+      "senate_name": "Mayag\u00fcez",
+      "region": "Mayag\u00fcez/West",
+      "classification": "town",
+      "median_income": 23591,
+      "poverty_rate": 44.92,
+      "bachelors_or_higher": 23.16,
+      "pop_share": 0.79
+    },
+    {
+      "name": "Aguas Buenas",
+      "population": 28659,
+      "vap": 21474,
+      "precincts": 1,
+      "pnp_share_2016": 47.3,
+      "ppd_share_2016": 35.3,
+      "margin_2016": 12.0,
+      "house_districts": [
+        5
+      ],
+      "senate_district": 1,
+      "senate_name": "San Juan",
+      "region": "San Juan Metro",
+      "classification": "town",
+      "median_income": 22361,
+      "poverty_rate": 43.63,
+      "bachelors_or_higher": 20.43,
+      "pop_share": 0.77
+    },
+    {
+      "name": "Cata\u00f1o",
+      "population": 28140,
+      "vap": 20954,
+      "precincts": 1,
+      "pnp_share_2016": 47.0,
+      "ppd_share_2016": 33.4,
+      "margin_2016": 13.6,
+      "house_districts": [
+        6
+      ],
+      "senate_district": 2,
+      "senate_name": "Bayam\u00f3n",
+      "region": "Bayam\u00f3n/North",
+      "classification": "town",
+      "median_income": 24307,
+      "poverty_rate": 44.22,
+      "bachelors_or_higher": 22.85,
+      "pop_share": 0.76
+    },
+    {
+      "name": "Naguabo",
+      "population": 26720,
+      "vap": 19638,
+      "precincts": 1,
+      "pnp_share_2016": 47.4,
+      "ppd_share_2016": 38.3,
+      "margin_2016": 9.2,
+      "house_districts": [
+        35
+      ],
+      "senate_district": 7,
+      "senate_name": "Humacao",
+      "region": "Caguas/Central",
+      "classification": "town",
+      "median_income": 21416,
+      "poverty_rate": 48.0,
+      "bachelors_or_higher": 23.72,
+      "pop_share": 0.72
+    },
+    {
+      "name": "Villalba",
+      "population": 26073,
+      "vap": 18900,
+      "precincts": 1,
+      "pnp_share_2016": 48.0,
+      "ppd_share_2016": 42.7,
+      "margin_2016": 5.3,
+      "house_districts": [
+        26
+      ],
+      "senate_district": 6,
+      "senate_name": "Guayama",
+      "region": "Guayama/Southeast",
+      "classification": "town",
+      "median_income": 24882,
+      "poverty_rate": 41.83,
+      "bachelors_or_higher": 22.48,
+      "pop_share": 0.7
+    },
+    {
+      "name": "Quebradillas",
+      "population": 25965,
+      "vap": 19561,
+      "precincts": 1,
+      "pnp_share_2016": 45.7,
+      "ppd_share_2016": 40.0,
+      "margin_2016": 5.7,
+      "house_districts": [
+        15
+      ],
+      "senate_district": 3,
+      "senate_name": "Arecibo",
+      "region": "Arecibo/Northwest",
+      "classification": "town",
+      "median_income": 23624,
+      "poverty_rate": 45.05,
+      "bachelors_or_higher": 21.21,
+      "pop_share": 0.7
+    },
+    {
+      "name": "Aibonito",
+      "population": 25900,
+      "vap": 19662,
+      "precincts": 1,
+      "pnp_share_2016": 36.6,
+      "ppd_share_2016": 45.4,
+      "margin_2016": -8.8,
+      "house_districts": [
+        27
+      ],
+      "senate_district": 6,
+      "senate_name": "Guayama",
+      "region": "Guayama/Southeast",
+      "classification": "town",
+      "median_income": 21714,
+      "poverty_rate": 44.64,
+      "bachelors_or_higher": 23.37,
+      "pop_share": 0.7
+    },
+    {
+      "name": "Yauco 052",
+      "population": 25858,
+      "vap": 19613,
+      "precincts": 1,
+      "pnp_share_2016": 42.2,
+      "ppd_share_2016": 40.3,
+      "margin_2016": 2.0,
+      "house_districts": [
+        23
+      ],
+      "senate_district": 5,
+      "senate_name": "Ponce",
+      "region": "Ponce/South",
+      "classification": "town",
+      "median_income": null,
+      "poverty_rate": null,
+      "bachelors_or_higher": null,
+      "pop_share": 0.69
+    },
+    {
+      "name": "Lajas",
+      "population": 25753,
+      "vap": 19800,
+      "precincts": 1,
+      "pnp_share_2016": 40.4,
+      "ppd_share_2016": 43.9,
+      "margin_2016": -3.5,
+      "house_districts": [
+        21
+      ],
+      "senate_district": 5,
+      "senate_name": "Ponce",
+      "region": "Ponce/South",
+      "classification": "town",
+      "median_income": 18920,
+      "poverty_rate": 52.97,
+      "bachelors_or_higher": 20.95,
+      "pop_share": 0.69
+    },
+    {
+      "name": "S\u00e1bana Grande",
+      "population": 25262,
+      "vap": 19029,
+      "precincts": 1,
+      "pnp_share_2016": 35.0,
+      "ppd_share_2016": 52.0,
+      "margin_2016": -17.0,
+      "house_districts": [
+        21
+      ],
+      "senate_district": 5,
+      "senate_name": "Ponce",
+      "region": "Ponce/South",
+      "classification": "town",
+      "median_income": null,
+      "poverty_rate": null,
+      "bachelors_or_higher": null,
+      "pop_share": 0.68
+    },
+    {
+      "name": "Barceloneta",
+      "population": 24816,
+      "vap": 18496,
+      "precincts": 1,
+      "pnp_share_2016": 41.5,
+      "ppd_share_2016": 41.2,
+      "margin_2016": 0.3,
+      "house_districts": [
+        13
+      ],
+      "senate_district": 3,
+      "senate_name": "Arecibo",
+      "region": "Arecibo/Northwest",
+      "classification": "town",
+      "median_income": 21750,
+      "poverty_rate": 45.41,
+      "bachelors_or_higher": 24.14,
+      "pop_share": 0.67
+    },
+    {
+      "name": "Pe\u00f1uelas",
+      "population": 24282,
+      "vap": 17598,
+      "precincts": 1,
+      "pnp_share_2016": 43.2,
+      "ppd_share_2016": 41.4,
+      "margin_2016": 1.8,
+      "house_districts": [
+        23
+      ],
+      "senate_district": 5,
+      "senate_name": "Ponce",
+      "region": "Ponce/South",
+      "classification": "town",
+      "median_income": 20959,
+      "poverty_rate": 51.0,
+      "bachelors_or_higher": 25.65,
+      "pop_share": 0.65
+    },
+    {
+      "name": "Orocovis",
+      "population": 23426,
+      "vap": 17067,
+      "precincts": 1,
+      "pnp_share_2016": 52.4,
+      "ppd_share_2016": 38.9,
+      "margin_2016": 13.5,
+      "house_districts": [
+        26
+      ],
+      "senate_district": 6,
+      "senate_name": "Guayama",
+      "region": "Guayama/Southeast",
+      "classification": "town",
+      "median_income": 19062,
+      "poverty_rate": 52.53,
+      "bachelors_or_higher": 18.52,
+      "pop_share": 0.63
+    },
+    {
+      "name": "Santa Isabel",
+      "population": 23274,
+      "vap": 16509,
+      "precincts": 1,
+      "pnp_share_2016": 45.3,
+      "ppd_share_2016": 40.7,
+      "margin_2016": 4.6,
+      "house_districts": [
+        27
+      ],
+      "senate_district": 6,
+      "senate_name": "Guayama",
+      "region": "Guayama/Southeast",
+      "classification": "town",
+      "median_income": 23197,
+      "poverty_rate": 45.74,
+      "bachelors_or_higher": 28.79,
+      "pop_share": 0.62
+    },
+    {
+      "name": "Guayanilla",
+      "population": 21581,
+      "vap": 16101,
+      "precincts": 1,
+      "pnp_share_2016": 40.9,
+      "ppd_share_2016": 44.6,
+      "margin_2016": -3.7,
+      "house_districts": [
+        23
+      ],
+      "senate_district": 5,
+      "senate_name": "Ponce",
+      "region": "Ponce/South",
+      "classification": "town",
+      "median_income": 21400,
+      "poverty_rate": 50.18,
+      "bachelors_or_higher": 25.01,
+      "pop_share": 0.58
+    },
+    {
+      "name": "Comer\u00edo",
+      "population": 20778,
+      "vap": 15518,
+      "precincts": 1,
+      "pnp_share_2016": 43.7,
+      "ppd_share_2016": 46.3,
+      "margin_2016": -2.6,
+      "house_districts": [
+        28
+      ],
+      "senate_district": 6,
+      "senate_name": "Guayama",
+      "region": "Guayama/Southeast",
+      "classification": "town",
+      "median_income": 17254,
+      "poverty_rate": 53.01,
+      "bachelors_or_higher": 17.99,
+      "pop_share": 0.56
+    },
+    {
+      "name": "Luquillo",
+      "population": 20068,
+      "vap": 14977,
+      "precincts": 1,
+      "pnp_share_2016": 42.8,
+      "ppd_share_2016": 41.3,
+      "margin_2016": 1.5,
+      "house_districts": [
+        36
+      ],
+      "senate_district": 8,
+      "senate_name": "Carolina",
+      "region": "Carolina/Northeast",
+      "classification": "town",
+      "median_income": 23769,
+      "poverty_rate": 43.8,
+      "bachelors_or_higher": 23.48,
+      "pop_share": 0.54
+    },
+    {
+      "name": "Arroyo",
+      "population": 19575,
+      "vap": 14322,
+      "precincts": 1,
+      "pnp_share_2016": 43.6,
+      "ppd_share_2016": 47.7,
+      "margin_2016": -4.1,
+      "house_districts": [
+        30
+      ],
+      "senate_district": 6,
+      "senate_name": "Guayama",
+      "region": "Guayama/Southeast",
+      "classification": "rural",
+      "median_income": 18931,
+      "poverty_rate": 54.44,
+      "bachelors_or_higher": 26.64,
+      "pop_share": 0.53
+    },
+    {
+      "name": "Adjuntas",
+      "population": 19483,
+      "vap": 14484,
+      "precincts": 1,
+      "pnp_share_2016": 53.0,
+      "ppd_share_2016": 38.0,
+      "margin_2016": 15.0,
+      "house_districts": [
+        22
+      ],
+      "senate_district": 5,
+      "senate_name": "Ponce",
+      "region": "Ponce/South",
+      "classification": "rural",
+      "median_income": 18605,
+      "poverty_rate": 61.95,
+      "bachelors_or_higher": 16.96,
+      "pop_share": 0.52
+    },
+    {
+      "name": "Gu\u00e1nica",
+      "population": 19427,
+      "vap": 14641,
+      "precincts": 1,
+      "pnp_share_2016": 45.8,
+      "ppd_share_2016": 41.5,
+      "margin_2016": 4.4,
+      "house_districts": [
+        21
+      ],
+      "senate_district": 5,
+      "senate_name": "Ponce",
+      "region": "Ponce/South",
+      "classification": "rural",
+      "median_income": 16210,
+      "poverty_rate": 64.75,
+      "bachelors_or_higher": 15.49,
+      "pop_share": 0.52
+    },
+    {
+      "name": "Patillas",
+      "population": 19270,
+      "vap": 14607,
+      "precincts": 1,
+      "pnp_share_2016": 40.3,
+      "ppd_share_2016": 52.0,
+      "margin_2016": -11.6,
+      "house_districts": [
+        34
+      ],
+      "senate_district": 7,
+      "senate_name": "Humacao",
+      "region": "Caguas/Central",
+      "classification": "rural",
+      "median_income": 23422,
+      "poverty_rate": 47.77,
+      "bachelors_or_higher": 22.14,
+      "pop_share": 0.52
+    },
+    {
+      "name": "Ciales",
+      "population": 18782,
+      "vap": 13970,
+      "precincts": 1,
+      "pnp_share_2016": 48.4,
+      "ppd_share_2016": 40.8,
+      "margin_2016": 7.6,
+      "house_districts": [
+        13
+      ],
+      "senate_district": 3,
+      "senate_name": "Arecibo",
+      "region": "Arecibo/Northwest",
+      "classification": "rural",
+      "median_income": 20614,
+      "poverty_rate": 58.24,
+      "bachelors_or_higher": 17.0,
+      "pop_share": 0.5
+    },
+    {
+      "name": "Hormigueros",
+      "population": 17250,
+      "vap": 13557,
+      "precincts": 1,
+      "pnp_share_2016": 34.5,
+      "ppd_share_2016": 45.8,
+      "margin_2016": -11.3,
+      "house_districts": [
+        20
+      ],
+      "senate_district": 4,
+      "senate_name": "Mayag\u00fcez",
+      "region": "Mayag\u00fcez/West",
+      "classification": "rural",
+      "median_income": 24862,
+      "poverty_rate": 40.05,
+      "bachelors_or_higher": 30.32,
+      "pop_share": 0.46
+    },
+    {
+      "name": "Jayuya",
+      "population": 16642,
+      "vap": 12071,
+      "precincts": 2,
+      "pnp_share_2016": 45.7,
+      "ppd_share_2016": 45.3,
+      "margin_2016": 0.4,
+      "house_districts": [
+        25,
+        22
+      ],
+      "senate_district": 5,
+      "senate_name": "Ponce",
+      "region": "Ponce/South",
+      "classification": "rural",
+      "median_income": 18413,
+      "poverty_rate": 54.92,
+      "bachelors_or_higher": 20.34,
+      "pop_share": 0.45
+    },
+    {
+      "name": "Yauco",
+      "population": 16185,
+      "vap": 12298,
+      "precincts": 1,
+      "pnp_share_2016": 46.7,
+      "ppd_share_2016": 37.6,
+      "margin_2016": 9.1,
+      "house_districts": [
+        21
+      ],
+      "senate_district": 5,
+      "senate_name": "Ponce",
+      "region": "Ponce/South",
+      "classification": "rural",
+      "median_income": 21918,
+      "poverty_rate": 44.56,
+      "bachelors_or_higher": 27.12,
+      "pop_share": 0.43
+    },
+    {
+      "name": "Rinc\u00f3n",
+      "population": 15200,
+      "vap": 11776,
+      "precincts": 1,
+      "pnp_share_2016": 36.4,
+      "ppd_share_2016": 44.9,
+      "margin_2016": -8.6,
+      "house_districts": [
+        18
+      ],
+      "senate_district": 4,
+      "senate_name": "Mayag\u00fcez",
+      "region": "Mayag\u00fcez/West",
+      "classification": "rural",
+      "median_income": 25223,
+      "poverty_rate": 44.58,
+      "bachelors_or_higher": 24.49,
+      "pop_share": 0.41
+    },
+    {
+      "name": "Ceiba",
+      "population": 13631,
+      "vap": 10278,
+      "precincts": 1,
+      "pnp_share_2016": 47.5,
+      "ppd_share_2016": 36.2,
+      "margin_2016": 11.4,
+      "house_districts": [
+        36
+      ],
+      "senate_district": 8,
+      "senate_name": "Carolina",
+      "region": "Carolina/Northeast",
+      "classification": "rural",
+      "median_income": 23204,
+      "poverty_rate": 41.61,
+      "bachelors_or_higher": 21.48,
+      "pop_share": 0.37
+    },
+    {
+      "name": "Florida",
+      "population": 12680,
+      "vap": 9353,
+      "precincts": 1,
+      "pnp_share_2016": 51.1,
+      "ppd_share_2016": 35.8,
+      "margin_2016": 15.4,
+      "house_districts": [
+        13
+      ],
+      "senate_district": 3,
+      "senate_name": "Arecibo",
+      "region": "Arecibo/Northwest",
+      "classification": "rural",
+      "median_income": 21213,
+      "poverty_rate": 50.6,
+      "bachelors_or_higher": 19.02,
+      "pop_share": 0.34
+    },
+    {
+      "name": "Maunabo",
+      "population": 12232,
+      "vap": 9274,
+      "precincts": 1,
+      "pnp_share_2016": 45.9,
+      "ppd_share_2016": 46.4,
+      "margin_2016": -0.5,
+      "house_districts": [
+        34
+      ],
+      "senate_district": 7,
+      "senate_name": "Humacao",
+      "region": "Caguas/Central",
+      "classification": "rural",
+      "median_income": 19363,
+      "poverty_rate": 52.85,
+      "bachelors_or_higher": 12.68,
+      "pop_share": 0.33
+    },
+    {
+      "name": "San Sebasti\u00e1n",
+      "population": 9881,
+      "vap": 7469,
+      "precincts": 1,
+      "pnp_share_2016": 45.3,
+      "ppd_share_2016": 40.9,
+      "margin_2016": 4.4,
+      "house_districts": [
+        16
+      ],
+      "senate_district": 4,
+      "senate_name": "Mayag\u00fcez",
+      "region": "Mayag\u00fcez/West",
+      "classification": "rural",
+      "median_income": 17834,
+      "poverty_rate": 52.39,
+      "bachelors_or_higher": 22.8,
+      "pop_share": 0.27
+    },
+    {
+      "name": "Vieques",
+      "population": 9301,
+      "vap": 7105,
+      "precincts": 1,
+      "pnp_share_2016": 38.3,
+      "ppd_share_2016": 48.1,
+      "margin_2016": -9.8,
+      "house_districts": [
+        36
+      ],
+      "senate_district": 8,
+      "senate_name": "Carolina",
+      "region": "Carolina/Northeast",
+      "classification": "rural",
+      "median_income": 17531,
+      "poverty_rate": 59.53,
+      "bachelors_or_higher": 12.37,
+      "pop_share": 0.25
+    },
+    {
+      "name": "Maricao",
+      "population": 6279,
+      "vap": 4705,
+      "precincts": 1,
+      "pnp_share_2016": 53.1,
+      "ppd_share_2016": 39.9,
+      "margin_2016": 13.3,
+      "house_districts": [
+        21
+      ],
+      "senate_district": 5,
+      "senate_name": "Ponce",
+      "region": "Ponce/South",
+      "classification": "rural",
+      "median_income": 20541,
+      "poverty_rate": 52.65,
+      "bachelors_or_higher": 11.51,
+      "pop_share": 0.17
+    },
+    {
+      "name": "Culebra",
+      "population": 1818,
+      "vap": 1403,
+      "precincts": 1,
+      "pnp_share_2016": 39.0,
+      "ppd_share_2016": 40.1,
+      "margin_2016": -1.1,
+      "house_districts": [
+        36
+      ],
+      "senate_district": 8,
+      "senate_name": "Carolina",
+      "region": "Carolina/Northeast",
+      "classification": "rural",
+      "median_income": 27614,
+      "poverty_rate": 20.84,
+      "bachelors_or_higher": 16.23,
+      "pop_share": 0.05
+    }
+  ],
+  "regions": [
+    {
+      "name": "San Juan Metro",
+      "municipalities": 3,
+      "population": 521909,
+      "pnp_share": 41.1,
+      "ppd_share": 38.0
+    },
+    {
+      "name": "Ponce/South",
+      "municipalities": 14,
+      "population": 481728,
+      "pnp_share": 43.6,
+      "ppd_share": 40.6
+    },
+    {
+      "name": "Mayag\u00fcez/West",
+      "municipalities": 12,
+      "population": 478194,
+      "pnp_share": 43.1,
+      "ppd_share": 40.3
+    },
+    {
+      "name": "Arecibo/Northwest",
+      "municipalities": 12,
+      "population": 470250,
+      "pnp_share": 46.0,
+      "ppd_share": 38.0
+    },
+    {
+      "name": "Carolina/Northeast",
+      "municipalities": 10,
+      "population": 465427,
+      "pnp_share": 42.0,
+      "ppd_share": 39.0
+    },
+    {
+      "name": "Caguas/Central",
+      "municipalities": 10,
+      "population": 462914,
+      "pnp_share": 40.7,
+      "ppd_share": 41.7
+    },
+    {
+      "name": "Guayama/Southeast",
+      "municipalities": 14,
+      "population": 445436,
+      "pnp_share": 42.1,
+      "ppd_share": 43.9
+    },
+    {
+      "name": "Bayam\u00f3n/North",
+      "municipalities": 4,
+      "population": 399931,
+      "pnp_share": 43.2,
+      "ppd_share": 36.3
+    }
+  ],
+  "senate_districts": [
+    {
+      "district": 1,
+      "name": "San Juan",
+      "municipalities": 3,
+      "population": 521909,
+      "pnp_share": 41.1
+    },
+    {
+      "district": 2,
+      "name": "Bayam\u00f3n",
+      "municipalities": 4,
+      "population": 399931,
+      "pnp_share": 43.2
+    },
+    {
+      "district": 3,
+      "name": "Arecibo",
+      "municipalities": 12,
+      "population": 470250,
+      "pnp_share": 46.0
+    },
+    {
+      "district": 4,
+      "name": "Mayag\u00fcez",
+      "municipalities": 12,
+      "population": 478194,
+      "pnp_share": 43.1
+    },
+    {
+      "district": 5,
+      "name": "Ponce",
+      "municipalities": 14,
+      "population": 481728,
+      "pnp_share": 43.6
+    },
+    {
+      "district": 6,
+      "name": "Guayama",
+      "municipalities": 14,
+      "population": 445436,
+      "pnp_share": 42.1
+    },
+    {
+      "district": 7,
+      "name": "Humacao",
+      "municipalities": 10,
+      "population": 462914,
+      "pnp_share": 40.7
+    },
+    {
+      "district": 8,
+      "name": "Carolina",
+      "municipalities": 10,
+      "population": 465427,
+      "pnp_share": 42.0
+    }
+  ],
+  "stats": {
+    "total_municipalities": 79,
+    "total_population": 3725789,
+    "total_precincts": 110,
+    "total_house_districts": 40,
+    "total_senate_districts": 8,
+    "urban_count": 5,
+    "rural_count": 16,
+    "largest_municipality": "San Juan",
+    "smallest_municipality": "Culebra",
+    "most_pro_pnp": "Lo\u00edza",
+    "most_pro_ppd": "Cayey"
+  },
+  "classification_breakdown": {
+    "urban": [
+      "San Juan",
+      "Bayam\u00f3n",
+      "Carolina",
+      "Ponce",
+      "Caguas"
+    ],
+    "suburban": [
+      "Guaynabo",
+      "Arecibo",
+      "Toa Baja",
+      "Mayag\u00fcez",
+      "Trujillo Alto",
+      "Toa Alta",
+      "Aguadilla",
+      "Vega Baja",
+      "Humacao",
+      "R\u00edo Grande",
+      "Cabo Rojo",
+      "Juana D\u00edaz"
+    ],
+    "town": [
+      "Cayey",
+      "Can\u00f3vanas",
+      "Isabela",
+      "Gurabo",
+      "Guayama",
+      "Manat\u00ed",
+      "Cidra",
+      "Las Mar\u00edas",
+      "Aguada",
+      "Hatillo",
+      "San Lorenzo",
+      "Coamo",
+      "Juncos",
+      "Moca",
+      "Vega Alta",
+      "Las Piedras",
+      "Dorado",
+      "Yabucoa",
+      "Corozal",
+      "Fajardo",
+      "San Germ\u00e1n",
+      "Camuy",
+      "Utuado",
+      "Morovis",
+      "Salinas",
+      "Lares",
+      "Naranjito",
+      "Barranquitas",
+      "Lo\u00edza",
+      "A\u00f1asco",
+      "Aguas Buenas",
+      "Cata\u00f1o",
+      "Naguabo",
+      "Villalba",
+      "Quebradillas",
+      "Aibonito",
+      "Yauco 052",
+      "Lajas",
+      "S\u00e1bana Grande",
+      "Barceloneta",
+      "Pe\u00f1uelas",
+      "Orocovis",
+      "Santa Isabel",
+      "Guayanilla",
+      "Comer\u00edo",
+      "Luquillo"
+    ],
+    "rural": [
+      "Arroyo",
+      "Adjuntas",
+      "Gu\u00e1nica",
+      "Patillas",
+      "Ciales",
+      "Hormigueros",
+      "Jayuya",
+      "Yauco",
+      "Rinc\u00f3n",
+      "Ceiba",
+      "Florida",
+      "Maunabo",
+      "San Sebasti\u00e1n",
+      "Vieques",
+      "Maricao",
+      "Culebra"
+    ]
+  }
+}

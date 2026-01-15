@@ -1,0 +1,60 @@
+{
+  "electorate_series": [
+    { "year": 2004, "registered_voters": 2438000, "votes_cast": 1987000, "turnout_pct": 81.5 },
+    { "year": 2008, "registered_voters": 2405000, "votes_cast": 1935000, "turnout_pct": 80.5 },
+    { "year": 2012, "registered_voters": 2380000, "votes_cast": 1878000, "turnout_pct": 78.9 },
+    { "year": 2016, "registered_voters": 2256000, "votes_cast": 1557000, "turnout_pct": 69.0 },
+    { "year": 2020, "registered_voters": 2081000, "votes_cast": 1284000, "turnout_pct": 61.7 },
+    { "year": 2024, "registered_voters": 1985000, "votes_cast": 1216000, "turnout_pct": 61.2 }
+  ],
+  "municipality_vote_loss": [
+    { "municipality": "San Juan", "votes_2016": 213500, "votes_2020": 168800, "votes_2024": 155200, "loss_total": -58300, "loss_pct": -27.3, "population": 338661 },
+    { "municipality": "Bayamon", "votes_2016": 102300, "votes_2020": 81500, "votes_2024": 74900, "loss_total": -27400, "loss_pct": -26.8, "population": 183456 },
+    { "municipality": "Ponce", "votes_2016": 78200, "votes_2020": 58600, "votes_2024": 53100, "loss_total": -25100, "loss_pct": -32.1, "population": 134676 },
+    { "municipality": "Carolina", "votes_2016": 89400, "votes_2020": 72100, "votes_2024": 67800, "loss_total": -21600, "loss_pct": -24.2, "population": 153226 },
+    { "municipality": "Caguas", "votes_2016": 72100, "votes_2020": 57300, "votes_2024": 53200, "loss_total": -18900, "loss_pct": -26.2, "population": 126239 },
+    { "municipality": "Arecibo", "votes_2016": 48200, "votes_2020": 37500, "votes_2024": 33800, "loss_total": -14400, "loss_pct": -29.9, "population": 86875 },
+    { "municipality": "Mayaguez", "votes_2016": 38900, "votes_2020": 30100, "votes_2024": 27500, "loss_total": -11400, "loss_pct": -29.3, "population": 71824 },
+    { "municipality": "Toa Baja", "votes_2016": 42500, "votes_2020": 34800, "votes_2024": 31600, "loss_total": -10900, "loss_pct": -25.6, "population": 73987 },
+    { "municipality": "Guaynabo", "votes_2016": 57300, "votes_2020": 48900, "votes_2024": 46700, "loss_total": -10600, "loss_pct": -18.5, "population": 89503 },
+    { "municipality": "Trujillo Alto", "votes_2016": 41200, "votes_2020": 35100, "votes_2024": 32400, "loss_total": -8800, "loss_pct": -21.4, "population": 67329 }
+  ],
+  "representation_impact": {
+    "current_resident_commissioner": 1,
+    "if_state_reps_2004": 6,
+    "if_state_reps_2024": 4,
+    "electoral_college_2004": 8,
+    "electoral_college_2024": 6,
+    "voter_weight_vs_florida": 0.0,
+    "population_loss_since_2004": 600000,
+    "disenfranchised_on_mainland": 5700000
+  },
+  "demographic_shift": {
+    "median_voter_age_2012": 42,
+    "median_voter_age_2024": 51,
+    "pct_under_35_2012": 28.5,
+    "pct_under_35_2024": 18.2,
+    "pct_over_65_2012": 18.3,
+    "pct_over_65_2024": 27.1
+  },
+  "feedback_loop": [
+    { "stage": 1, "name": "Economic Crisis", "description": "Debt crisis, austerity, job losses" },
+    { "stage": 2, "name": "Mass Exodus", "description": "Working-age adults leave for mainland" },
+    { "stage": 3, "name": "Shrinking Electorate", "description": "Fewer voters, older demographics" },
+    { "stage": 4, "name": "Reduced Political Power", "description": "Less federal attention, fewer resources" },
+    { "stage": 5, "name": "Worsening Conditions", "description": "Infrastructure decay, services cut" },
+    { "stage": 6, "name": "More Emigration", "description": "Cycle continues" }
+  ],
+  "comparison_circles": [
+    { "label": "2004 Registered Voters", "value": 2438000, "year": 2004 },
+    { "label": "2012 Registered Voters", "value": 2380000, "year": 2012 },
+    { "label": "2020 Registered Voters", "value": 2081000, "year": 2020 },
+    { "label": "2024 Registered Voters", "value": 1985000, "year": 2024 }
+  ],
+  "metro_vs_rural": {
+    "metro_loss_pct": -24.8,
+    "rural_loss_pct": -31.2,
+    "metro_municipalities": ["San Juan", "Bayamon", "Carolina", "Guaynabo", "Caguas", "Trujillo Alto"],
+    "note": "Rural areas losing voters at higher rate despite smaller absolute numbers"
+  }
+}

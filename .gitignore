@@ -90,3 +90,12 @@ logs/
 # Environment
 .env
 .env.local
+
+# Claude Code cache
+.claude/
+
+# Local tool installations (quarto, etc.)
+.local/
+
+# Generated analysis outputs (can be regenerated)
+analysis/examples/output/

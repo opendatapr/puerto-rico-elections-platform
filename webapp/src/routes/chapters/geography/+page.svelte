@@ -845,4 +845,68 @@
 		padding-left: var(--space-md);
 		border-left: 2px solid var(--color-border);
 	}
+
+	/* Mobile adjustments */
+	@media (max-width: 640px) {
+		.chapter-header {
+			min-height: 50vh;
+			padding: var(--space-xl) 0;
+		}
+
+		.viz-container {
+			padding: var(--space-sm);
+		}
+
+		.viz-title {
+			font-size: var(--text-base);
+			margin-bottom: var(--space-sm);
+		}
+
+		.legend-row {
+			gap: var(--space-sm);
+			margin-top: var(--space-md);
+		}
+
+		.legend-wrap {
+			max-width: 100%;
+		}
+
+		.legend-item {
+			font-size: var(--text-xs);
+		}
+
+		.legend-swatch {
+			width: 12px;
+			height: 12px;
+		}
+
+		.key-takeaways {
+			padding: var(--space-md);
+		}
+
+		.key-takeaways h3 {
+			font-size: var(--text-sm);
+		}
+
+		.key-takeaways li {
+			font-size: var(--text-xs);
+		}
+
+		.chapter-nav {
+			flex-direction: column;
+			gap: var(--space-md);
+		}
+
+		.nav-link {
+			text-align: center;
+		}
+
+		.nav-link.next {
+			text-align: center;
+		}
+
+		.nav-title {
+			font-size: var(--text-base);
+		}
+	}
 </style>

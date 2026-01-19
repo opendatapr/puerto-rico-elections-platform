@@ -128,12 +128,26 @@
 		}));
 	});
 
-	// Map data for municipality-level view
+	// Map data for both levels
 	let mapData = $state(new Map<string, number>());
+	let precinctMapData = $state(new Map<string, number>());
 	const colorScale = createDivergingScale([25, 35, 45]);
 
 	// Color scale for variation viz
 	const variationColorScale = createDivergingScale([0, 7, 14]);
+
+	// Map level: switches between municipality and precinct view
+	let mapLevel = $state<'municipality' | 'precinct'>('municipality');
+
+	// Build precinct map data from all_precincts when available
+	// Note: TopoJSON uses IDs like "d01_p00" but we need to map from precinct names
+	// For now, the map will use built-in colors from TopoJSON when data isn't mapped
+	$effect(() => {
+		if (chapterData?.all_precincts) {
+			// This would require a crosswalk to map precinct names to TopoJSON IDs
+			// For now, we'll let the map use built-in colors
+		}
+	});
 
 	function handleStepEnter(response: { index: number }) {
 		currentStep = response.index;
@@ -142,6 +156,7 @@
 			case 0:
 				// Opening - municipality illusion
 				currentViz = 'map';
+				mapLevel = 'municipality';
 				mapData = new Map();
 				break;
 			case 1:
@@ -175,12 +190,14 @@
 				currentViz = 'bar';
 				break;
 			case 8:
-				// What this means
-				currentViz = 'scatter';
+				// What this means - show precinct map
+				currentViz = 'map';
+				mapLevel = 'precinct';
 				break;
 			case 9:
-				// Ground game conclusion
+				// Ground game conclusion - show precinct map
 				currentViz = 'map';
+				mapLevel = 'precinct';
 				break;
 		}
 	}
@@ -355,16 +372,32 @@
 					</div>
 					<p class="chart-note">Total votes cast. Color indicates current lean.</p>
 				{:else if currentViz === 'map'}
-					<!-- Default map view -->
-					<div class="microscope-intro">
-						<svg class="microscope-icon" viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5">
-							<circle cx="11" cy="11" r="8"/>
-							<path d="M21 21l-4.35-4.35"/>
-							<path d="M11 8v6M8 11h6"/>
-						</svg>
-						<h3 class="viz-title">The Microscope View</h3>
-						<p class="viz-subtitle">What aggregate data hides, precinct data reveals</p>
-					</div>
+					<!-- Map view - switches between municipality and precinct level -->
+					{#if mapLevel === 'precinct'}
+						<h3 class="viz-title">Puerto Rico's {totalPrecincts} Electoral Precincts</h3>
+						<p class="viz-subtitle">Each precinct is its own political universe</p>
+						<div class="chart-container map-full">
+							<ChoroplethMap
+								level="precinct"
+								data={precinctMapData}
+								{colorScale}
+								width={550}
+								height={380}
+								tooltipFormat={(name, value) => value !== undefined ? `${name}: ${value.toFixed(1)}% PNP` : name}
+							/>
+						</div>
+						<p class="chart-note">Colors show precinct boundaries. Hover for details.</p>
+					{:else}
+						<div class="microscope-intro">
+							<svg class="microscope-icon" viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5">
+								<circle cx="11" cy="11" r="8"/>
+								<path d="M21 21l-4.35-4.35"/>
+								<path d="M11 8v6M8 11h6"/>
+							</svg>
+							<h3 class="viz-title">The Microscope View</h3>
+							<p class="viz-subtitle">What aggregate data hides, precinct data reveals</p>
+						</div>
+					{/if}
 				{/if}
 			</div>
 		{/snippet}
@@ -716,6 +749,11 @@
 		align-items: center;
 		width: 100%;
 		max-width: 550px;
+	}
+
+	.chart-container.map-full {
+		max-width: 600px;
+		min-height: 400px;
 	}
 
 	.chart-note {

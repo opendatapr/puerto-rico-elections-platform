@@ -5,30 +5,43 @@
 	import * as topojson from 'topojson-client';
 	import type { Topology, GeometryCollection } from 'topojson-specification';
 
+	type MapLevel = 'municipality' | 'precinct';
+
 	interface Props {
+		level?: MapLevel;
 		data?: Map<string, number>;
 		colorScale?: (value: number) => string;
 		width?: number;
 		height?: number;
 		tooltipFormat?: (name: string, value: number | undefined) => string;
 		highlightId?: string | null;
+		onFeatureClick?: (id: string, name: string) => void;
+		onFeatureHover?: (id: string | null, name: string | null) => void;
+		// Legacy props for backwards compatibility
 		onMunicipalityClick?: (id: string, name: string) => void;
 		onMunicipalityHover?: (id: string | null, name: string | null) => void;
 	}
 
 	let {
+		level = 'municipality',
 		data = new Map(),
 		colorScale = d3.scaleSequential(d3.interpolateBlues).domain([0, 100]),
 		width = 600,
 		height = 400,
 		tooltipFormat = (name, value) => `${name}: ${value?.toFixed(1) ?? 'N/A'}`,
 		highlightId = null,
+		onFeatureClick,
+		onFeatureHover,
 		onMunicipalityClick = () => {},
 		onMunicipalityHover = () => {}
 	}: Props = $props();
 
+	// Use new handlers if provided, fallback to legacy
+	const handleFeatureClick = $derived(onFeatureClick ?? onMunicipalityClick);
+	const handleFeatureHover = $derived(onFeatureHover ?? onMunicipalityHover);
+
 	let svg: SVGSVGElement;
-	let municipalities: any[] = $state([]);
+	let features: any[] = $state([]);
 	let hoveredId: string | null = $state(null);
 	let tooltipContent: string = $state('');
 	let tooltipX: number = $state(0);
@@ -45,59 +58,109 @@
 
 	let pathGenerator = $derived(d3.geoPath().projection(projection));
 
-	onMount(async () => {
+	// Determine the data file and object name based on level
+	const geoConfig = $derived({
+		file: level === 'precinct' ? 'precincts.topojson' : 'municipalities.topojson',
+		objectName: level === 'precinct' ? 'precincts' : 'municipalities'
+	});
+
+	async function loadGeoData() {
 		try {
-			const response = await fetch(`${base}/data/geo/municipalities.topojson`);
+			const response = await fetch(`${base}/data/geo/${geoConfig.file}`);
 			if (!response.ok) {
 				console.warn('TopoJSON not found, using placeholder');
 				return;
 			}
 			const topo: Topology = await response.json();
+			const objectName = geoConfig.objectName;
+			if (!topo.objects[objectName]) {
+				console.error(`Object "${objectName}" not found in TopoJSON`);
+				return;
+			}
 			const geo = topojson.feature(
 				topo,
-				topo.objects.municipalities as GeometryCollection
+				topo.objects[objectName] as GeometryCollection
 			);
-			municipalities = (geo as any).features;
+			features = (geo as any).features;
 		} catch (error) {
 			console.error('Failed to load map data:', error);
 		}
+	}
+
+	// Track previous level to detect changes
+	let previousLevel: MapLevel | null = null;
+
+	onMount(() => {
+		previousLevel = level;
+		loadGeoData();
 	});
 
-	function getMunicipalityName(feature: any): string {
+	// Reload data when level changes (but not on initial mount)
+	$effect(() => {
+		if (previousLevel !== null && previousLevel !== level) {
+			previousLevel = level;
+			loadGeoData();
+		}
+	});
+
+	function getFeatureId(feature: any): string {
+		if (level === 'precinct') {
+			// Precinct TopoJSON uses 'id' property (format: d01_p00)
+			return feature.properties.id || `d${feature.properties.district}_p${feature.properties.precinct_index}`;
+		}
+		// Municipality TopoJSON uses Municipio/NAME
 		return feature.properties.Municipio || feature.properties.MUNICIPIO || feature.properties.NAME || 'Unknown';
 	}
 
-	function handleMouseMove(event: MouseEvent, feature: any) {
-		const id = getMunicipalityName(feature);
+	function getFeatureName(feature: any): string {
+		if (level === 'precinct') {
+			// Format nicely for display: "District 1, Precinct 0" or use id
+			const d = feature.properties.district;
+			const p = feature.properties.precinct_index;
+			return `District ${d}, Precinct ${p}`;
+		}
+		return feature.properties.Municipio || feature.properties.MUNICIPIO || feature.properties.NAME || 'Unknown';
+	}
+
+	function onMouseMove(event: MouseEvent, feature: any) {
+		const id = getFeatureId(feature);
+		const name = getFeatureName(feature);
 		const value = data.get(id);
 		hoveredId = id;
-		tooltipContent = tooltipFormat(id, value);
+		tooltipContent = tooltipFormat(name, value);
 		tooltipX = event.clientX + 10;
 		tooltipY = event.clientY - 10;
 		showTooltip = true;
-		onMunicipalityHover(id, id);
+		handleFeatureHover(id, name);
 	}
 
-	function handleMouseLeave() {
+	function onMouseLeave() {
 		hoveredId = null;
 		showTooltip = false;
-		onMunicipalityHover(null, null);
+		handleFeatureHover(null, null);
 	}
 
-	function handleClick(feature: any) {
-		const id = getMunicipalityName(feature);
-		onMunicipalityClick(id, id);
+	function onClick(feature: any) {
+		const id = getFeatureId(feature);
+		const name = getFeatureName(feature);
+		handleFeatureClick(id, name);
 	}
 
 	function getFill(feature: any): string {
-		const id = getMunicipalityName(feature);
+		const id = getFeatureId(feature);
 		const value = data.get(id);
-		if (value === undefined) return 'var(--color-surface-elevated)';
+		if (value === undefined) {
+			// For precincts, use the built-in color if no data provided
+			if (level === 'precinct' && feature.properties.color) {
+				return feature.properties.color;
+			}
+			return 'var(--color-surface-elevated)';
+		}
 		return colorScale(value);
 	}
 
 	function getStroke(feature: any): string {
-		const id = getMunicipalityName(feature);
+		const id = getFeatureId(feature);
 		if (id === highlightId || id === hoveredId) {
 			return 'var(--color-accent)';
 		}
@@ -105,11 +168,12 @@
 	}
 
 	function getStrokeWidth(feature: any): number {
-		const id = getMunicipalityName(feature);
+		const id = getFeatureId(feature);
 		if (id === highlightId || id === hoveredId) {
 			return 2;
 		}
-		return 0.5;
+		// Thinner strokes for precincts since there are more of them
+		return level === 'precinct' ? 0.3 : 0.5;
 	}
 </script>
 
@@ -119,21 +183,21 @@
 		viewBox="0 0 {width} {height}"
 		preserveAspectRatio="xMidYMid meet"
 	>
-		<g class="municipalities">
-			{#each municipalities as feature}
+		<g class="features">
+			{#each features as feature}
 				<path
 					d={pathGenerator(feature)}
 					fill={getFill(feature)}
 					stroke={getStroke(feature)}
 					stroke-width={getStrokeWidth(feature)}
-					class="municipality"
+					class="feature"
 					role="button"
 					tabindex="0"
-					aria-label={getMunicipalityName(feature)}
-					onmousemove={(e) => handleMouseMove(e, feature)}
-					onmouseleave={handleMouseLeave}
-					onclick={() => handleClick(feature)}
-					onkeydown={(e) => e.key === 'Enter' && handleClick(feature)}
+					aria-label={getFeatureName(feature)}
+					onmousemove={(e) => onMouseMove(e, feature)}
+					onmouseleave={onMouseLeave}
+					onclick={() => onClick(feature)}
+					onkeydown={(e) => e.key === 'Enter' && onClick(feature)}
 				/>
 			{/each}
 		</g>
@@ -161,7 +225,7 @@
 		height: 100%;
 	}
 
-	.municipality {
+	.feature {
 		cursor: pointer;
 		transition:
 			fill var(--transition-fast),
@@ -169,15 +233,15 @@
 			stroke-width var(--transition-fast);
 	}
 
-	.municipality:hover {
+	.feature:hover {
 		filter: brightness(1.1);
 	}
 
-	.municipality:focus {
+	.feature:focus {
 		outline: none;
 	}
 
-	.municipality:focus-visible {
+	.feature:focus-visible {
 		stroke: var(--color-accent);
 		stroke-width: 2;
 	}

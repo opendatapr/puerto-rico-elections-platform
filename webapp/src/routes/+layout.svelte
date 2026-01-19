@@ -109,4 +109,28 @@
 		font-size: var(--text-xs);
 		margin-top: var(--space-sm);
 	}
+
+	/* Mobile adjustments */
+	@media (max-width: 640px) {
+		.logo {
+			font-size: var(--text-lg);
+		}
+
+		.nav-links {
+			gap: var(--space-md);
+		}
+
+		.nav-links a {
+			font-size: var(--text-xs);
+		}
+
+		.footer-text {
+			font-size: var(--text-xs);
+			line-height: var(--leading-relaxed);
+		}
+
+		.site-footer {
+			padding: var(--space-xl) 0;
+		}
+	}
 </style>

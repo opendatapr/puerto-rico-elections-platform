@@ -886,4 +886,99 @@
 		font-weight: var(--font-semibold);
 		color: var(--color-text);
 	}
+
+	/* Mobile adjustments */
+	@media (max-width: 640px) {
+		.chapter-header {
+			min-height: 50vh;
+			padding: var(--space-xl) 0;
+		}
+
+		.subtitle {
+			font-size: var(--text-base);
+		}
+
+		.viz-container {
+			padding: var(--space-sm);
+		}
+
+		.viz-title {
+			font-size: var(--text-base);
+			margin-bottom: var(--space-sm);
+		}
+
+		/* Candidate cards - stack on mobile */
+		.candidate-cards {
+			flex-direction: column;
+			gap: var(--space-md);
+			align-items: stretch;
+		}
+
+		.candidate-card {
+			width: 100%;
+			max-width: 280px;
+			margin: 0 auto;
+			padding: var(--space-lg);
+		}
+
+		.candidate-year {
+			font-size: var(--text-2xl);
+		}
+
+		.candidate-name {
+			font-size: var(--text-sm);
+		}
+
+		.candidate-result .percentage {
+			font-size: var(--text-xl);
+		}
+
+		/* Third party total */
+		.third-party-total {
+			flex-direction: column;
+			text-align: center;
+			gap: var(--space-sm);
+		}
+
+		/* Stats grid */
+		.stat-grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: var(--space-md);
+		}
+
+		.stat-card {
+			padding: var(--space-md);
+		}
+
+		.stat-card .stat-value {
+			font-size: var(--text-xl);
+		}
+
+		.stat-card .stat-label {
+			font-size: var(--text-xs);
+		}
+
+		/* Party grid */
+		.party-grid {
+			grid-template-columns: 1fr;
+		}
+
+		/* Navigation */
+		.chapter-nav {
+			flex-direction: column;
+			gap: var(--space-md);
+		}
+
+		.nav-link {
+			text-align: center;
+		}
+
+		.nav-link.next {
+			text-align: center;
+		}
+
+		.nav-title {
+			font-size: var(--text-base);
+		}
+	}
 </style>

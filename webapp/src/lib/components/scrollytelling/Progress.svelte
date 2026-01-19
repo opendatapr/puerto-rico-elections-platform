@@ -67,4 +67,19 @@
 		font-size: var(--text-xs);
 		color: var(--color-text-muted);
 	}
+
+	/* Mobile adjustments */
+	@media (max-width: 640px) {
+		.progress-container {
+			padding: var(--space-xs) var(--space-md);
+		}
+
+		.progress-title {
+			font-size: var(--text-xs);
+			max-width: 60%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
 </style>

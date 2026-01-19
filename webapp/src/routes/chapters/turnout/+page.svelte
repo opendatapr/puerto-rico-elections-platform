@@ -861,4 +861,83 @@
 		padding-left: var(--space-md);
 		border-left: 2px solid var(--color-border);
 	}
+
+	/* Mobile adjustments */
+	@media (max-width: 640px) {
+		.chapter-header {
+			min-height: 50vh;
+			padding: var(--space-xl) 0;
+		}
+
+		.missing-voters-banner {
+			padding: var(--space-md);
+			margin-top: var(--space-lg);
+		}
+
+		.counter-value {
+			font-size: var(--text-2xl);
+		}
+
+		.counter-label,
+		.counter-note {
+			font-size: var(--text-xs);
+		}
+
+		.viz-container {
+			padding: var(--space-sm);
+		}
+
+		.viz-title {
+			font-size: var(--text-base);
+			margin-bottom: var(--space-sm);
+		}
+
+		.viz-caption {
+			font-size: var(--text-xs);
+			max-width: 100%;
+		}
+
+		.legend {
+			margin-top: var(--space-md);
+		}
+
+		.legend-scale {
+			width: 160px;
+		}
+
+		.legend-labels {
+			width: 160px;
+		}
+
+		.findings-list li {
+			padding: var(--space-sm) 0;
+			font-size: var(--text-sm);
+		}
+
+		.pullquote {
+			padding: var(--space-lg);
+			margin: var(--space-xl) 0;
+		}
+
+		.pullquote blockquote {
+			font-size: var(--text-lg);
+		}
+
+		.chapter-nav {
+			flex-direction: column;
+			gap: var(--space-md);
+		}
+
+		.nav-link {
+			text-align: center;
+		}
+
+		.nav-link.next {
+			text-align: center;
+		}
+
+		.nav-title {
+			font-size: var(--text-base);
+		}
+	}
 </style>

@@ -110,4 +110,20 @@
 		font-size: var(--text-sm);
 		color: var(--color-text);
 	}
+
+	/* Mobile adjustments */
+	@media (max-width: 640px) {
+		.legend-items {
+			gap: var(--space-sm);
+		}
+
+		.legend-swatch {
+			width: 10px;
+			height: 10px;
+		}
+
+		.legend-label {
+			font-size: var(--text-xs);
+		}
+	}
 </style>

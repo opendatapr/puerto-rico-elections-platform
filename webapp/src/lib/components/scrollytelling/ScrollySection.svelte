@@ -104,7 +104,19 @@
 		padding: var(--space-2xl) var(--space-lg);
 	}
 
-	@media (max-width: 900px) {
+	/* Tablet breakpoint */
+	@media (max-width: 1024px) {
+		.scrolly-graphic {
+			width: 50%;
+		}
+
+		.scrolly-steps {
+			width: 50%;
+		}
+	}
+
+	/* Mobile breakpoint - stack vertically */
+	@media (max-width: 640px) {
 		.scrolly-container {
 			flex-direction: column;
 		}
@@ -112,12 +124,18 @@
 		.scrolly-graphic {
 			position: sticky;
 			top: var(--header-height);
-			height: 50vh;
+			height: 45vh;
+			min-height: 280px;
 			width: 100%;
+		}
+
+		.scrolly-graphic-inner {
+			padding: var(--space-md);
 		}
 
 		.scrolly-steps {
 			width: 100%;
+			padding: var(--space-xl) var(--space-md);
 			background: var(--color-bg);
 		}
 	}

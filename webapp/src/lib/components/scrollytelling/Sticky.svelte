@@ -34,4 +34,17 @@
 		align-items: center;
 		justify-content: center;
 	}
+
+	/* Mobile adjustments */
+	@media (max-width: 640px) {
+		.sticky-viz {
+			padding: var(--space-sm);
+			overflow: hidden;
+		}
+
+		.sticky-viz :global(svg) {
+			max-width: 100%;
+			height: auto;
+		}
+	}
 </style>

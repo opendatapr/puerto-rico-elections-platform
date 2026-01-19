@@ -575,9 +575,9 @@
 			<div class="sources">
 				<h3>Sources</h3>
 				<ul>
-					<li>Comisión Estatal de Elecciones de Puerto Rico (CEE) - Official plebiscite results 1967-2020</li>
-					<li>U.S. Government Accountability Office - "Puerto Rico: Information on How Statehood Would Potentially Affect Selected Federal Programs and Revenue Sources" (2014)</li>
-					<li>Congressional Research Service - "Political Status of Puerto Rico: Options for Congress" (2017)</li>
+					<li><a href="https://ww2.ceepur.org/Home/EventosElectorales" target="_blank" rel="noopener">Comision Estatal de Elecciones de Puerto Rico (CEE)</a> - Official plebiscite results 1967-2020</li>
+					<li><a href="https://www.gao.gov/" target="_blank" rel="noopener">U.S. Government Accountability Office</a> - "Puerto Rico: Information on How Statehood Would Potentially Affect Selected Federal Programs and Revenue Sources" (2014)</li>
+					<li><a href="https://crsreports.congress.gov/" target="_blank" rel="noopener">Congressional Research Service</a> - "Political Status of Puerto Rico: Options for Congress" (2017)</li>
 				</ul>
 			</div>
 
@@ -1050,6 +1050,16 @@
 		font-size: var(--text-sm);
 		color: var(--color-text-light);
 		padding: var(--space-xs) 0;
+	}
+
+	.sources li a {
+		color: var(--color-accent);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.sources li a:hover {
+		color: var(--color-accent-light, #e5c46d);
 	}
 
 	/* Responsive */

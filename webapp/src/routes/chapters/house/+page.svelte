@@ -596,10 +596,10 @@
 			<div class="sources">
 				<h3>Sources</h3>
 				<ul>
-					<li>Comision Estatal de Elecciones de Puerto Rico (CEE) - House of Representatives results 2000-2024</li>
-					<li>Camara de Representantes de Puerto Rico - Historical composition data</li>
+					<li><a href="https://ww2.ceepur.org/Home/EventosElectorales" target="_blank" rel="noopener">Comision Estatal de Elecciones de Puerto Rico (CEE)</a> - House of Representatives results 2000-2024</li>
+					<li><a href="https://www.camaraderepresentantes.pr.gov/" target="_blank" rel="noopener">Camara de Representantes de Puerto Rico</a> - Historical composition data</li>
 					<li>Puerto Rico Constitution - Representative district boundaries and requirements</li>
-					<li>Inter-University Consortium for Political and Social Research - Legislative electoral data</li>
+					<li><a href="https://www.icpsr.umich.edu/" target="_blank" rel="noopener">Inter-University Consortium for Political and Social Research</a> - Legislative electoral data</li>
 				</ul>
 			</div>
 
@@ -789,5 +789,15 @@
 		margin-bottom: var(--space-sm);
 		padding-left: var(--space-md);
 		border-left: 2px solid var(--color-border);
+	}
+
+	.sources li a {
+		color: var(--color-accent);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.sources li a:hover {
+		color: var(--color-accent-light, #e5c46d);
 	}
 </style>

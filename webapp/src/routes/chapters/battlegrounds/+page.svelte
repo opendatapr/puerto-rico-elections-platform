@@ -465,26 +465,24 @@
 			</p>
 		</Step>
 
-		<Step active={currentStep === 5} index={5}>
+		<Step active={currentStep === 5} index={5} variant="callout">
 			<h3>The Deciders</h3>
 			<p>
 				Some municipalities matter more than others—not because of margins, but because
-				of size. A 1% swing in San Juan (pop. 342K) moves more votes than a 10% swing
-				in Culebra (pop. 1.8K). The "deciders" are municipalities that are both
+				of size. The "deciders" are municipalities that are both
 				<span class="highlight">large enough to matter</span> and
 				<span class="highlight">competitive enough to swing</span>.
 			</p>
 			<p>
 				{#if deciderMunis.length > 0}
-					Our analysis identifies <span class="stat">{deciderMunis.length}</span> decider municipalities:
+					<span class="stat">{deciderMunis.length}</span> decider municipalities identified:
 					{deciderMunis.slice(0, 5).join(', ')}{deciderMunis.length > 5 ? '...' : ''}.
-					These towns have populations over 30,000 and margins under 8%.
+					Populations over 30,000, margins under 8%.
 				{/if}
 			</p>
 			<p>
-				If you're running for governor and have one week left before Election Day,
-				this is your target list. These municipalities respond to campaigning because
-				they have persuadable voters, and they have enough voters to move the needle.
+				If you're running for governor with one week left before Election Day,
+				this is your target list.
 			</p>
 		</Step>
 
@@ -637,8 +635,8 @@
 			<div class="sources">
 			<h3>Sources</h3>
 			<ul>
-				<li>Comision Estatal de Elecciones de Puerto Rico (CEE) - Municipality-level gubernatorial results 2016, 2020, 2024</li>
-				<li>U.S. Census Bureau - Population estimates by municipality</li>
+				<li><a href="https://ww2.ceepur.org/Home/EventosElectorales" target="_blank" rel="noopener">Comision Estatal de Elecciones de Puerto Rico (CEE)</a> - Municipality-level gubernatorial results 2016, 2020, 2024</li>
+				<li><a href="https://www.census.gov/programs-surveys/popest.html" target="_blank" rel="noopener">U.S. Census Bureau</a> - Population estimates by municipality</li>
 				<li>Puerto Rico Planning Board - Demographic and economic indicators by region</li>
 				<li>Analysis methodology: Swing calculated as change in winning margin between elections</li>
 			</ul>
@@ -679,6 +677,18 @@
 		align-items: center;
 		justify-content: center;
 		padding: var(--space-lg);
+		animation: vizFadeIn 0.4s ease-out;
+	}
+
+	@keyframes vizFadeIn {
+		from {
+			opacity: 0;
+			transform: scale(0.98);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
 	}
 
 	.loading {
@@ -687,46 +697,60 @@
 	}
 
 	.viz-title {
-		font-size: var(--text-lg);
-		font-weight: var(--font-medium);
-		color: var(--color-text-muted);
-		margin-bottom: var(--space-md);
+		font-size: var(--text-xl);
+		font-family: var(--font-display);
+		font-weight: var(--font-semibold);
+		color: var(--color-text);
+		margin-bottom: var(--space-lg);
 		text-align: center;
 	}
 
 	.viz-note {
 		font-size: var(--text-sm);
-		color: var(--color-text-muted);
-		margin-top: var(--space-md);
-		font-style: italic;
+		color: var(--color-text-light);
+		margin-top: var(--space-lg);
+		padding: var(--space-sm) var(--space-md);
+		background: var(--color-surface-elevated);
+		border-radius: var(--radius-md);
+		line-height: 1.5;
 	}
 
 	.legend {
-		margin-top: var(--space-lg);
+		margin-top: var(--space-xl);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: var(--space-xs);
+		gap: var(--space-sm);
+		padding: var(--space-md);
+		background: var(--color-surface-elevated);
+		border-radius: var(--radius-md);
 	}
 
 	.legend-scale {
 		display: flex;
-		width: 250px;
-		height: 12px;
+		width: 260px;
+		height: 14px;
 		border-radius: var(--radius-sm);
 		overflow: hidden;
+		box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
 	}
 
 	.legend-scale span {
 		flex: 1;
+		transition: transform 0.2s ease;
+	}
+
+	.legend-scale span:hover {
+		transform: scaleY(1.2);
 	}
 
 	.legend-labels {
 		display: flex;
 		justify-content: space-between;
-		width: 250px;
-		font-size: var(--text-xs);
+		width: 260px;
+		font-size: var(--text-sm);
 		color: var(--color-text-light);
+		font-weight: var(--font-medium);
 	}
 
 	.chapter-conclusion {
@@ -835,5 +859,15 @@
 		margin-bottom: var(--space-sm);
 		padding-left: var(--space-md);
 		border-left: 2px solid var(--color-border);
+	}
+
+	.sources li a {
+		color: var(--color-accent);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.sources li a:hover {
+		color: var(--color-accent-light, #e5c46d);
 	}
 </style>

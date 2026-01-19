@@ -601,9 +601,9 @@
 			<div class="sources">
 				<h3>Sources</h3>
 				<ul>
-					<li>Comision Estatal de Elecciones de Puerto Rico (CEE) - Voter registration statistics 2000-2024</li>
+					<li><a href="https://ww2.ceepur.org/Home/EventosElectorales" target="_blank" rel="noopener">Comision Estatal de Elecciones de Puerto Rico (CEE)</a> - Voter registration statistics 2000-2024</li>
 					<li>Puerto Rico Office of the Comptroller - Electoral participation reports</li>
-					<li>U.S. Census Bureau - Population estimates and projections for Puerto Rico</li>
+					<li><a href="https://www.census.gov/programs-surveys/popest.html" target="_blank" rel="noopener">U.S. Census Bureau</a> - Population estimates and projections for Puerto Rico</li>
 					<li>Puerto Rico Institute of Statistics - Demographic trends analysis</li>
 				</ul>
 			</div>
@@ -976,6 +976,16 @@
 		margin-bottom: var(--space-sm);
 		padding-left: var(--space-md);
 		border-left: 2px solid var(--color-border);
+	}
+
+	.sources li a {
+		color: var(--color-accent);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.sources li a:hover {
+		color: var(--color-accent-light, #e5c46d);
 	}
 
 	/* Responsive adjustments */

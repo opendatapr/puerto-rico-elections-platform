@@ -370,22 +370,19 @@
 		</Step>
 
 		<!-- PART 3: THE COLLAPSE -->
-		<Step active={currentStep === 2} index={2}>
-			<h3>2016: The Breaking Point</h3>
+		<Step active={currentStep === 2} index={2} variant="comparison">
+			{#snippet before()}
+				<span class="stat">78.2%</span>
+				<p>Turnout in 2012</p>
+			{/snippet}
+			{#snippet after()}
+				<span class="stat">67.2%</span>
+				<p>Turnout in 2016</p>
+			{/snippet}
 			<p>
-				The 2016 election marked a catastrophic turning point. Turnout plummeted to just
-				<span class="stat">67.2%</span> - a drop of <span class="stat">11 percentage points</span>
-				from 2012. Nearly 250,000 fewer people voted compared to the previous election.
-			</p>
-			<p>
-				What changed? In June 2016, Congress passed PROMESA - the Puerto Rico Oversight,
-				Management, and Economic Stability Act. It created an unelected fiscal control board
-				with sweeping powers over the island's budget. For many Puerto Ricans, the message
-				was clear: <em>your vote doesn't matter anymore</em>. The real decisions would be
-				made in Washington, not San Juan.
-			</p>
-			<p>
-				Then came Hurricane Maria.
+				The 2016 election marked a catastrophic turning point. Nearly <span class="stat">250,000</span> fewer
+				people voted. Congress passed PROMESA, creating an unelected fiscal control board.
+				For many Puerto Ricans: <em>your vote doesn't matter anymore</em>.
 			</p>
 		</Step>
 
@@ -536,19 +533,17 @@
 		</Step>
 
 		<!-- PART 11: THE FEEDBACK LOOP -->
-		<Step active={currentStep === 10} index={10}>
-			<h3>A Vicious Cycle</h3>
+		<Step active={currentStep === 10} index={10} variant="question">
+			<h3>Why do the poor stop voting?</h3>
 			<p>
 				Low turnout among poor communities creates a dangerous feedback loop. When the
 				wealthy vote and the poor don't, elected officials have less incentive to address
-				poverty. Policies favor those who show up. Resources flow to engaged communities.
-				The neglected grow more cynical - and less likely to vote.
+				poverty. Policies favor those who show up.
 			</p>
 			<p>
-				This dynamic is particularly acute in Puerto Rico, where the fiscal control board
-				has imposed austerity measures that disproportionately affect low-income residents:
-				school closures, pension cuts, healthcare reductions. The people most hurt by these
-				policies are the least represented in the political process.
+				The fiscal control board has imposed austerity measures that disproportionately
+				affect low-income residents: school closures, pension cuts, healthcare reductions.
+				The people most hurt are the least represented.
 			</p>
 			<p>
 				Democracy requires participation. When participation becomes unequal, so does power.
@@ -622,11 +617,11 @@
 			<div class="sources">
 				<h3>Sources</h3>
 				<ul>
-					<li>Comision Estatal de Elecciones de Puerto Rico (CEE) - Official voter turnout data 2000-2024</li>
-					<li>U.S. Census Bureau - Voting and Registration data for Puerto Rico</li>
-					<li>American Community Survey - Household income by municipality</li>
-					<li>U.S. Election Assistance Commission - Election Administration and Voting Survey</li>
-					<li>Inter-University Consortium for Political and Social Research - Puerto Rico electoral data</li>
+					<li><a href="https://ww2.ceepur.org/Home/EventosElectorales" target="_blank" rel="noopener">Comision Estatal de Elecciones de Puerto Rico (CEE)</a> - Official voter turnout data 2000-2024</li>
+					<li><a href="https://data.census.gov/" target="_blank" rel="noopener">U.S. Census Bureau</a> - Voting and Registration data for Puerto Rico</li>
+					<li><a href="https://data.census.gov/" target="_blank" rel="noopener">American Community Survey</a> - Household income by municipality</li>
+					<li><a href="https://www.eac.gov/research-and-data/datasets-codebooks-and-surveys" target="_blank" rel="noopener">U.S. Election Assistance Commission</a> - Election Administration and Voting Survey</li>
+					<li><a href="https://www.icpsr.umich.edu/" target="_blank" rel="noopener">Inter-University Consortium for Political and Social Research</a> - Puerto Rico electoral data</li>
 				</ul>
 			</div>
 
@@ -692,6 +687,18 @@
 		align-items: center;
 		justify-content: center;
 		padding: var(--space-lg);
+		animation: vizFadeIn 0.4s ease-out;
+	}
+
+	@keyframes vizFadeIn {
+		from {
+			opacity: 0;
+			transform: scale(0.98);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
 	}
 
 	.loading {
@@ -700,10 +707,11 @@
 	}
 
 	.viz-title {
-		font-size: var(--text-lg);
-		font-weight: var(--font-medium);
-		color: var(--color-text-muted);
-		margin-bottom: var(--space-md);
+		font-size: var(--text-xl);
+		font-family: var(--font-display);
+		font-weight: var(--font-semibold);
+		color: var(--color-text);
+		margin-bottom: var(--space-lg);
 		text-align: center;
 	}
 
@@ -711,43 +719,58 @@
 		font-size: var(--text-sm);
 		color: var(--color-text-light);
 		text-align: center;
-		margin-top: var(--space-md);
-		max-width: 400px;
+		margin-top: var(--space-lg);
+		max-width: 420px;
+		line-height: 1.6;
+		padding: var(--space-sm) var(--space-md);
+		background: var(--color-surface-elevated);
+		border-radius: var(--radius-md);
 	}
 
 	.legend {
-		margin-top: var(--space-lg);
+		margin-top: var(--space-xl);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: var(--space-xs);
+		gap: var(--space-sm);
+		padding: var(--space-md);
+		background: var(--color-surface-elevated);
+		border-radius: var(--radius-md);
 	}
 
 	.legend-label {
-		font-size: var(--text-xs);
+		font-size: var(--text-sm);
 		color: var(--color-text-muted);
 		text-transform: uppercase;
 		letter-spacing: var(--tracking-wide);
+		font-weight: var(--font-medium);
 	}
 
 	.legend-scale {
 		display: flex;
-		width: 200px;
-		height: 12px;
+		width: 220px;
+		height: 14px;
 		border-radius: var(--radius-sm);
 		overflow: hidden;
+		box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
 	}
 
 	.legend-scale span {
 		flex: 1;
+		transition: transform 0.2s ease;
+	}
+
+	.legend-scale span:hover {
+		transform: scaleY(1.2);
 	}
 
 	.legend-labels {
 		display: flex;
 		justify-content: space-between;
-		width: 200px;
-		font-size: var(--text-xs);
+		width: 220px;
+		font-size: var(--text-sm);
 		color: var(--color-text-light);
+		font-weight: var(--font-medium);
 	}
 
 	.emphasis {
@@ -860,6 +883,16 @@
 		margin-bottom: var(--space-sm);
 		padding-left: var(--space-md);
 		border-left: 2px solid var(--color-border);
+	}
+
+	.sources li a {
+		color: var(--color-accent);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.sources li a:hover {
+		color: var(--color-accent-light, #e5c46d);
 	}
 
 	/* Mobile adjustments */

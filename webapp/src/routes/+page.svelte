@@ -1,59 +1,155 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { language } from '$lib/stores/language';
 
-	const chapters = [
-		{
-			part: 'Part I: The Transformation',
-			items: [
-				{ num: 1, slug: 'exodus', title: 'The Great Exodus', desc: 'Migration impact, population collapse, Maria\'s effect' },
-				{ num: 2, slug: 'turnout', title: 'Democracy Under Strain', desc: 'Turnout patterns and socioeconomic predictors' },
-				{ num: 3, slug: 'shrinking', title: 'The Shrinking Electorate', desc: 'Vote loss geography by municipality and precinct' },
-			]
+	// Bilingual content
+	const content = {
+		en: {
+			label: 'Data Journalism Series',
+			title: 'Puerto Rico Elections',
+			lead: "An interactive exploration of Puerto Rico's electoral dynamics from 2012 to 2024. How migration, demographics, and geography shape political outcomes on the island.",
+			cta: 'Start Reading',
+			chaptersTitle: 'Chapters',
+			stats: {
+				chapters: 'Chapters',
+				municipalities: 'Municipalities',
+				years: 'Years of Data'
+			},
+			about: {
+				title: 'About This Project',
+				p1: "This data journalism series analyzes Puerto Rico's electoral landscape through the lens of demographic change, migration patterns, and geographic voting behavior. Using data from the Puerto Rico State Elections Commission (CEE) and the U.S. Census Bureau, we explore how the island's political dynamics have evolved over the past decade.",
+				p2: 'All data and code are open source. The analysis uses statistical methods including regression modeling, spatial autocorrelation tests, and time series analysis to uncover patterns in voter behavior.'
+			},
+			parts: {
+				part1: 'Part I: The Transformation',
+				part2: 'Part II: The Status Question',
+				part3: 'Part III: The Gubernatorial Battle',
+				part4: 'Part IV: The Legislature',
+				part5: 'Part V: Synthesis'
+			}
 		},
-		{
-			part: 'Part II: The Status Question',
-			items: [
-				{ num: 4, slug: 'plebiscites', title: 'One Question, Two Decades', desc: 'All plebiscites 2012-2024, question formats' },
-				{ num: 5, slug: 'referendum-2020', title: 'The 52.5% Threshold', desc: '2020 referendum deep dive, precinct analysis' },
-				{ num: 6, slug: 'geography', title: 'Divided by Design', desc: 'Geographic patterns, spatial autocorrelation' },
-			]
-		},
-		{
-			part: 'Part III: The Gubernatorial Battle',
-			items: [
-				{ num: 7, slug: 'fortaleza', title: 'La Fortaleza', desc: 'Governor races 2012-2024, party dynamics' },
-				{ num: 8, slug: 'battlegrounds', title: '78 Battlegrounds', desc: 'Municipality-level results, swing municipalities' },
-				{ num: 9, slug: 'precincts', title: 'Down to the Precinct', desc: 'Intra-municipal variation in major cities' },
-			]
-		},
-		{
-			part: 'Part IV: The Legislature',
-			items: [
-				{ num: 10, slug: 'senate', title: 'The Senate Districts', desc: '8 district analysis, cross-municipal composition' },
-				{ num: 11, slug: 'house', title: '40 House Races', desc: 'Representative districts, competitive vs safe seats' },
-			]
-		},
-		{
-			part: 'Part V: Synthesis',
-			items: [
-				{ num: 12, slug: 'future', title: 'Puerto Rico\'s Electoral Future', desc: 'Projections and demographic trajectory' },
-			]
+		es: {
+			label: 'Serie de Periodismo de Datos',
+			title: 'Elecciones de Puerto Rico',
+			lead: 'Una exploracion interactiva de la dinamica electoral de Puerto Rico desde 2012 hasta 2024. Como la migracion, la demografia y la geografia determinan los resultados politicos en la isla.',
+			cta: 'Comenzar a Leer',
+			chaptersTitle: 'Capitulos',
+			stats: {
+				chapters: 'Capitulos',
+				municipalities: 'Municipios',
+				years: 'Anos de Datos'
+			},
+			about: {
+				title: 'Sobre Este Proyecto',
+				p1: 'Esta serie de periodismo de datos analiza el panorama electoral de Puerto Rico a traves del lente del cambio demografico, los patrones de migracion y el comportamiento geografico del voto. Utilizando datos de la Comision Estatal de Elecciones (CEE) y la Oficina del Censo de EE.UU., exploramos como ha evolucionado la dinamica politica de la isla durante la ultima decada.',
+				p2: 'Todos los datos y el codigo son de fuente abierta. El analisis utiliza metodos estadisticos que incluyen modelos de regresion, pruebas de autocorrelacion espacial y analisis de series temporales para descubrir patrones en el comportamiento electoral.'
+			},
+			parts: {
+				part1: 'Parte I: La Transformacion',
+				part2: 'Parte II: La Cuestion del Estatus',
+				part3: 'Parte III: La Batalla por La Fortaleza',
+				part4: 'Parte IV: La Legislatura',
+				part5: 'Parte V: Sintesis'
+			}
 		}
-	];
+	};
+
+	// Bilingual chapter data
+	const chaptersData = {
+		en: [
+			{
+				part: 'Part I: The Transformation',
+				items: [
+					{ num: 1, slug: 'exodus', title: 'The Great Exodus', desc: 'Migration impact, population collapse, Maria\'s effect' },
+					{ num: 2, slug: 'turnout', title: 'Democracy Under Strain', desc: 'Turnout patterns and socioeconomic predictors' },
+					{ num: 3, slug: 'shrinking', title: 'The Shrinking Electorate', desc: 'Vote loss geography by municipality and precinct' },
+				]
+			},
+			{
+				part: 'Part II: The Status Question',
+				items: [
+					{ num: 4, slug: 'plebiscites', title: 'One Question, Two Decades', desc: 'All plebiscites 2012-2024, question formats' },
+					{ num: 5, slug: 'referendum-2020', title: 'The 52.5% Threshold', desc: '2020 referendum deep dive, precinct analysis' },
+					{ num: 6, slug: 'geography', title: 'Divided by Design', desc: 'Geographic patterns, spatial autocorrelation' },
+				]
+			},
+			{
+				part: 'Part III: The Gubernatorial Battle',
+				items: [
+					{ num: 7, slug: 'fortaleza', title: 'La Fortaleza', desc: 'Governor races 2012-2024, party dynamics' },
+					{ num: 8, slug: 'battlegrounds', title: '78 Battlegrounds', desc: 'Municipality-level results, swing municipalities' },
+					{ num: 9, slug: 'precincts', title: 'Down to the Precinct', desc: 'Intra-municipal variation in major cities' },
+				]
+			},
+			{
+				part: 'Part IV: The Legislature',
+				items: [
+					{ num: 10, slug: 'senate', title: 'The Senate Districts', desc: '8 district analysis, cross-municipal composition' },
+					{ num: 11, slug: 'house', title: '40 House Races', desc: 'Representative districts, competitive vs safe seats' },
+				]
+			},
+			{
+				part: 'Part V: Synthesis',
+				items: [
+					{ num: 12, slug: 'future', title: 'Puerto Rico\'s Electoral Future', desc: 'Projections and demographic trajectory' },
+				]
+			}
+		],
+		es: [
+			{
+				part: 'Parte I: La Transformacion',
+				items: [
+					{ num: 1, slug: 'exodus', title: 'El Gran Exodo', desc: 'Impacto migratorio, colapso poblacional, el efecto de Maria' },
+					{ num: 2, slug: 'turnout', title: 'Democracia Bajo Presion', desc: 'Patrones de participacion y predictores socioeconomicos' },
+					{ num: 3, slug: 'shrinking', title: 'El Electorado Menguante', desc: 'Geografia de perdida de votos por municipio y precinto' },
+				]
+			},
+			{
+				part: 'Parte II: La Cuestion del Estatus',
+				items: [
+					{ num: 4, slug: 'plebiscites', title: 'Una Pregunta, Dos Decadas', desc: 'Todos los plebiscitos 2012-2024, formatos de pregunta' },
+					{ num: 5, slug: 'referendum-2020', title: 'El Umbral del 52.5%', desc: 'Analisis profundo del referendum 2020, analisis por precinto' },
+					{ num: 6, slug: 'geography', title: 'Divididos por Diseno', desc: 'Patrones geograficos, autocorrelacion espacial' },
+				]
+			},
+			{
+				part: 'Parte III: La Batalla por La Fortaleza',
+				items: [
+					{ num: 7, slug: 'fortaleza', title: 'La Fortaleza', desc: 'Carreras para gobernador 2012-2024, dinamica de partidos' },
+					{ num: 8, slug: 'battlegrounds', title: '78 Campos de Batalla', desc: 'Resultados municipales, municipios indecisos' },
+					{ num: 9, slug: 'precincts', title: 'Hasta el Precinto', desc: 'Variacion intramunicipal en ciudades principales' },
+				]
+			},
+			{
+				part: 'Parte IV: La Legislatura',
+				items: [
+					{ num: 10, slug: 'senate', title: 'Los Distritos Senatoriales', desc: 'Analisis de 8 distritos, composicion intermunicipal' },
+					{ num: 11, slug: 'house', title: '40 Carreras de Representantes', desc: 'Distritos representativos, escanos competitivos vs seguros' },
+				]
+			},
+			{
+				part: 'Parte V: Sintesis',
+				items: [
+					{ num: 12, slug: 'future', title: 'El Futuro Electoral de Puerto Rico', desc: 'Proyecciones y trayectoria demografica' },
+				]
+			}
+		]
+	};
+
+	// Reactive content based on language
+	let t = $derived(content[$language]);
+	let chapters = $derived(chaptersData[$language]);
 </script>
 
 <section class="hero">
 	<div class="container">
 		<div class="hero-content">
-			<span class="label">Data Journalism Series</span>
+			<span class="label">{t.label}</span>
 			<div class="accent-line"></div>
-			<h1>Puerto Rico Elections</h1>
-			<p class="lead">
-				An interactive exploration of Puerto Rico's electoral dynamics from 2012 to 2024.
-				How migration, demographics, and geography shape political outcomes on the island.
-			</p>
+			<h1>{t.title}</h1>
+			<p class="lead">{t.lead}</p>
 			<a href="#chapters" class="cta-button">
-				Start Reading
+				{t.cta}
 				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 					<path d="M12 5v14M19 12l-7 7-7-7"/>
 				</svg>
@@ -62,15 +158,15 @@
 		<div class="hero-stats">
 			<div class="stat">
 				<span class="stat-value">12</span>
-				<span class="stat-label">Chapters</span>
+				<span class="stat-label">{t.stats.chapters}</span>
 			</div>
 			<div class="stat">
 				<span class="stat-value">78</span>
-				<span class="stat-label">Municipalities</span>
+				<span class="stat-label">{t.stats.municipalities}</span>
 			</div>
 			<div class="stat">
 				<span class="stat-value">12+</span>
-				<span class="stat-label">Years of Data</span>
+				<span class="stat-label">{t.stats.years}</span>
 			</div>
 		</div>
 	</div>
@@ -78,7 +174,7 @@
 
 <section id="chapters" class="chapters-section">
 	<div class="container">
-		<h2>Chapters</h2>
+		<h2>{t.chaptersTitle}</h2>
 
 		{#each chapters as part}
 			<div class="part-group">
@@ -104,18 +200,9 @@
 
 <section class="about-section">
 	<div class="container content">
-		<h2>About This Project</h2>
-		<p>
-			This data journalism series analyzes Puerto Rico's electoral landscape through the lens of
-			demographic change, migration patterns, and geographic voting behavior. Using data from the
-			Puerto Rico State Elections Commission (CEE) and the U.S. Census Bureau, we explore how
-			the island's political dynamics have evolved over the past decade.
-		</p>
-		<p>
-			All data and code are open source. The analysis uses statistical methods including
-			regression modeling, spatial autocorrelation tests, and time series analysis to uncover
-			patterns in voter behavior.
-		</p>
+		<h2>{t.about.title}</h2>
+		<p>{t.about.p1}</p>
+		<p>{t.about.p2}</p>
 	</div>
 </section>
 

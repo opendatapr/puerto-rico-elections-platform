@@ -236,11 +236,21 @@
 
 	.scatter-plot {
 		font-family: var(--font-body);
+		overflow: visible;
 	}
 
 	.point {
 		cursor: pointer;
-		transition: r var(--transition-fast), opacity var(--transition-fast);
+		transition:
+			r 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+			opacity 0.3s ease,
+			cx 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+			cy 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+			filter 0.2s ease;
+	}
+
+	.point:hover {
+		filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4)) brightness(1.15);
 	}
 
 	.point:focus {
@@ -249,36 +259,60 @@
 
 	.point:focus-visible {
 		stroke: var(--color-accent);
-		stroke-width: 2;
+		stroke-width: 3;
+	}
+
+	.grid line {
+		transition: stroke-opacity 0.3s ease;
 	}
 
 	.tick-label {
-		font-size: var(--text-xs);
+		font-size: var(--text-sm);
 		fill: var(--color-text-muted);
+		font-family: var(--font-body);
 	}
 
 	.axis-label {
-		font-size: var(--text-sm);
+		font-size: var(--text-base);
 		fill: var(--color-text);
-		font-weight: var(--font-medium);
+		font-weight: var(--font-semibold);
+		letter-spacing: 0.01em;
 	}
 
 	.r-squared {
-		font-size: var(--text-sm);
+		font-size: var(--text-base);
 		fill: var(--color-accent);
-		font-weight: var(--font-medium);
+		font-weight: var(--font-bold);
+		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 	}
 
 	.tooltip {
 		position: fixed;
 		z-index: 1000;
 		pointer-events: none;
-		background: var(--color-surface);
+		background: var(--color-surface-elevated);
 		border: 1px solid var(--color-border-light);
 		border-radius: var(--radius-md);
 		padding: var(--space-sm) var(--space-md);
 		font-size: var(--text-sm);
 		color: var(--color-text);
-		box-shadow: var(--shadow-lg);
+		box-shadow: var(--shadow-xl);
+		backdrop-filter: blur(8px);
+		animation: tooltipFadeIn 0.15s ease-out;
+	}
+
+	@keyframes tooltipFadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(4px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.tooltip strong {
+		color: var(--color-accent);
 	}
 </style>

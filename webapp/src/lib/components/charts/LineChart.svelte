@@ -193,36 +193,62 @@
 <style>
 	.line-chart {
 		font-family: var(--font-body);
+		overflow: visible;
 	}
 
 	.line {
-		transition: stroke-opacity var(--transition-fast);
+		transition:
+			stroke-opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+			stroke-width 0.2s ease,
+			d 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+		stroke-linecap: round;
+		stroke-linejoin: round;
 	}
 
 	.series:hover .line {
-		stroke-width: 3.5;
+		stroke-width: 4;
+		filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 	}
 
 	.dot {
-		transition: fill-opacity var(--transition-fast), r var(--transition-fast);
+		transition:
+			fill-opacity 0.3s ease,
+			r 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+			transform 0.2s ease,
+			cx 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+			cy 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+		cursor: pointer;
+	}
+
+	.dot:hover {
+		r: 7;
+		filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
 	}
 
 	.series:hover .dot {
-		r: 5;
+		r: 5.5;
 	}
 
 	.area {
-		transition: fill-opacity var(--transition-fast);
+		transition:
+			fill-opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+			d 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.grid line {
+		transition: stroke-opacity 0.3s ease;
 	}
 
 	.tick-label {
-		font-size: var(--text-xs);
+		font-size: var(--text-sm);
 		fill: var(--color-text-muted);
+		font-family: var(--font-body);
 	}
 
 	.axis-label {
-		font-size: var(--text-sm);
+		font-size: var(--text-base);
 		fill: var(--color-text);
-		font-weight: var(--font-medium);
+		font-weight: var(--font-semibold);
+		letter-spacing: 0.01em;
 	}
 </style>

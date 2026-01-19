@@ -667,10 +667,10 @@
 			<div class="sources">
 				<h3>Sources</h3>
 				<ul>
-					<li>Comision Estatal de Elecciones de Puerto Rico (CEE) - Municipality-level election results 2016-2024</li>
-					<li>U.S. Census Bureau - Puerto Rico geographic definitions and TIGER/Line shapefiles</li>
+					<li><a href="https://ww2.ceepur.org/Home/EventosElectorales" target="_blank" rel="noopener">Comision Estatal de Elecciones de Puerto Rico (CEE)</a> - Municipality-level election results 2016-2024</li>
+					<li><a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html" target="_blank" rel="noopener">U.S. Census Bureau</a> - Puerto Rico geographic definitions and TIGER/Line shapefiles</li>
 					<li>Puerto Rico Planning Board - Regional classifications and urban/rural definitions</li>
-					<li>American Community Survey - Population and demographic data by municipality</li>
+					<li><a href="https://data.census.gov/" target="_blank" rel="noopener">American Community Survey</a> - Population and demographic data by municipality</li>
 				</ul>
 			</div>
 
@@ -844,6 +844,16 @@
 		margin-bottom: var(--space-sm);
 		padding-left: var(--space-md);
 		border-left: 2px solid var(--color-border);
+	}
+
+	.sources li a {
+		color: var(--color-accent);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.sources li a:hover {
+		color: var(--color-accent-light, #e5c46d);
 	}
 
 	/* Mobile adjustments */

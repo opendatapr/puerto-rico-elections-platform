@@ -560,10 +560,10 @@
 			<div class="sources">
 				<h3>Sources</h3>
 				<ul>
-					<li>Comision Estatal de Elecciones de Puerto Rico (CEE) - Official gubernatorial election results 1948-2024</li>
-					<li>El Nuevo Dia Archives - Historical election coverage and analysis</li>
+					<li><a href="https://ww2.ceepur.org/Home/EventosElectorales" target="_blank" rel="noopener">Comision Estatal de Elecciones de Puerto Rico (CEE)</a> - Official gubernatorial election results 1948-2024</li>
+					<li><a href="https://www.elnuevodia.com/" target="_blank" rel="noopener">El Nuevo Dia</a> Archives - Historical election coverage and analysis</li>
 					<li>University of Puerto Rico - Electoral Studies Program historical data</li>
-					<li>Centro de Estudios Puertorriquenos - Political party evolution in Puerto Rico</li>
+					<li><a href="https://centropr.hunter.cuny.edu/" target="_blank" rel="noopener">Centro de Estudios Puertorriquenos</a> - Political party evolution in Puerto Rico</li>
 				</ul>
 			</div>
 
@@ -847,6 +847,16 @@
 		margin-bottom: var(--space-sm);
 		padding-left: var(--space-md);
 		border-left: 2px solid var(--color-border);
+	}
+
+	.sources li a {
+		color: var(--color-accent);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.sources li a:hover {
+		color: var(--color-accent-light, #e5c46d);
 	}
 
 	/* Navigation */

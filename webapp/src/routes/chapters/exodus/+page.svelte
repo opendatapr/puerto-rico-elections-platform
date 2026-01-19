@@ -8,11 +8,93 @@
 	import { ScatterPlot } from '$lib/components/charts';
 	import { createLossScale, createPovertyScale, DIVERGING_COLORS, CATEGORY_COLORS, SEQUENTIAL_LOSS_COLORS, SEQUENTIAL_POVERTY_COLORS } from '$lib/utils/colors';
 	import { formatPercent, formatCompact, formatNumber, formatPercentChange } from '$lib/utils/format';
+	import { language } from '$lib/stores/language';
 
 	// Chapter metadata
 	const chapterNum = 1;
-	const chapterTitle = 'The Great Exodus';
 	const totalSteps = 12;
+
+	// Bilingual content for key sections
+	const t = {
+		en: {
+			chapterTitle: 'The Great Exodus',
+			lead: "Since 2006, Puerto Rico has hemorrhaged more than half a million residents. Every week for almost two decades, planes have carried families away from the island they called home. This is the story of the greatest population collapse in modern American history.",
+			peopleLost: 'People Left',
+			decline: 'Population Decline',
+			muniLost: 'Municipalities Lost Residents',
+			loading: 'Loading data...',
+			whatWeLearned: 'What We\'ve Learned',
+			keyTakeaways: 'Key Takeaways',
+			sources: 'Sources',
+			backTo: 'Back to',
+			home: 'Home',
+			nextChapter: 'Next Chapter',
+			nextTitle: 'Democracy Under Strain',
+			peak: '2004 (Peak)',
+			popTimeline: 'Puerto Rico Population 2000-2020',
+			popChangeMap: 'Population Change by Municipality (2010-2020)',
+			topLoss: 'Municipalities with Greatest Population Loss',
+			metroSJ: 'Metro San Juan',
+			mariaCliff: 'The Maria Cliff (2017-2018)',
+			povertyVsLoss: 'Poverty Rate vs Population Loss',
+			povertyMap: 'Poverty Rate by Municipality',
+			agingIsland: 'An Aging Island',
+			whereTheyWent: 'Where They Went',
+			newElectoralMap: 'The New Electoral Map',
+			hurricaneMaria: 'Hurricane Maria',
+			mariaNote: 'Sept 2017: 130,000+ leave in following year',
+			prPopStates: 'Puerto Rican population in US states (2020)',
+			absLoss: 'Absolute population loss 2010-2020',
+			scatterNote: 'Each point is a municipality. Size indicates population.',
+			legendPoverty: 'Poverty rate',
+			legendPopChange: 'Population change',
+			prPopulation: 'Puerto Rico Population',
+			conclusionP1: "Puerto Rico's population collapse is unprecedented in modern American history. Over half a million people left the island between 2006 and 2020, driven by economic crisis, natural disaster, and the accumulated weight of decades of disinvestment.",
+			conclusionP2: "The exodus was not uniform. Mountain communities and southern coastal towns suffered the deepest losses. The poorest municipalities lost the most. Those who left were disproportionately young and working-age, leaving behind an older, more vulnerable population.",
+			conclusionP3: "The political implications are profound. A smaller, older, poorer electorate will shape Puerto Rico's future. The next chapter examines how these demographic shifts have affected voter turnout and civic participation across the island."
+		},
+		es: {
+			chapterTitle: 'El Gran Exodo',
+			lead: 'Desde 2006, Puerto Rico ha perdido mas de medio millon de residentes. Cada semana durante casi dos decadas, aviones han llevado familias lejos de la isla que llamaban hogar. Esta es la historia del mayor colapso poblacional en la historia moderna de Estados Unidos.',
+			peopleLost: 'Personas se Fueron',
+			decline: 'Declive Poblacional',
+			muniLost: 'Municipios Perdieron Residentes',
+			loading: 'Cargando datos...',
+			whatWeLearned: 'Lo que Hemos Aprendido',
+			keyTakeaways: 'Conclusiones Clave',
+			sources: 'Fuentes',
+			backTo: 'Volver a',
+			home: 'Inicio',
+			nextChapter: 'Proximo Capitulo',
+			nextTitle: 'Democracia Bajo Presion',
+			peak: '2004 (Pico)',
+			popTimeline: 'Poblacion de Puerto Rico 2000-2020',
+			popChangeMap: 'Cambio Poblacional por Municipio (2010-2020)',
+			topLoss: 'Municipios con Mayor Perdida de Poblacion',
+			metroSJ: 'Metro San Juan',
+			mariaCliff: 'El Precipicio de Maria (2017-2018)',
+			povertyVsLoss: 'Tasa de Pobreza vs Perdida de Poblacion',
+			povertyMap: 'Tasa de Pobreza por Municipio',
+			agingIsland: 'Una Isla que Envejece',
+			whereTheyWent: 'A Donde Fueron',
+			newElectoralMap: 'El Nuevo Mapa Electoral',
+			hurricaneMaria: 'Huracan Maria',
+			mariaNote: 'Sept 2017: 130,000+ se van en el ano siguiente',
+			prPopStates: 'Poblacion puertorriquena en estados de EE.UU. (2020)',
+			absLoss: 'Perdida de poblacion absoluta 2010-2020',
+			scatterNote: 'Cada punto es un municipio. El tamano indica poblacion.',
+			legendPoverty: 'Tasa de pobreza',
+			legendPopChange: 'Cambio poblacional',
+			prPopulation: 'Poblacion de Puerto Rico',
+			conclusionP1: 'El colapso poblacional de Puerto Rico no tiene precedentes en la historia moderna estadounidense. Mas de medio millon de personas dejaron la isla entre 2006 y 2020, impulsados por la crisis economica, el desastre natural y el peso acumulado de decadas de desinversion.',
+			conclusionP2: 'El exodo no fue uniforme. Las comunidades montanosas y los pueblos costeros del sur sufrieron las perdidas mas profundas. Los municipios mas pobres perdieron mas. Los que se fueron eran desproporcionadamente jovenes y en edad laboral, dejando atras una poblacion mas vieja y vulnerable.',
+			conclusionP3: 'Las implicaciones politicas son profundas. Un electorado mas pequeno, mas viejo y mas pobre dara forma al futuro de Puerto Rico. El proximo capitulo examina como estos cambios demograficos han afectado la participacion electoral y civica en toda la isla.'
+		}
+	};
+
+	// Reactive content based on language
+	let content = $derived(t[$language]);
+	let chapterTitle = $derived(content.chapterTitle);
 
 	// State
 	let currentStep = $state(0);
@@ -296,27 +378,22 @@
 <article class="chapter">
 	<header class="chapter-header">
 		<div class="container content">
-			<span class="label">Chapter {chapterNum}</span>
+			<span class="label">{$language === 'en' ? 'Chapter' : 'Capitulo'} {chapterNum}</span>
 			<div class="accent-line"></div>
 			<h1>{chapterTitle}</h1>
-			<p class="lead">
-				Since 2006, Puerto Rico has hemorrhaged more than half a million residents.
-				Every week for almost two decades, planes have carried families away from
-				the island they called home. This is the story of the greatest population
-				collapse in modern American history.
-			</p>
+			<p class="lead">{content.lead}</p>
 			<div class="lead-stats">
 				<div class="stat-block">
 					<span class="stat-value">{formatNumber(541004)}</span>
-					<span class="stat-label">People Left</span>
+					<span class="stat-label">{content.peopleLost}</span>
 				</div>
 				<div class="stat-block">
 					<span class="stat-value">14.1%</span>
-					<span class="stat-label">Population Decline</span>
+					<span class="stat-label">{content.decline}</span>
 				</div>
 				<div class="stat-block">
-					<span class="stat-value">77 of 78</span>
-					<span class="stat-label">Municipalities Lost Residents</span>
+					<span class="stat-value">77 {$language === 'en' ? 'of' : 'de'} 78</span>
+					<span class="stat-label">{content.muniLost}</span>
 				</div>
 			</div>
 		</div>
@@ -329,12 +406,12 @@
 		{#snippet graphic()}
 			<div class="viz-container">
 				{#if loading}
-					<p class="loading">Loading data...</p>
+					<p class="loading">{content.loading}</p>
 				{:else if currentViz === 'map'}
 					{#if currentStep === 0 || currentStep === 2}
 						<!-- Animated counter display -->
 						<div class="counter-display">
-							<div class="counter-label">Puerto Rico Population</div>
+							<div class="counter-label">{content.prPopulation}</div>
 							<div class="counter-value">{formatNumber(displayedPopulation)}</div>
 							<div class="counter-year">{currentStep === 0 ? '2004 (Peak)' : '2020'}</div>
 						</div>
@@ -469,19 +546,20 @@
 			</p>
 		</Step>
 
-		<Step active={currentStep === 1} index={1}>
-			<h3>Two Decades of Decline</h3>
+		<Step active={currentStep === 1} index={1} variant="quote">
+			{#snippet quote()}
+				<p>
+					No other American jurisdiction has experienced anything comparable to Puerto Rico's
+					population collapse.
+				</p>
+			{/snippet}
+			{#snippet citation()}
+				U.S. Census Bureau analysis, 2020
+			{/snippet}
 			<p>
-				The population line tells a stark story. After decades of growth, Puerto Rico's population
-				began falling in 2006, coinciding with the end of federal tax incentives that had drawn
-				manufacturing to the island. The pharmaceutical companies that once provided good jobs
-				started closing factories and laying off workers.
-			</p>
-			<p>
-				Year after year, the line slopes downward. Between <span class="stat">2006 and 2020</span>,
-				the island lost over <span class="stat">{formatNumber(541004)}</span> residents,
-				a decline of <span class="stat">14.1%</span>. No other American jurisdiction has
-				experienced anything comparable.
+				After decades of growth, Puerto Rico's population began falling in 2006, coinciding
+				with the end of federal tax incentives. Between <span class="stat">2006 and 2020</span>,
+				the island lost <span class="stat">{formatNumber(541004)}</span> residents.
 			</p>
 			<p>
 				To put this in perspective: if New York State lost population at the same rate,
@@ -585,22 +663,21 @@
 			</p>
 		</Step>
 
-		<Step active={currentStep === 7} index={7}>
-			<h3>Poverty's Push</h3>
+		<Step active={currentStep === 7} index={7} variant="callout">
+			<h3>Poverty Drove the Exodus</h3>
 			<p>
 				The scatter plot reveals a troubling correlation: municipalities with higher
-				poverty rates generally experienced greater population losses. The regression
-				line slopes upward, suggesting that economic desperation drove people away.
+				poverty rates experienced greater population losses. Economic desperation
+				pushed people away.
 			</p>
 			<p>
-				This makes intuitive sense. If you can't find work, if your children's schools
-				are closing, if the hospital is understaffed, why stay? The poorest communities
-				had the least capacity to hold onto their residents.
+				If you can't find work, if your children's schools are closing, if the hospital
+				is understaffed, why stay? The <span class="stat">poorest communities</span> had
+				the least capacity to hold onto their residents.
 			</p>
 			<p>
-				But the relationship isn't perfect. Some poor mountain towns held on better than
-				wealthier coastal areas. Community ties, family land, and sheer determination
-				kept some people rooted despite economic hardship.
+				Community ties and family land kept some rooted despite hardship, but
+				the overall pattern is clear: poverty and exodus go hand in hand.
 			</p>
 		</Step>
 
@@ -688,57 +765,50 @@
 
 	<section class="chapter-conclusion">
 		<div class="container content">
-			<h2>What We've Learned</h2>
-			<p>
-				Puerto Rico's population collapse is unprecedented in modern American history.
-				Over half a million people left the island between 2006 and 2020, driven by
-				economic crisis, natural disaster, and the accumulated weight of decades of
-				disinvestment.
-			</p>
-			<p>
-				The exodus was not uniform. Mountain communities and southern coastal towns
-				suffered the deepest losses. The poorest municipalities lost the most. Those
-				who left were disproportionately young and working-age, leaving behind an
-				older, more vulnerable population.
-			</p>
-			<p>
-				The political implications are profound. A smaller, older, poorer electorate
-				will shape Puerto Rico's future. The next chapter examines how these
-				demographic shifts have affected voter turnout and civic participation across
-				the island.
-			</p>
+			<h2>{content.whatWeLearned}</h2>
+			<p>{content.conclusionP1}</p>
+			<p>{content.conclusionP2}</p>
+			<p>{content.conclusionP3}</p>
 
 			<div class="key-takeaways">
-				<h3>Key Takeaways</h3>
+				<h3>{content.keyTakeaways}</h3>
 				<ul>
-					<li><span class="stat">{formatNumber(541004)}</span> people left Puerto Rico since 2004</li>
-					<li>77 of 78 municipalities lost population between 2010-2020</li>
-					<li>Hurricane Maria triggered <span class="stat">{formatNumber(mariaExodus)}</span> departures in one year</li>
-					<li>Poverty and population loss are strongly correlated</li>
-					<li>The median age rose from 36.9 to {medianAge2020} years</li>
+					{#if $language === 'en'}
+						<li><span class="stat">{formatNumber(541004)}</span> people left Puerto Rico since 2004</li>
+						<li>77 of 78 municipalities lost population between 2010-2020</li>
+						<li>Hurricane Maria triggered <span class="stat">{formatNumber(mariaExodus)}</span> departures in one year</li>
+						<li>Poverty and population loss are strongly correlated</li>
+						<li>The median age rose from 36.9 to {medianAge2020} years</li>
+					{:else}
+						<li><span class="stat">{formatNumber(541004)}</span> personas dejaron Puerto Rico desde 2004</li>
+						<li>77 de 78 municipios perdieron poblacion entre 2010-2020</li>
+						<li>El Huracan Maria provoco <span class="stat">{formatNumber(mariaExodus)}</span> partidas en un ano</li>
+						<li>La pobreza y la perdida de poblacion estan fuertemente correlacionadas</li>
+						<li>La edad mediana subio de 36.9 a {medianAge2020} anos</li>
+					{/if}
 				</ul>
 			</div>
 
 			<div class="sources">
-				<h3>Sources</h3>
+				<h3>{content.sources}</h3>
 				<ul>
-					<li>U.S. Census Bureau - Decennial Census 2010, 2020; Population Estimates Program 2004-2020</li>
-					<li>American Community Survey 5-Year Estimates - Poverty rates, demographic characteristics by municipality</li>
-					<li>Puerto Rico Institute of Statistics - Migration data and demographic trends</li>
-					<li>Pew Research Center - "Puerto Rican Population Declines on Island, Grows on U.S. Mainland" (2022)</li>
-					<li>Center for Puerto Rican Studies - Post-Hurricane Maria migration analysis (2018)</li>
-					<li>Federal Reserve Bank of New York - Economic conditions in Puerto Rico (2014-2020)</li>
+					<li><a href="https://www.census.gov/programs-surveys/popest.html" target="_blank" rel="noopener">U.S. Census Bureau</a> - Decennial Census 2010, 2020; Population Estimates Program 2004-2020</li>
+					<li><a href="https://data.census.gov/" target="_blank" rel="noopener">American Community Survey 5-Year Estimates</a> - {$language === 'en' ? 'Poverty rates, demographic characteristics by municipality' : 'Tasas de pobreza, caracteristicas demograficas por municipio'}</li>
+					<li>{$language === 'en' ? 'Puerto Rico Institute of Statistics - Migration data and demographic trends' : 'Instituto de Estadisticas de Puerto Rico - Datos de migracion y tendencias demograficas'}</li>
+					<li><a href="https://www.pewresearch.org/short-reads/2022/08/02/key-facts-about-puerto-rican-population/" target="_blank" rel="noopener">Pew Research Center</a> - "Puerto Rican Population Declines on Island, Grows on U.S. Mainland" (2022)</li>
+					<li><a href="https://centropr.hunter.cuny.edu/" target="_blank" rel="noopener">Center for Puerto Rican Studies</a> - {$language === 'en' ? 'Post-Hurricane Maria migration analysis (2018)' : 'Analisis de migracion post-Huracan Maria (2018)'}</li>
+					<li>Federal Reserve Bank of New York - {$language === 'en' ? 'Economic conditions in Puerto Rico (2014-2020)' : 'Condiciones economicas en Puerto Rico (2014-2020)'}</li>
 				</ul>
 			</div>
 
 			<nav class="chapter-nav">
 				<a href="{base}/" class="nav-link prev">
-					<span class="nav-direction">Back to</span>
-					<span class="nav-title">Home</span>
+					<span class="nav-direction">{content.backTo}</span>
+					<span class="nav-title">{content.home}</span>
 				</a>
 				<a href="{base}/chapters/turnout" class="nav-link next">
-					<span class="nav-direction">Next Chapter</span>
-					<span class="nav-title">Democracy Under Strain</span>
+					<span class="nav-direction">{content.nextChapter}</span>
+					<span class="nav-title">{content.nextTitle}</span>
 				</a>
 			</nav>
 		</div>
@@ -801,6 +871,18 @@
 		align-items: center;
 		justify-content: center;
 		padding: var(--space-lg);
+		animation: vizFadeIn 0.4s ease-out;
+	}
+
+	@keyframes vizFadeIn {
+		from {
+			opacity: 0;
+			transform: scale(0.98);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
 	}
 
 	.loading {
@@ -823,27 +905,45 @@
 		align-items: center;
 		justify-content: center;
 		min-height: 400px;
+		animation: counterPulse 2s ease-in-out infinite;
+	}
+
+	@keyframes counterPulse {
+		0%, 100% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.01);
+		}
 	}
 
 	.counter-label {
-		font-size: var(--text-lg);
+		font-size: var(--text-xl);
+		font-family: var(--font-display);
 		color: var(--color-text-muted);
-		margin-bottom: var(--space-sm);
+		margin-bottom: var(--space-md);
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
 	}
 
 	.counter-value {
 		font-family: var(--font-mono, monospace);
-		font-size: 4rem;
+		font-size: 5rem;
 		font-weight: var(--font-bold);
 		color: var(--color-text);
 		letter-spacing: -0.02em;
-		transition: color 0.3s ease;
+		transition: color 0.5s ease, text-shadow 0.5s ease;
+		text-shadow: 0 0 40px rgba(212, 163, 115, 0.2);
 	}
 
 	.counter-year {
-		font-size: var(--text-md);
-		color: var(--color-text-light);
-		margin-top: var(--space-sm);
+		font-size: var(--text-lg);
+		color: var(--color-accent);
+		margin-top: var(--space-md);
+		font-weight: var(--font-semibold);
+		padding: var(--space-xs) var(--space-md);
+		background: var(--color-surface-elevated);
+		border-radius: var(--radius-full);
 	}
 
 	/* Chart container */
@@ -859,21 +959,37 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-top: var(--space-md);
-		padding: var(--space-md);
-		background: var(--color-surface-elevated);
-		border-radius: var(--radius-md);
-		border-left: 3px solid #c41e3a;
+		margin-top: var(--space-lg);
+		padding: var(--space-md) var(--space-lg);
+		background: linear-gradient(135deg, var(--color-surface-elevated) 0%, rgba(196, 30, 58, 0.1) 100%);
+		border-radius: var(--radius-lg);
+		border-left: 4px solid #c41e3a;
+		animation: annotationSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	@keyframes annotationSlideIn {
+		from {
+			opacity: 0;
+			transform: translateX(-20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
 	}
 
 	.annotation-marker {
-		font-weight: var(--font-semibold);
+		font-family: var(--font-display);
+		font-size: var(--text-lg);
+		font-weight: var(--font-bold);
 		color: #c41e3a;
+		margin-bottom: var(--space-xs);
 	}
 
 	.annotation-text {
-		font-size: var(--text-sm);
+		font-size: var(--text-base);
 		color: var(--color-text-muted);
+		line-height: 1.5;
 	}
 
 	.chart-note {
@@ -884,38 +1000,49 @@
 	}
 
 	.legend {
-		margin-top: var(--space-lg);
+		margin-top: var(--space-xl);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: var(--space-xs);
+		gap: var(--space-sm);
+		padding: var(--space-md);
+		background: var(--color-surface-elevated);
+		border-radius: var(--radius-md);
 	}
 
 	.legend-label {
-		font-size: var(--text-xs);
+		font-size: var(--text-sm);
 		color: var(--color-text-muted);
 		text-transform: uppercase;
 		letter-spacing: var(--tracking-wide);
+		font-weight: var(--font-medium);
 	}
 
 	.legend-scale {
 		display: flex;
-		width: 200px;
-		height: 12px;
+		width: 220px;
+		height: 14px;
 		border-radius: var(--radius-sm);
 		overflow: hidden;
+		box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
 	}
 
 	.legend-scale span {
 		flex: 1;
+		transition: transform 0.2s ease;
+	}
+
+	.legend-scale span:hover {
+		transform: scaleY(1.2);
 	}
 
 	.legend-labels {
 		display: flex;
 		justify-content: space-between;
-		width: 200px;
-		font-size: var(--text-xs);
+		width: 220px;
+		font-size: var(--text-sm);
 		color: var(--color-text-light);
+		font-weight: var(--font-medium);
 	}
 
 	/* Step content styling */
@@ -1016,6 +1143,16 @@
 		margin-bottom: var(--space-sm);
 		padding-left: var(--space-md);
 		border-left: 2px solid var(--color-border);
+	}
+
+	.sources li a {
+		color: var(--color-accent);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.sources li a:hover {
+		color: var(--color-accent-light, #e5c46d);
 	}
 
 	.chapter-nav {

@@ -627,9 +627,9 @@
 			<div class="sources">
 				<h3>Sources</h3>
 				<ul>
-					<li>Comision Estatal de Elecciones de Puerto Rico (CEE) - Precinct-level election results 2016-2024</li>
-					<li>CEE - Precinct boundary definitions and voter registration by precinct</li>
-					<li>U.S. Census Bureau - Block group population data for precinct analysis</li>
+					<li><a href="https://ww2.ceepur.org/Home/EventosElectorales" target="_blank" rel="noopener">Comision Estatal de Elecciones de Puerto Rico (CEE)</a> - Precinct-level election results 2016-2024</li>
+					<li><a href="https://ww2.ceepur.org/" target="_blank" rel="noopener">CEE</a> - Precinct boundary definitions and voter registration by precinct</li>
+					<li><a href="https://data.census.gov/" target="_blank" rel="noopener">U.S. Census Bureau</a> - Block group population data for precinct analysis</li>
 					<li>Puerto Rico Planning Board - Geographic information systems data</li>
 				</ul>
 			</div>
@@ -974,6 +974,16 @@
 		margin-bottom: var(--space-sm);
 		padding-left: var(--space-md);
 		border-left: 2px solid var(--color-border);
+	}
+
+	.sources li a {
+		color: var(--color-accent);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.sources li a:hover {
+		color: var(--color-accent-light, #e5c46d);
 	}
 
 	@media (max-width: 768px) {

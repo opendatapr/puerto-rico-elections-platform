@@ -588,10 +588,10 @@
 			<div class="sources">
 				<h3>Sources</h3>
 				<ul>
-					<li>Comisión Estatal de Elecciones de Puerto Rico (CEE) - 2020 Referendum results by municipality</li>
-					<li>U.S. Census Bureau - Puerto Rico population and demographic data</li>
-					<li>Brexit referendum data from UK Electoral Commission (2016)</li>
-					<li>Scottish Independence referendum data from Electoral Management Board for Scotland (2014)</li>
+					<li><a href="https://ww2.ceepur.org/Home/EventosElectorales" target="_blank" rel="noopener">Comision Estatal de Elecciones de Puerto Rico (CEE)</a> - 2020 Referendum results by municipality</li>
+					<li><a href="https://data.census.gov/" target="_blank" rel="noopener">U.S. Census Bureau</a> - Puerto Rico population and demographic data</li>
+					<li><a href="https://www.electoralcommission.org.uk/" target="_blank" rel="noopener">UK Electoral Commission</a> - Brexit referendum data (2016)</li>
+					<li><a href="https://www.electoralmanagement.scot/" target="_blank" rel="noopener">Electoral Management Board for Scotland</a> - Scottish Independence referendum data (2014)</li>
 				</ul>
 			</div>
 
@@ -1047,5 +1047,15 @@
 		font-size: var(--text-sm);
 		color: var(--color-text-light);
 		padding: var(--space-xs) 0;
+	}
+
+	.sources li a {
+		color: var(--color-accent);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.sources li a:hover {
+		color: var(--color-accent-light, #e5c46d);
 	}
 </style>

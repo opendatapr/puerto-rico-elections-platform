@@ -174,10 +174,17 @@
 <style>
 	.bar-chart {
 		font-family: var(--font-body);
+		overflow: visible;
 	}
 
 	.bar {
-		transition: opacity var(--transition-fast);
+		transition:
+			opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+			filter 0.2s ease,
+			x 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+			y 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+			width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+			height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	.bar-group {
@@ -185,7 +192,7 @@
 	}
 
 	.bar-group:hover .bar {
-		filter: brightness(1.15);
+		filter: brightness(1.2) saturate(1.1);
 	}
 
 	.bar-group:focus {
@@ -198,13 +205,28 @@
 	}
 
 	.bar-value {
-		font-size: var(--text-xs);
-		fill: var(--color-text-muted);
-		font-weight: var(--font-medium);
+		font-size: var(--text-sm);
+		fill: var(--color-text);
+		font-weight: var(--font-semibold);
+		transition: opacity 0.3s ease;
+	}
+
+	.bar-group:hover .bar-value {
+		fill: var(--color-accent);
 	}
 
 	.tick-label {
-		font-size: var(--text-xs);
+		font-size: var(--text-sm);
 		fill: var(--color-text-muted);
+		font-family: var(--font-body);
+	}
+
+	/* Ensure labels don't get cut off */
+	.axis text {
+		transition: fill 0.2s ease;
+	}
+
+	.axis text:hover {
+		fill: var(--color-text);
 	}
 </style>

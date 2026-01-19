@@ -147,3 +147,63 @@ export function createPovertyScale(domain: [number, number]) {
 		return colors[idx + 1];
 	};
 }
+
+/**
+ * Get a categorical color by index (cycles through palette)
+ * @param index The index of the item
+ */
+export function getCategoryColor(index: number): string {
+	return CATEGORY_COLORS[index % CATEGORY_COLORS.length];
+}
+
+/**
+ * Create a categorical color scale for a list of items
+ * @param items Array of unique identifiers
+ */
+export function createCategoricalScale(items: string[]): (item: string) => string {
+	const colorMap = new Map<string, string>();
+	items.forEach((item, index) => {
+		colorMap.set(item, getCategoryColor(index));
+	});
+	return (item: string): string => colorMap.get(item) || CATEGORY_COLORS[0];
+}
+
+/**
+ * Lighten a hex color by a percentage
+ * @param hex The hex color (e.g., '#4a9eda')
+ * @param percent Percentage to lighten (0-100)
+ */
+export function lightenColor(hex: string, percent: number): string {
+	const num = parseInt(hex.replace('#', ''), 16);
+	const r = Math.min(255, ((num >> 16) & 255) + Math.round(255 * percent / 100));
+	const g = Math.min(255, ((num >> 8) & 255) + Math.round(255 * percent / 100));
+	const b = Math.min(255, (num & 255) + Math.round(255 * percent / 100));
+	return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
+}
+
+/**
+ * Darken a hex color by a percentage
+ * @param hex The hex color (e.g., '#4a9eda')
+ * @param percent Percentage to darken (0-100)
+ */
+export function darkenColor(hex: string, percent: number): string {
+	const num = parseInt(hex.replace('#', ''), 16);
+	const r = Math.max(0, ((num >> 16) & 255) - Math.round(255 * percent / 100));
+	const g = Math.max(0, ((num >> 8) & 255) - Math.round(255 * percent / 100));
+	const b = Math.max(0, (num & 255) - Math.round(255 * percent / 100));
+	return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
+}
+
+/**
+ * Get a contrasting text color (black or white) for a given background
+ * @param hex The background hex color
+ */
+export function getContrastColor(hex: string): string {
+	const num = parseInt(hex.replace('#', ''), 16);
+	const r = (num >> 16) & 255;
+	const g = (num >> 8) & 255;
+	const b = num & 255;
+	// Use relative luminance formula
+	const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+	return luminance > 0.5 ? '#0c0b0a' : '#f5f5f4';
+}

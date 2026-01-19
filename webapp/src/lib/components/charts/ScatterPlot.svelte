@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import * as d3 from 'd3';
 
 	interface DataPoint {
@@ -7,6 +8,12 @@
 		label: string;
 		color?: string;
 		size?: number;
+	}
+
+	interface Annotation {
+		label: string;
+		text: string;
+		position?: 'top' | 'right' | 'left' | 'bottom';
 	}
 
 	interface Props {
@@ -21,6 +28,10 @@
 		highlightLabel?: string | null;
 		onPointClick?: (point: DataPoint) => void;
 		onPointHover?: (point: DataPoint | null) => void;
+		annotations?: Annotation[];
+		loading?: boolean;
+		animateOnMount?: boolean;
+		tooltipFormat?: (point: DataPoint) => string;
 	}
 
 	let {
@@ -34,12 +45,35 @@
 		showRegression = false,
 		highlightLabel = null,
 		onPointClick = () => {},
-		onPointHover = () => {}
+		onPointHover = () => {},
+		annotations = [],
+		loading = false,
+		animateOnMount = true,
+		tooltipFormat = (p: DataPoint) => `<strong>${p.label}</strong><br/>${xLabel || 'X'}: ${xFormat(p.x)}<br/>${yLabel || 'Y'}: ${yFormat(p.y)}`
 	}: Props = $props();
 
 	let hoveredPoint: DataPoint | null = $state(null);
 	let tooltipX = $state(0);
 	let tooltipY = $state(0);
+	let animationProgress = $state(animateOnMount ? 0 : 1);
+
+	onMount(() => {
+		if (animateOnMount) {
+			const duration = 700;
+			const startTime = performance.now();
+
+			function animate(currentTime: number) {
+				const elapsed = currentTime - startTime;
+				animationProgress = Math.min(elapsed / duration, 1);
+
+				if (animationProgress < 1) {
+					requestAnimationFrame(animate);
+				}
+			}
+
+			requestAnimationFrame(animate);
+		}
+	});
 
 	const margin = { top: 20, right: 20, bottom: 50, left: 60 };
 	let innerWidth = $derived(width - margin.left - margin.right);
@@ -98,6 +132,26 @@
 		return d === hoveredPoint ? baseSize * 1.5 : baseSize;
 	}
 
+	// Animated point position - scatter from center
+	function getAnimatedCx(point: DataPoint): number {
+		const targetX = xScale(point.x);
+		const centerX = innerWidth / 2;
+		const easedProgress = 1 - Math.pow(1 - animationProgress, 3);
+		return centerX + (targetX - centerX) * easedProgress;
+	}
+
+	function getAnimatedCy(point: DataPoint): number {
+		const targetY = yScale(point.y);
+		const centerY = innerHeight / 2;
+		const easedProgress = 1 - Math.pow(1 - animationProgress, 3);
+		return centerY + (targetY - centerY) * easedProgress;
+	}
+
+	function getAnimatedPointOpacity(d: DataPoint): number {
+		const baseOpacity = getPointOpacity(d);
+		return baseOpacity * Math.min(1, animationProgress * 2);
+	}
+
 	function handleMouseMove(event: MouseEvent, point: DataPoint) {
 		hoveredPoint = point;
 		tooltipX = event.clientX + 10;
@@ -109,10 +163,21 @@
 		hoveredPoint = null;
 		onPointHover(null);
 	}
+
+	function getAnnotation(label: string): Annotation | undefined {
+		return annotations.find(a => a.label === label);
+	}
 </script>
 
 <div class="scatter-container">
-	<svg {width} {height} class="scatter-plot">
+	{#if loading}
+		<div class="loading-overlay">
+			<div class="loading-spinner"></div>
+			<span class="loading-text">Loading data...</span>
+		</div>
+	{/if}
+
+	<svg {width} {height} class="scatter-plot" class:loading>
 		<g transform="translate({margin.left}, {margin.top})">
 			<!-- Grid -->
 			<g class="grid">
@@ -139,7 +204,7 @@
 			</g>
 
 			<!-- Regression line -->
-			{#if showRegression && regression()}
+			{#if showRegression && regression() && animationProgress > 0.5}
 				{@const reg = regression()}
 				{@const x1 = xExtent[0]}
 				{@const x2 = xExtent[1]}
@@ -153,13 +218,15 @@
 					stroke="var(--color-accent)"
 					stroke-width="2"
 					stroke-dasharray="6,4"
-					opacity="0.7"
+					opacity={Math.min(1, (animationProgress - 0.5) * 2) * 0.7}
+					class="regression-line"
 				/>
 				<text
 					x={innerWidth - 10}
 					y="20"
 					text-anchor="end"
 					class="r-squared"
+					opacity={Math.min(1, (animationProgress - 0.5) * 2)}
 				>
 					R² = {reg!.rSquared.toFixed(3)}
 				</text>
@@ -167,12 +234,15 @@
 
 			<!-- Points -->
 			{#each data as point}
+				{@const annotation = getAnnotation(point.label)}
+				{@const cx = getAnimatedCx(point)}
+				{@const cy = getAnimatedCy(point)}
 				<circle
-					cx={xScale(point.x)}
-					cy={yScale(point.y)}
+					{cx}
+					{cy}
 					r={getPointSize(point)}
 					fill={getPointColor(point)}
-					opacity={getPointOpacity(point)}
+					opacity={getAnimatedPointOpacity(point)}
 					class="point"
 					role="button"
 					tabindex="0"
@@ -182,6 +252,38 @@
 					onclick={() => onPointClick(point)}
 					onkeydown={(e) => e.key === 'Enter' && onPointClick(point)}
 				/>
+				<!-- Annotation callout -->
+				{#if annotation && animationProgress > 0.8}
+					<g class="annotation" transform="translate({cx}, {cy})">
+						<line
+							x1="0"
+							y1="-8"
+							x2="0"
+							y2="-24"
+							stroke={getPointColor(point)}
+							stroke-width="1.5"
+							stroke-dasharray="3,2"
+						/>
+						<rect
+							x={-annotation.text.length * 4 - 8}
+							y="-42"
+							width={annotation.text.length * 8 + 16}
+							height="18"
+							fill="var(--color-surface-elevated)"
+							stroke={getPointColor(point)}
+							stroke-width="1"
+							rx="4"
+						/>
+						<text
+							x="0"
+							y="-30"
+							text-anchor="middle"
+							class="annotation-text"
+						>
+							{annotation.text}
+						</text>
+					</g>
+				{/if}
 			{/each}
 
 			<!-- X Axis -->
@@ -222,9 +324,7 @@
 
 	{#if hoveredPoint}
 		<div class="tooltip" style="left: {tooltipX}px; top: {tooltipY}px;">
-			<strong>{hoveredPoint.label}</strong><br />
-			{xLabel || 'X'}: {xFormat(hoveredPoint.x)}<br />
-			{yLabel || 'Y'}: {yFormat(hoveredPoint.y)}
+			{@html tooltipFormat(hoveredPoint)}
 		</div>
 	{/if}
 </div>
@@ -232,6 +332,43 @@
 <style>
 	.scatter-container {
 		position: relative;
+		display: inline-block;
+	}
+
+	.loading-overlay {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background: var(--color-surface);
+		background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-elevated) 100%);
+		border-radius: var(--radius-md);
+		z-index: 10;
+	}
+
+	.loading-spinner {
+		width: 32px;
+		height: 32px;
+		border: 3px solid var(--color-border);
+		border-top-color: var(--color-accent);
+		border-radius: 50%;
+		animation: spin 1s linear infinite;
+	}
+
+	.loading-text {
+		margin-top: var(--space-sm);
+		font-size: var(--text-sm);
+		color: var(--color-text-muted);
+	}
+
+	@keyframes spin {
+		to { transform: rotate(360deg); }
+	}
+
+	.scatter-plot.loading {
+		opacity: 0.3;
 	}
 
 	.scatter-plot {
@@ -244,8 +381,6 @@
 		transition:
 			r 0.25s cubic-bezier(0.4, 0, 0.2, 1),
 			opacity 0.3s ease,
-			cx 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-			cy 0.5s cubic-bezier(0.4, 0, 0.2, 1),
 			filter 0.2s ease;
 	}
 
@@ -262,6 +397,10 @@
 		stroke-width: 3;
 	}
 
+	.regression-line {
+		transition: opacity 0.4s ease;
+	}
+
 	.grid line {
 		transition: stroke-opacity 0.3s ease;
 	}
@@ -270,6 +409,8 @@
 		font-size: var(--text-sm);
 		fill: var(--color-text-muted);
 		font-family: var(--font-body);
+		font-variant-numeric: tabular-nums;
+		letter-spacing: 0.01em;
 	}
 
 	.axis-label {
@@ -284,6 +425,7 @@
 		fill: var(--color-accent);
 		font-weight: var(--font-bold);
 		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+		transition: opacity 0.4s ease;
 	}
 
 	.tooltip {
@@ -299,6 +441,7 @@
 		box-shadow: var(--shadow-xl);
 		backdrop-filter: blur(8px);
 		animation: tooltipFadeIn 0.15s ease-out;
+		max-width: 240px;
 	}
 
 	@keyframes tooltipFadeIn {
@@ -312,7 +455,30 @@
 		}
 	}
 
-	.tooltip strong {
+	.tooltip :global(strong) {
 		color: var(--color-accent);
+		font-weight: var(--font-semibold);
+	}
+
+	/* Annotation styles */
+	.annotation {
+		animation: annotationFadeIn 0.4s ease-out;
+	}
+
+	@keyframes annotationFadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(8px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.annotation-text {
+		font-size: var(--text-xs);
+		fill: var(--color-text);
+		font-weight: var(--font-medium);
 	}
 </style>

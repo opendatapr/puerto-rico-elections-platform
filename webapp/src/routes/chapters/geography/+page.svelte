@@ -5,10 +5,370 @@
 	import { ChoroplethMap } from '$lib/components/maps';
 	import { BarChart, ScatterPlot } from '$lib/components/charts';
 	import { createDivergingScale, createSequentialScale, CATEGORY_COLORS, PARTY_COLORS } from '$lib/utils/colors';
+	import { language } from '$lib/stores/language';
 
 	const chapterNum = 6;
-	const chapterTitle = 'Divided by Design';
 	const totalSteps = 12;
+
+	// Bilingual content
+	const t = {
+		en: {
+			chapterTitle: 'Divided by Design',
+			chapter: 'Chapter',
+			lead: "Puerto Rico's electoral geography is not an accident. Carved from colonial legacies and shaped by decades of migration, these 78 municipalities are the building blocks of political power. Where you live shapes how you vote, and the map itself becomes a battleground.",
+			loading: 'Loading geographic data...',
+			// Map titles
+			map78Municipalities: '78 Municipalities of Puerto Rico',
+			mapPartisanLean: 'Partisan Lean (2016 Governor)',
+			mapPopulationDistribution: 'Population Distribution',
+			mapUrbanRuralClassification: 'Urban-Rural Classification',
+			mapIncomeVsPnp: 'Income vs. PNP Vote Share',
+			mapRegionalBalance: 'Regional Partisan Balance',
+			mapSenateDistricts: 'Senate Districts',
+			mapTop10Population: 'Top 10 Municipalities by Population',
+			mapElectoralMap: 'The Electoral Map',
+			// Viz notes
+			vizNoteDeviation: 'Deviation from 50-50 (positive = PNP lean)',
+			// Legend labels
+			legendUrban: 'Urban',
+			legendSuburban: 'Suburban',
+			legendTown: 'Town',
+			legendRural: 'Rural',
+			legendPpdLean: 'PPD Lean',
+			legendEven: 'Even',
+			legendPnpLean: 'PNP Lean',
+			// Scatter plot
+			scatterXLabel: 'Median Household Income ($)',
+			scatterYLabel: 'PNP Vote Share (%)',
+			// Step titles
+			step0Title: 'The Map is Not the Territory',
+			step1Title: '78 Pieces of a Colonial Puzzle',
+			step2Title: 'The Partisan Divide',
+			step3Title: 'Where the People Are',
+			step4Title: 'The Population Paradox',
+			step5Title: 'Urban vs. Rural',
+			step6Title: 'The Class Dimension',
+			step7Title: 'Regional Coalitions',
+			step8Title: 'At-Large vs. District: The Senate',
+			step9Title: 'The House: 40 Districts',
+			step10Title: 'The Population Giants',
+			step11Title: 'The Stakes of the Map',
+			// Step 0
+			step0p1: 'Every election night, the map of Puerto Rico lights up in red and blue. Municipalities flip, margins shift, and pundits draw sweeping conclusions from the colored shapes on screen.',
+			step0p2: 'But what are these shapes? Where did they come from? And why do they matter so much to Puerto Rican politics? The answers reveal how',
+			step0p2Highlight: 'geography itself becomes a political actor',
+			step0p3: "This chapter examines how Puerto Rico's electoral geography was designed, how it divides the island, and what it means for representation.",
+			// Step 1
+			step1p1: "trace their origins to the Spanish colonial era. Unlike American counties, which were often drawn on gridlines across empty land, Puerto Rico's boundaries followed rivers, mountain ridges, and the practical limits of 18th-century governance.",
+			step1p2: 'When the United States took control in 1898, these Spanish administrative units remained intact. The island\'s rugged terrain and dispersed population made them practical for governance. A municipality centered on each town plaza, radiating outward to the next mountain range.',
+			step1p3: "This colonial inheritance means Puerto Rico's political geography predates modern transportation, communication, and demographic patterns. The map was designed for a different island.",
+			// Step 2
+			step2p1a: 'When we color each municipality by its partisan lean, a pattern emerges.',
+			step2p1b: 'lean toward the pro-statehood PNP, while',
+			step2p1c: 'favor the pro-commonwealth PPD.',
+			step2p2a: 'In 2016,',
+			step2p2b: 'was the most pro-PNP municipality, while',
+			step2p2c: "leaned most heavily toward PPD. These aren't random variations; they reflect deep structural differences in demographics, economics, and political culture.",
+			step2p3: 'The clustering is striking: neighboring municipalities tend to vote alike, creating',
+			step2p3Highlight: 'regional blocs',
+			step2p3b: 'that persist across multiple elections.',
+			// Step 3
+			step3p1: "But the map lies. A municipality's size on the map has nothing to do with its political importance.",
+			step3p1Highlight: 'Population',
+			step3p1b: "determines votes, and Puerto Rico's population is concentrated in a few urban centers.",
+			step3p2a: 'alone holds',
+			step3p2b: "of the island's population. The San Juan metro area, a ring of municipalities around the capital, contains over a third of all Puerto Ricans.",
+			step3p3: 'This means the sprawling rural municipalities of the interior, which dominate the map visually, are politically marginalized by their small populations.',
+			// Step 4
+			step4p1: 'Consider this:',
+			step4p1b: 'has',
+			step4p1c: 'residents, while',
+			step4p1d: 'has just',
+			step4p2: "That's a ratio of over",
+			step4p2Highlight: '200 to 1',
+			step4p2b: '. Yet on most maps, these municipalities appear roughly similar in size. Equal-area maps distort political reality, making rural regions seem more important than they are electorally.',
+			step4p3: "When journalists and analysts use standard maps, they inadvertently reinforce the illusion that Puerto Rico's politics is evenly distributed across space.",
+			// Step 5
+			step5p1: "Puerto Rico's municipalities fall into distinct categories that shape their political character. Only",
+			step5p1b: 'qualify as fully urban with populations over 100,000.',
+			step5p2: 'includes San Juan, Bayamon, Carolina, Ponce, and Caguas. These municipalities have diverse economies, higher incomes, and professional workforces that vote differently from the rest of the island.',
+			step5p3: 'in the central mountains and western coast maintain agricultural traditions, face higher poverty rates, and often support different candidates than the metro areas.',
+			step5p4: 'This urban-rural divide cuts across the statehood-commonwealth debate, creating cross-cutting cleavages that complicate Puerto Rico\'s political coalitions.',
+			labelUrbanCore: 'The urban core',
+			labelRuralMunicipalities: 'Rural municipalities',
+			// Comparison variant labels
+			comparisonUrbanLabel: 'Urban Core',
+			comparisonRuralLabel: 'Rural Interior',
+			comparisonUrbanStat: '5 municipalities',
+			comparisonRuralStat: '40+ municipalities',
+			comparisonUrbanDesc: 'Higher incomes, diverse economies, professional workforce',
+			comparisonRuralDesc: 'Agricultural traditions, higher poverty, scattered populations',
+			// Step 6
+			step6p1: "Plotting each municipality's median household income against its PNP vote share reveals a striking pattern:",
+			step6p1Highlight: 'wealthier municipalities tend to vote more for PNP',
+			step6p2: 'The trendline shows a positive correlation (R-squared indicates the strength of this relationship). While not deterministic, income is one of the strongest predictors of partisan lean at the municipal level.',
+			step6p3: 'This class dimension helps explain why the pro-statehood movement, despite advocating for full U.S. citizenship rights, draws more support from economically advantaged areas where residents may benefit from federal programs and economic integration.',
+			// Callout variant content
+			calloutStat: 'R-squared correlation',
+			calloutStatValue: '0.35',
+			calloutInsight: 'Income is one of the strongest predictors of municipal voting patterns, more powerful than age or education level alone.',
+			// Step 7
+			step7p1: "Puerto Rico's eight Senate districts roughly correspond to historical regions with distinct political cultures. Each bar shows how far that region deviates from a 50-50 partisan split.",
+			step7p2a: 'The',
+			step7p2SanJuan: 'San Juan Metro',
+			step7p2and: 'and',
+			step7p2Bayamon: 'Bayamon/North',
+			step7p2b: 'regions tilt toward PNP, while the',
+			step7p2Mayaguez: 'Mayaguez/West',
+			step7p2c: 'and',
+			step7p2Ponce: 'Ponce/South',
+			step7p2d: 'regions lean PPD.',
+			step7p3: "These regional patterns have proven durable across elections. A municipality's geographic location predicts its partisan lean better than most demographic variables. Your neighbors shape your politics, and regional identity reinforces party loyalty across generations.",
+			// Step 8
+			step8p1: "Puerto Rico elects its legislature through a mixed system. The",
+			step8p1Senate: '8 Senate districts',
+			step8p1b: ', shown here, each elect 2 senators by district. An additional 11 senators are elected at-large, island-wide.',
+			step8p2: 'This hybrid system creates interesting dynamics. District senators must represent specific geographic areas with particular concerns, while at-large senators can appeal to the entire island.',
+			step8p3: 'The district boundaries matter enormously. Each colored region on this map sends 2 senators to San Juan, regardless of whether it contains 300,000 or 500,000 people. Malapportionment gives some regions more representation per capita than others.',
+			// Step 9
+			step9p1: 'The House of Representatives has',
+			step9p1House: '40 districts',
+			step9p1b: ', each electing a single representative, plus 11 at-large seats. These districts are smaller than Senate districts, sometimes splitting municipalities.',
+			step9p2a: 'Large municipalities like San Juan span',
+			step9p2Highlight: '5 House districts',
+			step9p2b: ", meaning the capital's residents are represented by multiple district representatives with potentially different agendas. Smaller municipalities share a representative with their neighbors.",
+			step9p3: 'This arrangement means campaigns must be intensely local. A candidate in House District 3 (part of San Juan) faces entirely different voters than someone in District 4, even though both are technically in the same city.',
+			// Step 10
+			step10p1: 'The top 10 municipalities by population illustrate the concentration of political power. Together, they hold over',
+			step10p1Highlight: '50%',
+			step10p1b: "of Puerto Rico's total population.",
+			step10p2: 'Winning elections means winning these urban centers, or at least limiting losses there. A candidate who sweeps the San Juan metro but loses the rural interior can still win island-wide, while the reverse is nearly impossible.',
+			step10p3: "This population concentration explains why Puerto Rico's political debates often center on urban issues: traffic, public services, economic development, and professional employment. Rural concerns, from agricultural policy to infrastructure investment, take a back seat.",
+			// Step 11
+			step11p1: "Puerto Rico's electoral geography matters because",
+			step11p1Highlight: 'the map itself is contested terrain',
+			step11p1b: '. Proposals to consolidate municipalities, redraw district lines, or change the at-large vs. district balance would reshape political power.',
+			step11p2: 'The current system favors parties that can build broad geographic coalitions while maintaining strong urban cores. It disadvantages parties concentrated in a few regions, and it gives smaller municipalities outsized influence in some legislative races.',
+			step11p3: 'As Puerto Rico debates its future, from statehood to independence, the question of how to draw the map, and who decides, remains as politically charged as the debates over the island\'s ultimate status.',
+			// Question variant content
+			questionTitle: 'Who Will Redraw the Map?',
+			questionP1: 'As population continues to shift and municipalities lose residents to the mainland, will Puerto Rico consolidate its 78 municipalities? Will district lines be redrawn to reflect new realities?',
+			questionP2: 'The answers will shape political power for a generation, and both parties know it.',
+			// Conclusion
+			conclusionTitle: 'The Geography of Power',
+			conclusionP1: "Puerto Rico's electoral map tells a story of colonial inheritance, urban concentration, and regional identity. The 78 municipalities, 8 Senate districts, and 40 House districts create a complex terrain where geography shapes political outcomes.",
+			keyTakeaways: 'Key Takeaways',
+			takeaway1Title: 'Colonial Legacy:',
+			takeaway1: 'Municipality boundaries date to Spanish rule and no longer reflect modern population patterns',
+			takeaway2Title: 'Population Concentration:',
+			takeaway2: 'Over half the population lives in just 10 municipalities, making urban areas decisive',
+			takeaway3Title: 'Regional Blocs:',
+			takeaway3: 'Neighboring municipalities vote alike, creating persistent geographic coalitions',
+			takeaway4Title: 'Class Geography:',
+			takeaway4: 'Wealthier areas lean PNP; poorer areas lean PPD, with exceptions',
+			takeaway5Title: 'Mixed Representation:',
+			takeaway5: 'The combination of district and at-large seats creates complex campaign incentives',
+			// Sources
+			sources: 'Sources',
+			sourceCee: 'Municipality-level election results 2016-2024',
+			sourceCensus: 'Puerto Rico geographic definitions and TIGER/Line shapefiles',
+			sourcePlanningBoard: 'Puerto Rico Planning Board - Regional classifications and urban/rural definitions',
+			sourceAcs: 'Population and demographic data by municipality',
+			// Navigation
+			previous: 'Previous',
+			nextChapter: 'Next Chapter',
+			prevTitle: 'The 52.5% Threshold',
+			nextTitle: 'La Fortaleza',
+			// Tooltips
+			tooltipResidents: 'residents',
+			tooltipPop: 'pop.',
+			tooltipDistrict: 'District',
+			tooltipPoverty: 'poverty',
+			blueMunicipalities: 'Blue municipalities',
+			redMunicipalities: 'red municipalities',
+			municipalities78: "Puerto Rico's 78 municipalities"
+		},
+		es: {
+			chapterTitle: 'Dividido por Diseno',
+			chapter: 'Capitulo',
+			lead: 'La geografia electoral de Puerto Rico no es un accidente. Tallada de legados coloniales y moldeada por decadas de migracion, estos 78 municipios son los bloques de construccion del poder politico. Donde vives moldea como votas, y el mapa mismo se convierte en un campo de batalla.',
+			loading: 'Cargando datos geograficos...',
+			// Map titles
+			map78Municipalities: '78 Municipios de Puerto Rico',
+			mapPartisanLean: 'Inclinacion Partidista (Gobernador 2016)',
+			mapPopulationDistribution: 'Distribucion Poblacional',
+			mapUrbanRuralClassification: 'Clasificacion Urbano-Rural',
+			mapIncomeVsPnp: 'Ingreso vs. Voto PNP',
+			mapRegionalBalance: 'Balance Partidista Regional',
+			mapSenateDistricts: 'Distritos Senatoriales',
+			mapTop10Population: 'Los 10 Municipios Mas Poblados',
+			mapElectoralMap: 'El Mapa Electoral',
+			// Viz notes
+			vizNoteDeviation: 'Desviacion del 50-50 (positivo = tendencia PNP)',
+			// Legend labels
+			legendUrban: 'Urbano',
+			legendSuburban: 'Suburbano',
+			legendTown: 'Pueblo',
+			legendRural: 'Rural',
+			legendPpdLean: 'Tendencia PPD',
+			legendEven: 'Parejo',
+			legendPnpLean: 'Tendencia PNP',
+			// Scatter plot
+			scatterXLabel: 'Ingreso Medio del Hogar ($)',
+			scatterYLabel: 'Porcentaje de Voto PNP (%)',
+			// Step titles
+			step0Title: 'El Mapa No Es el Territorio',
+			step1Title: '78 Piezas de un Rompecabezas Colonial',
+			step2Title: 'La Division Partidista',
+			step3Title: 'Donde Esta la Gente',
+			step4Title: 'La Paradoja de Poblacion',
+			step5Title: 'Urbano vs. Rural',
+			step6Title: 'La Dimension de Clase',
+			step7Title: 'Coaliciones Regionales',
+			step8Title: 'Por Acumulacion vs. Por Distrito: El Senado',
+			step9Title: 'La Camara: 40 Distritos',
+			step10Title: 'Los Gigantes Poblacionales',
+			step11Title: 'Lo Que Esta en Juego en el Mapa',
+			// Step 0
+			step0p1: 'Cada noche de elecciones, el mapa de Puerto Rico se ilumina en rojo y azul. Los municipios cambian de color, los margenes se mueven, y los analistas sacan conclusiones amplias de las formas coloreadas en pantalla.',
+			step0p2: 'Pero, que son estas formas? De donde vienen? Y por que importan tanto para la politica puertorriquena? Las respuestas revelan como',
+			step0p2Highlight: 'la geografia misma se convierte en actor politico',
+			step0p3: 'Este capitulo examina como se diseno la geografia electoral de Puerto Rico, como divide la isla, y que significa para la representacion.',
+			// Step 1
+			step1p1: 'trazan sus origenes a la era colonial espanola. A diferencia de los condados estadounidenses, que frecuentemente se trazaron en cuadriculas sobre tierras vacias, las fronteras de Puerto Rico siguieron rios, cordilleras montanosas y los limites practicos de la gobernanza del siglo XVIII.',
+			step1p2: 'Cuando Estados Unidos tomo control en 1898, estas unidades administrativas espanolas permanecieron intactas. El terreno accidentado de la isla y la poblacion dispersa las hacian practicas para gobernar. Un municipio centrado en cada plaza del pueblo, irradiandose hacia la proxima cordillera.',
+			step1p3: 'Esta herencia colonial significa que la geografia politica de Puerto Rico es anterior al transporte moderno, las comunicaciones y los patrones demograficos. El mapa fue disenado para una isla diferente.',
+			// Step 2
+			step2p1a: 'Cuando coloreamos cada municipio segun su inclinacion partidista, emerge un patron.',
+			step2p1b: 'se inclinan hacia el PNP pro-estadidad, mientras que',
+			step2p1c: 'favorecen al PPD pro-estado libre asociado.',
+			step2p2a: 'En 2016,',
+			step2p2b: 'fue el municipio mas pro-PNP, mientras que',
+			step2p2c: 'se inclino mas fuertemente hacia el PPD. Estas no son variaciones aleatorias; reflejan profundas diferencias estructurales en demografia, economia y cultura politica.',
+			step2p3: 'La agrupacion es sorprendente: los municipios vecinos tienden a votar igual, creando',
+			step2p3Highlight: 'bloques regionales',
+			step2p3b: 'que persisten a traves de multiples elecciones.',
+			// Step 3
+			step3p1: 'Pero el mapa miente. El tamano de un municipio en el mapa no tiene nada que ver con su importancia politica.',
+			step3p1Highlight: 'La poblacion',
+			step3p1b: 'determina los votos, y la poblacion de Puerto Rico esta concentrada en unos pocos centros urbanos.',
+			step3p2a: 'solo tiene',
+			step3p2b: 'de la poblacion de la isla. El area metropolitana de San Juan, un anillo de municipios alrededor de la capital, contiene mas de un tercio de todos los puertorriquenos.',
+			step3p3: 'Esto significa que los extensos municipios rurales del interior, que dominan el mapa visualmente, estan politicamente marginados por sus pequenas poblaciones.',
+			// Step 4
+			step4p1: 'Considera esto:',
+			step4p1b: 'tiene',
+			step4p1c: 'residentes, mientras que',
+			step4p1d: 'tiene solo',
+			step4p2: 'Eso es una proporcion de mas de',
+			step4p2Highlight: '200 a 1',
+			step4p2b: '. Sin embargo, en la mayoria de los mapas, estos municipios parecen tener un tamano similar. Los mapas de igual area distorsionan la realidad politica, haciendo que las regiones rurales parezcan mas importantes de lo que son electoralmente.',
+			step4p3: 'Cuando los periodistas y analistas usan mapas estandar, inadvertidamente refuerzan la ilusion de que la politica de Puerto Rico esta distribuida equitativamente en el espacio.',
+			// Step 5
+			step5p1: 'Los municipios de Puerto Rico caen en categorias distintas que moldean su caracter politico. Solo',
+			step5p1b: 'califican como completamente urbanos con poblaciones de mas de 100,000.',
+			step5p2: 'incluye San Juan, Bayamon, Carolina, Ponce y Caguas. Estos municipios tienen economias diversas, ingresos mas altos y fuerzas laborales profesionales que votan diferente al resto de la isla.',
+			step5p3: 'en las montanas centrales y la costa oeste mantienen tradiciones agricolas, enfrentan tasas de pobreza mas altas, y frecuentemente apoyan candidatos diferentes que las areas metropolitanas.',
+			step5p4: 'Esta division urbano-rural atraviesa el debate estadidad-estado libre asociado, creando divisiones cruzadas que complican las coaliciones politicas de Puerto Rico.',
+			labelUrbanCore: 'El nucleo urbano',
+			labelRuralMunicipalities: 'Los municipios rurales',
+			// Comparison variant labels
+			comparisonUrbanLabel: 'Nucleo Urbano',
+			comparisonRuralLabel: 'Interior Rural',
+			comparisonUrbanStat: '5 municipios',
+			comparisonRuralStat: '40+ municipios',
+			comparisonUrbanDesc: 'Mayores ingresos, economias diversas, fuerza laboral profesional',
+			comparisonRuralDesc: 'Tradiciones agricolas, mayor pobreza, poblaciones dispersas',
+			// Step 6
+			step6p1: 'Graficando el ingreso medio del hogar de cada municipio contra su porcentaje de voto PNP revela un patron sorprendente:',
+			step6p1Highlight: 'los municipios mas ricos tienden a votar mas por el PNP',
+			step6p2: 'La linea de tendencia muestra una correlacion positiva (R-cuadrado indica la fuerza de esta relacion). Aunque no es determinista, el ingreso es uno de los predictores mas fuertes de la inclinacion partidista a nivel municipal.',
+			step6p3: 'Esta dimension de clase ayuda a explicar por que el movimiento pro-estadidad, a pesar de abogar por plenos derechos de ciudadania estadounidense, atrae mas apoyo de areas economicamente aventajadas donde los residentes pueden beneficiarse de programas federales e integracion economica.',
+			// Callout variant content
+			calloutStat: 'Correlacion R-cuadrado',
+			calloutStatValue: '0.35',
+			calloutInsight: 'El ingreso es uno de los predictores mas fuertes de los patrones de votacion municipal, mas poderoso que la edad o el nivel educativo por si solos.',
+			// Step 7
+			step7p1: 'Los ocho distritos senatoriales de Puerto Rico corresponden aproximadamente a regiones historicas con culturas politicas distintas. Cada barra muestra cuanto se desvia esa region de una division partidista 50-50.',
+			step7p2a: 'Las regiones de',
+			step7p2SanJuan: 'San Juan Metro',
+			step7p2and: 'y',
+			step7p2Bayamon: 'Bayamon/Norte',
+			step7p2b: 'se inclinan hacia el PNP, mientras que las regiones de',
+			step7p2Mayaguez: 'Mayaguez/Oeste',
+			step7p2c: 'y',
+			step7p2Ponce: 'Ponce/Sur',
+			step7p2d: 'se inclinan hacia el PPD.',
+			step7p3: 'Estos patrones regionales han demostrado ser duraderos a traves de las elecciones. La ubicacion geografica de un municipio predice su inclinacion partidista mejor que la mayoria de las variables demograficas. Tus vecinos moldean tu politica, y la identidad regional refuerza la lealtad partidista a traves de generaciones.',
+			// Step 8
+			step8p1: 'Puerto Rico elige su legislatura a traves de un sistema mixto. Los',
+			step8p1Senate: '8 distritos senatoriales',
+			step8p1b: ', mostrados aqui, cada uno elige 2 senadores por distrito. Otros 11 senadores adicionales son elegidos por acumulacion, a nivel de toda la isla.',
+			step8p2: 'Este sistema hibrido crea dinamicas interesantes. Los senadores por distrito deben representar areas geograficas especificas con preocupaciones particulares, mientras que los senadores por acumulacion pueden apelar a toda la isla.',
+			step8p3: 'Los limites de los distritos importan enormemente. Cada region coloreada en este mapa envia 2 senadores a San Juan, independientemente de si contiene 300,000 o 500,000 personas. La mala distribucion da a algunas regiones mas representacion per capita que a otras.',
+			// Step 9
+			step9p1: 'La Camara de Representantes tiene',
+			step9p1House: '40 distritos',
+			step9p1b: ', cada uno eligiendo un solo representante, mas 11 escanos por acumulacion. Estos distritos son mas pequenos que los distritos senatoriales, a veces dividiendo municipios.',
+			step9p2a: 'Municipios grandes como San Juan abarcan',
+			step9p2Highlight: '5 distritos de la Camara',
+			step9p2b: ', lo que significa que los residentes de la capital estan representados por multiples representantes de distrito con agendas potencialmente diferentes. Los municipios mas pequenos comparten un representante con sus vecinos.',
+			step9p3: 'Este arreglo significa que las campanas deben ser intensamente locales. Un candidato en el Distrito 3 de la Camara (parte de San Juan) enfrenta votantes completamente diferentes que alguien en el Distrito 4, aunque ambos tecnicamente estan en la misma ciudad.',
+			// Step 10
+			step10p1: 'Los 10 municipios mas poblados ilustran la concentracion del poder politico. Juntos, tienen mas del',
+			step10p1Highlight: '50%',
+			step10p1b: 'de la poblacion total de Puerto Rico.',
+			step10p2: 'Ganar elecciones significa ganar estos centros urbanos, o al menos limitar las perdidas alli. Un candidato que arrasa en el metro de San Juan pero pierde el interior rural puede aun ganar a nivel de toda la isla, mientras que lo contrario es casi imposible.',
+			step10p3: 'Esta concentracion poblacional explica por que los debates politicos de Puerto Rico frecuentemente se centran en asuntos urbanos: trafico, servicios publicos, desarrollo economico y empleo profesional. Las preocupaciones rurales, desde politica agricola hasta inversion en infraestructura, quedan en segundo plano.',
+			// Step 11
+			step11p1: 'La geografia electoral de Puerto Rico importa porque',
+			step11p1Highlight: 'el mapa mismo es terreno en disputa',
+			step11p1b: '. Las propuestas para consolidar municipios, redibujar lineas de distrito, o cambiar el balance entre acumulacion y distrito reconfigurarían el poder politico.',
+			step11p2: 'El sistema actual favorece a partidos que pueden construir coaliciones geograficas amplias mientras mantienen nucleos urbanos fuertes. Desfavorece a partidos concentrados en unas pocas regiones, y da a municipios mas pequenos una influencia desproporcionada en algunas contiendas legislativas.',
+			step11p3: 'Mientras Puerto Rico debate su futuro, desde la estadidad hasta la independencia, la cuestion de como trazar el mapa, y quien decide, permanece tan politicamente cargada como los debates sobre el estatus final de la isla.',
+			// Question variant content
+			questionTitle: 'Quien Redibujara el Mapa?',
+			questionP1: 'A medida que la poblacion continua cambiando y los municipios pierden residentes hacia el continente, consolidara Puerto Rico sus 78 municipios? Se redibujaran las lineas de distrito para reflejar nuevas realidades?',
+			questionP2: 'Las respuestas moldearan el poder politico por una generacion, y ambos partidos lo saben.',
+			// Conclusion
+			conclusionTitle: 'La Geografia del Poder',
+			conclusionP1: 'El mapa electoral de Puerto Rico cuenta una historia de herencia colonial, concentracion urbana e identidad regional. Los 78 municipios, 8 distritos senatoriales y 40 distritos de la Camara crean un terreno complejo donde la geografia moldea los resultados politicos.',
+			keyTakeaways: 'Conclusiones Clave',
+			takeaway1Title: 'Legado Colonial:',
+			takeaway1: 'Los limites de los municipios datan del dominio espanol y ya no reflejan los patrones de poblacion modernos',
+			takeaway2Title: 'Concentracion Poblacional:',
+			takeaway2: 'Mas de la mitad de la poblacion vive en solo 10 municipios, haciendo que las areas urbanas sean decisivas',
+			takeaway3Title: 'Bloques Regionales:',
+			takeaway3: 'Los municipios vecinos votan igual, creando coaliciones geograficas persistentes',
+			takeaway4Title: 'Geografia de Clase:',
+			takeaway4: 'Las areas mas ricas se inclinan hacia el PNP; las mas pobres hacia el PPD, con excepciones',
+			takeaway5Title: 'Representacion Mixta:',
+			takeaway5: 'La combinacion de escanos por distrito y por acumulacion crea incentivos de campana complejos',
+			// Sources
+			sources: 'Fuentes',
+			sourceCee: 'Resultados electorales a nivel municipal 2016-2024',
+			sourceCensus: 'Definiciones geograficas de Puerto Rico y archivos de formas TIGER/Line',
+			sourcePlanningBoard: 'Junta de Planificacion de Puerto Rico - Clasificaciones regionales y definiciones urbano/rural',
+			sourceAcs: 'Datos poblacionales y demograficos por municipio',
+			// Navigation
+			previous: 'Anterior',
+			nextChapter: 'Proximo Capitulo',
+			prevTitle: 'El Umbral del 52.5%',
+			nextTitle: 'La Fortaleza',
+			// Tooltips
+			tooltipResidents: 'residentes',
+			tooltipPop: 'pob.',
+			tooltipDistrict: 'Distrito',
+			tooltipPoverty: 'pobreza',
+			blueMunicipalities: 'Los municipios azules',
+			redMunicipalities: 'los municipios rojos',
+			municipalities78: 'Los 78 municipios de Puerto Rico'
+		}
+	};
+
+	// Reactive content based on language
+	let content = $derived(t[$language]);
+	let chapterTitle = $derived(content.chapterTitle);
 
 	let currentStep = $state(0);
 	let mapTitle = $state('');
@@ -214,44 +574,44 @@
 				break;
 			case 1:
 				activeViz = 'blank';
-				mapTitle = '78 Municipalities of Puerto Rico';
+				mapTitle = content.map78Municipalities;
 				break;
 			case 2:
 				activeViz = 'partisan';
-				mapTitle = 'Partisan Lean (2016 Governor)';
+				mapTitle = content.mapPartisanLean;
 				break;
 			case 3:
 			case 4:
 				activeViz = 'population';
-				mapTitle = 'Population Distribution';
+				mapTitle = content.mapPopulationDistribution;
 				break;
 			case 5:
 				activeViz = 'classification';
-				mapTitle = 'Urban-Rural Classification';
+				mapTitle = content.mapUrbanRuralClassification;
 				break;
 			case 6:
 				activeViz = 'scatter';
-				mapTitle = 'Income vs. PNP Vote Share';
+				mapTitle = content.mapIncomeVsPnp;
 				break;
 			case 7:
 				activeViz = 'regions';
-				mapTitle = 'Regional Partisan Balance';
+				mapTitle = content.mapRegionalBalance;
 				break;
 			case 8:
 				activeViz = 'senate';
-				mapTitle = 'Senate Districts';
+				mapTitle = content.mapSenateDistricts;
 				break;
 			case 9:
 				activeViz = 'senate';
-				mapTitle = 'Senate Districts';
+				mapTitle = content.mapSenateDistricts;
 				break;
 			case 10:
 				activeViz = 'size';
-				mapTitle = 'Top 10 Municipalities by Population';
+				mapTitle = content.mapTop10Population;
 				break;
 			case 11:
 				activeViz = 'partisan';
-				mapTitle = 'The Electoral Map';
+				mapTitle = content.mapElectoralMap;
 				break;
 		}
 	}
@@ -265,11 +625,11 @@
 			case 'partisan':
 				return `${name}: ${muni.margin_2016 > 0 ? 'PNP' : 'PPD'} +${Math.abs(muni.margin_2016).toFixed(1)}%`;
 			case 'population':
-				return `${name}: ${muni.population.toLocaleString()} residents`;
+				return `${name}: ${muni.population.toLocaleString()} ${content.tooltipResidents}`;
 			case 'classification':
-				return `${name}: ${muni.classification} (pop. ${muni.population.toLocaleString()})`;
+				return `${name}: ${muni.classification} (${content.tooltipPop} ${muni.population.toLocaleString()})`;
 			case 'senate':
-				return `${name}: District ${muni.senate_district} (${muni.senate_name})`;
+				return `${name}: ${content.tooltipDistrict} ${muni.senate_district} (${muni.senate_name})`;
 			default:
 				return name;
 		}
@@ -277,7 +637,7 @@
 </script>
 
 <svelte:head>
-	<title>Chapter {chapterNum}: {chapterTitle} | Puerto Rico Elections</title>
+	<title>{content.chapter} {chapterNum}: {chapterTitle} | Puerto Rico Elections</title>
 </svelte:head>
 
 <Progress {currentStep} {totalSteps} chapterTitle={chapterTitle} />
@@ -285,15 +645,10 @@
 <article class="chapter">
 	<header class="chapter-header">
 		<div class="container content">
-			<span class="label">Chapter {chapterNum}</span>
+			<span class="label">{content.chapter} {chapterNum}</span>
 			<div class="accent-line"></div>
 			<h1>{chapterTitle}</h1>
-			<p class="lead">
-				Puerto Rico's electoral geography is not an accident. Carved from colonial legacies
-				and shaped by decades of migration, these 78 municipalities are the building blocks
-				of political power. Where you live shapes how you vote, and the map itself
-				becomes a battleground.
-			</p>
+			<p class="lead">{content.lead}</p>
 		</div>
 	</header>
 
@@ -301,7 +656,7 @@
 		{#snippet graphic()}
 			<div class="viz-container">
 				{#if loading}
-					<p class="loading">Loading geographic data...</p>
+					<p class="loading">{content.loading}</p>
 				{:else if mapTitle}
 					<h3 class="viz-title">{mapTitle}</h3>
 				{/if}
@@ -311,8 +666,8 @@
 						data={scatterData()}
 						width={520}
 						height={360}
-						xLabel="Median Household Income ($)"
-						yLabel="PNP Vote Share (%)"
+						xLabel={content.scatterXLabel}
+						yLabel={content.scatterYLabel}
 						xFormat={(v) => `$${(v/1000).toFixed(0)}k`}
 						yFormat={(v) => `${v.toFixed(0)}%`}
 						showRegression={true}
@@ -326,7 +681,7 @@
 							horizontal={true}
 							valueFormat={(v) => `${v > 0 ? '+' : ''}${v.toFixed(1)}%`}
 						/>
-						<p class="viz-note">Deviation from 50-50 (positive = PNP lean)</p>
+						<p class="viz-note">{content.vizNoteDeviation}</p>
 					</div>
 				{:else if activeViz === 'size' && chapterData}
 					<BarChart
@@ -349,19 +704,19 @@
 						<div class="legend-row">
 							<div class="legend-item">
 								<span class="legend-swatch" style="background: {classificationColors.urban}"></span>
-								<span>Urban ({chapterData?.classification_breakdown.urban.length})</span>
+								<span>{content.legendUrban} ({chapterData?.classification_breakdown.urban.length})</span>
 							</div>
 							<div class="legend-item">
 								<span class="legend-swatch" style="background: {classificationColors.suburban}"></span>
-								<span>Suburban ({chapterData?.classification_breakdown.suburban.length})</span>
+								<span>{content.legendSuburban} ({chapterData?.classification_breakdown.suburban.length})</span>
 							</div>
 							<div class="legend-item">
 								<span class="legend-swatch" style="background: {classificationColors.town}"></span>
-								<span>Town ({chapterData?.classification_breakdown.town.length})</span>
+								<span>{content.legendTown} ({chapterData?.classification_breakdown.town.length})</span>
 							</div>
 							<div class="legend-item">
 								<span class="legend-swatch" style="background: {classificationColors.rural}"></span>
-								<span>Rural ({chapterData?.classification_breakdown.rural.length})</span>
+								<span>{content.legendRural} ({chapterData?.classification_breakdown.rural.length})</span>
 							</div>
 						</div>
 					{/if}
@@ -370,15 +725,15 @@
 						<div class="legend-row">
 							<div class="legend-item">
 								<span class="legend-swatch" style="background: {PARTY_COLORS.PPD}"></span>
-								<span>PPD Lean</span>
+								<span>{content.legendPpdLean}</span>
 							</div>
 							<div class="legend-item">
 								<span class="legend-swatch" style="background: #f7f7f7; border: 1px solid var(--color-border)"></span>
-								<span>Even</span>
+								<span>{content.legendEven}</span>
 							</div>
 							<div class="legend-item">
 								<span class="legend-swatch" style="background: {PARTY_COLORS.PNP}"></span>
-								<span>PNP Lean</span>
+								<span>{content.legendPnpLean}</span>
 							</div>
 						</div>
 					{/if}
@@ -398,290 +753,179 @@
 		{/snippet}
 
 		<Step active={currentStep === 0} index={0}>
-			<h3>The Map is Not the Territory</h3>
+			<h3>{content.step0Title}</h3>
+			<p>{content.step0p1}</p>
 			<p>
-				Every election night, the map of Puerto Rico lights up in red and blue.
-				Municipalities flip, margins shift, and pundits draw sweeping conclusions
-				from the colored shapes on screen.
+				{content.step0p2} <span class="highlight">{content.step0p2Highlight}</span>.
 			</p>
-			<p>
-				But what are these shapes? Where did they come from? And why do they matter
-				so much to Puerto Rican politics? The answers reveal how <span class="highlight">geography
-				itself becomes a political actor</span>.
-			</p>
-			<p>
-				This chapter examines how Puerto Rico's electoral geography was designed,
-				how it divides the island, and what it means for representation.
-			</p>
+			<p>{content.step0p3}</p>
 		</Step>
 
 		<Step active={currentStep === 1} index={1}>
-			<h3>78 Pieces of a Colonial Puzzle</h3>
+			<h3>{content.step1Title}</h3>
 			<p>
-				Puerto Rico's <span class="stat">78 municipalities</span> trace their origins to
-				the Spanish colonial era. Unlike American counties, which were often drawn on
-				gridlines across empty land, Puerto Rico's boundaries followed rivers,
-				mountain ridges, and the practical limits of 18th-century governance.
+				{content.municipalities78} <span class="stat">78 {$language === 'en' ? 'municipalities' : 'municipios'}</span>
+				{content.step1p1}
 			</p>
-			<p>
-				When the United States took control in 1898, these Spanish administrative
-				units remained intact. The island's rugged terrain and dispersed population
-				made them practical for governance. A municipality centered on each town plaza,
-				radiating outward to the next mountain range.
-			</p>
-			<p>
-				This colonial inheritance means Puerto Rico's political geography predates
-				modern transportation, communication, and demographic patterns. The map was
-				designed for a different island.
-			</p>
+			<p>{content.step1p2}</p>
+			<p>{content.step1p3}</p>
 		</Step>
 
 		<Step active={currentStep === 2} index={2}>
-			<h3>The Partisan Divide</h3>
+			<h3>{content.step2Title}</h3>
 			<p>
-				When we color each municipality by its partisan lean, a pattern emerges.
-				<span style="color: {PARTY_COLORS.PNP}">Blue municipalities</span> lean toward
-				the pro-statehood PNP, while <span style="color: {PARTY_COLORS.PPD}">red municipalities</span>
-				favor the pro-commonwealth PPD.
+				{content.step2p1a}
+				<span style="color: {PARTY_COLORS.PNP}">{content.blueMunicipalities}</span> {content.step2p1b}
+				<span style="color: {PARTY_COLORS.PPD}">{content.redMunicipalities}</span>
+				{content.step2p1c}
 			</p>
 			<p>
-				In 2016, {chapterData?.stats.most_pro_pnp || 'Loiza'} was the most pro-PNP municipality,
-				while {chapterData?.stats.most_pro_ppd || 'Cayey'} leaned most heavily toward PPD.
-				These aren't random variations; they reflect deep structural differences in
-				demographics, economics, and political culture.
+				{content.step2p2a} {chapterData?.stats.most_pro_pnp || 'Loiza'}
+				{content.step2p2b} {chapterData?.stats.most_pro_ppd || 'Cayey'}
+				{content.step2p2c}
 			</p>
 			<p>
-				The clustering is striking: neighboring municipalities tend to vote alike,
-				creating <span class="highlight">regional blocs</span> that persist across
-				multiple elections.
+				{content.step2p3} <span class="highlight">{content.step2p3Highlight}</span>
+				{content.step2p3b}
 			</p>
 		</Step>
 
 		<Step active={currentStep === 3} index={3}>
-			<h3>Where the People Are</h3>
+			<h3>{content.step3Title}</h3>
 			<p>
-				But the map lies. A municipality's size on the map has nothing to do with
-				its political importance. <span class="highlight">Population</span> determines
-				votes, and Puerto Rico's population is concentrated in a few urban centers.
+				{content.step3p1} <span class="highlight">{content.step3p1Highlight}</span>
+				{content.step3p1b}
 			</p>
 			<p>
-				<span class="stat">{chapterData?.municipalities[0]?.name || 'San Juan'}</span> alone
-				holds {((chapterData?.municipalities[0]?.pop_share || 10) ).toFixed(1)}% of the
-				island's population. The San Juan metro area, a ring of municipalities around
-				the capital, contains over a third of all Puerto Ricans.
+				<span class="stat">{chapterData?.municipalities[0]?.name || 'San Juan'}</span>
+				{content.step3p2a} {((chapterData?.municipalities[0]?.pop_share || 10) ).toFixed(1)}%
+				{content.step3p2b}
 			</p>
-			<p>
-				This means the sprawling rural municipalities of the interior, which dominate
-				the map visually, are politically marginalized by their small populations.
-			</p>
+			<p>{content.step3p3}</p>
 		</Step>
 
 		<Step active={currentStep === 4} index={4}>
-			<h3>The Population Paradox</h3>
+			<h3>{content.step4Title}</h3>
 			<p>
-				Consider this: <span class="stat">{chapterData?.stats.largest_municipality || 'San Juan'}</span>
-				has {chapterData?.municipalities[0]?.population.toLocaleString() || '395,000'} residents,
-				while <span class="stat">{chapterData?.stats.smallest_municipality || 'Culebra'}</span>
-				has just {chapterData?.municipalities[chapterData.municipalities.length - 1]?.population.toLocaleString() || '1,800'}.
+				{content.step4p1} <span class="stat">{chapterData?.stats.largest_municipality || 'San Juan'}</span>
+				{content.step4p1b} {chapterData?.municipalities[0]?.population.toLocaleString() || '395,000'}
+				{content.step4p1c} <span class="stat">{chapterData?.stats.smallest_municipality || 'Culebra'}</span>
+				{content.step4p1d} {chapterData?.municipalities[chapterData.municipalities.length - 1]?.population.toLocaleString() || '1,800'}.
 			</p>
 			<p>
-				That's a ratio of over <span class="highlight">200 to 1</span>. Yet on most maps,
-				these municipalities appear roughly similar in size. Equal-area maps distort
-				political reality, making rural regions seem more important than they are
-				electorally.
+				{content.step4p2} <span class="highlight">{content.step4p2Highlight}</span>{content.step4p2b}
 			</p>
-			<p>
-				When journalists and analysts use standard maps, they inadvertently reinforce
-				the illusion that Puerto Rico's politics is evenly distributed across space.
-			</p>
+			<p>{content.step4p3}</p>
 		</Step>
 
-		<Step active={currentStep === 5} index={5}>
-			<h3>Urban vs. Rural</h3>
-			<p>
-				Puerto Rico's municipalities fall into distinct categories that shape their
-				political character. Only <span class="stat">{chapterData?.stats.urban_count || 5}</span>
-				qualify as fully urban with populations over 100,000.
-			</p>
-			<p>
-				The <span style="color: {classificationColors.urban}">urban core</span> includes
-				San Juan, Bayamon, Carolina, Ponce, and Caguas. These municipalities have
-				diverse economies, higher incomes, and professional workforces that vote
-				differently from the rest of the island.
-			</p>
-			<p>
-				<span style="color: {classificationColors.rural}">Rural municipalities</span> in
-				the central mountains and western coast maintain agricultural traditions,
-				face higher poverty rates, and often support different candidates than the metro areas.
-			</p>
-			<p>
-				This urban-rural divide cuts across the statehood-commonwealth debate, creating
-				cross-cutting cleavages that complicate Puerto Rico's political coalitions.
-			</p>
+		<Step active={currentStep === 5} index={5} variant="comparison">
+			{#snippet before()}
+				<span class="stat" style="color: {classificationColors.urban}">{content.comparisonUrbanStat}</span>
+				<p><strong>{content.comparisonUrbanLabel}</strong></p>
+				<p>{content.comparisonUrbanDesc}</p>
+			{/snippet}
+			{#snippet after()}
+				<span class="stat" style="color: {classificationColors.rural}">{content.comparisonRuralStat}</span>
+				<p><strong>{content.comparisonRuralLabel}</strong></p>
+				<p>{content.comparisonRuralDesc}</p>
+			{/snippet}
+			<h3>{content.step5Title}</h3>
+			<p>{content.step5p4}</p>
 		</Step>
 
-		<Step active={currentStep === 6} index={6}>
-			<h3>The Class Dimension</h3>
+		<Step active={currentStep === 6} index={6} variant="callout">
+			<h3>{content.step6Title}</h3>
 			<p>
-				Plotting each municipality's median household income against its PNP vote share
-				reveals a striking pattern: <span class="highlight">wealthier municipalities
-				tend to vote more for PNP</span>.
+				{content.step6p1} <span class="highlight">{content.step6p1Highlight}</span>.
 			</p>
-			<p>
-				The trendline shows a positive correlation (R-squared indicates the strength
-				of this relationship). While not deterministic, income is one of the strongest
-				predictors of partisan lean at the municipal level.
-			</p>
-			<p>
-				This class dimension helps explain why the pro-statehood movement, despite
-				advocating for full U.S. citizenship rights, draws more support from
-				economically advantaged areas where residents may benefit from federal
-				programs and economic integration.
-			</p>
+			<p><span class="stat">{content.calloutStatValue}</span> {content.calloutStat}</p>
+			<p>{content.calloutInsight}</p>
 		</Step>
 
 		<Step active={currentStep === 7} index={7}>
-			<h3>Regional Coalitions</h3>
+			<h3>{content.step7Title}</h3>
+			<p>{content.step7p1}</p>
 			<p>
-				Puerto Rico's eight Senate districts roughly correspond to historical regions
-				with distinct political cultures. Each bar shows how far that region deviates
-				from a 50-50 partisan split.
+				{content.step7p2a} <span class="highlight">{content.step7p2SanJuan}</span>
+				{content.step7p2and} <span class="highlight">{content.step7p2Bayamon}</span>
+				{content.step7p2b} <span class="highlight">{content.step7p2Mayaguez}</span>
+				{content.step7p2c} <span class="highlight">{content.step7p2Ponce}</span>
+				{content.step7p2d}
 			</p>
-			<p>
-				The <span class="highlight">San Juan Metro</span> and <span class="highlight">Bayamon/North</span>
-				regions tilt toward PNP, while the <span class="highlight">Mayaguez/West</span> and
-				<span class="highlight">Ponce/South</span> regions lean PPD.
-			</p>
-			<p>
-				These regional patterns have proven durable across elections. A municipality's geographic
-				location predicts its partisan lean better than most demographic variables.
-				Your neighbors shape your politics, and regional identity reinforces
-				party loyalty across generations.
-			</p>
+			<p>{content.step7p3}</p>
 		</Step>
 
 		<Step active={currentStep === 8} index={8}>
-			<h3>At-Large vs. District: The Senate</h3>
+			<h3>{content.step8Title}</h3>
 			<p>
-				Puerto Rico elects its legislature through a mixed system. The <span class="stat">8
-				Senate districts</span>, shown here, each elect 2 senators by district.
-				An additional 11 senators are elected at-large, island-wide.
+				{content.step8p1} <span class="stat">{content.step8p1Senate}</span>{content.step8p1b}
 			</p>
-			<p>
-				This hybrid system creates interesting dynamics. District senators must
-				represent specific geographic areas with particular concerns, while
-				at-large senators can appeal to the entire island.
-			</p>
-			<p>
-				The district boundaries matter enormously. Each colored region on this map
-				sends 2 senators to San Juan, regardless of whether it contains 300,000
-				or 500,000 people. Malapportionment gives some regions more representation
-				per capita than others.
-			</p>
+			<p>{content.step8p2}</p>
+			<p>{content.step8p3}</p>
 		</Step>
 
 		<Step active={currentStep === 9} index={9}>
-			<h3>The House: 40 Districts</h3>
+			<h3>{content.step9Title}</h3>
 			<p>
-				The House of Representatives has <span class="stat">40 districts</span>,
-				each electing a single representative, plus 11 at-large seats. These
-				districts are smaller than Senate districts, sometimes splitting
-				municipalities.
+				{content.step9p1} <span class="stat">{content.step9p1House}</span>{content.step9p1b}
 			</p>
 			<p>
-				Large municipalities like San Juan span <span class="highlight">5 House
-				districts</span>, meaning the capital's residents are represented by
-				multiple district representatives with potentially different agendas.
-				Smaller municipalities share a representative with their neighbors.
+				{content.step9p2a} <span class="highlight">{content.step9p2Highlight}</span>{content.step9p2b}
 			</p>
-			<p>
-				This arrangement means campaigns must be intensely local. A candidate in
-				House District 3 (part of San Juan) faces entirely different voters than
-				someone in District 4, even though both are technically in the same city.
-			</p>
+			<p>{content.step9p3}</p>
 		</Step>
 
 		<Step active={currentStep === 10} index={10}>
-			<h3>The Population Giants</h3>
+			<h3>{content.step10Title}</h3>
 			<p>
-				The top 10 municipalities by population illustrate the concentration of
-				political power. Together, they hold over <span class="stat">50%</span>
-				of Puerto Rico's total population.
+				{content.step10p1} <span class="stat">{content.step10p1Highlight}</span>
+				{content.step10p1b}
 			</p>
-			<p>
-				Winning elections means winning these urban centers, or at least limiting
-				losses there. A candidate who sweeps the San Juan metro but loses the
-				rural interior can still win island-wide, while the reverse is nearly impossible.
-			</p>
-			<p>
-				This population concentration explains why Puerto Rico's political debates
-				often center on urban issues: traffic, public services, economic development,
-				and professional employment. Rural concerns, from agricultural policy to
-				infrastructure investment, take a back seat.
-			</p>
+			<p>{content.step10p2}</p>
+			<p>{content.step10p3}</p>
 		</Step>
 
-		<Step active={currentStep === 11} index={11}>
-			<h3>The Stakes of the Map</h3>
-			<p>
-				Puerto Rico's electoral geography matters because
-				<span class="highlight">the map itself is contested terrain</span>.
-				Proposals to consolidate municipalities, redraw district lines, or change
-				the at-large vs. district balance would reshape political power.
-			</p>
-			<p>
-				The current system favors parties that can build broad geographic coalitions
-				while maintaining strong urban cores. It disadvantages parties concentrated
-				in a few regions, and it gives smaller municipalities outsized influence
-				in some legislative races.
-			</p>
-			<p>
-				As Puerto Rico debates its future, from statehood to independence, the
-				question of how to draw the map, and who decides, remains as politically
-				charged as the debates over the island's ultimate status.
-			</p>
+		<Step active={currentStep === 11} index={11} variant="question">
+			<h3>{content.questionTitle}</h3>
+			<p>{content.questionP1}</p>
+			<p>{content.questionP2}</p>
 		</Step>
 	</ScrollySection>
 
 	<section class="chapter-conclusion">
 		<div class="container content">
-			<h2>The Geography of Power</h2>
-			<p>
-				Puerto Rico's electoral map tells a story of colonial inheritance, urban
-				concentration, and regional identity. The 78 municipalities, 8 Senate districts,
-				and 40 House districts create a complex terrain where geography shapes
-				political outcomes.
-			</p>
+			<h2>{content.conclusionTitle}</h2>
+			<p>{content.conclusionP1}</p>
 
 			<div class="key-takeaways">
-				<h3>Key Takeaways</h3>
+				<h3>{content.keyTakeaways}</h3>
 				<ul>
-					<li><strong>Colonial Legacy:</strong> Municipality boundaries date to Spanish rule and no longer reflect modern population patterns</li>
-					<li><strong>Population Concentration:</strong> Over half the population lives in just 10 municipalities, making urban areas decisive</li>
-					<li><strong>Regional Blocs:</strong> Neighboring municipalities vote alike, creating persistent geographic coalitions</li>
-					<li><strong>Class Geography:</strong> Wealthier areas lean PNP; poorer areas lean PPD, with exceptions</li>
-					<li><strong>Mixed Representation:</strong> The combination of district and at-large seats creates complex campaign incentives</li>
+					<li><strong>{content.takeaway1Title}</strong> {content.takeaway1}</li>
+					<li><strong>{content.takeaway2Title}</strong> {content.takeaway2}</li>
+					<li><strong>{content.takeaway3Title}</strong> {content.takeaway3}</li>
+					<li><strong>{content.takeaway4Title}</strong> {content.takeaway4}</li>
+					<li><strong>{content.takeaway5Title}</strong> {content.takeaway5}</li>
 				</ul>
 			</div>
 
 			<div class="sources">
-				<h3>Sources</h3>
+				<h3>{content.sources}</h3>
 				<ul>
-					<li><a href="https://ww2.ceepur.org/Home/EventosElectorales" target="_blank" rel="noopener">Comision Estatal de Elecciones de Puerto Rico (CEE)</a> - Municipality-level election results 2016-2024</li>
-					<li><a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html" target="_blank" rel="noopener">U.S. Census Bureau</a> - Puerto Rico geographic definitions and TIGER/Line shapefiles</li>
-					<li>Puerto Rico Planning Board - Regional classifications and urban/rural definitions</li>
-					<li><a href="https://data.census.gov/" target="_blank" rel="noopener">American Community Survey</a> - Population and demographic data by municipality</li>
+					<li><a href="https://ww2.ceepur.org/Home/EventosElectorales" target="_blank" rel="noopener">Comision Estatal de Elecciones de Puerto Rico (CEE)</a> - {content.sourceCee}</li>
+					<li><a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html" target="_blank" rel="noopener">U.S. Census Bureau</a> - {content.sourceCensus}</li>
+					<li>{content.sourcePlanningBoard}</li>
+					<li><a href="https://data.census.gov/" target="_blank" rel="noopener">American Community Survey</a> - {content.sourceAcs}</li>
 				</ul>
 			</div>
 
 			<nav class="chapter-nav">
 				<a href="{base}/chapters/referendum-2020" class="nav-link prev">
-					<span class="nav-direction">Previous</span>
-					<span class="nav-title">The 52.5% Threshold</span>
+					<span class="nav-direction">{content.previous}</span>
+					<span class="nav-title">{content.prevTitle}</span>
 				</a>
 				<a href="{base}/chapters/fortaleza" class="nav-link next">
-					<span class="nav-direction">Next Chapter</span>
-					<span class="nav-title">La Fortaleza</span>
+					<span class="nav-direction">{content.nextChapter}</span>
+					<span class="nav-title">{content.nextTitle}</span>
 				</a>
 			</nav>
 		</div>

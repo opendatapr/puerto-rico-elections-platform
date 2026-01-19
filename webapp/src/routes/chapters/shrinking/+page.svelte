@@ -6,10 +6,204 @@
 	import { BarChart, LineChart } from '$lib/components/charts';
 	import { createLossScale, CATEGORY_COLORS, DIVERGING_COLORS, SEQUENTIAL_LOSS_COLORS } from '$lib/utils/colors';
 	import { formatCompact, formatNumber, formatPercent, formatPercentChange } from '$lib/utils/format';
+	import { language } from '$lib/stores/language';
 
 	const chapterNum = 3;
-	const chapterTitle = 'The Shrinking Electorate';
 	const totalSteps = 10;
+
+	// Bilingual content
+	const t = {
+		en: {
+			chapterTitle: 'The Shrinking Electorate',
+			lead: "Between 2004 and 2024, Puerto Rico's voter rolls shrank by over {voterLoss} registered voters. This isn't just a number - it's a story of vanishing political power, an aging electorate, and a democracy losing its people.",
+			loading: 'Loading data...',
+			// Viz titles
+			vizRegisteredVoters: 'Registered Voters Over Time',
+			vizRegisteredVsCast: 'Registered vs. Votes Cast',
+			vizShrinkingElectorate: 'The Shrinking Electorate',
+			vizVoteLossMap: 'Vote Loss by Municipality (2016-2024)',
+			vizTopLossesAbsolute: 'Top Voter Losses (Absolute)',
+			vizLossesByPercent: 'Municipalities by Percentage Loss',
+			vizAgeComposition: 'Age Composition of Electorate',
+			// Legend labels
+			legendRegistered: 'Registered',
+			legendVotesCast: 'Votes Cast',
+			legendVoterLoss: 'Voter loss',
+			// Demographic labels
+			demoYoungVoters: 'Young Voters (Under 35)',
+			demoSeniorVoters: 'Senior Voters (Over 65)',
+			demoMedianAge: 'Median voter age:',
+			// Step titles
+			step0Title: 'The Rolls Are Shrinking',
+			step1Title: 'The Acceleration',
+			step2Title: 'Visualizing the Loss',
+			step3Title: 'Geography of Loss',
+			step4Title: 'The Big Five',
+			step5Title: 'An Aging Electorate',
+			step6Title: 'The Feedback Loop',
+			step7Title: 'The Representation Gap',
+			step8Title: 'Registered vs. Participating',
+			step9Title: 'What Comes Next?',
+			// Step 0 content
+			step0p1: 'In 2004, Puerto Rico had <span class="stat">2.44 million</span> registered voters - a deeply engaged electorate for an island of 3.8 million people. Voting was a civic tradition, a family ritual, a statement of identity.',
+			step0p2: 'Two decades later, the voter rolls tell a different story. Economic crisis, natural disaster, and mass exodus have combined to create an unprecedented contraction in the island\'s democratic base.',
+			step0p3: 'By 2024, only <span class="stat">1.99 million</span> voters remained registered - a loss of nearly half a million in twenty years.',
+			// Step 1 content
+			step1p1: 'The decline wasn\'t gradual. From 2004 to 2012, the electorate held relatively steady, losing about 60,000 voters over eight years. Then the floor gave way.',
+			step1p2: 'Between 2012 and 2020, Puerto Rico lost <span class="stat">300,000</span> registered voters. Hurricane Maria in 2017 accelerated an already-existing trend, as entire families relocated to Florida, Texas, and the Northeast.',
+			step1p3: 'Those who left were disproportionately working-age adults - the backbone of any electorate. They took their votes with them to states where, at least, those votes would count for president.',
+			// Step 2 content
+			step2p1: 'These circles represent the relative size of Puerto Rico\'s registered electorate across two decades. Each one is proportional to the number of registered voters.',
+			step2p2: 'Notice how each successive circle <span class="highlight">shrinks visibly</span>. This isn\'t just a statistical abstraction - each missing pixel represents real people who are no longer part of the island\'s political community.',
+			step2p3: 'From the largest circle in 2004 to the smallest in 2024, Puerto Rico has lost {voterLossPercent} of its electoral base.',
+			// Step 3 content
+			step3p1: 'The voter drain wasn\'t evenly distributed. This map shows the percentage change in votes cast between 2016 and 2024 for each municipality.',
+			step3p2: '<span class="highlight">Darker colors</span> indicate steeper declines. While every municipality saw losses, some experienced dramatic collapses in electoral participation.',
+			step3p3: 'The pattern reveals two Puerto Ricos: the metro San Juan area, which lost voters but maintained some base, and the rural interior, where the hemorrhaging was even more severe.',
+			// Step 4 content
+			step4p1: 'In absolute terms, the largest municipalities account for the bulk of voter loss. San Juan alone shed nearly <span class="stat">60,000 voters</span> between 2016 and 2024.',
+			step4p2: 'These five municipalities - San Juan, Bayamon, Ponce, Carolina, and Caguas - together lost over <span class="stat">150,000 voters</span>. That\'s more voters than many U.S. congressional districts contain.',
+			step4p3: 'But the raw numbers don\'t tell the whole story. When you look at <em>proportional</em> losses, a different picture emerges.',
+			// Step 5 content
+			step5p1: 'Who stayed behind? The data reveals a demographic transformation. Young voters left in droves, while older residents - with deeper roots, less mobility, and fewer mainland options - remained.',
+			step5p2: 'In 2012, voters under 35 made up <span class="stat">28.5%</span> of the electorate. By 2024, that share had collapsed to just <span class="stat">18.2%</span>.',
+			step5p3: 'Meanwhile, voters over 65 grew from <span class="stat">18.3%</span> to <span class="stat">27.1%</span> of all voters. The median voter aged nearly a decade in just twelve years.',
+			step5p4: 'An older electorate tends to be more conservative, more focused on pensions and healthcare, and less concerned with the job creation and education issues that might bring young people back.',
+			// Step 6 content
+			step6p1: 'Here\'s the cruel irony: fewer voters means less political power, which means less attention from Washington, which means worse conditions, which drives more people to leave.',
+			step6p2: 'The cycle is self-reinforcing. As the electorate shrinks, so does Puerto Rico\'s ability to advocate for the federal resources and policy changes that might reverse the trend.',
+			step6p3: 'If Puerto Rico were a state, its population would have meant {seatsOld} House seats in 2004. Today, it would qualify for only {seatsNew}.',
+			// Step 7 content
+			step7p1: 'Puerto Rico\'s shrinking electorate creates a troubling paradox. The island has one non-voting representative in Congress - the Resident Commissioner - regardless of whether it has 4 million people or 3 million.',
+			step7p2: 'Meanwhile, the <span class="stat">5.7 million</span> Puerto Ricans living on the mainland can vote for president and are represented by voting members of Congress. Their political power grows as the island\'s shrinks.',
+			step7p3: 'The result: decisions about Puerto Rico\'s future are increasingly made by people who don\'t live there, while those who remain have diminishing voice in their own governance.',
+			// Step 8 content
+			step8p1: 'The gap between registered voters and actual votes cast tells another troubling story. Even among those who remain registered, participation has declined.',
+			step8p2: 'In 2004, <span class="stat">81.5%</span> of registered voters cast ballots. By 2024, that figure had dropped to <span class="stat">61.2%</span>.',
+			step8p3: 'The gap between the two lines represents growing disengagement - voters who haven\'t left the island but have left the political process. Disillusionment, not just emigration, is thinning the electorate.',
+			// Step 9 content
+			step9p1: 'The trends show no sign of reversing. Every projection suggests Puerto Rico\'s population will continue to decline through at least 2050, and the electorate will shrink with it.',
+			step9p2: 'For democracy to thrive, it needs participants. Puerto Rico faces a fundamental question: how does a democracy function when its people are leaving?',
+			step9p3: 'The answer will depend on whether the island can break the feedback loop - creating conditions that make young Puerto Ricans want to stay, and giving those who remain a reason to believe their vote matters.',
+			// Conclusion section
+			conclusionTitle: 'The Electoral Arithmetic',
+			statVotersLost: 'Registered voters lost since 2004',
+			statElectoralBase: 'Change in electoral base',
+			statMedianAge: 'Increase in median voter age',
+			statTopMunis: 'Municipalities with 50%+ of voter loss',
+			breakingCycleTitle: 'Breaking the Cycle',
+			conclusionP1: 'Puerto Rico\'s shrinking electorate is not inevitable - it\'s the result of policy choices, economic conditions, and colonial status that could be changed. But reversing these trends requires understanding their depth.',
+			conclusionP2: 'In the next chapter, we examine how these demographic shifts have reshaped the island\'s political battles over status - the plebiscites that ask whether Puerto Rico should become a state, gain independence, or maintain its current relationship with the United States.',
+			// Sources
+			sourcesTitle: 'Sources',
+			sourceCEE: 'Voter registration statistics 2000-2024',
+			sourceComptroller: 'Puerto Rico Office of the Comptroller - Electoral participation reports',
+			sourceCensus: 'Population estimates and projections for Puerto Rico',
+			sourceStats: 'Puerto Rico Institute of Statistics - Demographic trends analysis',
+			// Navigation
+			navPrevious: 'Previous',
+			navPrevTitle: 'Democracy Under Strain',
+			navNext: 'Next Chapter',
+			navNextTitle: 'One Question, Two Decades'
+		},
+		es: {
+			chapterTitle: 'El Electorado Menguante',
+			lead: 'Entre 2004 y 2024, el padron electoral de Puerto Rico se redujo por mas de {voterLoss} votantes registrados. Esto no es solo un numero - es una historia de poder politico desvanecido, un electorado envejecido, y una democracia perdiendo a su gente.',
+			loading: 'Cargando datos...',
+			// Viz titles
+			vizRegisteredVoters: 'Votantes Registrados a Traves del Tiempo',
+			vizRegisteredVsCast: 'Registrados vs. Votos Emitidos',
+			vizShrinkingElectorate: 'El Electorado Menguante',
+			vizVoteLossMap: 'Perdida de Votos por Municipio (2016-2024)',
+			vizTopLossesAbsolute: 'Mayores Perdidas de Votantes (Absolutas)',
+			vizLossesByPercent: 'Municipios por Porcentaje de Perdida',
+			vizAgeComposition: 'Composicion por Edad del Electorado',
+			// Legend labels
+			legendRegistered: 'Registrados',
+			legendVotesCast: 'Votos Emitidos',
+			legendVoterLoss: 'Perdida de votantes',
+			// Demographic labels
+			demoYoungVoters: 'Votantes Jovenes (Menores de 35)',
+			demoSeniorVoters: 'Votantes Mayores (Mayores de 65)',
+			demoMedianAge: 'Edad mediana del votante:',
+			// Step titles
+			step0Title: 'El Padron Se Reduce',
+			step1Title: 'La Aceleracion',
+			step2Title: 'Visualizando la Perdida',
+			step3Title: 'Geografia de la Perdida',
+			step4Title: 'Los Cinco Grandes',
+			step5Title: 'Un Electorado Envejecido',
+			step6Title: 'El Ciclo Vicioso',
+			step7Title: 'La Brecha de Representacion',
+			step8Title: 'Registrados vs. Participantes',
+			step9Title: 'Que Viene Ahora?',
+			// Step 0 content
+			step0p1: 'En 2004, Puerto Rico tenia <span class="stat">2.44 millones</span> de votantes registrados - un electorado profundamente comprometido para una isla de 3.8 millones de personas. Votar era una tradicion civica, un ritual familiar, una declaracion de identidad.',
+			step0p2: 'Dos decadas despues, el padron electoral cuenta una historia diferente. La crisis economica, los desastres naturales y el exodo masivo se combinaron para crear una contraccion sin precedentes en la base democratica de la isla.',
+			step0p3: 'Para 2024, solo <span class="stat">1.99 millones</span> de votantes permanecian registrados - una perdida de casi medio millon en veinte anos.',
+			// Step 1 content
+			step1p1: 'El declive no fue gradual. De 2004 a 2012, el electorado se mantuvo relativamente estable, perdiendo unos 60,000 votantes en ocho anos. Luego el piso cedio.',
+			step1p2: 'Entre 2012 y 2020, Puerto Rico perdio <span class="stat">300,000</span> votantes registrados. El Huracan Maria en 2017 acelero una tendencia ya existente, mientras familias enteras se reubicaban en Florida, Texas y el Noreste.',
+			step1p3: 'Los que se fueron eran desproporcionadamente adultos en edad laboral - la columna vertebral de cualquier electorado. Se llevaron sus votos a estados donde, al menos, esos votos contarian para presidente.',
+			// Step 2 content
+			step2p1: 'Estos circulos representan el tamano relativo del electorado registrado de Puerto Rico a lo largo de dos decadas. Cada uno es proporcional al numero de votantes registrados.',
+			step2p2: 'Nota como cada circulo sucesivo <span class="highlight">se reduce visiblemente</span>. Esto no es solo una abstraccion estadistica - cada pixel faltante representa personas reales que ya no son parte de la comunidad politica de la isla.',
+			step2p3: 'Desde el circulo mas grande en 2004 hasta el mas pequeno en 2024, Puerto Rico ha perdido {voterLossPercent} de su base electoral.',
+			// Step 3 content
+			step3p1: 'La fuga de votantes no fue distribuida equitativamente. Este mapa muestra el cambio porcentual en votos emitidos entre 2016 y 2024 para cada municipio.',
+			step3p2: '<span class="highlight">Colores mas oscuros</span> indican declives mas pronunciados. Aunque todos los municipios vieron perdidas, algunos experimentaron colapsos dramaticos en la participacion electoral.',
+			step3p3: 'El patron revela dos Puerto Ricos: el area metropolitana de San Juan, que perdio votantes pero mantuvo cierta base, y el interior rural, donde la hemorragia fue aun mas severa.',
+			// Step 4 content
+			step4p1: 'En terminos absolutos, los municipios mas grandes representan la mayor parte de la perdida de votantes. San Juan solo perdio casi <span class="stat">60,000 votantes</span> entre 2016 y 2024.',
+			step4p2: 'Estos cinco municipios - San Juan, Bayamon, Ponce, Carolina y Caguas - juntos perdieron mas de <span class="stat">150,000 votantes</span>. Eso es mas votantes que muchos distritos congresionales de EE.UU.',
+			step4p3: 'Pero los numeros crudos no cuentan toda la historia. Cuando miras las perdidas <em>proporcionales</em>, emerge una imagen diferente.',
+			// Step 5 content
+			step5p1: 'Quienes se quedaron? Los datos revelan una transformacion demografica. Los votantes jovenes se fueron en masa, mientras los residentes mayores - con raices mas profundas, menos movilidad y menos opciones en el continente - permanecieron.',
+			step5p2: 'En 2012, los votantes menores de 35 anos constituian el <span class="stat">28.5%</span> del electorado. Para 2024, esa proporcion habia colapsado a solo <span class="stat">18.2%</span>.',
+			step5p3: 'Mientras tanto, los votantes mayores de 65 crecieron del <span class="stat">18.3%</span> al <span class="stat">27.1%</span> de todos los votantes. La edad mediana del votante aumento casi una decada en solo doce anos.',
+			step5p4: 'Un electorado mas viejo tiende a ser mas conservador, mas enfocado en pensiones y salud, y menos preocupado por la creacion de empleos y la educacion que podrian traer a los jovenes de vuelta.',
+			// Step 6 content
+			step6p1: 'Aqui esta la cruel ironia: menos votantes significa menos poder politico, lo que significa menos atencion de Washington, lo que significa peores condiciones, lo que lleva a mas gente a irse.',
+			step6p2: 'El ciclo se autorefuerza. A medida que el electorado se reduce, tambien lo hace la capacidad de Puerto Rico para abogar por los recursos federales y cambios de politica que podrian revertir la tendencia.',
+			step6p3: 'Si Puerto Rico fuera un estado, su poblacion habria significado {seatsOld} escanos en la Camara en 2004. Hoy, calificaria para solo {seatsNew}.',
+			// Step 7 content
+			step7p1: 'El electorado menguante de Puerto Rico crea una paradoja preocupante. La isla tiene un representante sin voto en el Congreso - el Comisionado Residente - independientemente de si tiene 4 millones de personas o 3 millones.',
+			step7p2: 'Mientras tanto, los <span class="stat">5.7 millones</span> de puertorriquenos que viven en el continente pueden votar por presidente y estan representados por miembros del Congreso con voto. Su poder politico crece mientras el de la isla se reduce.',
+			step7p3: 'El resultado: las decisiones sobre el futuro de Puerto Rico son cada vez mas tomadas por personas que no viven alli, mientras que los que permanecen tienen cada vez menos voz en su propia gobernanza.',
+			// Step 8 content
+			step8p1: 'La brecha entre votantes registrados y votos emitidos cuenta otra historia preocupante. Incluso entre los que permanecen registrados, la participacion ha disminuido.',
+			step8p2: 'En 2004, el <span class="stat">81.5%</span> de los votantes registrados emitieron sus votos. Para 2024, esa cifra habia caido al <span class="stat">61.2%</span>.',
+			step8p3: 'La brecha entre las dos lineas representa un desapego creciente - votantes que no han dejado la isla pero han dejado el proceso politico. La desilusion, no solo la emigracion, esta adelgazando el electorado.',
+			// Step 9 content
+			step9p1: 'Las tendencias no muestran signos de revertirse. Todas las proyecciones sugieren que la poblacion de Puerto Rico continuara disminuyendo al menos hasta 2050, y el electorado se reducira con ella.',
+			step9p2: 'Para que la democracia prospere, necesita participantes. Puerto Rico enfrenta una pregunta fundamental: como funciona una democracia cuando su gente se esta yendo?',
+			step9p3: 'La respuesta dependera de si la isla puede romper el ciclo vicioso - creando condiciones que hagan que los jovenes puertorriquenos quieran quedarse, y dando a los que permanecen una razon para creer que su voto importa.',
+			// Conclusion section
+			conclusionTitle: 'La Aritmetica Electoral',
+			statVotersLost: 'Votantes registrados perdidos desde 2004',
+			statElectoralBase: 'Cambio en la base electoral',
+			statMedianAge: 'Aumento en la edad mediana del votante',
+			statTopMunis: 'Municipios con 50%+ de perdida de votantes',
+			breakingCycleTitle: 'Rompiendo el Ciclo',
+			conclusionP1: 'El electorado menguante de Puerto Rico no es inevitable - es el resultado de decisiones de politica, condiciones economicas y estatus colonial que podrian cambiarse. Pero revertir estas tendencias requiere entender su profundidad.',
+			conclusionP2: 'En el proximo capitulo, examinamos como estos cambios demograficos han reconfigurado las batallas politicas de la isla sobre el estatus - los plebiscitos que preguntan si Puerto Rico deberia convertirse en estado, obtener independencia, o mantener su relacion actual con los Estados Unidos.',
+			// Sources
+			sourcesTitle: 'Fuentes',
+			sourceCEE: 'Estadisticas de registro de votantes 2000-2024',
+			sourceComptroller: 'Oficina del Contralor de Puerto Rico - Informes de participacion electoral',
+			sourceCensus: 'Estimados de poblacion y proyecciones para Puerto Rico',
+			sourceStats: 'Instituto de Estadisticas de Puerto Rico - Analisis de tendencias demograficas',
+			// Navigation
+			navPrevious: 'Anterior',
+			navPrevTitle: 'Democracia Bajo Presion',
+			navNext: 'Proximo Capitulo',
+			navNextTitle: 'Una Pregunta, Dos Decadas'
+		}
+	};
+
+	// Reactive content based on language
+	let content = $derived(t[$language]);
+	let chapterTitle = $derived(content.chapterTitle);
 
 	let currentStep = $state(0);
 	let activeViz = $state<'line' | 'bar' | 'map' | 'circles' | 'demographic'>('line');
@@ -86,7 +280,7 @@
 	let registeredVotersSeries = $derived([
 		{
 			id: 'registered',
-			label: 'Registered Voters',
+			label: $language === 'en' ? 'Registered Voters' : 'Votantes Registrados',
 			data: electorateSeries.map(d => ({ x: d.year, y: d.registered_voters })),
 			color: CATEGORY_COLORS[0]
 		}
@@ -96,13 +290,13 @@
 	let dualSeries = $derived([
 		{
 			id: 'registered',
-			label: 'Registered Voters',
+			label: $language === 'en' ? 'Registered Voters' : 'Votantes Registrados',
 			data: electorateSeries.map(d => ({ x: d.year, y: d.registered_voters })),
 			color: CATEGORY_COLORS[0]
 		},
 		{
 			id: 'cast',
-			label: 'Votes Cast',
+			label: $language === 'en' ? 'Votes Cast' : 'Votos Emitidos',
 			data: electorateSeries.map(d => ({ x: d.year, y: d.votes_cast })),
 			color: CATEGORY_COLORS[3]
 		}
@@ -214,7 +408,7 @@
 </script>
 
 <svelte:head>
-	<title>Chapter {chapterNum}: {chapterTitle} | Puerto Rico Elections</title>
+	<title>{$language === 'en' ? 'Chapter' : 'Capitulo'} {chapterNum}: {chapterTitle} | Puerto Rico Elections</title>
 </svelte:head>
 
 <Progress {currentStep} {totalSteps} chapterTitle={chapterTitle} />
@@ -222,13 +416,11 @@
 <article class="chapter">
 	<header class="chapter-header">
 		<div class="container content">
-			<span class="label">Chapter {chapterNum}</span>
+			<span class="label">{$language === 'en' ? 'Chapter' : 'Capitulo'} {chapterNum}</span>
 			<div class="accent-line"></div>
 			<h1>{chapterTitle}</h1>
 			<p class="lead">
-				Between 2004 and 2024, Puerto Rico's voter rolls shrank by over <span class="stat">{formatCompact(voterLoss2004to2024())}</span>
-				registered voters. This isn't just a number - it's a story of vanishing political power,
-				an aging electorate, and a democracy losing its people.
+				{@html content.lead.replace('{voterLoss}', `<span class="stat">${formatCompact(voterLoss2004to2024())}</span>`)}
 			</p>
 		</div>
 	</header>
@@ -237,17 +429,17 @@
 		{#snippet graphic()}
 			<div class="viz-container">
 				{#if loading}
-					<p class="loading">Loading data...</p>
+					<p class="loading">{content.loading}</p>
 				{:else if activeViz === 'line'}
 					<h3 class="viz-title">
-						{currentStep <= 1 ? 'Registered Voters Over Time' : 'Registered vs. Votes Cast'}
+						{currentStep <= 1 ? content.vizRegisteredVoters : content.vizRegisteredVsCast}
 					</h3>
 					<LineChart
 						series={currentStep <= 1 ? registeredVotersSeries : dualSeries}
 						width={520}
 						height={360}
-						xLabel="Election Year"
-						yLabel="Voters"
+						xLabel={$language === 'en' ? 'Election Year' : 'Ano Electoral'}
+						yLabel={$language === 'en' ? 'Voters' : 'Votantes'}
 						xFormat={(v) => String(v)}
 						yFormat={(v) => formatCompact(v)}
 						showArea={true}
@@ -255,12 +447,12 @@
 					/>
 					{#if currentStep > 1}
 						<div class="legend-inline">
-							<span class="legend-item"><span class="swatch" style="background: {CATEGORY_COLORS[0]}"></span> Registered</span>
-							<span class="legend-item"><span class="swatch" style="background: {CATEGORY_COLORS[3]}"></span> Votes Cast</span>
+							<span class="legend-item"><span class="swatch" style="background: {CATEGORY_COLORS[0]}"></span> {content.legendRegistered}</span>
+							<span class="legend-item"><span class="swatch" style="background: {CATEGORY_COLORS[3]}"></span> {content.legendVotesCast}</span>
 						</div>
 					{/if}
 				{:else if activeViz === 'circles'}
-					<h3 class="viz-title">The Shrinking Electorate</h3>
+					<h3 class="viz-title">{content.vizShrinkingElectorate}</h3>
 					<div class="circles-container">
 						{#each comparisonCircles as circle, i}
 							{@const maxValue = comparisonCircles[0]?.value || 1}
@@ -288,19 +480,19 @@
 						{/each}
 					</div>
 				{:else if activeViz === 'map'}
-					<h3 class="viz-title">Vote Loss by Municipality (2016-2024)</h3>
+					<h3 class="viz-title">{content.vizVoteLossMap}</h3>
 					<ChoroplethMap
 						data={mapData}
 						colorScale={voteLossColorScale}
 						tooltipFormat={(name, value) =>
 							value !== undefined
-								? `${name}: ${value.toFixed(1)}% change`
+								? `${name}: ${value.toFixed(1)}% ${$language === 'en' ? 'change' : 'cambio'}`
 								: name
 						}
 					/>
 					{#if mapData.size > 0}
 						<div class="legend">
-							<span class="legend-label">Voter loss</span>
+							<span class="legend-label">{content.legendVoterLoss}</span>
 							<div class="legend-scale">
 								<span style="background: {voteLossColorScale(-32)}"></span>
 								<span style="background: {voteLossColorScale(-22)}"></span>
@@ -315,7 +507,7 @@
 					{/if}
 				{:else if activeViz === 'bar'}
 					<h3 class="viz-title">
-						{currentStep === 4 ? 'Top Voter Losses (Absolute)' : 'Municipalities by Percentage Loss'}
+						{currentStep === 4 ? content.vizTopLossesAbsolute : content.vizLossesByPercent}
 					</h3>
 					<BarChart
 						data={currentStep === 4 ? topLossesAbsolute : topLossesPercent}
@@ -325,10 +517,10 @@
 						valueFormat={(v) => currentStep === 4 ? `-${formatCompact(v)}` : `-${v.toFixed(1)}%`}
 					/>
 				{:else if activeViz === 'demographic'}
-					<h3 class="viz-title">Age Composition of Electorate</h3>
+					<h3 class="viz-title">{content.vizAgeComposition}</h3>
 					<div class="demographic-grid">
 						<div class="demo-section">
-							<h4>Young Voters (Under 35)</h4>
+							<h4>{content.demoYoungVoters}</h4>
 							<div class="demo-comparison">
 								<div class="demo-bar-container">
 									<span class="demo-year">2012</span>
@@ -346,7 +538,7 @@
 							<p class="demo-change decline">-{((demographicShift?.pct_under_35_2012 || 0) - (demographicShift?.pct_under_35_2024 || 0)).toFixed(1)} pts</p>
 						</div>
 						<div class="demo-section">
-							<h4>Senior Voters (Over 65)</h4>
+							<h4>{content.demoSeniorVoters}</h4>
 							<div class="demo-comparison">
 								<div class="demo-bar-container">
 									<span class="demo-year">2012</span>
@@ -364,258 +556,137 @@
 							<p class="demo-change increase">+{((demographicShift?.pct_over_65_2024 || 0) - (demographicShift?.pct_over_65_2012 || 0)).toFixed(1)} pts</p>
 						</div>
 						<div class="demo-note">
-							<strong>Median voter age:</strong> {demographicShift?.median_voter_age_2012} (2012) to {demographicShift?.median_voter_age_2024} (2024)
+							<strong>{content.demoMedianAge}</strong> {demographicShift?.median_voter_age_2012} (2012) {$language === 'en' ? 'to' : 'a'} {demographicShift?.median_voter_age_2024} (2024)
 						</div>
 					</div>
 				{/if}
 			</div>
 		{/snippet}
 
-		<Step active={currentStep === 0} index={0}>
-			<h3>The Rolls Are Shrinking</h3>
-			<p>
-				In 2004, Puerto Rico had <span class="stat">2.44 million</span> registered voters -
-				a deeply engaged electorate for an island of 3.8 million people. Voting was a
-				civic tradition, a family ritual, a statement of identity.
-			</p>
-			<p>
-				Two decades later, the voter rolls tell a different story. Economic crisis, natural
-				disaster, and mass exodus have combined to create an unprecedented contraction in
-				the island's democratic base.
-			</p>
-			<p>
-				By 2024, only <span class="stat">1.99 million</span> voters remained registered -
-				a loss of nearly half a million in twenty years.
-			</p>
+		<Step active={currentStep === 0} index={0} variant="callout">
+			<h3>{content.step0Title}</h3>
+			<p>{@html content.step0p1}</p>
+			<p>{content.step0p2}</p>
+			<p>{@html content.step0p3}</p>
 		</Step>
 
 		<Step active={currentStep === 1} index={1}>
-			<h3>The Acceleration</h3>
-			<p>
-				The decline wasn't gradual. From 2004 to 2012, the electorate held relatively steady,
-				losing about 60,000 voters over eight years. Then the floor gave way.
-			</p>
-			<p>
-				Between 2012 and 2020, Puerto Rico lost <span class="stat">300,000</span> registered
-				voters. Hurricane Maria in 2017 accelerated an already-existing trend, as entire
-				families relocated to Florida, Texas, and the Northeast.
-			</p>
-			<p>
-				Those who left were disproportionately working-age adults - the backbone of any
-				electorate. They took their votes with them to states where, at least, those
-				votes would count for president.
-			</p>
+			<h3>{content.step1Title}</h3>
+			<p>{content.step1p1}</p>
+			<p>{@html content.step1p2}</p>
+			<p>{content.step1p3}</p>
 		</Step>
 
 		<Step active={currentStep === 2} index={2}>
-			<h3>Visualizing the Loss</h3>
+			<h3>{content.step2Title}</h3>
+			<p>{content.step2p1}</p>
+			<p>{@html content.step2p2}</p>
 			<p>
-				These circles represent the relative size of Puerto Rico's registered electorate
-				across two decades. Each one is proportional to the number of registered voters.
-			</p>
-			<p>
-				Notice how each successive circle <span class="highlight">shrinks visibly</span>.
-				This isn't just a statistical abstraction - each missing pixel represents real
-				people who are no longer part of the island's political community.
-			</p>
-			<p>
-				From the largest circle in 2004 to the smallest in 2024, Puerto Rico has lost
-				<span class="stat">{formatPercentChange(voterLossPercent())}</span> of its
-				electoral base.
+				{@html content.step2p3.replace('{voterLossPercent}', `<span class="stat">${formatPercentChange(voterLossPercent())}</span>`)}
 			</p>
 		</Step>
 
 		<Step active={currentStep === 3} index={3}>
-			<h3>Geography of Loss</h3>
-			<p>
-				The voter drain wasn't evenly distributed. This map shows the percentage change
-				in votes cast between 2016 and 2024 for each municipality.
-			</p>
-			<p>
-				<span class="highlight">Darker colors</span> indicate steeper declines.
-				While every municipality saw losses, some experienced dramatic collapses
-				in electoral participation.
-			</p>
-			<p>
-				The pattern reveals two Puerto Ricos: the metro San Juan area, which lost
-				voters but maintained some base, and the rural interior, where the
-				hemorrhaging was even more severe.
-			</p>
+			<h3>{content.step3Title}</h3>
+			<p>{content.step3p1}</p>
+			<p>{@html content.step3p2}</p>
+			<p>{content.step3p3}</p>
 		</Step>
 
 		<Step active={currentStep === 4} index={4}>
-			<h3>The Big Five</h3>
-			<p>
-				In absolute terms, the largest municipalities account for the bulk of voter loss.
-				San Juan alone shed nearly <span class="stat">60,000 voters</span> between
-				2016 and 2024.
-			</p>
-			<p>
-				These five municipalities - San Juan, Bayamon, Ponce, Carolina, and Caguas -
-				together lost over <span class="stat">150,000 voters</span>. That's more
-				voters than many U.S. congressional districts contain.
-			</p>
-			<p>
-				But the raw numbers don't tell the whole story. When you look at
-				<em>proportional</em> losses, a different picture emerges.
-			</p>
+			<h3>{content.step4Title}</h3>
+			<p>{@html content.step4p1}</p>
+			<p>{@html content.step4p2}</p>
+			<p>{@html content.step4p3}</p>
 		</Step>
 
-		<Step active={currentStep === 5} index={5}>
-			<h3>An Aging Electorate</h3>
-			<p>
-				Who stayed behind? The data reveals a demographic transformation. Young voters
-				left in droves, while older residents - with deeper roots, less mobility, and
-				fewer mainland options - remained.
-			</p>
-			<p>
-				In 2012, voters under 35 made up <span class="stat">28.5%</span> of the electorate.
-				By 2024, that share had collapsed to just <span class="stat">18.2%</span>.
-			</p>
-			<p>
-				Meanwhile, voters over 65 grew from <span class="stat">18.3%</span> to
-				<span class="stat">27.1%</span> of all voters. The median voter aged
-				nearly a decade in just twelve years.
-			</p>
-			<p>
-				An older electorate tends to be more conservative, more focused on pensions
-				and healthcare, and less concerned with the job creation and education
-				issues that might bring young people back.
-			</p>
+		<Step active={currentStep === 5} index={5} variant="callout">
+			<h3>{content.step5Title}</h3>
+			<p>{content.step5p1}</p>
+			<p>{@html content.step5p2}</p>
+			<p>{@html content.step5p3}</p>
+			<p>{content.step5p4}</p>
 		</Step>
 
 		<Step active={currentStep === 6} index={6}>
-			<h3>The Feedback Loop</h3>
+			<h3>{content.step6Title}</h3>
+			<p>{content.step6p1}</p>
+			<p>{content.step6p2}</p>
 			<p>
-				Here's the cruel irony: fewer voters means less political power, which
-				means less attention from Washington, which means worse conditions,
-				which drives more people to leave.
-			</p>
-			<p>
-				The cycle is self-reinforcing. As the electorate shrinks, so does
-				Puerto Rico's ability to advocate for the federal resources and
-				policy changes that might reverse the trend.
-			</p>
-			<p>
-				If Puerto Rico were a state, its population would have meant
-				<span class="stat">{representationImpact?.if_state_reps_2004 || 6}</span>
-				House seats in 2004. Today, it would qualify for only
-				<span class="stat">{representationImpact?.if_state_reps_2024 || 4}</span>.
+				{@html content.step6p3
+					.replace('{seatsOld}', `<span class="stat">${representationImpact?.if_state_reps_2004 || 6}</span>`)
+					.replace('{seatsNew}', `<span class="stat">${representationImpact?.if_state_reps_2024 || 4}</span>`)}
 			</p>
 		</Step>
 
 		<Step active={currentStep === 7} index={7}>
-			<h3>The Representation Gap</h3>
-			<p>
-				Puerto Rico's shrinking electorate creates a troubling paradox. The island
-				has one non-voting representative in Congress - the Resident Commissioner -
-				regardless of whether it has 4 million people or 3 million.
-			</p>
-			<p>
-				Meanwhile, the <span class="stat">5.7 million</span> Puerto Ricans living
-				on the mainland can vote for president and are represented by voting
-				members of Congress. Their political power grows as the island's shrinks.
-			</p>
-			<p>
-				The result: decisions about Puerto Rico's future are increasingly made by
-				people who don't live there, while those who remain have diminishing voice
-				in their own governance.
-			</p>
+			<h3>{content.step7Title}</h3>
+			<p>{content.step7p1}</p>
+			<p>{@html content.step7p2}</p>
+			<p>{content.step7p3}</p>
 		</Step>
 
 		<Step active={currentStep === 8} index={8}>
-			<h3>Registered vs. Participating</h3>
-			<p>
-				The gap between registered voters and actual votes cast tells another
-				troubling story. Even among those who remain registered, participation
-				has declined.
-			</p>
-			<p>
-				In 2004, <span class="stat">81.5%</span> of registered voters cast ballots.
-				By 2024, that figure had dropped to <span class="stat">61.2%</span>.
-			</p>
-			<p>
-				The gap between the two lines represents growing disengagement - voters
-				who haven't left the island but have left the political process.
-				Disillusionment, not just emigration, is thinning the electorate.
-			</p>
+			<h3>{content.step8Title}</h3>
+			<p>{content.step8p1}</p>
+			<p>{@html content.step8p2}</p>
+			<p>{content.step8p3}</p>
 		</Step>
 
-		<Step active={currentStep === 9} index={9}>
-			<h3>What Comes Next?</h3>
-			<p>
-				The trends show no sign of reversing. Every projection suggests Puerto Rico's
-				population will continue to decline through at least 2050, and the
-				electorate will shrink with it.
-			</p>
-			<p>
-				For democracy to thrive, it needs participants. Puerto Rico faces a
-				fundamental question: how does a democracy function when its people
-				are leaving?
-			</p>
-			<p>
-				The answer will depend on whether the island can break the feedback
-				loop - creating conditions that make young Puerto Ricans want to stay,
-				and giving those who remain a reason to believe their vote matters.
-			</p>
+		<Step active={currentStep === 9} index={9} variant="question">
+			<h3>{content.step9Title}</h3>
+			<p>{content.step9p1}</p>
+			<p>{content.step9p2}</p>
+			<p>{content.step9p3}</p>
 		</Step>
 	</ScrollySection>
 
 	<section class="chapter-conclusion">
 		<div class="container content">
-			<h2>The Electoral Arithmetic</h2>
+			<h2>{content.conclusionTitle}</h2>
 			<div class="stat-grid">
 				<div class="stat-card">
 					<span class="stat-value">-{formatCompact(voterLoss2004to2024())}</span>
-					<span class="stat-label">Registered voters lost since 2004</span>
+					<span class="stat-label">{content.statVotersLost}</span>
 				</div>
 				<div class="stat-card">
 					<span class="stat-value">{formatPercentChange(voterLossPercent())}</span>
-					<span class="stat-label">Change in electoral base</span>
+					<span class="stat-label">{content.statElectoralBase}</span>
 				</div>
 				<div class="stat-card">
-					<span class="stat-value">+9 yrs</span>
-					<span class="stat-label">Increase in median voter age</span>
+					<span class="stat-value">+9 {$language === 'en' ? 'yrs' : 'anos'}</span>
+					<span class="stat-label">{content.statMedianAge}</span>
 				</div>
 				<div class="stat-card">
 					<span class="stat-value">5</span>
-					<span class="stat-label">Municipalities with 50%+ of voter loss</span>
+					<span class="stat-label">{content.statTopMunis}</span>
 				</div>
 			</div>
 
 			<div class="conclusion-text">
-				<h3>Breaking the Cycle</h3>
-				<p>
-					Puerto Rico's shrinking electorate is not inevitable - it's the result of
-					policy choices, economic conditions, and colonial status that could be
-					changed. But reversing these trends requires understanding their depth.
-				</p>
-				<p>
-					In the next chapter, we examine how these demographic shifts have
-					reshaped the island's political battles over status - the plebiscites
-					that ask whether Puerto Rico should become a state, gain independence,
-					or maintain its current relationship with the United States.
-				</p>
+				<h3>{content.breakingCycleTitle}</h3>
+				<p>{content.conclusionP1}</p>
+				<p>{content.conclusionP2}</p>
 			</div>
 
 			<div class="sources">
-				<h3>Sources</h3>
+				<h3>{content.sourcesTitle}</h3>
 				<ul>
-					<li><a href="https://ww2.ceepur.org/Home/EventosElectorales" target="_blank" rel="noopener">Comision Estatal de Elecciones de Puerto Rico (CEE)</a> - Voter registration statistics 2000-2024</li>
-					<li>Puerto Rico Office of the Comptroller - Electoral participation reports</li>
-					<li><a href="https://www.census.gov/programs-surveys/popest.html" target="_blank" rel="noopener">U.S. Census Bureau</a> - Population estimates and projections for Puerto Rico</li>
-					<li>Puerto Rico Institute of Statistics - Demographic trends analysis</li>
+					<li><a href="https://ww2.ceepur.org/Home/EventosElectorales" target="_blank" rel="noopener">Comision Estatal de Elecciones de Puerto Rico (CEE)</a> - {content.sourceCEE}</li>
+					<li>{content.sourceComptroller}</li>
+					<li><a href="https://www.census.gov/programs-surveys/popest.html" target="_blank" rel="noopener">U.S. Census Bureau</a> - {content.sourceCensus}</li>
+					<li>{content.sourceStats}</li>
 				</ul>
 			</div>
 
 			<nav class="chapter-nav">
 				<a href="{base}/chapters/turnout" class="nav-link prev">
-					<span class="nav-direction">Previous</span>
-					<span class="nav-title">Democracy Under Strain</span>
+					<span class="nav-direction">{content.navPrevious}</span>
+					<span class="nav-title">{content.navPrevTitle}</span>
 				</a>
 				<a href="{base}/chapters/plebiscites" class="nav-link next">
-					<span class="nav-direction">Next Chapter</span>
-					<span class="nav-title">One Question, Two Decades</span>
+					<span class="nav-direction">{content.navNext}</span>
+					<span class="nav-title">{content.navNextTitle}</span>
 				</a>
 			</nav>
 		</div>

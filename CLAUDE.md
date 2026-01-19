@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+**IMPORTANT**: Before you do anything else, run the `beans prime` command and heed its output.
+
 ## Project Overview
 
 Open data platform providing access to Puerto Rico electoral data from the Comision Estatal de Elecciones (CEE). The project has four main components:

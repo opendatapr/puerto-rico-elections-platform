@@ -1,0 +1,111 @@
+{
+  "plebiscites": [
+    {
+      "year": 1967,
+      "statehood": 39.0,
+      "commonwealth": 60.4,
+      "independence": 0.6,
+      "turnout": 65.8,
+      "totalVotes": 703000,
+      "statehoodVotes": 274312,
+      "question": "3 options",
+      "boycott": false,
+      "context": "First status referendum",
+      "winner": "Commonwealth",
+      "congressResponse": "No action",
+      "ballotOptions": ["Statehood", "Commonwealth (ELA)", "Independence"]
+    },
+    {
+      "year": 1993,
+      "statehood": 46.3,
+      "commonwealth": 48.6,
+      "independence": 4.4,
+      "turnout": 73.5,
+      "totalVotes": 2120000,
+      "statehoodVotes": 788296,
+      "question": "3 options",
+      "boycott": false,
+      "context": "Post-Cold War vote",
+      "winner": "Commonwealth",
+      "congressResponse": "No action",
+      "ballotOptions": ["Statehood", "Commonwealth (ELA)", "Independence"]
+    },
+    {
+      "year": 1998,
+      "statehood": 46.5,
+      "commonwealth": 0.1,
+      "independence": 2.5,
+      "freeAssociation": 0.3,
+      "noneOfAbove": 50.3,
+      "turnout": 71.3,
+      "totalVotes": 1709000,
+      "statehoodVotes": 728157,
+      "question": "5 options",
+      "boycott": true,
+      "boycottParty": "PPD",
+      "context": "PPD boycotted, \"None of the Above\" won",
+      "winner": "None of the Above",
+      "congressResponse": "No action",
+      "ballotOptions": ["Statehood", "Independence", "Free Association", "Territorial Commonwealth", "None of the Above"]
+    },
+    {
+      "year": 2012,
+      "statehood": 61.2,
+      "commonwealth": 33.3,
+      "independence": 5.5,
+      "turnout": 78.2,
+      "totalVotes": 1798987,
+      "statehoodVotes": 834191,
+      "question": "2-part ballot",
+      "boycott": false,
+      "context": "500K+ left Q2 blank",
+      "winner": "Statehood (Q2)",
+      "congressResponse": "Requested funds for binding vote",
+      "ballotOptions": ["Q1: Keep status? (Yes/No)", "Q2: Statehood / Free Association / Independence"]
+    },
+    {
+      "year": 2017,
+      "statehood": 97.2,
+      "commonwealth": 1.5,
+      "independence": 1.3,
+      "turnout": 23.0,
+      "totalVotes": 518000,
+      "statehoodVotes": 502801,
+      "question": "3 options",
+      "boycott": true,
+      "boycottParty": "PPD & PIP",
+      "context": "Lowest turnout in PR history",
+      "winner": "Statehood",
+      "congressResponse": "Dismissed due to low turnout",
+      "ballotOptions": ["Statehood", "Free Association/Independence", "Current Territory"]
+    },
+    {
+      "year": 2020,
+      "statehood": 52.5,
+      "commonwealth": 47.5,
+      "independence": 0,
+      "turnout": 54.7,
+      "totalVotes": 1248176,
+      "statehoodVotes": 655505,
+      "question": "Yes/No",
+      "boycott": false,
+      "context": "First simple majority Yes",
+      "winner": "Statehood",
+      "congressResponse": "HR 1522 introduced but not passed",
+      "ballotOptions": ["Yes", "No"]
+    }
+  ],
+  "statusColors": {
+    "statehood": "#1e4d8c",
+    "commonwealth": "#c41e3a",
+    "independence": "#228b22",
+    "freeAssociation": "#9b59b6",
+    "noneOfAbove": "#6b7280",
+    "blank": "#d4a373"
+  },
+  "summary": {
+    "totalReferendums": 6,
+    "yearsOfDebate": 53,
+    "congressionalActions": 0
+  }
+}

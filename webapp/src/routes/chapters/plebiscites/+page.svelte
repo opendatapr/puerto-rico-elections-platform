@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { onMount } from 'svelte';
 	import { ScrollySection, Step, Progress } from '$lib/components/scrollytelling';
 	import { BarChart, LineChart } from '$lib/components/charts';
 	import { CATEGORY_COLORS, PARTY_COLORS } from '$lib/utils/colors';
@@ -9,114 +10,63 @@
 	const totalSteps = 12;
 
 	let currentStep = $state(0);
+	let loading = $state(true);
 
-	// Complete historical plebiscite data (1967-2020)
-	const plebiscites = [
-		{
-			year: 1967,
-			statehood: 39.0,
-			commonwealth: 60.4,
-			independence: 0.6,
-			turnout: 65.8,
-			totalVotes: 703000,
-			statehoodVotes: 274312,
-			question: '3 options',
-			boycott: false,
-			context: 'First status referendum',
-			winner: 'Commonwealth',
-			congressResponse: 'No action',
-			ballotOptions: ['Statehood', 'Commonwealth (ELA)', 'Independence']
-		},
-		{
-			year: 1993,
-			statehood: 46.3,
-			commonwealth: 48.6,
-			independence: 4.4,
-			turnout: 73.5,
-			totalVotes: 2120000,
-			statehoodVotes: 788296,
-			question: '3 options',
-			boycott: false,
-			context: 'Post-Cold War vote',
-			winner: 'Commonwealth',
-			congressResponse: 'No action',
-			ballotOptions: ['Statehood', 'Commonwealth (ELA)', 'Independence']
-		},
-		{
-			year: 1998,
-			statehood: 46.5,
-			commonwealth: 0.1,
-			independence: 2.5,
-			freeAssociation: 0.3,
-			noneOfAbove: 50.3,
-			turnout: 71.3,
-			totalVotes: 1709000,
-			statehoodVotes: 728157,
-			question: '5 options',
-			boycott: true,
-			boycottParty: 'PPD',
-			context: 'PPD boycotted, "None of the Above" won',
-			winner: 'None of the Above',
-			congressResponse: 'No action',
-			ballotOptions: ['Statehood', 'Independence', 'Free Association', 'Territorial Commonwealth', 'None of the Above']
-		},
-		{
-			year: 2012,
-			statehood: 61.2,
-			commonwealth: 33.3,
-			independence: 5.5,
-			turnout: 78.2,
-			totalVotes: 1798987,
-			statehoodVotes: 834191,
-			question: '2-part ballot',
-			boycott: false,
-			context: '500K+ left Q2 blank',
-			winner: 'Statehood (Q2)',
-			congressResponse: 'Requested funds for binding vote',
-			ballotOptions: ['Q1: Keep status? (Yes/No)', 'Q2: Statehood / Free Association / Independence']
-		},
-		{
-			year: 2017,
-			statehood: 97.2,
-			commonwealth: 1.5,
-			independence: 1.3,
-			turnout: 23.0,
-			totalVotes: 518000,
-			statehoodVotes: 502801,
-			question: '3 options',
-			boycott: true,
-			boycottParty: 'PPD & PIP',
-			context: 'Lowest turnout in PR history',
-			winner: 'Statehood',
-			congressResponse: 'Dismissed due to low turnout',
-			ballotOptions: ['Statehood', 'Free Association/Independence', 'Current Territory']
-		},
-		{
-			year: 2020,
-			statehood: 52.5,
-			commonwealth: 47.5,
-			independence: 0,
-			turnout: 54.7,
-			totalVotes: 1248176,
-			statehoodVotes: 655505,
-			question: 'Yes/No',
-			boycott: false,
-			context: 'First simple majority Yes',
-			winner: 'Statehood',
-			congressResponse: 'HR 1522 introduced but not passed',
-			ballotOptions: ['Yes', 'No']
-		},
-	];
+	// Plebiscite data types
+	interface Plebiscite {
+		year: number;
+		statehood: number;
+		commonwealth: number;
+		independence: number;
+		freeAssociation?: number;
+		noneOfAbove?: number;
+		turnout: number;
+		totalVotes: number;
+		statehoodVotes: number;
+		question: string;
+		boycott: boolean;
+		boycottParty?: string;
+		context: string;
+		winner: string;
+		congressResponse: string;
+		ballotOptions: string[];
+	}
+
+	interface ChapterData {
+		plebiscites: Plebiscite[];
+		statusColors: Record<string, string>;
+		summary: {
+			totalReferendums: number;
+			yearsOfDebate: number;
+			congressionalActions: number;
+		};
+	}
+
+	let plebiscites = $state<Plebiscite[]>([]);
 
 	// Status options colors - consistent theming
-	const STATUS_COLORS = {
+	let STATUS_COLORS = $state<Record<string, string>>({
 		statehood: '#1e4d8c',      // PNP blue
 		commonwealth: '#c41e3a',   // PPD red
 		independence: '#228b22',   // PIP green
 		freeAssociation: '#9b59b6', // Purple
 		noneOfAbove: '#6b7280',    // Gray
 		blank: '#d4a373'          // Tan
-	};
+	});
+
+	// Load data from JSON
+	onMount(async () => {
+		try {
+			const response = await fetch(`${base}/data/chapters/plebiscites.json`);
+			const data: ChapterData = await response.json();
+			plebiscites = data.plebiscites;
+			STATUS_COLORS = data.statusColors;
+		} catch (err) {
+			console.error('Failed to load plebiscites data:', err);
+		} finally {
+			loading = false;
+		}
+	});
 
 	let activeYear = $state(1967);
 	let activePlebiscite = $derived(plebiscites.find(p => p.year === activeYear) || plebiscites[0]);
@@ -254,7 +204,9 @@
 	<ScrollySection offset={0.6} onStepEnter={handleStepEnter}>
 		{#snippet graphic()}
 			<div class="viz-container">
-				{#if activeViz === 'timeline'}
+				{#if loading}
+					<p class="loading">Loading data...</p>
+				{:else if activeViz === 'timeline'}
 					<h3 class="viz-title">Six Referendums, Six Decades</h3>
 					<div class="timeline-viz">
 						{#each plebiscites as p}
@@ -644,6 +596,11 @@
 </article>
 
 <style>
+	.loading {
+		color: var(--color-text-muted);
+		font-style: italic;
+	}
+
 	.chapter-header {
 		min-height: 70vh;
 		display: flex;

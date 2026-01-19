@@ -1,0 +1,3328 @@
+{
+  "districts": {
+    "1": {
+      "district": 1,
+      "municipalities": [
+        "San Juan",
+        "Trujillo Alto"
+      ],
+      "precinct_count": 2
+    },
+    "2": {
+      "district": 2,
+      "municipalities": [
+        "San Juan",
+        "Cataño"
+      ],
+      "precinct_count": 2
+    },
+    "3": {
+      "district": 3,
+      "municipalities": [
+        "San Juan",
+        "Cataño"
+      ],
+      "precinct_count": 2
+    },
+    "4": {
+      "district": 4,
+      "municipalities": [
+        "San Juan",
+        "Cataño"
+      ],
+      "precinct_count": 2
+    },
+    "5": {
+      "district": 5,
+      "municipalities": [
+        "Aguas Buenas",
+        "San Juan",
+        "Guaynabo"
+      ],
+      "precinct_count": 6
+    },
+    "6": {
+      "district": 6,
+      "municipalities": [
+        "Bayamón",
+        "Cataño",
+        "Guaynabo"
+      ],
+      "precinct_count": 6
+    },
+    "7": {
+      "district": 7,
+      "municipalities": [
+        "Bayamón"
+      ],
+      "precinct_count": 2
+    },
+    "8": {
+      "district": 8,
+      "municipalities": [
+        "Bayamón"
+      ],
+      "precinct_count": 2
+    },
+    "9": {
+      "district": 9,
+      "municipalities": [
+        "Toa Alta",
+        "Bayamón"
+      ],
+      "precinct_count": 4
+    },
+    "10": {
+      "district": 10,
+      "municipalities": [
+        "Toa Baja",
+        "Cataño"
+      ],
+      "precinct_count": 3
+    },
+    "11": {
+      "district": 11,
+      "municipalities": [
+        "Dorado",
+        "Vega Alta",
+        "Vega Baja",
+        "Florida"
+      ],
+      "precinct_count": 6
+    },
+    "12": {
+      "district": 12,
+      "municipalities": [
+        "Manatí",
+        "Morovis",
+        "Vega Baja",
+        "Vega Alta",
+        "Ciales"
+      ],
+      "precinct_count": 8
+    },
+    "13": {
+      "district": 13,
+      "municipalities": [
+        "Ciales",
+        "Barceloneta",
+        "Manatí",
+        "Arecibo",
+        "Florida"
+      ],
+      "precinct_count": 9
+    },
+    "14": {
+      "district": 14,
+      "municipalities": [
+        "Hatillo",
+        "Arecibo"
+      ],
+      "precinct_count": 4
+    },
+    "15": {
+      "district": 15,
+      "municipalities": [
+        "Quebradillas",
+        "Hatillo",
+        "Camuy"
+      ],
+      "precinct_count": 6
+    },
+    "16": {
+      "district": 16,
+      "municipalities": [
+        "San Sebastián",
+        "Las Marías",
+        "Isabela",
+        "Moca"
+      ],
+      "precinct_count": 6
+    },
+    "17": {
+      "district": 17,
+      "municipalities": [
+        "Aguadilla",
+        "Moca"
+      ],
+      "precinct_count": 4
+    },
+    "18": {
+      "district": 18,
+      "municipalities": [
+        "Aguada",
+        "Rincón",
+        "Añasco",
+        "Mayagüez",
+        "Moca"
+      ],
+      "precinct_count": 9
+    },
+    "19": {
+      "district": 19,
+      "municipalities": [
+        "Mayagüez",
+        "San Germán"
+      ],
+      "precinct_count": 4
+    },
+    "20": {
+      "district": 20,
+      "municipalities": [
+        "Cabo Rojo",
+        "Hormigueros",
+        "San Germán"
+      ],
+      "precinct_count": 6
+    },
+    "21": {
+      "district": 21,
+      "municipalities": [
+        "Lajas",
+        "Guánica",
+        "Sábana Grande",
+        "Maricao",
+        "Yauco",
+        "Sabana Grande"
+      ],
+      "precinct_count": 11
+    },
+    "22": {
+      "district": 22,
+      "municipalities": [
+        "Adjuntas",
+        "Lares",
+        "Utuado",
+        "Jayuya",
+        "Ciales"
+      ],
+      "precinct_count": 9
+    },
+    "23": {
+      "district": 23,
+      "municipalities": [
+        "Yauco 052",
+        "Guayanilla",
+        "Peñuelas",
+        "Ponce",
+        "Yauco",
+        "Adjuntas"
+      ],
+      "precinct_count": 9
+    },
+    "24": {
+      "district": 24,
+      "municipalities": [
+        "Ponce"
+      ],
+      "precinct_count": 2
+    },
+    "25": {
+      "district": 25,
+      "municipalities": [
+        "Jayuya",
+        "Ponce",
+        "Juana Díaz",
+        "Villalba"
+      ],
+      "precinct_count": 6
+    },
+    "26": {
+      "district": 26,
+      "municipalities": [
+        "Juana Díaz",
+        "Villalba",
+        "Orocovis",
+        "Barranquitas",
+        "Coamo",
+        "Corozal"
+      ],
+      "precinct_count": 10
+    },
+    "27": {
+      "district": 27,
+      "municipalities": [
+        "Salinas",
+        "Aibonito",
+        "Santa Isabel",
+        "Coamo",
+        "Juana Díaz"
+      ],
+      "precinct_count": 8
+    },
+    "28": {
+      "district": 28,
+      "municipalities": [
+        "Corozal",
+        "Naranjito",
+        "Comerío",
+        "Barranquitas"
+      ],
+      "precinct_count": 8
+    },
+    "29": {
+      "district": 29,
+      "municipalities": [
+        "Cayey",
+        "Cidra"
+      ],
+      "precinct_count": 4
+    },
+    "30": {
+      "district": 30,
+      "municipalities": [
+        "Salinas",
+        "Arroyo",
+        "Guayama",
+        "Santa Isabel"
+      ],
+      "precinct_count": 7
+    },
+    "31": {
+      "district": 31,
+      "municipalities": [
+        "Gurabo",
+        "Caguas"
+      ],
+      "precinct_count": 4
+    },
+    "32": {
+      "district": 32,
+      "municipalities": [
+        "Caguas",
+        "Aguas Buenas"
+      ],
+      "precinct_count": 2
+    },
+    "33": {
+      "district": 33,
+      "municipalities": [
+        "San Lorenzo",
+        "Juncos",
+        "Las Piedras"
+      ],
+      "precinct_count": 7
+    },
+    "34": {
+      "district": 34,
+      "municipalities": [
+        "San Lorenzo",
+        "Patillas",
+        "Yabucoa",
+        "Maunabo"
+      ],
+      "precinct_count": 8
+    },
+    "35": {
+      "district": 35,
+      "municipalities": [
+        "Las Piedras",
+        "Naguabo",
+        "Humacao"
+      ],
+      "precinct_count": 6
+    },
+    "36": {
+      "district": 36,
+      "municipalities": [
+        "Río Grande",
+        "Fajardo",
+        "Luquillo",
+        "Ceiba",
+        "Vieques",
+        "Culebra"
+      ],
+      "precinct_count": 12
+    },
+    "37": {
+      "district": 37,
+      "municipalities": [
+        "Canóvanas",
+        "Río Grande",
+        "Loíza"
+      ],
+      "precinct_count": 6
+    },
+    "38": {
+      "district": 38,
+      "municipalities": [
+        "Carolina",
+        "Trujillo Alto",
+        "Canóvanas"
+      ],
+      "precinct_count": 6
+    },
+    "39": {
+      "district": 39,
+      "municipalities": [
+        "Trujillo Alto",
+        "Carolina"
+      ],
+      "precinct_count": 4
+    },
+    "40": {
+      "district": 40,
+      "municipalities": [
+        "Carolina"
+      ],
+      "precinct_count": 2
+    }
+  },
+  "municipalities": {
+    "Mayagüez": {
+      "municipality": "Mayagüez",
+      "districts": [
+        19,
+        18
+      ],
+      "precinct_count": 3
+    },
+    "San Lorenzo": {
+      "municipality": "San Lorenzo",
+      "districts": [
+        34,
+        33
+      ],
+      "precinct_count": 4
+    },
+    "San Juan": {
+      "municipality": "San Juan",
+      "districts": [
+        2,
+        1,
+        4,
+        3,
+        5
+      ],
+      "precinct_count": 6
+    },
+    "Canóvanas": {
+      "municipality": "Canóvanas",
+      "districts": [
+        37,
+        38
+      ],
+      "precinct_count": 4
+    },
+    "Patillas": {
+      "municipality": "Patillas",
+      "districts": [
+        34
+      ],
+      "precinct_count": 2
+    },
+    "Aguas Buenas": {
+      "municipality": "Aguas Buenas",
+      "districts": [
+        5,
+        32
+      ],
+      "precinct_count": 3
+    },
+    "Hatillo": {
+      "municipality": "Hatillo",
+      "districts": [
+        14,
+        15
+      ],
+      "precinct_count": 5
+    },
+    "Arecibo": {
+      "municipality": "Arecibo",
+      "districts": [
+        14,
+        13
+      ],
+      "precinct_count": 3
+    },
+    "Ciales": {
+      "municipality": "Ciales",
+      "districts": [
+        13,
+        12,
+        22
+      ],
+      "precinct_count": 3
+    },
+    "Manatí": {
+      "municipality": "Manatí",
+      "districts": [
+        12,
+        13
+      ],
+      "precinct_count": 3
+    },
+    "Morovis": {
+      "municipality": "Morovis",
+      "districts": [
+        12
+      ],
+      "precinct_count": 1
+    },
+    "Vega Baja": {
+      "municipality": "Vega Baja",
+      "districts": [
+        12,
+        11
+      ],
+      "precinct_count": 4
+    },
+    "Vega Alta": {
+      "municipality": "Vega Alta",
+      "districts": [
+        12,
+        11
+      ],
+      "precinct_count": 3
+    },
+    "Río Grande": {
+      "municipality": "Río Grande",
+      "districts": [
+        37,
+        36
+      ],
+      "precinct_count": 3
+    },
+    "Quebradillas": {
+      "municipality": "Quebradillas",
+      "districts": [
+        15
+      ],
+      "precinct_count": 2
+    },
+    "Dorado": {
+      "municipality": "Dorado",
+      "districts": [
+        11
+      ],
+      "precinct_count": 2
+    },
+    "Barceloneta": {
+      "municipality": "Barceloneta",
+      "districts": [
+        13
+      ],
+      "precinct_count": 3
+    },
+    "Florida": {
+      "municipality": "Florida",
+      "districts": [
+        13,
+        11
+      ],
+      "precinct_count": 3
+    },
+    "Camuy": {
+      "municipality": "Camuy",
+      "districts": [
+        15
+      ],
+      "precinct_count": 2
+    },
+    "Bayamón": {
+      "municipality": "Bayamón",
+      "districts": [
+        8,
+        7,
+        6,
+        9
+      ],
+      "precinct_count": 7
+    },
+    "Cataño": {
+      "municipality": "Cataño",
+      "districts": [
+        6,
+        2,
+        3,
+        4,
+        10
+      ],
+      "precinct_count": 7
+    },
+    "Guaynabo": {
+      "municipality": "Guaynabo",
+      "districts": [
+        6,
+        5
+      ],
+      "precinct_count": 3
+    },
+    "Toa Alta": {
+      "municipality": "Toa Alta",
+      "districts": [
+        9
+      ],
+      "precinct_count": 3
+    },
+    "Fajardo": {
+      "municipality": "Fajardo",
+      "districts": [
+        36
+      ],
+      "precinct_count": 2
+    },
+    "Luquillo": {
+      "municipality": "Luquillo",
+      "districts": [
+        36
+      ],
+      "precinct_count": 2
+    },
+    "Ceiba": {
+      "municipality": "Ceiba",
+      "districts": [
+        36
+      ],
+      "precinct_count": 2
+    },
+    "Vieques": {
+      "municipality": "Vieques",
+      "districts": [
+        36
+      ],
+      "precinct_count": 2
+    },
+    "Culebra": {
+      "municipality": "Culebra",
+      "districts": [
+        36
+      ],
+      "precinct_count": 2
+    },
+    "Salinas": {
+      "municipality": "Salinas",
+      "districts": [
+        27,
+        30
+      ],
+      "precinct_count": 3
+    },
+    "Juana Díaz": {
+      "municipality": "Juana Díaz",
+      "districts": [
+        26,
+        25,
+        27
+      ],
+      "precinct_count": 3
+    },
+    "Villalba": {
+      "municipality": "Villalba",
+      "districts": [
+        26,
+        25
+      ],
+      "precinct_count": 3
+    },
+    "Orocovis": {
+      "municipality": "Orocovis",
+      "districts": [
+        26
+      ],
+      "precinct_count": 4
+    },
+    "Corozal": {
+      "municipality": "Corozal",
+      "districts": [
+        28,
+        26
+      ],
+      "precinct_count": 2
+    },
+    "Naranjito": {
+      "municipality": "Naranjito",
+      "districts": [
+        28
+      ],
+      "precinct_count": 4
+    },
+    "Comerío": {
+      "municipality": "Comerío",
+      "districts": [
+        28
+      ],
+      "precinct_count": 1
+    },
+    "Cayey": {
+      "municipality": "Cayey",
+      "districts": [
+        29
+      ],
+      "precinct_count": 2
+    },
+    "Arroyo": {
+      "municipality": "Arroyo",
+      "districts": [
+        30
+      ],
+      "precinct_count": 2
+    },
+    "Guayama": {
+      "municipality": "Guayama",
+      "districts": [
+        30
+      ],
+      "precinct_count": 2
+    },
+    "Aibonito": {
+      "municipality": "Aibonito",
+      "districts": [
+        27
+      ],
+      "precinct_count": 2
+    },
+    "Santa Isabel": {
+      "municipality": "Santa Isabel",
+      "districts": [
+        27,
+        30
+      ],
+      "precinct_count": 3
+    },
+    "Barranquitas": {
+      "municipality": "Barranquitas",
+      "districts": [
+        26,
+        28
+      ],
+      "precinct_count": 3
+    },
+    "Coamo": {
+      "municipality": "Coamo",
+      "districts": [
+        26,
+        27
+      ],
+      "precinct_count": 3
+    },
+    "Las Piedras": {
+      "municipality": "Las Piedras",
+      "districts": [
+        35,
+        33
+      ],
+      "precinct_count": 2
+    },
+    "Naguabo": {
+      "municipality": "Naguabo",
+      "districts": [
+        35
+      ],
+      "precinct_count": 2
+    },
+    "Yabucoa": {
+      "municipality": "Yabucoa",
+      "districts": [
+        34
+      ],
+      "precinct_count": 2
+    },
+    "Maunabo": {
+      "municipality": "Maunabo",
+      "districts": [
+        34
+      ],
+      "precinct_count": 2
+    },
+    "Humacao": {
+      "municipality": "Humacao",
+      "districts": [
+        35
+      ],
+      "precinct_count": 3
+    },
+    "Gurabo": {
+      "municipality": "Gurabo",
+      "districts": [
+        31
+      ],
+      "precinct_count": 2
+    },
+    "Caguas": {
+      "municipality": "Caguas",
+      "districts": [
+        31,
+        32
+      ],
+      "precinct_count": 3
+    },
+    "San Sebastián": {
+      "municipality": "San Sebastián",
+      "districts": [
+        16
+      ],
+      "precinct_count": 1
+    },
+    "Las Marías": {
+      "municipality": "Las Marías",
+      "districts": [
+        16
+      ],
+      "precinct_count": 1
+    },
+    "Cabo Rojo": {
+      "municipality": "Cabo Rojo",
+      "districts": [
+        20
+      ],
+      "precinct_count": 2
+    },
+    "Hormigueros": {
+      "municipality": "Hormigueros",
+      "districts": [
+        20
+      ],
+      "precinct_count": 3
+    },
+    "Aguadilla": {
+      "municipality": "Aguadilla",
+      "districts": [
+        17
+      ],
+      "precinct_count": 2
+    },
+    "Aguada": {
+      "municipality": "Aguada",
+      "districts": [
+        18
+      ],
+      "precinct_count": 2
+    },
+    "Rincón": {
+      "municipality": "Rincón",
+      "districts": [
+        18
+      ],
+      "precinct_count": 3
+    },
+    "Añasco": {
+      "municipality": "Añasco",
+      "districts": [
+        18
+      ],
+      "precinct_count": 1
+    },
+    "Moca": {
+      "municipality": "Moca",
+      "districts": [
+        18,
+        17,
+        16
+      ],
+      "precinct_count": 6
+    },
+    "San Germán": {
+      "municipality": "San Germán",
+      "districts": [
+        20,
+        19
+      ],
+      "precinct_count": 3
+    },
+    "Lajas": {
+      "municipality": "Lajas",
+      "districts": [
+        21
+      ],
+      "precinct_count": 2
+    },
+    "Guánica": {
+      "municipality": "Guánica",
+      "districts": [
+        21
+      ],
+      "precinct_count": 1
+    },
+    "Sábana Grande": {
+      "municipality": "Sábana Grande",
+      "districts": [
+        21
+      ],
+      "precinct_count": 1
+    },
+    "Maricao": {
+      "municipality": "Maricao",
+      "districts": [
+        21
+      ],
+      "precinct_count": 4
+    },
+    "Yauco": {
+      "municipality": "Yauco",
+      "districts": [
+        21,
+        23
+      ],
+      "precinct_count": 2
+    },
+    "Yauco 052": {
+      "municipality": "Yauco 052",
+      "districts": [
+        23
+      ],
+      "precinct_count": 1
+    },
+    "Guayanilla": {
+      "municipality": "Guayanilla",
+      "districts": [
+        23
+      ],
+      "precinct_count": 2
+    },
+    "Peñuelas": {
+      "municipality": "Peñuelas",
+      "districts": [
+        23
+      ],
+      "precinct_count": 3
+    },
+    "Adjuntas": {
+      "municipality": "Adjuntas",
+      "districts": [
+        22,
+        23
+      ],
+      "precinct_count": 2
+    },
+    "Lares": {
+      "municipality": "Lares",
+      "districts": [
+        22
+      ],
+      "precinct_count": 3
+    },
+    "Utuado": {
+      "municipality": "Utuado",
+      "districts": [
+        22
+      ],
+      "precinct_count": 2
+    },
+    "Jayuya": {
+      "municipality": "Jayuya",
+      "districts": [
+        25,
+        22
+      ],
+      "precinct_count": 4
+    },
+    "Ponce": {
+      "municipality": "Ponce",
+      "districts": [
+        24,
+        23,
+        25
+      ],
+      "precinct_count": 5
+    },
+    "Loíza": {
+      "municipality": "Loíza",
+      "districts": [
+        37
+      ],
+      "precinct_count": 3
+    },
+    "Carolina": {
+      "municipality": "Carolina",
+      "districts": [
+        38,
+        39,
+        40
+      ],
+      "precinct_count": 6
+    },
+    "Trujillo Alto": {
+      "municipality": "Trujillo Alto",
+      "districts": [
+        39,
+        38,
+        1
+      ],
+      "precinct_count": 5
+    },
+    "Isabela": {
+      "municipality": "Isabela",
+      "districts": [
+        16
+      ],
+      "precinct_count": 2
+    },
+    "Juncos": {
+      "municipality": "Juncos",
+      "districts": [
+        33
+      ],
+      "precinct_count": 4
+    },
+    "Cidra": {
+      "municipality": "Cidra",
+      "districts": [
+        29
+      ],
+      "precinct_count": 2
+    },
+    "Toa Baja": {
+      "municipality": "Toa Baja",
+      "districts": [
+        10
+      ],
+      "precinct_count": 2
+    },
+    "Sabana Grande": {
+      "municipality": "Sabana Grande",
+      "districts": [
+        21
+      ],
+      "precinct_count": 2
+    }
+  },
+  "precincts": [
+    {
+      "precinct_id": "Mayagüez 042",
+      "district": 19,
+      "municipality": "Mayagüez",
+      "code": 42,
+      "senate_district": 4,
+      "house_district": 19,
+      "centroid": [
+        -67.3476600966,
+        18.1690735099
+      ]
+    },
+    {
+      "precinct_id": "San Lorenzo 087",
+      "district": 34,
+      "municipality": "San Lorenzo",
+      "code": 87,
+      "senate_district": 7,
+      "house_district": 34,
+      "centroid": [
+        -65.9800549148,
+        18.1327872005
+      ]
+    },
+    {
+      "precinct_id": "San Juan 002",
+      "district": 2,
+      "municipality": "San Juan",
+      "code": 2,
+      "senate_district": 1,
+      "house_district": 2,
+      "centroid": [
+        -66.0667047137,
+        18.4170725806
+      ]
+    },
+    {
+      "precinct_id": "San Juan 001",
+      "district": 1,
+      "municipality": "San Juan",
+      "code": 1,
+      "senate_district": 1,
+      "house_district": 1,
+      "centroid": [
+        -66.0696341984,
+        18.4477397604
+      ]
+    },
+    {
+      "precinct_id": "Canóvanas 104",
+      "district": 37,
+      "municipality": "Canóvanas",
+      "code": 104,
+      "senate_district": 8,
+      "house_district": 37,
+      "centroid": [
+        -65.8845374892,
+        18.3097919358
+      ]
+    },
+    {
+      "precinct_id": "Patillas 091",
+      "district": 34,
+      "municipality": "Patillas",
+      "code": 91,
+      "senate_district": 7,
+      "house_district": 34,
+      "centroid": [
+        -66.0124114616,
+        18.0318472237
+      ]
+    },
+    {
+      "precinct_id": "San Lorenzo 086",
+      "district": 33,
+      "municipality": "San Lorenzo",
+      "code": 86,
+      "senate_district": 7,
+      "house_district": 33,
+      "centroid": [
+        -65.9642461279,
+        18.1995010792
+      ]
+    },
+    {
+      "precinct_id": "Aguas Buenas 081",
+      "district": 5,
+      "municipality": "Aguas Buenas",
+      "code": 81,
+      "senate_district": 1,
+      "house_district": 5,
+      "centroid": [
+        -66.1273464851,
+        18.251073598
+      ]
+    },
+    {
+      "precinct_id": "Hatillo 028",
+      "district": 14,
+      "municipality": "Hatillo",
+      "code": 28,
+      "senate_district": 3,
+      "house_district": 14,
+      "centroid": [
+        -66.7913859523,
+        18.3666336581
+      ]
+    },
+    {
+      "precinct_id": "Arecibo 027",
+      "district": 14,
+      "municipality": "Arecibo",
+      "code": 27,
+      "senate_district": 3,
+      "house_district": 14,
+      "centroid": [
+        -66.6837004358,
+        18.3964541646
+      ]
+    },
+    {
+      "precinct_id": "Ciales 023",
+      "district": 13,
+      "municipality": "Ciales",
+      "code": 23,
+      "senate_district": 3,
+      "house_district": 13,
+      "centroid": [
+        -66.5164422124,
+        18.2890179924
+      ]
+    },
+    {
+      "precinct_id": "Manatí 021",
+      "district": 12,
+      "municipality": "Manatí",
+      "code": 21,
+      "senate_district": 3,
+      "house_district": 12,
+      "centroid": [
+        -66.4657076108,
+        18.4202533214
+      ]
+    },
+    {
+      "precinct_id": "Morovis 020",
+      "district": 12,
+      "municipality": "Morovis",
+      "code": 20,
+      "senate_district": 3,
+      "house_district": 12,
+      "centroid": [
+        -66.4202927601,
+        18.3170844503
+      ]
+    },
+    {
+      "precinct_id": "Vega Baja 019",
+      "district": 12,
+      "municipality": "Vega Baja",
+      "code": 19,
+      "senate_district": 3,
+      "house_district": 12,
+      "centroid": [
+        -66.4099002864,
+        18.4060072196
+      ]
+    },
+    {
+      "precinct_id": "San Juan 004",
+      "district": 4,
+      "municipality": "San Juan",
+      "code": 4,
+      "senate_district": 1,
+      "house_district": 4,
+      "centroid": [
+        -66.0754816711,
+        18.373439395
+      ]
+    },
+    {
+      "precinct_id": "San Juan 003",
+      "district": 3,
+      "municipality": "San Juan",
+      "code": 3,
+      "senate_district": 1,
+      "house_district": 3,
+      "centroid": [
+        -66.0246740696,
+        18.3940279903
+      ]
+    },
+    {
+      "precinct_id": "Vega Alta 017",
+      "district": 12,
+      "municipality": "Vega Alta",
+      "code": 17,
+      "senate_district": 3,
+      "house_district": 12,
+      "centroid": [
+        -66.3464878823,
+        18.3766718293
+      ]
+    },
+    {
+      "precinct_id": "Río Grande 102",
+      "district": 37,
+      "municipality": "Río Grande",
+      "code": 102,
+      "senate_district": 8,
+      "house_district": 37,
+      "centroid": [
+        -65.8281735716,
+        18.3463783494
+      ]
+    },
+    {
+      "precinct_id": "Río Grande 101",
+      "district": 36,
+      "municipality": "Río Grande",
+      "code": 101,
+      "senate_district": 8,
+      "house_district": 36,
+      "centroid": [
+        -65.7753764541,
+        18.3458877772
+      ]
+    },
+    {
+      "precinct_id": "Quebradillas 031",
+      "district": 15,
+      "municipality": "Quebradillas",
+      "code": 31,
+      "senate_district": 3,
+      "house_district": 15,
+      "centroid": [
+        -66.9260211431,
+        18.4396430293
+      ]
+    },
+    {
+      "precinct_id": "Dorado 015",
+      "district": 11,
+      "municipality": "Dorado",
+      "code": 15,
+      "senate_district": 3,
+      "house_district": 11,
+      "centroid": [
+        -66.2783112521,
+        18.4367731626
+      ]
+    },
+    {
+      "precinct_id": "Vega Alta 016",
+      "district": 11,
+      "municipality": "Vega Alta",
+      "code": 16,
+      "senate_district": 3,
+      "house_district": 11,
+      "centroid": [
+        -66.3299230031,
+        18.4349782607
+      ]
+    },
+    {
+      "precinct_id": "Barceloneta 025",
+      "district": 13,
+      "municipality": "Barceloneta",
+      "code": 25,
+      "senate_district": 3,
+      "house_district": 13,
+      "centroid": [
+        -66.5604205441,
+        18.4454171378
+      ]
+    },
+    {
+      "precinct_id": "Manatí 022",
+      "district": 13,
+      "municipality": "Manatí",
+      "code": 22,
+      "senate_district": 3,
+      "house_district": 13,
+      "centroid": [
+        -66.511326883,
+        18.4205538757
+      ]
+    },
+    {
+      "precinct_id": "Arecibo 026",
+      "district": 13,
+      "municipality": "Arecibo",
+      "code": 26,
+      "senate_district": 3,
+      "house_district": 13,
+      "centroid": [
+        -66.6260901175,
+        18.4664464635
+      ]
+    },
+    {
+      "precinct_id": "Vega Baja 018",
+      "district": 11,
+      "municipality": "Vega Baja",
+      "code": 18,
+      "senate_district": 3,
+      "house_district": 11,
+      "centroid": [
+        -66.3842303959,
+        18.4541641737
+      ]
+    },
+    {
+      "precinct_id": "Florida 024",
+      "district": 13,
+      "municipality": "Florida",
+      "code": 24,
+      "senate_district": 3,
+      "house_district": 13,
+      "centroid": [
+        -66.560214208,
+        18.3734438087
+      ]
+    },
+    {
+      "precinct_id": "Hatillo 029",
+      "district": 15,
+      "municipality": "Hatillo",
+      "code": 29,
+      "senate_district": 3,
+      "house_district": 15,
+      "centroid": [
+        -66.8010531049,
+        18.4508085442
+      ]
+    },
+    {
+      "precinct_id": "Camuy 030",
+      "district": 15,
+      "municipality": "Camuy",
+      "code": 30,
+      "senate_district": 3,
+      "house_district": 15,
+      "centroid": [
+        -66.8603008167,
+        18.4188596043
+      ]
+    },
+    {
+      "precinct_id": "Bayamón 011",
+      "district": 8,
+      "municipality": "Bayamón",
+      "code": 11,
+      "senate_district": 2,
+      "house_district": 8,
+      "centroid": [
+        -66.1561880124,
+        18.3556940505
+      ]
+    },
+    {
+      "precinct_id": "Bayamón 010",
+      "district": 7,
+      "municipality": "Bayamón",
+      "code": 10,
+      "senate_district": 2,
+      "house_district": 7,
+      "centroid": [
+        -66.1696471123,
+        18.3958023138
+      ]
+    },
+    {
+      "precinct_id": "Bayamón 009",
+      "district": 6,
+      "municipality": "Bayamón",
+      "code": 9,
+      "senate_district": 2,
+      "house_district": 6,
+      "centroid": [
+        -66.1690246539,
+        18.4236744063
+      ]
+    },
+    {
+      "precinct_id": "Cataño 008",
+      "district": 6,
+      "municipality": "Cataño",
+      "code": 8,
+      "senate_district": 2,
+      "house_district": 6,
+      "centroid": [
+        -66.1440410215,
+        18.437589544
+      ]
+    },
+    {
+      "precinct_id": "Guaynabo 007",
+      "district": 6,
+      "municipality": "Guaynabo",
+      "code": 7,
+      "senate_district": 2,
+      "house_district": 6,
+      "centroid": [
+        -66.1117843088,
+        18.391820845
+      ]
+    },
+    {
+      "precinct_id": "Toa Alta 013",
+      "district": 9,
+      "municipality": "Toa Alta",
+      "code": 13,
+      "senate_district": 2,
+      "house_district": 9,
+      "centroid": [
+        -66.24642322,
+        18.362546915
+      ]
+    },
+    {
+      "precinct_id": "Bayamón 012",
+      "district": 9,
+      "municipality": "Bayamón",
+      "code": 12,
+      "senate_district": 2,
+      "house_district": 9,
+      "centroid": [
+        -66.1789551126,
+        18.3021148354
+      ]
+    },
+    {
+      "precinct_id": "Fajardo 099",
+      "district": 36,
+      "municipality": "Fajardo",
+      "code": 99,
+      "senate_district": 8,
+      "house_district": 36,
+      "centroid": [
+        -65.6686481149,
+        18.3174428951
+      ]
+    },
+    {
+      "precinct_id": "Luquillo 100",
+      "district": 36,
+      "municipality": "Luquillo",
+      "code": 100,
+      "senate_district": 8,
+      "house_district": 36,
+      "centroid": [
+        -65.7250367382,
+        18.3422750465
+      ]
+    },
+    {
+      "precinct_id": "Ceiba 098",
+      "district": 36,
+      "municipality": "Ceiba",
+      "code": 98,
+      "senate_district": 8,
+      "house_district": 36,
+      "centroid": [
+        -65.6675683813,
+        18.2525246894
+      ]
+    },
+    {
+      "precinct_id": "Vieques 096",
+      "district": 36,
+      "municipality": "Vieques",
+      "code": 96,
+      "senate_district": 8,
+      "house_district": 36,
+      "centroid": [
+        -65.4416039152,
+        18.1233747696
+      ]
+    },
+    {
+      "precinct_id": "Culebra 097",
+      "district": 36,
+      "municipality": "Culebra",
+      "code": 97,
+      "senate_district": 8,
+      "house_district": 36,
+      "centroid": [
+        -65.2878238796,
+        18.3159019645
+      ]
+    },
+    {
+      "precinct_id": "Salinas 085",
+      "district": 27,
+      "municipality": "Salinas",
+      "code": 85,
+      "senate_district": 6,
+      "house_district": 27,
+      "centroid": [
+        -66.3082913306,
+        18.0061936416
+      ]
+    },
+    {
+      "precinct_id": "Salinas 078",
+      "district": 30,
+      "municipality": "Salinas",
+      "code": 78,
+      "senate_district": 6,
+      "house_district": 30,
+      "centroid": [
+        -66.2426685465,
+        18.0128188967
+      ]
+    },
+    {
+      "precinct_id": "Juana Díaz 064",
+      "district": 26,
+      "municipality": "Juana Díaz",
+      "code": 64,
+      "senate_district": 6,
+      "house_district": 26,
+      "centroid": [
+        -66.4626638451,
+        18.0451455519
+      ]
+    },
+    {
+      "precinct_id": "Villalba 065",
+      "district": 26,
+      "municipality": "Villalba",
+      "code": 65,
+      "senate_district": 6,
+      "house_district": 26,
+      "centroid": [
+        -66.472803918,
+        18.1281740345
+      ]
+    },
+    {
+      "precinct_id": "Orocovis 066",
+      "district": 26,
+      "municipality": "Orocovis",
+      "code": 66,
+      "senate_district": 6,
+      "house_district": 26,
+      "centroid": [
+        -66.4339884943,
+        18.2149040705
+      ]
+    },
+    {
+      "precinct_id": "Corozal 072",
+      "district": 28,
+      "municipality": "Corozal",
+      "code": 72,
+      "senate_district": 6,
+      "house_district": 28,
+      "centroid": [
+        -66.3278966377,
+        18.3043195332
+      ]
+    },
+    {
+      "precinct_id": "Naranjito 073",
+      "district": 28,
+      "municipality": "Naranjito",
+      "code": 73,
+      "senate_district": 6,
+      "house_district": 28,
+      "centroid": [
+        -66.2525509006,
+        18.2884177459
+      ]
+    },
+    {
+      "precinct_id": "Comerío 074",
+      "district": 28,
+      "municipality": "Comerío",
+      "code": 74,
+      "senate_district": 6,
+      "house_district": 28,
+      "centroid": [
+        -66.2218192596,
+        18.2247426739
+      ]
+    },
+    {
+      "precinct_id": "Cayey 077",
+      "district": 29,
+      "municipality": "Cayey",
+      "code": 77,
+      "senate_district": 6,
+      "house_district": 29,
+      "centroid": [
+        -66.149501951,
+        18.1029233968
+      ]
+    },
+    {
+      "precinct_id": "Arroyo 080",
+      "district": 30,
+      "municipality": "Arroyo",
+      "code": 80,
+      "senate_district": 6,
+      "house_district": 30,
+      "centroid": [
+        -66.0564018483,
+        17.998300612
+      ]
+    },
+    {
+      "precinct_id": "Guayama 079",
+      "district": 30,
+      "municipality": "Guayama",
+      "code": 79,
+      "senate_district": 6,
+      "house_district": 30,
+      "centroid": [
+        -66.1335817209,
+        18.0076954031
+      ]
+    },
+    {
+      "precinct_id": "Aibonito 069",
+      "district": 27,
+      "municipality": "Aibonito",
+      "code": 69,
+      "senate_district": 6,
+      "house_district": 27,
+      "centroid": [
+        -66.2643804466,
+        18.131132253
+      ]
+    },
+    {
+      "precinct_id": "Santa Isabel 067",
+      "district": 27,
+      "municipality": "Santa Isabel",
+      "code": 67,
+      "senate_district": 6,
+      "house_district": 27,
+      "centroid": [
+        -66.3888274476,
+        17.9950265569
+      ]
+    },
+    {
+      "precinct_id": "Barranquitas 070",
+      "district": 26,
+      "municipality": "Barranquitas",
+      "code": 70,
+      "senate_district": 6,
+      "house_district": 26,
+      "centroid": [
+        -66.3145015823,
+        18.1964530801
+      ]
+    },
+    {
+      "precinct_id": "Barranquitas 071",
+      "district": 28,
+      "municipality": "Barranquitas",
+      "code": 71,
+      "senate_district": 6,
+      "house_district": 28,
+      "centroid": [
+        -66.2889352774,
+        18.2254663988
+      ]
+    },
+    {
+      "precinct_id": "Coamo 068",
+      "district": 26,
+      "municipality": "Coamo",
+      "code": 68,
+      "senate_district": 6,
+      "house_district": 26,
+      "centroid": [
+        -66.3737199942,
+        18.1233244986
+      ]
+    },
+    {
+      "precinct_id": "Coamo 075",
+      "district": 27,
+      "municipality": "Coamo",
+      "code": 75,
+      "senate_district": 6,
+      "house_district": 27,
+      "centroid": [
+        -66.3429168661,
+        18.0641740778
+      ]
+    },
+    {
+      "precinct_id": "Las Piedras 090",
+      "district": 35,
+      "municipality": "Las Piedras",
+      "code": 90,
+      "senate_district": 7,
+      "house_district": 35,
+      "centroid": [
+        -65.8423073649,
+        18.228241387
+      ]
+    },
+    {
+      "precinct_id": "Naguabo 095",
+      "district": 35,
+      "municipality": "Naguabo",
+      "code": 95,
+      "senate_district": 7,
+      "house_district": 35,
+      "centroid": [
+        -65.7541934463,
+        18.2306578914
+      ]
+    },
+    {
+      "precinct_id": "Yabucoa 093",
+      "district": 34,
+      "municipality": "Yabucoa",
+      "code": 93,
+      "senate_district": 7,
+      "house_district": 34,
+      "centroid": [
+        -65.8966063853,
+        18.0705942763
+      ]
+    },
+    {
+      "precinct_id": "Maunabo 092",
+      "district": 34,
+      "municipality": "Maunabo",
+      "code": 92,
+      "senate_district": 7,
+      "house_district": 34,
+      "centroid": [
+        -65.9220326444,
+        18.0179373676
+      ]
+    },
+    {
+      "precinct_id": "Humacao 094",
+      "district": 35,
+      "municipality": "Humacao",
+      "code": 94,
+      "senate_district": 7,
+      "house_district": 35,
+      "centroid": [
+        -65.8104772584,
+        18.1452698828
+      ]
+    },
+    {
+      "precinct_id": "Gurabo 084",
+      "district": 31,
+      "municipality": "Gurabo",
+      "code": 84,
+      "senate_district": 7,
+      "house_district": 31,
+      "centroid": [
+        -65.9792691849,
+        18.2664113541
+      ]
+    },
+    {
+      "precinct_id": "Caguas 082",
+      "district": 31,
+      "municipality": "Caguas",
+      "code": 82,
+      "senate_district": 7,
+      "house_district": 31,
+      "centroid": [
+        -66.0537435028,
+        18.2577808392
+      ]
+    },
+    {
+      "precinct_id": "Caguas 083",
+      "district": 32,
+      "municipality": "Caguas",
+      "code": 83,
+      "senate_district": 7,
+      "house_district": 32,
+      "centroid": [
+        -66.0489260764,
+        18.1836414124
+      ]
+    },
+    {
+      "precinct_id": "San Sebastián 033",
+      "district": 16,
+      "municipality": "San Sebastián",
+      "code": 33,
+      "senate_district": 4,
+      "house_district": 16,
+      "centroid": [
+        -66.9834149967,
+        18.2370904032
+      ]
+    },
+    {
+      "precinct_id": "Las Marías 034",
+      "district": 16,
+      "municipality": "Las Marías",
+      "code": 34,
+      "senate_district": 4,
+      "house_district": 16,
+      "centroid": [
+        -66.9712186996,
+        18.3287263589
+      ]
+    },
+    {
+      "precinct_id": "Cabo Rojo 046",
+      "district": 20,
+      "municipality": "Cabo Rojo",
+      "code": 46,
+      "senate_district": 4,
+      "house_district": 20,
+      "centroid": [
+        -67.1542591463,
+        18.0417536273
+      ]
+    },
+    {
+      "precinct_id": "Hormigueros 045",
+      "district": 20,
+      "municipality": "Hormigueros",
+      "code": 45,
+      "senate_district": 4,
+      "house_district": 20,
+      "centroid": [
+        -67.1140222931,
+        18.1341807127
+      ]
+    },
+    {
+      "precinct_id": "Aguadilla 035",
+      "district": 17,
+      "municipality": "Aguadilla",
+      "code": 35,
+      "senate_district": 4,
+      "house_district": 17,
+      "centroid": [
+        -67.1207039313,
+        18.4597065777
+      ]
+    },
+    {
+      "precinct_id": "Aguada 038",
+      "district": 18,
+      "municipality": "Aguada",
+      "code": 38,
+      "senate_district": 4,
+      "house_district": 18,
+      "centroid": [
+        -67.1748229018,
+        18.3603179858
+      ]
+    },
+    {
+      "precinct_id": "Rincón 039",
+      "district": 18,
+      "municipality": "Rincón",
+      "code": 39,
+      "senate_district": 4,
+      "house_district": 18,
+      "centroid": [
+        -67.2315211383,
+        18.3353977337
+      ]
+    },
+    {
+      "precinct_id": "Añasco 040",
+      "district": 18,
+      "municipality": "Añasco",
+      "code": 40,
+      "senate_district": 4,
+      "house_district": 18,
+      "centroid": [
+        -67.1204163259,
+        18.2880610981
+      ]
+    },
+    {
+      "precinct_id": "Mayagüez 041",
+      "district": 18,
+      "municipality": "Mayagüez",
+      "code": 41,
+      "senate_district": 4,
+      "house_district": 18,
+      "centroid": [
+        -67.1577415879,
+        18.2549907405
+      ]
+    },
+    {
+      "precinct_id": "Moca 037",
+      "district": 18,
+      "municipality": "Moca",
+      "code": 37,
+      "senate_district": 4,
+      "house_district": 18,
+      "centroid": [
+        -67.0713240078,
+        18.3335155105
+      ]
+    },
+    {
+      "precinct_id": "Moca 036",
+      "district": 17,
+      "municipality": "Moca",
+      "code": 36,
+      "senate_district": 4,
+      "house_district": 17,
+      "centroid": [
+        -67.083578589,
+        18.3912045719
+      ]
+    },
+    {
+      "precinct_id": "San Germán 044",
+      "district": 20,
+      "municipality": "San Germán",
+      "code": 44,
+      "senate_district": 4,
+      "house_district": 20,
+      "centroid": [
+        -67.048844373,
+        18.0891518068
+      ]
+    },
+    {
+      "precinct_id": "San Germán 043",
+      "district": 19,
+      "municipality": "San Germán",
+      "code": 43,
+      "senate_district": 4,
+      "house_district": 19,
+      "centroid": [
+        -67.0284418735,
+        18.1321382477
+      ]
+    },
+    {
+      "precinct_id": "Lajas 047",
+      "district": 21,
+      "municipality": "Lajas",
+      "code": 47,
+      "senate_district": 5,
+      "house_district": 21,
+      "centroid": [
+        -67.0404286024,
+        18.0123149659
+      ]
+    },
+    {
+      "precinct_id": "Guánica 048",
+      "district": 21,
+      "municipality": "Guánica",
+      "code": 48,
+      "senate_district": 5,
+      "house_district": 21,
+      "centroid": [
+        -66.9197318647,
+        17.9827616071
+      ]
+    },
+    {
+      "precinct_id": "Sábana Grande 049",
+      "district": 21,
+      "municipality": "Sábana Grande",
+      "code": 49,
+      "senate_district": 5,
+      "house_district": 21,
+      "centroid": [
+        -66.9435808318,
+        18.0829389934
+      ]
+    },
+    {
+      "precinct_id": "Maricao 050",
+      "district": 21,
+      "municipality": "Maricao",
+      "code": 50,
+      "senate_district": 5,
+      "house_district": 21,
+      "centroid": [
+        -66.94228351,
+        18.1720935561
+      ]
+    },
+    {
+      "precinct_id": "Yauco 051",
+      "district": 21,
+      "municipality": "Yauco",
+      "code": 51,
+      "senate_district": 5,
+      "house_district": 21,
+      "centroid": [
+        -66.8666564045,
+        18.1052732749
+      ]
+    },
+    {
+      "precinct_id": "Yauco 052",
+      "district": 23,
+      "municipality": "Yauco 052",
+      "code": 52,
+      "senate_district": 5,
+      "house_district": 23,
+      "centroid": [
+        -66.8426646801,
+        18.0290698754
+      ]
+    },
+    {
+      "precinct_id": "Guayanilla 058",
+      "district": 23,
+      "municipality": "Guayanilla",
+      "code": 58,
+      "senate_district": 5,
+      "house_district": 23,
+      "centroid": [
+        -66.7917133032,
+        18.0406044558
+      ]
+    },
+    {
+      "precinct_id": "Peñuelas 059",
+      "district": 23,
+      "municipality": "Peñuelas",
+      "code": 59,
+      "senate_district": 5,
+      "house_district": 23,
+      "centroid": [
+        -66.7212202251,
+        18.0608476617
+      ]
+    },
+    {
+      "precinct_id": "Adjuntas 055",
+      "district": 22,
+      "municipality": "Adjuntas",
+      "code": 55,
+      "senate_district": 5,
+      "house_district": 22,
+      "centroid": [
+        -66.7539566178,
+        18.1797326492
+      ]
+    },
+    {
+      "precinct_id": "Lares 053",
+      "district": 22,
+      "municipality": "Lares",
+      "code": 53,
+      "senate_district": 5,
+      "house_district": 22,
+      "centroid": [
+        -66.8667797582,
+        18.2686767311
+      ]
+    },
+    {
+      "precinct_id": "Utuado 054",
+      "district": 22,
+      "municipality": "Utuado",
+      "code": 54,
+      "senate_district": 5,
+      "house_district": 22,
+      "centroid": [
+        -66.7024478373,
+        18.2710029947
+      ]
+    },
+    {
+      "precinct_id": "Jayuya 057",
+      "district": 25,
+      "municipality": "Jayuya",
+      "code": 57,
+      "senate_district": 5,
+      "house_district": 25,
+      "centroid": [
+        -66.5874008896,
+        18.2479217114
+      ]
+    },
+    {
+      "precinct_id": "Jayuya 056",
+      "district": 22,
+      "municipality": "Jayuya",
+      "code": 56,
+      "senate_district": 5,
+      "house_district": 22,
+      "centroid": [
+        -66.5890613484,
+        18.1886604381
+      ]
+    },
+    {
+      "precinct_id": "Ponce 061",
+      "district": 24,
+      "municipality": "Ponce",
+      "code": 61,
+      "senate_district": 5,
+      "house_district": 24,
+      "centroid": [
+        -66.6216927442,
+        18.0042477537
+      ]
+    },
+    {
+      "precinct_id": "Ponce 060",
+      "district": 23,
+      "municipality": "Ponce",
+      "code": 60,
+      "senate_district": 5,
+      "house_district": 23,
+      "centroid": [
+        -66.6719711074,
+        18.0180256336
+      ]
+    },
+    {
+      "precinct_id": "Ponce 062",
+      "district": 25,
+      "municipality": "Ponce",
+      "code": 62,
+      "senate_district": 5,
+      "house_district": 25,
+      "centroid": [
+        -66.6027771082,
+        18.0780644151
+      ]
+    },
+    {
+      "precinct_id": "Juana Díaz 063",
+      "district": 25,
+      "municipality": "Juana Díaz",
+      "code": 63,
+      "senate_district": 5,
+      "house_district": 25,
+      "centroid": [
+        -66.5228717082,
+        18.0561426531
+      ]
+    },
+    {
+      "precinct_id": "Loíza 103",
+      "district": 37,
+      "municipality": "Loíza",
+      "code": 103,
+      "senate_district": 8,
+      "house_district": 37,
+      "centroid": [
+        -65.8987679238,
+        18.4256843053
+      ]
+    },
+    {
+      "precinct_id": "San Juan 005",
+      "district": 5,
+      "municipality": "San Juan",
+      "code": 5,
+      "senate_district": 1,
+      "house_district": 5,
+      "centroid": [
+        -66.0606034251,
+        18.328727969
+      ]
+    },
+    {
+      "precinct_id": "Carolina 106",
+      "district": 38,
+      "municipality": "Carolina",
+      "code": 106,
+      "senate_district": 8,
+      "house_district": 38,
+      "centroid": [
+        -65.9357012963,
+        18.3340775415
+      ]
+    },
+    {
+      "precinct_id": "Trujillo Alto 110",
+      "district": 39,
+      "municipality": "Trujillo Alto",
+      "code": 110,
+      "senate_district": 8,
+      "house_district": 39,
+      "centroid": [
+        -66.0150489929,
+        18.3619867288
+      ]
+    },
+    {
+      "precinct_id": "Trujillo Alto 109",
+      "district": 38,
+      "municipality": "Trujillo Alto",
+      "code": 109,
+      "senate_district": 8,
+      "house_district": 38,
+      "centroid": [
+        -65.9928938481,
+        18.3262667221
+      ]
+    },
+    {
+      "precinct_id": "Canóvanas 105",
+      "district": 38,
+      "municipality": "Canóvanas",
+      "code": 105,
+      "senate_district": 8,
+      "house_district": 38,
+      "centroid": [
+        -65.8988158679,
+        18.3916968343
+      ]
+    },
+    {
+      "precinct_id": "Carolina 107",
+      "district": 39,
+      "municipality": "Carolina",
+      "code": 107,
+      "senate_district": 8,
+      "house_district": 39,
+      "centroid": [
+        -65.9533523564,
+        18.3960623153
+      ]
+    },
+    {
+      "precinct_id": "Carolina 108",
+      "district": 40,
+      "municipality": "Carolina",
+      "code": 108,
+      "senate_district": 8,
+      "house_district": 40,
+      "centroid": [
+        -65.99187792,
+        18.4207813658
+      ]
+    },
+    {
+      "precinct_id": "Isabela 032",
+      "district": 16,
+      "municipality": "Isabela",
+      "code": 32,
+      "senate_district": 4,
+      "house_district": 16,
+      "centroid": [
+        -67.0052263935,
+        18.4500055618
+      ]
+    },
+    {
+      "precinct_id": "Juncos 088",
+      "district": 33,
+      "municipality": "Juncos",
+      "code": 88,
+      "senate_district": 7,
+      "house_district": 33,
+      "centroid": [
+        -65.9088977986,
+        18.2235175249
+      ]
+    },
+    {
+      "precinct_id": "Guaynabo 006",
+      "district": 5,
+      "municipality": "Guaynabo",
+      "code": 6,
+      "senate_district": 1,
+      "house_district": 5,
+      "centroid": [
+        -66.1152420989,
+        18.318589894
+      ]
+    },
+    {
+      "precinct_id": "Cidra 076",
+      "district": 29,
+      "municipality": "Cidra",
+      "code": 76,
+      "senate_district": 6,
+      "house_district": 29,
+      "centroid": [
+        -66.1609279324,
+        18.173708856
+      ]
+    },
+    {
+      "precinct_id": "Toa Baja 014",
+      "district": 10,
+      "municipality": "Toa Baja",
+      "code": 14,
+      "senate_district": 2,
+      "house_district": 10,
+      "centroid": [
+        -66.2143587687,
+        18.4312120839
+      ]
+    },
+    {
+      "precinct_id": "Las Piedras 089",
+      "district": 33,
+      "municipality": "Las Piedras",
+      "code": 89,
+      "senate_district": 7,
+      "house_district": 33,
+      "centroid": [
+        -65.8852515914,
+        18.1635073514
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 1,
+      "municipality": "Trujillo Alto",
+      "centroid": [
+        -66.0456774749,
+        18.412476302600002
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 2,
+      "municipality": "Cataño",
+      "centroid": [
+        -66.0752827731,
+        18.4190181378
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 3,
+      "municipality": "Cataño",
+      "centroid": [
+        -66.0645906078,
+        18.4130395986
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 4,
+      "municipality": "Cataño",
+      "centroid": [
+        -66.0648985677,
+        18.4075381248
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 5,
+      "municipality": "San Juan",
+      "centroid": [
+        -66.107914013,
+        18.4791734222
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 5,
+      "municipality": "Guaynabo",
+      "centroid": [
+        -66.1066266961,
+        18.364551229
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 5,
+      "municipality": "Aguas Buenas",
+      "centroid": [
+        -66.1052838118,
+        18.2707765458
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 6,
+      "municipality": "Cataño",
+      "centroid": [
+        -66.1164412675,
+        18.407360808
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 6,
+      "municipality": "Cataño",
+      "centroid": [
+        -66.1086164354,
+        18.4208042826
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 6,
+      "municipality": "Bayamón",
+      "centroid": [
+        -66.1491495523,
+        18.3966067698
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 7,
+      "municipality": "Bayamón",
+      "centroid": [
+        -66.1518941214,
+        18.3967129884
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 8,
+      "municipality": "Bayamón",
+      "centroid": [
+        -66.1427969216,
+        18.388554778
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 9,
+      "municipality": "Toa Alta",
+      "centroid": [
+        -66.2236383129,
+        18.3912434917
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 9,
+      "municipality": "Toa Alta",
+      "centroid": [
+        -66.2203611255,
+        18.3916346399
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 10,
+      "municipality": "Cataño",
+      "centroid": [
+        -66.1475277164,
+        18.4442898841
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 10,
+      "municipality": "Toa Baja",
+      "centroid": [
+        -66.2340613926,
+        18.443973606
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 11,
+      "municipality": "Dorado",
+      "centroid": [
+        -66.2401326771,
+        18.4672307573
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 11,
+      "municipality": "Florida",
+      "centroid": [
+        -66.3626552166,
+        18.4296853794
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 11,
+      "municipality": "Vega Baja",
+      "centroid": [
+        -66.3679759247,
+        18.4296350005
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 12,
+      "municipality": "Vega Alta",
+      "centroid": [
+        -66.3250018126,
+        18.4395115291
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 12,
+      "municipality": "Vega Baja",
+      "centroid": [
+        -66.3667477256,
+        18.4310875486
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 12,
+      "municipality": "Ciales",
+      "centroid": [
+        -66.457700232,
+        18.3860724246
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 12,
+      "municipality": "Manatí",
+      "centroid": [
+        -66.4482682465,
+        18.4016145383
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 13,
+      "municipality": "Barceloneta",
+      "centroid": [
+        -66.5303318472,
+        18.4553068764
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 13,
+      "municipality": "Arecibo",
+      "centroid": [
+        -66.6565238268,
+        18.3868361537
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 13,
+      "municipality": "Barceloneta",
+      "centroid": [
+        -66.5740653867,
+        18.4423291666
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 13,
+      "municipality": "Florida",
+      "centroid": [
+        -66.6227715341,
+        18.4260904115
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 14,
+      "municipality": "Hatillo",
+      "centroid": [
+        -66.7733308502,
+        18.469245243
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 14,
+      "municipality": "Hatillo",
+      "centroid": [
+        -66.8233031196,
+        18.4859329799
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 15,
+      "municipality": "Hatillo",
+      "centroid": [
+        -66.8099442293,
+        18.4884051637
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 15,
+      "municipality": "Camuy",
+      "centroid": [
+        -66.8830118283,
+        18.4798886372
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 15,
+      "municipality": "Quebradillas",
+      "centroid": [
+        -66.91176292,
+        18.4765799451
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 16,
+      "municipality": "Isabela",
+      "centroid": [
+        -66.9790228848,
+        18.5112631115
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 16,
+      "municipality": "Moca",
+      "centroid": [
+        -67.0651267531,
+        18.4169460433
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 16,
+      "municipality": "Moca",
+      "centroid": [
+        -67.1248869357,
+        18.4110420789
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 17,
+      "municipality": "Aguadilla",
+      "centroid": [
+        -67.1413792274,
+        18.4172544082
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 17,
+      "municipality": "Moca",
+      "centroid": [
+        -67.1329329944,
+        18.4105180223
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 18,
+      "municipality": "Moca",
+      "centroid": [
+        -67.1231820557,
+        18.4106813095
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 18,
+      "municipality": "Aguada",
+      "centroid": [
+        -67.1675073529,
+        18.3829525538
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 18,
+      "municipality": "Rincón",
+      "centroid": [
+        -67.2290163196,
+        18.3181817091
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 18,
+      "municipality": "Rincón",
+      "centroid": [
+        -67.1991136956,
+        18.3244175449
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 19,
+      "municipality": "Mayagüez",
+      "centroid": [
+        -67.1408611966,
+        18.2024896673
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 19,
+      "municipality": "San Germán",
+      "centroid": [
+        -67.0475585367,
+        18.0908292833
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 20,
+      "municipality": "Hormigueros",
+      "centroid": [
+        -67.0785089767,
+        18.1216187187
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 20,
+      "municipality": "Hormigueros",
+      "centroid": [
+        -67.0877940654,
+        18.1192204969
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 20,
+      "municipality": "Cabo Rojo",
+      "centroid": [
+        -67.1413019551,
+        18.085067806
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 21,
+      "municipality": "Maricao",
+      "centroid": [
+        -66.952636189,
+        18.1662636426
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 21,
+      "municipality": "Lajas",
+      "centroid": [
+        -67.0421877206,
+        18.0374015958
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 21,
+      "municipality": "Sabana Grande",
+      "centroid": [
+        -66.9784707431,
+        18.0780778874
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 21,
+      "municipality": "Sabana Grande",
+      "centroid": [
+        -66.9672485522,
+        18.1137828339
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 21,
+      "municipality": "Maricao",
+      "centroid": [
+        -66.9446154997,
+        18.154887905
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 21,
+      "municipality": "Maricao",
+      "centroid": [
+        -66.9162492273,
+        18.1587382095
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 22,
+      "municipality": "Ciales",
+      "centroid": [
+        -66.4891849633,
+        18.3332670354
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 22,
+      "municipality": "Lares",
+      "centroid": [
+        -66.8080485536,
+        18.2313191417
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 22,
+      "municipality": "Utuado",
+      "centroid": [
+        -66.6691009986,
+        18.2741453668
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 22,
+      "municipality": "Lares",
+      "centroid": [
+        -66.8163032377,
+        18.2145855947
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 22,
+      "municipality": "Jayuya",
+      "centroid": [
+        -66.6083076059,
+        18.2869623771
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 23,
+      "municipality": "Yauco",
+      "centroid": [
+        -66.842503201,
+        18.0276643843
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 23,
+      "municipality": "Guayanilla",
+      "centroid": [
+        -66.7894079423,
+        18.0513419503
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 23,
+      "municipality": "Peñuelas",
+      "centroid": [
+        -66.7139349234,
+        18.0867294115
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 23,
+      "municipality": "Peñuelas",
+      "centroid": [
+        -66.6896743368,
+        18.086554235
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 23,
+      "municipality": "Adjuntas",
+      "centroid": [
+        -66.6951927276,
+        18.1165850976
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 24,
+      "municipality": "Ponce",
+      "centroid": [
+        -66.6247555878,
+        18.0249311787
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 25,
+      "municipality": "Jayuya",
+      "centroid": [
+        -66.5621479787,
+        18.1774644783
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 25,
+      "municipality": "Ponce",
+      "centroid": [
+        -66.6090122117,
+        18.0473268004
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 25,
+      "municipality": "Villalba",
+      "centroid": [
+        -66.5493881849,
+        18.1493176037
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 26,
+      "municipality": "Villalba",
+      "centroid": [
+        -66.4435564796,
+        18.1051795865
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 26,
+      "municipality": "Orocovis",
+      "centroid": [
+        -66.3824079457,
+        18.2079579473
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 26,
+      "municipality": "Orocovis",
+      "centroid": [
+        -66.4068214744,
+        18.1475903976
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 26,
+      "municipality": "Orocovis",
+      "centroid": [
+        -66.3454519648,
+        18.245499179
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 26,
+      "municipality": "Corozal",
+      "centroid": [
+        -66.3169596373,
+        18.3049506967
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 27,
+      "municipality": "Juana Díaz",
+      "centroid": [
+        -66.444888006,
+        18.0241679587
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 27,
+      "municipality": "Santa Isabel",
+      "centroid": [
+        -66.4509024599,
+        18.0125230253
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 27,
+      "municipality": "Aibonito",
+      "centroid": [
+        -66.2863246528,
+        18.1444929648
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 27,
+      "municipality": "Coamo",
+      "centroid": [
+        -66.3744761052,
+        18.0743972609
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 28,
+      "municipality": "Barranquitas",
+      "centroid": [
+        -66.3150891039,
+        18.2532947352
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 28,
+      "municipality": "Naranjito",
+      "centroid": [
+        -66.2942647359,
+        18.2822403023
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 28,
+      "municipality": "Naranjito",
+      "centroid": [
+        -66.2463719427,
+        18.293444945
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 28,
+      "municipality": "Naranjito",
+      "centroid": [
+        -66.2512059091,
+        18.2776400724
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 29,
+      "municipality": "Cidra",
+      "centroid": [
+        -66.1616770893,
+        18.1719508686
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 29,
+      "municipality": "Cayey",
+      "centroid": [
+        -66.1646133581,
+        18.131162265
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 30,
+      "municipality": "Salinas",
+      "centroid": [
+        -66.2429947492,
+        17.9742739894
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 30,
+      "municipality": "Guayama",
+      "centroid": [
+        -66.1140396735,
+        17.9763830858
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 30,
+      "municipality": "Arroyo",
+      "centroid": [
+        -66.0486614898,
+        17.9773188005
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 30,
+      "municipality": "Santa Isabel",
+      "centroid": [
+        -66.4237320997,
+        17.9707254135
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 31,
+      "municipality": "Caguas",
+      "centroid": [
+        -66.0556895626,
+        18.2321720195
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 31,
+      "municipality": "Gurabo",
+      "centroid": [
+        -65.9699464588,
+        18.255165216400002
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 32,
+      "municipality": "Aguas Buenas",
+      "centroid": [
+        -66.0116307024,
+        18.2391330257
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 33,
+      "municipality": "San Lorenzo",
+      "centroid": [
+        -65.9594054753,
+        18.197058835
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 33,
+      "municipality": "Juncos",
+      "centroid": [
+        -65.9248973201,
+        18.2336262996
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 33,
+      "municipality": "Juncos",
+      "centroid": [
+        -65.9189092487,
+        18.2164230152
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 33,
+      "municipality": "Juncos",
+      "centroid": [
+        -65.9394888394,
+        18.2376659096
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 34,
+      "municipality": "San Lorenzo",
+      "centroid": [
+        -65.9350175443,
+        18.1454001894
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 34,
+      "municipality": "Patillas",
+      "centroid": [
+        -65.9673893857,
+        18.0040512081
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 34,
+      "municipality": "Maunabo",
+      "centroid": [
+        -65.9522162849,
+        18.0293233849
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 34,
+      "municipality": "Yabucoa",
+      "centroid": [
+        -65.9338750438,
+        18.1056234134
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 35,
+      "municipality": "Humacao",
+      "centroid": [
+        -65.8241847069,
+        18.1788632035
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 35,
+      "municipality": "Humacao",
+      "centroid": [
+        -65.8451382202,
+        18.1659932545
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 35,
+      "municipality": "Naguabo",
+      "centroid": [
+        -65.7452652128,
+        18.2157491084
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 36,
+      "municipality": "Vieques",
+      "centroid": [
+        -65.4194737432,
+        18.1193185806
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 36,
+      "municipality": "Culebra",
+      "centroid": [
+        -65.2867384147,
+        18.3021641459
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 36,
+      "municipality": "Ceiba",
+      "centroid": [
+        -65.666463568,
+        18.2684700995
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 36,
+      "municipality": "Fajardo",
+      "centroid": [
+        -65.6753125991,
+        18.3339111454
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 36,
+      "municipality": "Luquillo",
+      "centroid": [
+        -65.7343796798,
+        18.3641247677
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 36,
+      "municipality": "Río Grande",
+      "centroid": [
+        -65.7860767109,
+        18.3718459672
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 37,
+      "municipality": "Loíza",
+      "centroid": [
+        -65.870492767,
+        18.4028344387
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 37,
+      "municipality": "Loíza",
+      "centroid": [
+        -65.8677301888,
+        18.4191836876
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 37,
+      "municipality": "Canóvanas",
+      "centroid": [
+        -65.8838216677,
+        18.3773072054
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 38,
+      "municipality": "Canóvanas",
+      "centroid": [
+        -65.8908810456,
+        18.384433737
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 38,
+      "municipality": "Carolina",
+      "centroid": [
+        -65.962780362,
+        18.369680648
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 38,
+      "municipality": "Trujillo Alto",
+      "centroid": [
+        -66.0009126438,
+        18.3613500687
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 39,
+      "municipality": "Carolina",
+      "centroid": [
+        -65.9582021475,
+        18.3803821147
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 39,
+      "municipality": "Trujillo Alto",
+      "centroid": [
+        -66.0138418631,
+        18.3513961551
+      ]
+    },
+    {
+      "precinct_id": null,
+      "district": 40,
+      "municipality": "Carolina",
+      "centroid": [
+        -65.9505391463,
+        18.4005197148
+      ]
+    }
+  ]
+}

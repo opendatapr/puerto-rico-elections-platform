@@ -12,77 +12,98 @@
 	const totalSteps = 10;
 
 	let currentStep = $state(0);
+	let loading = $state(true);
 	let activeViz = $state<'countdown' | 'result' | 'map' | 'historical' | 'global' | 'turnout' | 'senatorial'>('countdown');
 
-	// Real referendum results from 2020.json
-	const islandResults = {
+	// Data types
+	interface IslandResults {
+		si: number;
+		no: number;
+		total: number;
+		siPercent: number;
+		noPercent: number;
+	}
+
+	interface HistoricalPoint {
+		year: number;
+		statehood: number;
+		label: string;
+		turnout: number;
+	}
+
+	interface BarDataPoint {
+		label: string;
+		value: number;
+		color: string;
+	}
+
+	interface ChapterData {
+		islandResults: IslandResults;
+		municipalityResults: Record<string, number>;
+		historicalData: HistoricalPoint[];
+		globalComparisons: BarDataPoint[];
+		senatorialResults: BarDataPoint[];
+		turnoutComparison: {
+			governorRace: number;
+			referendum: number;
+		};
+		summary: {
+			margin: number;
+			yesSIPercent: number;
+			noPercent: number;
+			totalVotes: number;
+			referendumNumber: number;
+			yearsSinceFirst: number;
+			congressionalVotesSince: number;
+		};
+	}
+
+	// State with defaults
+	let islandResults = $state<IslandResults>({
 		si: 655505,
 		no: 592671,
 		total: 1248176,
 		siPercent: 52.52,
 		noPercent: 47.48
-	};
+	});
 
-	// Real municipality-level results aggregated from precinct data
-	const municipalityResults: Record<string, number> = {
-		'Ceiba': 60.6, 'Camuy': 60.1, 'Moca': 60.0, 'Florida': 59.8, 'Manatí': 59.4,
-		'Cataño': 59.0, 'Las Piedras': 58.1, 'Guaynabo': 57.9, 'Fajardo': 57.9,
-		'Aguadilla': 57.8, 'Arecibo': 57.7, 'Loíza': 57.7, 'Las Marías': 56.8,
-		'Maricao': 56.5, 'Canóvanas': 56.4, 'Corozal': 55.7, 'Orocovis': 55.6,
-		'Toa Baja': 55.3, 'Hatillo': 54.6, 'Río Grande': 54.6, 'Dorado': 54.5,
-		'Vega Baja': 54.4, 'Trujillo Alto': 54.4, 'Comerío': 54.3, 'San Lorenzo': 54.2,
-		'Guayama': 54.1, 'Isabela': 54.0, 'Vega Alta': 53.8, 'Juncos': 53.8,
-		'Salinas': 53.7, 'Carolina': 53.6, 'Quebradillas': 53.4, 'Barceloneta': 53.4,
-		'Santa Isabel': 53.3, 'Bayamón': 53.2, 'Morovis': 53.1, 'Gurabo': 53.0,
-		'Maunabo': 52.9, 'Yabucoa': 52.8, 'Lajas': 52.5, 'Humacao': 52.4,
-		'Ciales': 52.3, 'Peñuelas': 52.2, 'Aguas Buenas': 52.1, 'Toa Alta': 52.0,
-		'Aguada': 51.9, 'Coamo': 51.8, 'Añasco': 51.7, 'Ponce': 51.6,
-		'Luquillo': 51.5, 'Naguabo': 51.4, 'San Germán': 51.3, 'Jayuya': 51.2,
-		'Yauco': 51.0, 'Patillas': 50.9, 'Cidra': 50.8, 'Utuado': 50.7,
-		'Lares': 50.6, 'Barranquitas': 50.5, 'Adjuntas': 50.4, 'Cabo Rojo': 50.3,
-		'Juana Díaz': 50.2, 'Villalba': 50.1, 'San Sebastián': 50.0,
-		'San Juan': 49.8, 'Culebra': 49.5, 'Guánica': 49.2, 'Caguas': 49.0,
-		'Arroyo': 48.3, 'Guayanilla': 47.9, 'Mayagüez': 47.9, 'Naranjito': 47.6,
-		'Hormigueros': 46.8, 'Sabana Grande': 46.0, 'Rincón': 45.7, 'Cayey': 45.1,
-		'Aibonito': 44.8, 'Vieques': 41.3
-	};
+	let municipalityResults = $state<Record<string, number>>({});
 
-	// Historical referendum results
-	const historicalData = [
-		{ year: 1967, statehood: 39.0, label: '1967: 3 options', turnout: 65.8 },
-		{ year: 1993, statehood: 46.3, label: '1993: 3 options', turnout: 73.5 },
-		{ year: 1998, statehood: 46.5, label: '1998: 5 options', turnout: 71.3 },
-		{ year: 2012, statehood: 61.2, label: '2012: 2 questions*', turnout: 78.2 },
-		{ year: 2017, statehood: 97.2, label: '2017: Boycotted', turnout: 22.9 },
-		{ year: 2020, statehood: 52.5, label: '2020: Yes/No', turnout: 54.7 }
-	];
+	let historicalData = $state<HistoricalPoint[]>([]);
 
-	// Global referendum comparisons
-	const globalComparisons = [
-		{ label: 'Brexit (2016)', value: 51.9, color: '#4a9eda' },
-		{ label: 'PR Statehood (2020)', value: 52.5, color: '#6b9080' },
-		{ label: 'Scottish Independence (2014)', value: 44.7, color: '#c9695a' },
-		{ label: 'Quebec Independence (1995)', value: 49.4, color: '#c9695a' },
-		{ label: 'Crimea to Russia (2014)', value: 96.8, color: '#d4a373' }
-	];
+	let globalComparisons = $state<BarDataPoint[]>([]);
 
-	// Senatorial district results (real data)
-	const senatorialResults = [
-		{ label: 'Arecibo III', value: 54.5, color: '#6b9080' },
-		{ label: 'Bayamón II', value: 55.2, color: '#6b9080' },
-		{ label: 'Carolina VIII', value: 53.2, color: '#6b9080' },
-		{ label: 'Mayagüez IV', value: 52.7, color: '#6b9080' },
-		{ label: 'Ponce V', value: 51.9, color: '#6b9080' },
-		{ label: 'Humacao VII', value: 52.0, color: '#6b9080' },
-		{ label: 'San Juan I', value: 50.7, color: '#d4a373' },
-		{ label: 'Guayama VI', value: 50.2, color: '#d4a373' }
-	];
+	let senatorialResults = $state<BarDataPoint[]>([]);
 
-	// Turnout comparison data
-	const turnoutComparison = [
-		{ label: 'Governor Race', value: 54.7, color: CATEGORY_COLORS[0] },
-		{ label: 'Referendum', value: 52.3, color: CATEGORY_COLORS[1] }
-	];
+	let turnoutComparisonData = $state<{ governorRace: number; referendum: number }>({
+		governorRace: 54.7,
+		referendum: 52.3
+	});
+
+	// Load data from JSON
+	onMount(async () => {
+		try {
+			const response = await fetch(`${base}/data/chapters/referendum-2020.json`);
+			const data: ChapterData = await response.json();
+
+			islandResults = data.islandResults;
+			municipalityResults = data.municipalityResults;
+			historicalData = data.historicalData;
+			globalComparisons = data.globalComparisons;
+			senatorialResults = data.senatorialResults;
+			turnoutComparisonData = data.turnoutComparison;
+		} catch (err) {
+			console.error('Failed to load referendum-2020 data:', err);
+		} finally {
+			loading = false;
+		}
+	});
+
+	// Turnout comparison for display
+	let turnoutComparison = $derived([
+		{ label: 'Governor Race', value: turnoutComparisonData.governorRace, color: CATEGORY_COLORS[0] },
+		{ label: 'Referendum', value: turnoutComparisonData.referendum, color: CATEGORY_COLORS[1] }
+	]);
 
 	// Animated countdown state
 	let displayPercent = $state(0);
@@ -197,7 +218,9 @@
 	<ScrollySection offset={0.6} onStepEnter={handleStepEnter}>
 		{#snippet graphic()}
 			<div class="viz-container">
-				{#if activeViz === 'countdown'}
+				{#if loading}
+					<p class="loading">Loading data...</p>
+				{:else if activeViz === 'countdown'}
 					<div class="countdown-display">
 						<div class="ballot-question">
 							<span class="question-label">The Question</span>
@@ -587,6 +610,11 @@
 </article>
 
 <style>
+	.loading {
+		color: var(--color-text-muted);
+		font-style: italic;
+	}
+
 	.chapter-header {
 		min-height: 60vh;
 		display: flex;

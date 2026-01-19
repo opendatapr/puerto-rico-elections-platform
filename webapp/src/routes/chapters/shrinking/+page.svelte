@@ -4,7 +4,7 @@
 	import { ScrollySection, Step, Progress } from '$lib/components/scrollytelling';
 	import { ChoroplethMap } from '$lib/components/maps';
 	import { BarChart, LineChart } from '$lib/components/charts';
-	import { createDivergingScale, CATEGORY_COLORS, DIVERGING_COLORS } from '$lib/utils/colors';
+	import { createLossScale, CATEGORY_COLORS, DIVERGING_COLORS, SEQUENTIAL_LOSS_COLORS } from '$lib/utils/colors';
 	import { formatCompact, formatNumber, formatPercent, formatPercentChange } from '$lib/utils/format';
 
 	const chapterNum = 3;
@@ -140,8 +140,8 @@
 		return map;
 	}
 
-	// Color scale for vote loss (negative percentages)
-	const voteLossColorScale = createDivergingScale([-35, -20, -10]);
+	// Color scale for vote loss - sequential (light = less loss, dark red = severe loss)
+	const voteLossColorScale = createLossScale([-35, -10]);
 
 	// Demographic bar data
 	let demographicBars = $derived(

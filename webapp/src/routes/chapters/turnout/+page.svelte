@@ -5,7 +5,7 @@
 	import { LineChart, ScatterPlot, BarChart } from '$lib/components/charts';
 	import { ChoroplethMap } from '$lib/components/maps';
 	import { Legend } from '$lib/components/ui';
-	import { CATEGORY_COLORS, createSequentialScale, createDivergingScale } from '$lib/utils/colors';
+	import { CATEGORY_COLORS, createSequentialBlueScale, SEQUENTIAL_BLUE_COLORS } from '$lib/utils/colors';
 	import { formatPercent, formatNumber, formatCompact } from '$lib/utils/format';
 	import * as d3 from 'd3';
 
@@ -130,8 +130,8 @@
 		return map;
 	});
 
-	// Color scale for map - inverted so lower turnout = darker/red
-	const turnoutColorScale = createDivergingScale([50, 60, 70]);
+	// Color scale for map - sequential blue (higher turnout = darker blue = good)
+	const turnoutColorScale = createSequentialBlueScale([50, 70]);
 
 	// Load chapter data
 	onMount(async () => {

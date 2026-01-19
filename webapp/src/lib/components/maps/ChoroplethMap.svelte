@@ -5,6 +5,12 @@
 	import * as topojson from 'topojson-client';
 	import type { Topology, GeometryCollection } from 'topojson-specification';
 
+	// Normalize strings for accent-insensitive matching
+	// Removes diacritical marks (accents) and converts to lowercase
+	function normalizeString(s: string): string {
+		return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+	}
+
 	type MapLevel = 'municipality' | 'precinct';
 
 	interface Props {
@@ -39,6 +45,27 @@
 	// Use new handlers if provided, fallback to legacy
 	const handleFeatureClick = $derived(onFeatureClick ?? onMunicipalityClick);
 	const handleFeatureHover = $derived(onFeatureHover ?? onMunicipalityHover);
+
+	// Create normalized lookup for accent-insensitive matching
+	// This handles cases where TopoJSON has "Sábana Grande" but data has "Sabana Grande"
+	const normalizedData = $derived(() => {
+		const lookup = new Map<string, number>();
+		data.forEach((value, key) => {
+			lookup.set(normalizeString(key), value);
+		});
+		return lookup;
+	});
+
+	// Helper to get value from data with accent-insensitive matching
+	function getDataValue(id: string): number | undefined {
+		// First try exact match (faster)
+		const exactValue = data.get(id);
+		if (exactValue !== undefined) {
+			return exactValue;
+		}
+		// Fall back to normalized match for accent-insensitive lookup
+		return normalizedData().get(normalizeString(id));
+	}
 
 	let svg: SVGSVGElement;
 	let features: any[] = $state([]);
@@ -125,7 +152,7 @@
 	function onMouseMove(event: MouseEvent, feature: any) {
 		const id = getFeatureId(feature);
 		const name = getFeatureName(feature);
-		const value = data.get(id);
+		const value = getDataValue(id);
 		hoveredId = id;
 		tooltipContent = tooltipFormat(name, value);
 		tooltipX = event.clientX + 10;
@@ -148,7 +175,7 @@
 
 	function getFill(feature: any): string {
 		const id = getFeatureId(feature);
-		const value = data.get(id);
+		const value = getDataValue(id);
 		if (value === undefined) {
 			// For precincts, use the built-in color if no data provided
 			if (level === 'precinct' && feature.properties.color) {

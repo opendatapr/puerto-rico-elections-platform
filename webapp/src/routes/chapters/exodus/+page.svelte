@@ -6,7 +6,7 @@
 	import { LineChart } from '$lib/components/charts';
 	import { BarChart } from '$lib/components/charts';
 	import { ScatterPlot } from '$lib/components/charts';
-	import { createDivergingScale, DIVERGING_COLORS, CATEGORY_COLORS } from '$lib/utils/colors';
+	import { createLossScale, createPovertyScale, DIVERGING_COLORS, CATEGORY_COLORS, SEQUENTIAL_LOSS_COLORS, SEQUENTIAL_POVERTY_COLORS } from '$lib/utils/colors';
 	import { formatPercent, formatCompact, formatNumber, formatPercentChange } from '$lib/utils/format';
 
 	// Chapter metadata
@@ -112,7 +112,7 @@
 		if (!exodusData) return {};
 		const result: Record<string, number> = {};
 		for (const [muni, data] of Object.entries(exodusData.municipalities)) {
-			result[muni] = -data.poverty_rate; // Negative for color scale
+			result[muni] = data.poverty_rate; // Positive values for poverty scale
 		}
 		return result;
 	});
@@ -170,9 +170,10 @@
 		}));
 	});
 
-	// Color scales
-	const populationColorScale = createDivergingScale([-30, -12, 0]);
-	const povertyColorScale = createDivergingScale([-65, -45, -20]);
+	// Color scales - sequential for loss data (light = no loss, dark red = severe loss)
+	const populationColorScale = createLossScale([-30, 0]);
+	// Poverty scale: light = low poverty, dark orange-red = high poverty
+	const povertyColorScale = createPovertyScale([20, 65]);
 
 	// Animate population counter
 	function animateCounter(target: number, duration: number = 2000) {
@@ -345,7 +346,7 @@
 							tooltipFormat={(name, value) => {
 								if (currentStep === 8) {
 									return value !== undefined
-										? `${name}: ${Math.abs(value).toFixed(1)}% poverty`
+										? `${name}: ${value.toFixed(1)}% poverty`
 										: name;
 								}
 								return value !== undefined
@@ -358,9 +359,9 @@
 								<span class="legend-label">{currentStep === 8 ? 'Poverty rate' : 'Population change'}</span>
 								<div class="legend-scale">
 									{#if currentStep === 8}
-										<span style="background: {povertyColorScale(-60)}"></span>
-										<span style="background: {povertyColorScale(-45)}"></span>
-										<span style="background: {povertyColorScale(-30)}"></span>
+										<span style="background: {povertyColorScale(30)}"></span>
+										<span style="background: {povertyColorScale(45)}"></span>
+										<span style="background: {povertyColorScale(60)}"></span>
 									{:else}
 										<span style="background: {populationColorScale(-25)}"></span>
 										<span style="background: {populationColorScale(-12)}"></span>
@@ -369,9 +370,9 @@
 								</div>
 								<div class="legend-labels">
 									{#if currentStep === 8}
-										<span>60%+</span>
-										<span>45%</span>
 										<span>30%</span>
+										<span>45%</span>
+										<span>60%+</span>
 									{:else}
 										<span>-25%</span>
 										<span>-12%</span>

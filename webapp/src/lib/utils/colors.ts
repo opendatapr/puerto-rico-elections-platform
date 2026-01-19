@@ -93,3 +93,57 @@ export function createSequentialScale(domain: [number, number]) {
 		return colors[index];
 	};
 }
+
+// Sequential scale for loss data (light = no loss, dark red = severe loss)
+export const SEQUENTIAL_LOSS_COLORS = ['#f7f7f7', '#fddbc7', '#f4a582', '#d6604d', '#b2182b'] as const;
+
+// Sequential scale for percentage data (light = low, dark blue = high)
+export const SEQUENTIAL_BLUE_COLORS = ['#f7fbff', '#c6dbef', '#6baed6', '#2171b5', '#084594'] as const;
+
+// Sequential scale for poverty data (light = low poverty, dark orange-red = high poverty)
+export const SEQUENTIAL_POVERTY_COLORS = ['#fff5eb', '#fdd49e', '#fdae6b', '#f16913', '#8c2d04'] as const;
+
+/**
+ * Create a sequential blue color scale (light = low, dark blue = high)
+ * Good for turnout, participation rates, positive metrics
+ * @param domain [min, max] values
+ */
+export function createSequentialBlueScale(domain: [number, number]) {
+	const [min, max] = domain;
+	return (value: number): string => {
+		const t = Math.max(0, Math.min(1, (value - min) / (max - min)));
+		const colors = SEQUENTIAL_BLUE_COLORS;
+		const idx = Math.min(Math.floor(t * (colors.length - 1)), colors.length - 2);
+		return colors[idx + 1];
+	};
+}
+
+/**
+ * Create a loss scale for negative change data
+ * Light = no loss, dark red = severe loss
+ * @param domain [worst_loss, no_loss] e.g., [-30, 0]
+ */
+export function createLossScale(domain: [number, number]) {
+	const [min, max] = domain;
+	return (value: number): string => {
+		// Invert so worst loss (most negative) = darkest
+		const t = Math.max(0, Math.min(1, (max - value) / (max - min)));
+		const colors = SEQUENTIAL_LOSS_COLORS;
+		const idx = Math.min(Math.floor(t * (colors.length - 1)), colors.length - 2);
+		return colors[idx + 1];
+	};
+}
+
+/**
+ * Create a poverty scale (light = low poverty, dark orange-red = high poverty)
+ * @param domain [min, max] poverty rates e.g., [20, 65]
+ */
+export function createPovertyScale(domain: [number, number]) {
+	const [min, max] = domain;
+	return (value: number): string => {
+		const t = Math.max(0, Math.min(1, (value - min) / (max - min)));
+		const colors = SEQUENTIAL_POVERTY_COLORS;
+		const idx = Math.min(Math.floor(t * (colors.length - 1)), colors.length - 2);
+		return colors[idx + 1];
+	};
+}

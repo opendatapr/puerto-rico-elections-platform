@@ -48,7 +48,7 @@
 
 	// Create normalized lookup for accent-insensitive matching
 	// This handles cases where TopoJSON has "Sábana Grande" but data has "Sabana Grande"
-	const normalizedData = $derived(() => {
+	const normalizedData = $derived.by(() => {
 		const lookup = new Map<string, number>();
 		data.forEach((value, key) => {
 			lookup.set(normalizeString(key), value);
@@ -64,7 +64,7 @@
 			return exactValue;
 		}
 		// Fall back to normalized match for accent-insensitive lookup
-		return normalizedData().get(normalizeString(id));
+		return normalizedData.get(normalizeString(id));
 	}
 
 	let svg: SVGSVGElement;

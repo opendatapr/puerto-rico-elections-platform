@@ -134,7 +134,14 @@
 			quintileRichest: 'Richest',
 			percentagePoints: 'percentage points',
 			percentagePoint: 'percentage point',
-			municipalities: 'municipalities'
+			municipalities: 'municipalities',
+			// Chart axis labels
+			electionYear: 'Election Year',
+			turnoutPct: 'Turnout %',
+			medianHouseholdIncome: 'Median Household Income ($)',
+			turnout: 'turnout',
+			// Meta description
+			metaDescription: "Investigating the collapse of voter participation in Puerto Rico - from 80%+ turnout in the 1990s to under 55% today."
 		},
 		es: {
 			chapterTitle: 'El Votante Desaparecido',
@@ -255,7 +262,14 @@
 			quintileRichest: 'Mas Rico',
 			percentagePoints: 'puntos porcentuales',
 			percentagePoint: 'punto porcentual',
-			municipalities: 'municipios'
+			municipalities: 'municipios',
+			// Chart axis labels
+			electionYear: 'Ano Electoral',
+			turnoutPct: 'Participacion %',
+			medianHouseholdIncome: 'Ingreso Medio del Hogar ($)',
+			turnout: 'participacion',
+			// Meta description
+			metaDescription: 'Investigando el colapso de la participacion electoral en Puerto Rico - de mas del 80% en los 1990 a menos del 55% hoy.'
 		}
 	};
 
@@ -428,7 +442,7 @@
 	});
 
 	// Derived turnout series for chart
-	let turnoutSeriesLabel = $derived($language === 'en' ? 'Voter Turnout' : 'Participacion Electoral');
+	let turnoutSeriesLabel = $derived(content.legendTurnout);
 	let turnoutSeries = $derived([{
 		id: 'turnout',
 		label: turnoutSeriesLabel,
@@ -479,7 +493,7 @@
 
 <svelte:head>
 	<title>{content.chapter} {chapterNum}: {chapterTitle} | Puerto Rico Elections</title>
-	<meta name="description" content={$language === 'en' ? "Investigating the collapse of voter participation in Puerto Rico - from 80%+ turnout in the 1990s to under 55% today." : "Investigando el colapso de la participacion electoral en Puerto Rico - de mas del 80% en los 1990 a menos del 55% hoy."}>
+	<meta name="description" content={content.metaDescription}>
 </svelte:head>
 
 <Progress {currentStep} {totalSteps} chapterTitle={chapterTitle} />
@@ -512,8 +526,8 @@
 						series={turnoutSeries}
 						width={520}
 						height={380}
-						xLabel={$language === 'en' ? 'Election Year' : 'Ano Electoral'}
-						yLabel={$language === 'en' ? 'Turnout %' : 'Participacion %'}
+						xLabel={content.electionYear}
+						yLabel={content.turnoutPct}
 						xFormat={(v) => String(v)}
 						yFormat={(v) => `${v}%`}
 						showArea={true}
@@ -526,7 +540,7 @@
 						colorScale={turnoutColorScale}
 						tooltipFormat={(name, value) =>
 							value !== undefined
-								? `${name}: ${value.toFixed(1)}% ${$language === 'en' ? 'turnout' : 'participacion'}`
+								? `${name}: ${value.toFixed(1)}% ${content.turnout}`
 								: name
 						}
 					/>
@@ -549,8 +563,8 @@
 						data={incomeVsTurnout}
 						width={520}
 						height={380}
-						xLabel={$language === 'en' ? 'Median Household Income ($)' : 'Ingreso Medio del Hogar ($)'}
-						yLabel={$language === 'en' ? 'Turnout %' : 'Participacion %'}
+						xLabel={content.medianHouseholdIncome}
+						yLabel={content.turnoutPct}
 						xFormat={(v) => `$${(v/1000).toFixed(0)}K`}
 						yFormat={(v) => `${v.toFixed(1)}%`}
 						showRegression={true}

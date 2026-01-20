@@ -19,6 +19,7 @@
 			chapter: 'Chapter',
 			lead: "Puerto Rico has 78 municipalities, each with its own political character. Some are strongholds where campaigns barely bother; others are swing towns where elections are won and lost. Think like a campaign strategist: where would you spend your final weekend before Election Day?",
 			loading: 'Loading data...',
+			and: 'and',
 			// Viz titles
 			understandingSwing: 'Understanding Swing',
 			pnpSwing: 'PNP Swing',
@@ -180,6 +181,7 @@
 			chapter: 'Capitulo',
 			lead: 'Puerto Rico tiene 78 municipios, cada uno con su propio caracter politico. Algunos son bastiones donde las campanas apenas se molestan; otros son pueblos competitivos donde las elecciones se ganan y se pierden. Piensa como un estratega de campana: donde pasarias tu ultimo fin de semana antes del Dia de Elecciones?',
 			loading: 'Cargando datos...',
+			and: 'y',
 			// Viz titles
 			understandingSwing: 'Entendiendo el Cambio',
 			pnpSwing: 'Cambio PNP',
@@ -194,7 +196,7 @@
 			// Tooltip formats
 			swingTooltip: 'cambio',
 			marginTooltip: 'margen',
-			tossup: 'Reñido',
+			tossup: 'Renido',
 			lean: 'Inclinado',
 			safe: 'Seguro',
 			// Legend labels
@@ -202,7 +204,7 @@
 			noChange: 'Sin cambio',
 			pnpPlus12: 'PNP +12',
 			competitiveness: 'Competitividad',
-			tossupLegend: 'Reñido (<5%)',
+			tossupLegend: 'Renido (<5%)',
 			leanLegend: 'Inclinado (5-10%)',
 			safeLegend: 'Seguro (>10%)',
 			// Scatter plot
@@ -729,7 +731,7 @@
 			<p>
 				{content.step3p1}
 				<span class="highlight">{content.step3p1Lares}</span>, <span class="highlight">{content.step3p1Isabela}</span>,
-				{$language === 'en' ? 'and' : 'y'} <span class="highlight">{content.step3p1Aguadilla}</span>
+				{content.and} <span class="highlight">{content.step3p1Aguadilla}</span>
 				{content.step3p1End}
 			</p>
 			<p>{content.step3p2}</p>
@@ -742,7 +744,7 @@
 				{content.step4p1Start}
 				<span style="color: #c41e3a">{content.step4Tossup}</span> {content.step4TossupRange}
 				<span style="color: #e8a87c">{content.step4Lean}</span> {content.step4LeanRange}
-				{$language === 'en' ? 'and' : 'y'} <span style="color: #f7f7f7">{content.step4Safe}</span> {content.step4SafeRange}
+				{content.and} <span style="color: #f7f7f7">{content.step4Safe}</span> {content.step4SafeRange}
 			</p>
 			<p>
 				{#if stats()}
@@ -754,7 +756,7 @@
 			</p>
 			<p>
 				{content.step4p3Start} <span class="highlight">{content.step4p3Juncos}</span>,
-				<span class="highlight">{content.step4p3Coamo}</span>, {$language === 'en' ? 'and' : 'y'} <span class="highlight">{content.step4p3VegaAlta}</span>{content.step4p3End}
+				<span class="highlight">{content.step4p3Coamo}</span>, {content.and} <span class="highlight">{content.step4p3VegaAlta}</span>{content.step4p3End}
 			</p>
 		</Step>
 

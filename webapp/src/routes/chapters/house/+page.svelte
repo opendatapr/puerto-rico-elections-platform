@@ -36,6 +36,14 @@
 			legendPNP: 'PNP advantage',
 			legendTossup: 'Tossup',
 			legendPPD: 'PPD advantage',
+			// Chart axis labels
+			electionYear: 'Election Year',
+			seatsWon: 'Seats Won',
+			// Inline text
+			theResultIs: 'The result is',
+			districtsLike: 'Districts like',
+			and: 'and',
+			seats: 'seats',
 			// Step titles
 			step0Title: 'The Most Local Level',
 			step1Title: 'House vs. Senate: A Different Game',
@@ -149,6 +157,14 @@
 			legendPNP: 'Ventaja PNP',
 			legendTossup: 'Competitivo',
 			legendPPD: 'Ventaja PPD',
+			// Chart axis labels
+			electionYear: 'Ano Electoral',
+			seatsWon: 'Escanos Ganados',
+			// Inline text
+			theResultIs: 'El resultado es',
+			districtsLike: 'Distritos como',
+			and: 'y',
+			seats: 'escanos',
 			// Step titles
 			step0Title: 'El Nivel Mas Local',
 			step1Title: 'Camara vs. Senado: Un Juego Diferente',
@@ -499,8 +515,8 @@
 						series={seatTrendData()}
 						width={420}
 						height={300}
-						xLabel={$language === 'en' ? 'Election Year' : 'Ano Electoral'}
-						yLabel={$language === 'en' ? 'Seats Won' : 'Escanos Ganados'}
+						xLabel={content.electionYear}
+						yLabel={content.seatsWon}
 						xFormat={(v) => String(v)}
 						yFormat={(v) => String(Math.round(v))}
 						showArea={true}
@@ -565,7 +581,7 @@
 			</p>
 			<p>{content.step0p2}</p>
 			<p>
-				{$language === 'en' ? 'The result is' : 'El resultado es'} <span class="highlight">{content.step0p3}</span>{content.step0p3b}
+				{content.theResultIs} <span class="highlight">{content.step0p3}</span>{content.step0p3b}
 			</p>
 		</Step>
 
@@ -612,7 +628,7 @@
 				{content.step4p1pre} <span class="stat">{formatPercent(stats().closestMargin, 1)}</span>{content.step4p1}
 			</p>
 			<p>
-				{$language === 'en' ? 'Districts like' : 'Distritos como'} {closestRaces[0]?.district || 'District 31'} {$language === 'en' ? 'and' : 'y'}
+				{content.districtsLike} {closestRaces[0]?.district || 'District 31'} {content.and}
 				{closestRaces[1]?.district || 'District 18'} {content.step4p2}
 			</p>
 			<p>{content.step4p3}</p>
@@ -706,11 +722,11 @@
 			<div class="party-legend">
 				<div class="party-item">
 					<span class="party-dot" style="background: {PARTY_COLORS.PNP}"></span>
-					PNP: {stats().pnpSeats2020} {$language === 'en' ? 'seats' : 'escanos'} (2020)
+					PNP: {stats().pnpSeats2020} {content.seats} (2020)
 				</div>
 				<div class="party-item">
 					<span class="party-dot" style="background: {PARTY_COLORS.PPD}"></span>
-					PPD: {stats().ppdSeats2020} {$language === 'en' ? 'seats' : 'escanos'} (2020)
+					PPD: {stats().ppdSeats2020} {content.seats} (2020)
 				</div>
 			</div>
 

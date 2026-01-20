@@ -51,7 +51,61 @@
 			prPopulation: 'Puerto Rico Population',
 			conclusionP1: "Puerto Rico's population collapse is unprecedented in modern American history. Over half a million people left the island between 2006 and 2020, driven by economic crisis, natural disaster, and the accumulated weight of decades of disinvestment.",
 			conclusionP2: "The exodus was not uniform. Mountain communities and southern coastal towns suffered the deepest losses. The poorest municipalities lost the most. Those who left were disproportionately young and working-age, leaving behind an older, more vulnerable population.",
-			conclusionP3: "The political implications are profound. A smaller, older, poorer electorate will shape Puerto Rico's future. The next chapter examines how these demographic shifts have affected voter turnout and civic participation across the island."
+			conclusionP3: "The political implications are profound. A smaller, older, poorer electorate will shape Puerto Rico's future. The next chapter examines how these demographic shifts have affected voter turnout and civic participation across the island.",
+			// Step content
+			step0Title: 'A Nation at Its Peak',
+			step0P1: 'In 2004, Puerto Rico reached its population zenith: <stat>3,826,878</stat> people called the island home. Families had deep roots here, some stretching back generations. Towns bustled with activity. Schools were full. The future seemed bright.',
+			step0P2: 'Then came the unraveling. What began as a trickle would become a flood, as economic crisis, natural disaster, and years of austerity combined to trigger the largest peacetime population exodus in American history.',
+			step0P3: 'Every number you\'ll see represents a family that made the agonizing choice to leave home.',
+			step1Quote: 'No other American jurisdiction has experienced anything comparable to Puerto Rico\'s population collapse.',
+			step1Citation: 'U.S. Census Bureau analysis, 2020',
+			step1P1: 'After decades of growth, Puerto Rico\'s population began falling in 2006, coinciding with the end of federal tax incentives. Between <stat>2006 and 2020</stat>, the island lost <stat>{totalLost}</stat> residents.',
+			step1P2: 'To put this in perspective: if New York State lost population at the same rate, it would lose 2.7 million people in 14 years.',
+			step2Title: 'The Countdown',
+			step2P1: 'Watch the counter. Every digit represents lives uprooted, communities fractured, families separated. The decline from <stat>3.8 million</stat> to <stat>3.3 million</stat> played out across countless individual dramas.',
+			step2P2: 'A teacher who couldn\'t find work after school consolidations. A nurse recruited by a Florida hospital offering double the salary. A family fleeing after Hurricane Maria destroyed their home. A young professional seeking opportunities that the stagnant economy couldn\'t provide.',
+			step2P3: 'The numbers are staggering, but behind each decimal point is a human story.',
+			step3Title: 'The Geography of Loss',
+			step3P1: 'The exodus touched every corner of the island, but not equally. The map reveals profound geographic disparities. Of Puerto Rico\'s <stat>78 municipalities</stat>, <stat>77</stat> lost population between 2010 and 2020.',
+			step3P2: 'The darkest reds mark communities that lost more than a quarter of their residents in just a decade. <highlight>Guanica</highlight> suffered the steepest decline: <stat>{guanicaLoss}%</stat>, or nearly one in three residents gone. Southern coastal towns and mountain communities were hit hardest.',
+			step3P3: 'The average municipality lost <stat>{avgLoss}</stat> of its population. Only <highlight>Rincon</highlight>, a beach town popular with surfers and American expats, managed to grow.',
+			step4Title: 'The Biggest Losses',
+			step4P1: 'In absolute terms, the largest cities lost the most people, simply because they had more to lose. But these numbers represent urban cores hollowing out, neighborhoods becoming ghost towns, apartment buildings standing empty.',
+			step4P2: '<highlight>San Juan</highlight>, the capital, lost <stat>{sjLost}</stat> people, a decline of <stat>{sjPct}%</stat>. The historic city that once pulsed with nearly 400,000 residents now has barely 340,000. Entire barrios have depopulated.',
+			step4P3: '<highlight>Ponce</highlight>, Puerto Rico\'s second city, lost <stat>{ponceLost}</stat> residents, nearly one in five. Its ornate plazas and historic center now serve a fraction of their former population.',
+			step5Title: 'The Metro Exodus',
+			step5P1: 'The San Juan metropolitan area, home to nearly half the island\'s population, experienced a devastating outflow. The six municipalities that make up metro San Juan lost a combined <stat>{metroLost}</stat> residents between 2010 and 2020.',
+			step5P2: '<highlight>Catano</highlight>, a working-class municipality across the bay from San Juan, lost <stat>19.1%</stat> of its population. <highlight>Carolina</highlight>, home to the international airport, lost <stat>13.3%</stat>. Even wealthy <highlight>Guaynabo</highlight> lost <stat>8.6%</stat>.',
+			step5P3: 'These weren\'t just numbers on a census form. Schools closed. Businesses shuttered. Property values collapsed. The urban fabric itself began to fray.',
+			step6Title: 'The Maria Cliff',
+			step6P1: 'On September 20, 2017, Hurricane Maria made landfall as a Category 4 storm, devastating the island\'s infrastructure. The power grid collapsed completely. Thousands died. And then came the second wave of destruction: the exodus.',
+			step6P2: 'In the year following Maria, an estimated <stat>{mariaExodus}</stat> people left Puerto Rico. Look at the chart: the population line takes its steepest plunge between 2017 and 2018. This wasn\'t ordinary migration. It was displacement on a scale more commonly associated with war zones.',
+			step6P3: 'Flights to the mainland were packed. FEMA hotels in Florida filled with families who had lost everything. Many who left "temporarily" never returned.',
+			step7Title: 'Poverty Drove the Exodus',
+			step7P1: 'The scatter plot reveals a troubling correlation: municipalities with higher poverty rates experienced greater population losses. Economic desperation pushed people away.',
+			step7P2: 'If you can\'t find work, if your children\'s schools are closing, if the hospital is understaffed, why stay? The <stat>poorest communities</stat> had the least capacity to hold onto their residents.',
+			step7P3: 'Community ties and family land kept some rooted despite hardship, but the overall pattern is clear: poverty and exodus go hand in hand.',
+			step8Title: 'The Poverty Map',
+			step8P1: 'Puerto Rico\'s poverty rate of <stat>43%</stat> is more than triple that of Mississippi, the poorest US state. The map shows this burden is not evenly distributed. Mountain municipalities like <highlight>Guanica</highlight> (<stat>64.8%</stat> poverty), <highlight>Adjuntas</highlight> (<stat>62%</stat>), and <highlight>Vieques</highlight> (<stat>59.5%</stat>) face grinding, persistent deprivation.',
+			step8P2: 'These are the communities most likely to lose young people seeking opportunity elsewhere. They\'re also the communities least able to provide services to the older, poorer population that remains behind.',
+			step8P3: 'The exodus and poverty form a vicious cycle: people leave because of poverty, and their departure deepens the poverty of those who stay.',
+			step9Title: 'Who Left Behind',
+			step9P1: 'The exodus wasn\'t random. Working-age adults with education and skills were most likely to leave, seeking opportunities on the mainland. The island\'s median age jumped from <stat>{medianAge2010}</stat> years in 2010 to <stat>{medianAge2020}</stat> years in 2020.',
+			step9P2: 'The working-age population (25-54) declined by <stat>{workingAgeDecline}</stat>, while the elderly population grew by <stat>22.3%</stat>. Puerto Rico is rapidly becoming one of the oldest jurisdictions in the United States.',
+			step9P3: 'This demographic inversion creates its own problems: fewer workers to support more retirees, fewer tax dollars for public services, fewer young families to keep schools open and communities vibrant.',
+			step10Title: 'New Puerto Rican Capitals',
+			step10P1: 'Where did they go? Florida became the primary destination, its Puerto Rican population swelling to <stat>1.2 million</stat> by 2020. Central Florida in particular saw explosive growth, transforming the I-4 corridor into a major Puerto Rican population center.',
+			step10P2: 'Traditional destinations like New York and Connecticut continued to draw migrants, while newer paths led to Pennsylvania and Texas. The Puerto Rican diaspora now outnumbers the island population, with over 5.8 million Puerto Ricans living on the mainland.',
+			step10P3: 'These new communities maintain strong ties to the island. Remittances flow back. Family visits fill holiday flights. But the center of gravity of Puerto Rican life has shifted, perhaps permanently.',
+			step11Title: 'Electoral Implications',
+			step11P1: 'Population loss translates directly into political power loss. Between 2012 and 2020, voter registration in Puerto Rico dropped by over <stat>400,000</stat>. The electorate that remains is older, poorer, and more rural.',
+			step11P2: 'This demographic shift has profound implications for Puerto Rico\'s political future. Which municipalities will retain enough population to hold political sway? How will the remaining voters reshape the island\'s politics?',
+			step11P3: 'The exodus didn\'t just empty neighborhoods. It rewrote the political map of Puerto Rico, changing the balance of power in ways that will take years to fully understand.',
+			takeaway1: '<stat>{totalLost}</stat> people left Puerto Rico since 2004',
+			takeaway2: '77 of 78 municipalities lost population between 2010-2020',
+			takeaway3: 'Hurricane Maria triggered <stat>{mariaExodus}</stat> departures in one year',
+			takeaway4: 'Poverty and population loss are strongly correlated',
+			takeaway5: 'The median age rose from 36.9 to {medianAge2020} years'
 		},
 		es: {
 			chapterTitle: 'El Gran Exodo',
@@ -88,7 +142,61 @@
 			prPopulation: 'Poblacion de Puerto Rico',
 			conclusionP1: 'El colapso poblacional de Puerto Rico no tiene precedentes en la historia moderna estadounidense. Mas de medio millon de personas dejaron la isla entre 2006 y 2020, impulsados por la crisis economica, el desastre natural y el peso acumulado de decadas de desinversion.',
 			conclusionP2: 'El exodo no fue uniforme. Las comunidades montanosas y los pueblos costeros del sur sufrieron las perdidas mas profundas. Los municipios mas pobres perdieron mas. Los que se fueron eran desproporcionadamente jovenes y en edad laboral, dejando atras una poblacion mas vieja y vulnerable.',
-			conclusionP3: 'Las implicaciones politicas son profundas. Un electorado mas pequeno, mas viejo y mas pobre dara forma al futuro de Puerto Rico. El proximo capitulo examina como estos cambios demograficos han afectado la participacion electoral y civica en toda la isla.'
+			conclusionP3: 'Las implicaciones politicas son profundas. Un electorado mas pequeno, mas viejo y mas pobre dara forma al futuro de Puerto Rico. El proximo capitulo examina como estos cambios demograficos han afectado la participacion electoral y civica en toda la isla.',
+			// Step content
+			step0Title: 'Una Nacion en su Apogeo',
+			step0P1: 'En 2004, Puerto Rico alcanzo su cenit poblacional: <stat>3,826,878</stat> personas llamaban a la isla su hogar. Las familias tenian raices profundas aqui, algunas remontandose generaciones. Los pueblos bullian de actividad. Las escuelas estaban llenas. El futuro parecia brillante.',
+			step0P2: 'Luego vino el desmoronamiento. Lo que comenzo como un goteo se convertiria en una inundacion, cuando la crisis economica, el desastre natural y anos de austeridad se combinaron para desencadenar el mayor exodo poblacional en tiempos de paz en la historia estadounidense.',
+			step0P3: 'Cada numero que veras representa una familia que tomo la angustiosa decision de dejar su hogar.',
+			step1Quote: 'Ninguna otra jurisdiccion estadounidense ha experimentado algo comparable al colapso poblacional de Puerto Rico.',
+			step1Citation: 'Analisis de la Oficina del Censo de EE.UU., 2020',
+			step1P1: 'Despues de decadas de crecimiento, la poblacion de Puerto Rico comenzo a caer en 2006, coincidiendo con el fin de los incentivos fiscales federales. Entre <stat>2006 y 2020</stat>, la isla perdio <stat>{totalLost}</stat> residentes.',
+			step1P2: 'Para ponerlo en perspectiva: si el estado de Nueva York perdiera poblacion al mismo ritmo, perderia 2.7 millones de personas en 14 anos.',
+			step2Title: 'La Cuenta Regresiva',
+			step2P1: 'Observa el contador. Cada digito representa vidas desarraigadas, comunidades fracturadas, familias separadas. El declive de <stat>3.8 millones</stat> a <stat>3.3 millones</stat> se desarrollo a traves de incontables dramas individuales.',
+			step2P2: 'Una maestra que no pudo encontrar trabajo despues de las consolidaciones escolares. Una enfermera reclutada por un hospital de Florida que ofrecia el doble del salario. Una familia huyendo despues de que el Huracan Maria destruyera su hogar. Un joven profesional buscando oportunidades que la economia estancada no podia proveer.',
+			step2P3: 'Los numeros son asombrosos, pero detras de cada punto decimal hay una historia humana.',
+			step3Title: 'La Geografia de la Perdida',
+			step3P1: 'El exodo toco cada rincon de la isla, pero no por igual. El mapa revela profundas disparidades geograficas. De los <stat>78 municipios</stat> de Puerto Rico, <stat>77</stat> perdieron poblacion entre 2010 y 2020.',
+			step3P2: 'Los rojos mas oscuros marcan comunidades que perdieron mas de una cuarta parte de sus residentes en solo una decada. <highlight>Guanica</highlight> sufrio el declive mas pronunciado: <stat>{guanicaLoss}%</stat>, o casi uno de cada tres residentes se fue. Los pueblos costeros del sur y las comunidades montanosas fueron los mas afectados.',
+			step3P3: 'El municipio promedio perdio <stat>{avgLoss}</stat> de su poblacion. Solo <highlight>Rincon</highlight>, un pueblo playero popular entre surfistas y expatriados estadounidenses, logro crecer.',
+			step4Title: 'Las Mayores Perdidas',
+			step4P1: 'En terminos absolutos, las ciudades mas grandes perdieron mas personas, simplemente porque tenian mas que perder. Pero estos numeros representan nucleos urbanos vaciandose, barrios convirtiendose en pueblos fantasma, edificios de apartamentos quedando vacios.',
+			step4P2: '<highlight>San Juan</highlight>, la capital, perdio <stat>{sjLost}</stat> personas, un declive de <stat>{sjPct}%</stat>. La ciudad historica que una vez pulsaba con casi 400,000 residentes ahora tiene apenas 340,000. Barrios enteros se han despoblado.',
+			step4P3: '<highlight>Ponce</highlight>, la segunda ciudad de Puerto Rico, perdio <stat>{ponceLost}</stat> residentes, casi uno de cada cinco. Sus ornamentadas plazas y centro historico ahora sirven a una fraccion de su antigua poblacion.',
+			step5Title: 'El Exodo Metropolitano',
+			step5P1: 'El area metropolitana de San Juan, hogar de casi la mitad de la poblacion de la isla, experimento una devastadora salida. Los seis municipios que componen el metro de San Juan perdieron un combinado de <stat>{metroLost}</stat> residentes entre 2010 y 2020.',
+			step5P2: '<highlight>Catano</highlight>, un municipio de clase trabajadora al otro lado de la bahia de San Juan, perdio <stat>19.1%</stat> de su poblacion. <highlight>Carolina</highlight>, sede del aeropuerto internacional, perdio <stat>13.3%</stat>. Incluso el acaudalado <highlight>Guaynabo</highlight> perdio <stat>8.6%</stat>.',
+			step5P3: 'Estos no eran solo numeros en un formulario del censo. Escuelas cerraron. Negocios clausuraron. Los valores de las propiedades colapsaron. El tejido urbano mismo comenzo a deshilacharse.',
+			step6Title: 'El Precipicio de Maria',
+			step6P1: 'El 20 de septiembre de 2017, el Huracan Maria toco tierra como tormenta de Categoria 4, devastando la infraestructura de la isla. La red electrica colapso completamente. Miles murieron. Y luego vino la segunda ola de destruccion: el exodo.',
+			step6P2: 'En el ano siguiente a Maria, se estima que <stat>{mariaExodus}</stat> personas dejaron Puerto Rico. Mira el grafico: la linea de poblacion toma su caida mas pronunciada entre 2017 y 2018. Esto no era migracion ordinaria. Era desplazamiento a una escala mas comunmente asociada con zonas de guerra.',
+			step6P3: 'Los vuelos al continente estaban llenos. Los hoteles de FEMA en Florida se llenaron de familias que lo habian perdido todo. Muchos que se fueron "temporalmente" nunca regresaron.',
+			step7Title: 'La Pobreza Impulso el Exodo',
+			step7P1: 'El grafico de dispersion revela una correlacion preocupante: los municipios con mayores tasas de pobreza experimentaron mayores perdidas de poblacion. La desesperacion economica empujo a la gente a irse.',
+			step7P2: 'Si no puedes encontrar trabajo, si las escuelas de tus hijos estan cerrando, si el hospital no tiene suficiente personal, ¿por que quedarse? Las <stat>comunidades mas pobres</stat> tenian la menor capacidad para retener a sus residentes.',
+			step7P3: 'Los lazos comunitarios y las tierras familiares mantuvieron a algunos arraigados a pesar de las dificultades, pero el patron general es claro: pobreza y exodo van de la mano.',
+			step8Title: 'El Mapa de la Pobreza',
+			step8P1: 'La tasa de pobreza de Puerto Rico del <stat>43%</stat> es mas del triple que la de Mississippi, el estado mas pobre de EE.UU. El mapa muestra que esta carga no esta distribuida uniformemente. Municipios montanosos como <highlight>Guanica</highlight> (<stat>64.8%</stat> de pobreza), <highlight>Adjuntas</highlight> (<stat>62%</stat>) y <highlight>Vieques</highlight> (<stat>59.5%</stat>) enfrentan privacion persistente y agobiante.',
+			step8P2: 'Estas son las comunidades con mayor probabilidad de perder jovenes que buscan oportunidades en otros lugares. Tambien son las comunidades menos capaces de proveer servicios a la poblacion mas vieja y pobre que se queda.',
+			step8P3: 'El exodo y la pobreza forman un ciclo vicioso: la gente se va por la pobreza, y su partida profundiza la pobreza de los que se quedan.',
+			step9Title: 'Quienes se Quedaron',
+			step9P1: 'El exodo no fue aleatorio. Los adultos en edad laboral con educacion y habilidades tenian mas probabilidades de irse, buscando oportunidades en el continente. La edad mediana de la isla salto de <stat>{medianAge2010}</stat> anos en 2010 a <stat>{medianAge2020}</stat> anos en 2020.',
+			step9P2: 'La poblacion en edad laboral (25-54) disminuyo en <stat>{workingAgeDecline}</stat>, mientras que la poblacion de adultos mayores crecio en <stat>22.3%</stat>. Puerto Rico se esta convirtiendo rapidamente en una de las jurisdicciones mas envejecidas de Estados Unidos.',
+			step9P3: 'Esta inversion demografica crea sus propios problemas: menos trabajadores para mantener a mas jubilados, menos dolares de impuestos para servicios publicos, menos familias jovenes para mantener las escuelas abiertas y las comunidades vibrantes.',
+			step10Title: 'Nuevas Capitales Puertorriquenas',
+			step10P1: '¿A donde fueron? Florida se convirtio en el destino principal, su poblacion puertorriquena creciendo a <stat>1.2 millones</stat> para 2020. El centro de Florida en particular vio un crecimiento explosivo, transformando el corredor I-4 en un importante centro de poblacion puertorriquena.',
+			step10P2: 'Destinos tradicionales como Nueva York y Connecticut continuaron atrayendo migrantes, mientras nuevos caminos llevaron a Pensilvania y Texas. La diaspora puertorriquena ahora supera en numero a la poblacion de la isla, con mas de 5.8 millones de puertorriquenos viviendo en el continente.',
+			step10P3: 'Estas nuevas comunidades mantienen fuertes lazos con la isla. Las remesas fluyen de regreso. Las visitas familiares llenan los vuelos de vacaciones. Pero el centro de gravedad de la vida puertorriquena se ha desplazado, quizas permanentemente.',
+			step11Title: 'Implicaciones Electorales',
+			step11P1: 'La perdida de poblacion se traduce directamente en perdida de poder politico. Entre 2012 y 2020, el registro de votantes en Puerto Rico cayo en mas de <stat>400,000</stat>. El electorado que queda es mas viejo, mas pobre y mas rural.',
+			step11P2: 'Este cambio demografico tiene profundas implicaciones para el futuro politico de Puerto Rico. ¿Cuales municipios retendran suficiente poblacion para mantener influencia politica? ¿Como reshapearan los votantes restantes la politica de la isla?',
+			step11P3: 'El exodo no solo vacio vecindarios. Reescribio el mapa politico de Puerto Rico, cambiando el equilibrio de poder de maneras que tomaran anos en comprenderse completamente.',
+			takeaway1: '<stat>{totalLost}</stat> personas dejaron Puerto Rico desde 2004',
+			takeaway2: '77 de 78 municipios perdieron poblacion entre 2010-2020',
+			takeaway3: 'El Huracan Maria provoco <stat>{mariaExodus}</stat> partidas en un ano',
+			takeaway4: 'La pobreza y la perdida de poblacion estan fuertemente correlacionadas',
+			takeaway5: 'La edad mediana subio de 36.9 a {medianAge2020} anos'
 		}
 	};
 
@@ -413,7 +521,7 @@
 						<div class="counter-display">
 							<div class="counter-label">{content.prPopulation}</div>
 							<div class="counter-value">{formatNumber(displayedPopulation)}</div>
-							<div class="counter-year">{currentStep === 0 ? '2004 (Peak)' : '2020'}</div>
+							<div class="counter-year">{currentStep === 0 ? content.peak : '2020'}</div>
 						</div>
 					{:else}
 						<h3 class="viz-title">{mapTitle}</h3>
@@ -423,7 +531,7 @@
 							tooltipFormat={(name, value) => {
 								if (currentStep === 8) {
 									return value !== undefined
-										? `${name}: ${value.toFixed(1)}% poverty`
+										? `${name}: ${value.toFixed(1)}% ${$language === 'en' ? 'poverty' : 'pobreza'}`
 										: name;
 								}
 								return value !== undefined
@@ -433,7 +541,7 @@
 						/>
 						{#if mapData.size > 0}
 							<div class="legend">
-								<span class="legend-label">{currentStep === 8 ? 'Poverty rate' : 'Population change'}</span>
+								<span class="legend-label">{currentStep === 8 ? content.legendPoverty : content.legendPopChange}</span>
 								<div class="legend-scale">
 									{#if currentStep === 8}
 										<span style="background: {povertyColorScale(30)}"></span>
@@ -466,8 +574,8 @@
 							series={timelineSeries()}
 							width={500}
 							height={350}
-							xLabel="Year"
-							yLabel="Population"
+							xLabel={$language === 'en' ? 'Year' : 'Ano'}
+							yLabel={$language === 'en' ? 'Population' : 'Poblacion'}
 							showArea={true}
 							showDots={true}
 							xFormat={(v) => String(v)}
@@ -476,8 +584,8 @@
 					</div>
 					{#if currentStep === 6}
 						<div class="chart-annotation">
-							<span class="annotation-marker">Hurricane Maria</span>
-							<span class="annotation-text">Sept 2017: 130,000+ leave in following year</span>
+							<span class="annotation-marker">{content.hurricaneMaria}</span>
+							<span class="annotation-text">{content.mariaNote}</span>
 						</div>
 					{/if}
 				{:else if currentViz === 'bar'}
@@ -498,7 +606,7 @@
 								horizontal={true}
 								valueFormat={(v) => formatCompact(v)}
 							/>
-							<p class="chart-note">Puerto Rican population in US states (2020)</p>
+							<p class="chart-note">{content.prPopStates}</p>
 						{:else}
 							<BarChart
 								data={topLossMunicipalities()}
@@ -507,7 +615,7 @@
 								horizontal={true}
 								valueFormat={(v) => formatNumber(v)}
 							/>
-							<p class="chart-note">Absolute population loss 2010-2020</p>
+							<p class="chart-note">{content.absLoss}</p>
 						{/if}
 					</div>
 				{:else if currentViz === 'scatter'}
@@ -517,249 +625,187 @@
 							data={povertyVsLossData()}
 							width={500}
 							height={400}
-							xLabel="Poverty Rate (%)"
-							yLabel="Population Loss (%)"
+							xLabel={$language === 'en' ? 'Poverty Rate (%)' : 'Tasa de Pobreza (%)'}
+							yLabel={$language === 'en' ? 'Population Loss (%)' : 'Perdida de Poblacion (%)'}
 							showRegression={true}
 							xFormat={(v) => `${v.toFixed(0)}%`}
 							yFormat={(v) => `${v.toFixed(0)}%`}
 						/>
 					</div>
-					<p class="chart-note">Each point is a municipality. Size indicates population.</p>
+					<p class="chart-note">{content.scatterNote}</p>
 				{/if}
 			</div>
 		{/snippet}
 
 		<Step active={currentStep === 0} index={0}>
-			<h3>A Nation at Its Peak</h3>
+			<h3>{content.step0Title}</h3>
 			<p>
-				In 2004, Puerto Rico reached its population zenith: <span class="stat">3,826,878</span> people
-				called the island home. Families had deep roots here, some stretching back generations.
-				Towns bustled with activity. Schools were full. The future seemed bright.
+				{@html content.step0P1.replace(/<stat>/g, '<span class="stat">').replace(/<\/stat>/g, '</span>')}
 			</p>
 			<p>
-				Then came the unraveling. What began as a trickle would become a flood, as economic crisis,
-				natural disaster, and years of austerity combined to trigger the largest peacetime
-				population exodus in American history.
+				{@html content.step0P2}
 			</p>
 			<p class="emphasis">
-				Every number you'll see represents a family that made the agonizing choice to leave home.
+				{@html content.step0P3}
 			</p>
 		</Step>
 
 		<Step active={currentStep === 1} index={1} variant="quote">
 			{#snippet quote()}
-				<p>
-					No other American jurisdiction has experienced anything comparable to Puerto Rico's
-					population collapse.
-				</p>
+				<p>{content.step1Quote}</p>
 			{/snippet}
 			{#snippet citation()}
-				U.S. Census Bureau analysis, 2020
+				{content.step1Citation}
 			{/snippet}
 			<p>
-				After decades of growth, Puerto Rico's population began falling in 2006, coinciding
-				with the end of federal tax incentives. Between <span class="stat">2006 and 2020</span>,
-				the island lost <span class="stat">{formatNumber(541004)}</span> residents.
+				{@html content.step1P1
+					.replace(/<stat>/g, '<span class="stat">')
+					.replace(/<\/stat>/g, '</span>')
+					.replace('{totalLost}', formatNumber(541004))}
 			</p>
-			<p>
-				To put this in perspective: if New York State lost population at the same rate,
-				it would lose 2.7 million people in 14 years.
-			</p>
+			<p>{content.step1P2}</p>
 		</Step>
 
 		<Step active={currentStep === 2} index={2}>
-			<h3>The Countdown</h3>
+			<h3>{content.step2Title}</h3>
 			<p>
-				Watch the counter. Every digit represents lives uprooted, communities fractured,
-				families separated. The decline from <span class="stat">3.8 million</span> to
-				<span class="stat">3.3 million</span> played out across countless individual dramas.
+				{@html content.step2P1.replace(/<stat>/g, '<span class="stat">').replace(/<\/stat>/g, '</span>')}
 			</p>
-			<p>
-				A teacher who couldn't find work after school consolidations. A nurse recruited by
-				a Florida hospital offering double the salary. A family fleeing after Hurricane Maria
-				destroyed their home. A young professional seeking opportunities that the stagnant
-				economy couldn't provide.
-			</p>
-			<p>
-				The numbers are staggering, but behind each decimal point is a human story.
-			</p>
+			<p>{content.step2P2}</p>
+			<p>{content.step2P3}</p>
 		</Step>
 
 		<Step active={currentStep === 3} index={3}>
-			<h3>The Geography of Loss</h3>
+			<h3>{content.step3Title}</h3>
 			<p>
-				The exodus touched every corner of the island, but not equally. The map reveals
-				profound geographic disparities. Of Puerto Rico's <span class="stat">78 municipalities</span>,
-				<span class="stat">77</span> lost population between 2010 and 2020.
+				{@html content.step3P1.replace(/<stat>/g, '<span class="stat">').replace(/<\/stat>/g, '</span>')}
 			</p>
 			<p>
-				The darkest reds mark communities that lost more than a quarter of their residents
-				in just a decade. <span class="highlight">Guanica</span> suffered the steepest decline:
-				<span class="stat">{guanicaLoss}%</span>, or nearly one in three residents gone.
-				Southern coastal towns and mountain communities were hit hardest.
+				{@html content.step3P2
+					.replace(/<stat>/g, '<span class="stat">')
+					.replace(/<\/stat>/g, '</span>')
+					.replace(/<highlight>/g, '<span class="highlight">')
+					.replace(/<\/highlight>/g, '</span>')
+					.replace('{guanicaLoss}', String(guanicaLoss))}
 			</p>
 			<p>
-				The average municipality lost <span class="stat">{formatPercentChange(avgLoss)}</span> of
-				its population. Only <span class="highlight">Rincon</span>, a beach town popular with
-				surfers and American expats, managed to grow.
+				{@html content.step3P3
+					.replace(/<stat>/g, '<span class="stat">')
+					.replace(/<\/stat>/g, '</span>')
+					.replace(/<highlight>/g, '<span class="highlight">')
+					.replace(/<\/highlight>/g, '</span>')
+					.replace('{avgLoss}', formatPercentChange(avgLoss))}
 			</p>
 		</Step>
 
 		<Step active={currentStep === 4} index={4}>
-			<h3>The Biggest Losses</h3>
+			<h3>{content.step4Title}</h3>
+			<p>{content.step4P1}</p>
 			<p>
-				In absolute terms, the largest cities lost the most people, simply because they had
-				more to lose. But these numbers represent urban cores hollowing out, neighborhoods
-				becoming ghost towns, apartment buildings standing empty.
+				{@html content.step4P2
+					.replace(/<stat>/g, '<span class="stat">')
+					.replace(/<\/stat>/g, '</span>')
+					.replace(/<highlight>/g, '<span class="highlight">')
+					.replace(/<\/highlight>/g, '</span>')
+					.replace('{sjLost}', formatNumber(56665))
+					.replace('{sjPct}', String(sanJuanLoss))}
 			</p>
 			<p>
-				<span class="highlight">San Juan</span>, the capital, lost <span class="stat">{formatNumber(56665)}</span> people,
-				a decline of <span class="stat">{sanJuanLoss}%</span>. The historic city that once pulsed
-				with nearly 400,000 residents now has barely 340,000. Entire barrios have depopulated.
-			</p>
-			<p>
-				<span class="highlight">Ponce</span>, Puerto Rico's second city, lost <span class="stat">{formatNumber(Math.abs(ponceLoss))}</span> residents,
-				nearly one in five. Its ornate plazas and historic center now serve a fraction of
-				their former population.
+				{@html content.step4P3
+					.replace(/<stat>/g, '<span class="stat">')
+					.replace(/<\/stat>/g, '</span>')
+					.replace(/<highlight>/g, '<span class="highlight">')
+					.replace(/<\/highlight>/g, '</span>')
+					.replace('{ponceLost}', formatNumber(Math.abs(ponceLoss)))}
 			</p>
 		</Step>
 
 		<Step active={currentStep === 5} index={5}>
-			<h3>The Metro Exodus</h3>
+			<h3>{content.step5Title}</h3>
 			<p>
-				The San Juan metropolitan area, home to nearly half the island's population,
-				experienced a devastating outflow. The six municipalities that make up metro
-				San Juan lost a combined <span class="stat">{formatNumber(Math.abs(metroLoss))}</span> residents
-				between 2010 and 2020.
+				{@html content.step5P1
+					.replace(/<stat>/g, '<span class="stat">')
+					.replace(/<\/stat>/g, '</span>')
+					.replace('{metroLost}', formatNumber(Math.abs(metroLoss)))}
 			</p>
 			<p>
-				<span class="highlight">Catano</span>, a working-class municipality across the bay
-				from San Juan, lost <span class="stat">19.1%</span> of its population. <span class="highlight">Carolina</span>,
-				home to the international airport, lost <span class="stat">13.3%</span>. Even
-				wealthy <span class="highlight">Guaynabo</span> lost <span class="stat">8.6%</span>.
+				{@html content.step5P2
+					.replace(/<stat>/g, '<span class="stat">')
+					.replace(/<\/stat>/g, '</span>')
+					.replace(/<highlight>/g, '<span class="highlight">')
+					.replace(/<\/highlight>/g, '</span>')}
 			</p>
-			<p>
-				These weren't just numbers on a census form. Schools closed. Businesses shuttered.
-				Property values collapsed. The urban fabric itself began to fray.
-			</p>
+			<p>{content.step5P3}</p>
 		</Step>
 
 		<Step active={currentStep === 6} index={6}>
-			<h3>The Maria Cliff</h3>
+			<h3>{content.step6Title}</h3>
+			<p>{content.step6P1}</p>
 			<p>
-				On September 20, 2017, Hurricane Maria made landfall as a Category 4 storm,
-				devastating the island's infrastructure. The power grid collapsed completely.
-				Thousands died. And then came the second wave of destruction: the exodus.
+				{@html content.step6P2
+					.replace(/<stat>/g, '<span class="stat">')
+					.replace(/<\/stat>/g, '</span>')
+					.replace('{mariaExodus}', formatNumber(mariaExodus))}
 			</p>
-			<p>
-				In the year following Maria, an estimated <span class="stat">{formatNumber(mariaExodus)}</span> people
-				left Puerto Rico. Look at the chart: the population line takes its steepest plunge
-				between 2017 and 2018. This wasn't ordinary migration. It was displacement on
-				a scale more commonly associated with war zones.
-			</p>
-			<p>
-				Flights to the mainland were packed. FEMA hotels in Florida filled with families
-				who had lost everything. Many who left "temporarily" never returned.
-			</p>
+			<p>{content.step6P3}</p>
 		</Step>
 
 		<Step active={currentStep === 7} index={7} variant="callout">
-			<h3>Poverty Drove the Exodus</h3>
+			<h3>{content.step7Title}</h3>
+			<p>{content.step7P1}</p>
 			<p>
-				The scatter plot reveals a troubling correlation: municipalities with higher
-				poverty rates experienced greater population losses. Economic desperation
-				pushed people away.
+				{@html content.step7P2.replace(/<stat>/g, '<span class="stat">').replace(/<\/stat>/g, '</span>')}
 			</p>
-			<p>
-				If you can't find work, if your children's schools are closing, if the hospital
-				is understaffed, why stay? The <span class="stat">poorest communities</span> had
-				the least capacity to hold onto their residents.
-			</p>
-			<p>
-				Community ties and family land kept some rooted despite hardship, but
-				the overall pattern is clear: poverty and exodus go hand in hand.
-			</p>
+			<p>{content.step7P3}</p>
 		</Step>
 
 		<Step active={currentStep === 8} index={8}>
-			<h3>The Poverty Map</h3>
+			<h3>{content.step8Title}</h3>
 			<p>
-				Puerto Rico's poverty rate of <span class="stat">43%</span> is more than triple
-				that of Mississippi, the poorest US state. The map shows this burden is not
-				evenly distributed. Mountain municipalities like <span class="highlight">Guanica</span> (<span class="stat">64.8%</span> poverty),
-				<span class="highlight">Adjuntas</span> (<span class="stat">62%</span>), and
-				<span class="highlight">Vieques</span> (<span class="stat">59.5%</span>) face
-				grinding, persistent deprivation.
+				{@html content.step8P1
+					.replace(/<stat>/g, '<span class="stat">')
+					.replace(/<\/stat>/g, '</span>')
+					.replace(/<highlight>/g, '<span class="highlight">')
+					.replace(/<\/highlight>/g, '</span>')}
 			</p>
-			<p>
-				These are the communities most likely to lose young people seeking opportunity
-				elsewhere. They're also the communities least able to provide services to the
-				older, poorer population that remains behind.
-			</p>
-			<p>
-				The exodus and poverty form a vicious cycle: people leave because of poverty,
-				and their departure deepens the poverty of those who stay.
-			</p>
+			<p>{content.step8P2}</p>
+			<p>{content.step8P3}</p>
 		</Step>
 
 		<Step active={currentStep === 9} index={9}>
-			<h3>Who Left Behind</h3>
+			<h3>{content.step9Title}</h3>
 			<p>
-				The exodus wasn't random. Working-age adults with education and skills were
-				most likely to leave, seeking opportunities on the mainland. The island's
-				median age jumped from <span class="stat">{exodusData?.demographic_shifts?.median_age_2010 ?? 36.9}</span> years
-				in 2010 to <span class="stat">{medianAge2020}</span> years in 2020.
+				{@html content.step9P1
+					.replace(/<stat>/g, '<span class="stat">')
+					.replace(/<\/stat>/g, '</span>')
+					.replace('{medianAge2010}', String(exodusData?.demographic_shifts?.median_age_2010 ?? 36.9))
+					.replace('{medianAge2020}', String(medianAge2020))}
 			</p>
 			<p>
-				The working-age population (25-54) declined by <span class="stat">{formatPercentChange(workingAgeDecline)}</span>,
-				while the elderly population grew by <span class="stat">22.3%</span>. Puerto Rico
-				is rapidly becoming one of the oldest jurisdictions in the United States.
+				{@html content.step9P2
+					.replace(/<stat>/g, '<span class="stat">')
+					.replace(/<\/stat>/g, '</span>')
+					.replace('{workingAgeDecline}', formatPercentChange(workingAgeDecline))}
 			</p>
-			<p>
-				This demographic inversion creates its own problems: fewer workers to support
-				more retirees, fewer tax dollars for public services, fewer young families to
-				keep schools open and communities vibrant.
-			</p>
+			<p>{content.step9P3}</p>
 		</Step>
 
 		<Step active={currentStep === 10} index={10}>
-			<h3>New Puerto Rican Capitals</h3>
+			<h3>{content.step10Title}</h3>
 			<p>
-				Where did they go? Florida became the primary destination, its Puerto Rican
-				population swelling to <span class="stat">1.2 million</span> by 2020. Central
-				Florida in particular saw explosive growth, transforming the I-4 corridor
-				into a major Puerto Rican population center.
+				{@html content.step10P1.replace(/<stat>/g, '<span class="stat">').replace(/<\/stat>/g, '</span>')}
 			</p>
-			<p>
-				Traditional destinations like New York and Connecticut continued to draw
-				migrants, while newer paths led to Pennsylvania and Texas. The Puerto Rican
-				diaspora now outnumbers the island population, with over 5.8 million
-				Puerto Ricans living on the mainland.
-			</p>
-			<p>
-				These new communities maintain strong ties to the island. Remittances flow
-				back. Family visits fill holiday flights. But the center of gravity of
-				Puerto Rican life has shifted, perhaps permanently.
-			</p>
+			<p>{content.step10P2}</p>
+			<p>{content.step10P3}</p>
 		</Step>
 
 		<Step active={currentStep === 11} index={11}>
-			<h3>Electoral Implications</h3>
+			<h3>{content.step11Title}</h3>
 			<p>
-				Population loss translates directly into political power loss. Between 2012
-				and 2020, voter registration in Puerto Rico dropped by over <span class="stat">400,000</span>.
-				The electorate that remains is older, poorer, and more rural.
+				{@html content.step11P1.replace(/<stat>/g, '<span class="stat">').replace(/<\/stat>/g, '</span>')}
 			</p>
-			<p>
-				This demographic shift has profound implications for Puerto Rico's political
-				future. Which municipalities will retain enough population to hold political
-				sway? How will the remaining voters reshape the island's politics?
-			</p>
-			<p>
-				The exodus didn't just empty neighborhoods. It rewrote the political map
-				of Puerto Rico, changing the balance of power in ways that will take
-				years to fully understand.
-			</p>
+			<p>{content.step11P2}</p>
+			<p>{content.step11P3}</p>
 		</Step>
 	</ScrollySection>
 

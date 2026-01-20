@@ -27,6 +27,8 @@
 			vizThirdParty: '2020: The Third Party Breakthrough',
 			// Viz labels
 			marginNote: "Margin = Winner's % minus runner-up's %",
+			xLabelElectionYear: 'Election Year',
+			yLabelVoteShare: 'Vote Share %',
 			thirdPartyTotal: 'Combined third party vote:',
 			thirdParties: 'Third Parties',
 			// Candidate cards
@@ -160,7 +162,15 @@
 			previous: 'Previous',
 			nextChapter: 'Next Chapter',
 			prevTitle: 'Divided by Design',
-			nextTitle: '78 Battlegrounds'
+			nextTitle: '78 Battlegrounds',
+			// Legend items
+			legendPNP: 'PNP (Statehood)',
+			legendPPD: 'PPD (Commonwealth)',
+			legendMVC: 'MVC (Progressive)',
+			legendPIP: 'PIP (Independence)',
+			legendPD: 'PD (Conservative)',
+			// Stats
+			days: 'days'
 		},
 		es: {
 			chapterTitle: 'La Fortaleza',
@@ -176,6 +186,8 @@
 			vizThirdParty: '2020: El Avance de los Terceros Partidos',
 			// Viz labels
 			marginNote: 'Margen = % del ganador menos % del segundo lugar',
+			xLabelElectionYear: 'Ano Electoral',
+			yLabelVoteShare: 'Porcentaje de Votos',
 			thirdPartyTotal: 'Voto combinado de terceros partidos:',
 			thirdParties: 'Terceros Partidos',
 			// Candidate cards
@@ -309,7 +321,15 @@
 			previous: 'Anterior',
 			nextChapter: 'Proximo Capitulo',
 			prevTitle: 'Divididos por Diseno',
-			nextTitle: '78 Campos de Batalla'
+			nextTitle: '78 Campos de Batalla',
+			// Legend items
+			legendPNP: 'PNP (Estadidad)',
+			legendPPD: 'PPD (ELA)',
+			legendMVC: 'MVC (Progresista)',
+			legendPIP: 'PIP (Independencia)',
+			legendPD: 'PD (Conservador)',
+			// Stats
+			days: 'dias'
 		}
 	};
 
@@ -473,11 +493,11 @@
 
 	// Legend items for party colors
 	let partyLegendItems = $derived([
-		{ label: $language === 'en' ? 'PNP (Statehood)' : 'PNP (Estadidad)', color: PARTY_COLORS.PNP },
-		{ label: $language === 'en' ? 'PPD (Commonwealth)' : 'PPD (ELA)', color: PARTY_COLORS.PPD },
-		{ label: $language === 'en' ? 'MVC (Progressive)' : 'MVC (Progresista)', color: PARTY_COLORS.MVC },
-		{ label: $language === 'en' ? 'PIP (Independence)' : 'PIP (Independencia)', color: PARTY_COLORS.PIP },
-		{ label: $language === 'en' ? 'PD (Conservative)' : 'PD (Conservador)', color: PARTY_COLORS.PD },
+		{ label: content.legendPNP, color: PARTY_COLORS.PNP },
+		{ label: content.legendPPD, color: PARTY_COLORS.PPD },
+		{ label: content.legendMVC, color: PARTY_COLORS.MVC },
+		{ label: content.legendPIP, color: PARTY_COLORS.PIP },
+		{ label: content.legendPD, color: PARTY_COLORS.PD },
 	]);
 </script>
 
@@ -509,8 +529,8 @@
 						series={partyTrends()}
 						width={500}
 						height={340}
-						xLabel={$language === 'en' ? 'Election Year' : 'Ano Electoral'}
-						yLabel={$language === 'en' ? 'Vote Share %' : 'Porcentaje de Votos'}
+						xLabel={content.xLabelElectionYear}
+						yLabel={content.yLabelVoteShare}
 						xFormat={(v) => String(v)}
 						yFormat={(v) => `${v.toFixed(0)}%`}
 						showArea={true}
@@ -724,7 +744,7 @@
 					<span class="stat-label">{content.statThirdParty}</span>
 				</div>
 				<div class="stat-card">
-					<span class="stat-value">12 {$language === 'en' ? 'days' : 'dias'}</span>
+					<span class="stat-value">12 {content.days}</span>
 					<span class="stat-label">{content.statProtests}</span>
 				</div>
 			</div>

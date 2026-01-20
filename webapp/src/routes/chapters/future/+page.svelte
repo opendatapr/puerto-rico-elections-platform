@@ -16,6 +16,19 @@
 			chapter: 'Chapter',
 			lead: "Throughout this series, we've examined Puerto Rico's electoral transformation: a shrinking population, an aging electorate, fragmenting parties, and declining engagement. Now we must ask: where does this lead?",
 			loading: 'Loading data...',
+			// Chart axis labels
+			axisYear: 'Year',
+			axisPopulation: 'Population',
+			axisVoters: 'Voters',
+			axisAge: 'Age',
+			axisVoteShare: 'Vote Share',
+			labelHistorical: 'Historical',
+			labelProjected: 'Projected',
+			labelRegisteredVoters: 'Registered Voters',
+			labelActualVotes: 'Actual Votes',
+			labelThirdParties: 'Third Parties',
+			unitYears: 'years',
+			unitMillion: 'million',
 			// Viz titles and notes
 			vizPopulationTrajectory: 'Population Trajectory',
 			vizShrinkingElectorate: 'The Shrinking Electorate',
@@ -36,6 +49,11 @@
 			step5Title: 'The Status Question Persists',
 			step6Title: 'Four Scenarios for 2040',
 			step7Title: 'Why This Data Matters',
+			// Step 6 scenario labels
+			step6Continuation: 'Continuation',
+			step6Statehood: 'Statehood',
+			step6AcceleratedDecline: 'Accelerated Decline',
+			step6Probability: 'probability',
 			// Step content
 			step0p1: "Puerto Rico's population has declined by",
 			step0p1b: "people since 2010, a loss of 16% in just fourteen years. This isn't natural decline but exodus: hurricanes, economic collapse, and austerity have driven a generation to seek opportunity on the mainland.",
@@ -64,9 +82,9 @@
 			step5p1: "Puerto Rico has held multiple status referendums. In 2012, 61% voted for statehood, but turnout was limited. In 2017, 97% chose statehood, but only 23% participated due to boycotts. In 2020, 52.5% voted Yes on a simple statehood question with broader turnout.",
 			step5p2: "Congress has not acted. The Puerto Rico Status Act passed the House in 2022 but died in the Senate. Another attempt in 2024 failed to advance. Meanwhile, the island remains in limbo: citizens but not voters, taxed but not represented, American but not quite.",
 			step5p3: "With a shrinking, aging electorate, the mandate question becomes complex. Does 52% of a smaller turnout carry more or less weight than 48% of a larger one? How many people must vote for statehood before Congress acts? The status debate will outlive all of us.",
-			step6p1: "Continuation (60% probability): Current trends persist. Population falls to 2.6 million, the electorate to 1.46 million. Third parties stabilize around 30%. Status remains unresolved. Puerto Rico muddles through, neither thriving nor collapsing.",
-			step6p2: "Statehood (15%): Congress acts. Federal investment flows. Migration stabilizes or reverses. Puerto Rico gains 5 electoral votes and 4 House seats, more representation than several existing states combined. Turnout rebounds as citizenship gains meaning.",
-			step6p3: "Accelerated Decline (20%): Climate disasters or economic shocks accelerate exodus. Population falls below 2 million by 2040. The electorate becomes geriatric. Infrastructure collapses. The island becomes economically unviable as an autonomous unit.",
+			step6p1: "Current trends persist. Population falls to 2.6 million, the electorate to 1.46 million. Third parties stabilize around 30%. Status remains unresolved. Puerto Rico muddles through, neither thriving nor collapsing.",
+			step6p2: "Congress acts. Federal investment flows. Migration stabilizes or reverses. Puerto Rico gains 5 electoral votes and 4 House seats, more representation than several existing states combined. Turnout rebounds as citizenship gains meaning.",
+			step6p3: "Climate disasters or economic shocks accelerate exodus. Population falls below 2 million by 2040. The electorate becomes geriatric. Infrastructure collapses. The island becomes economically unviable as an autonomous unit.",
 			step7p1: "This isn't just about statistics. Behind every number is a family deciding whether to stay or go, a young person weighing their future, an elder watching their community empty out. Elections are how democracies make collective decisions. When the electorate shrinks, so does democratic capacity.",
 			step7p2: "The data we've explored across these twelve chapters tells a story of transformation without resolution. Puerto Rico's political system is adapting to forces largely beyond its control: federal policy, global economics, climate change, and the accumulated weight of colonial status.",
 			step7p3: "Understanding these patterns is the first step to shaping them.",
@@ -94,6 +112,7 @@
 			electoralVotes: 'Electoral Votes',
 			houseSeats: 'House Seats',
 			senators: 'Senators',
+			statehoodComparison: 'More than Wyoming, Vermont, Alaska, and DC combined',
 			// Conclusion section
 			thankYouTitle: 'Thank You for Reading',
 			thankYouP1: 'This data journalism series was created using open data from the Puerto Rico State Elections Commission and the U.S. Census Bureau. All code, data, and methodology are available on GitHub for verification, reproduction, and extension.',
@@ -127,6 +146,19 @@
 			chapter: 'Capitulo',
 			lead: 'A lo largo de esta serie, hemos examinado la transformacion electoral de Puerto Rico: una poblacion menguante, un electorado envejecido, partidos fragmentados y una participacion en declive. Ahora debemos preguntar: a donde lleva esto?',
 			loading: 'Cargando datos...',
+			// Chart axis labels
+			axisYear: 'Ano',
+			axisPopulation: 'Poblacion',
+			axisVoters: 'Votantes',
+			axisAge: 'Edad',
+			axisVoteShare: 'Porcentaje del Voto',
+			labelHistorical: 'Historico',
+			labelProjected: 'Proyectado',
+			labelRegisteredVoters: 'Votantes Registrados',
+			labelActualVotes: 'Votos Reales',
+			labelThirdParties: 'Terceros Partidos',
+			unitYears: 'anos',
+			unitMillion: 'millones',
 			// Viz titles and notes
 			vizPopulationTrajectory: 'Trayectoria Poblacional',
 			vizShrinkingElectorate: 'El Electorado Menguante',
@@ -147,6 +179,11 @@
 			step5Title: 'La Pregunta del Estatus Persiste',
 			step6Title: 'Cuatro Escenarios para 2040',
 			step7Title: 'Por Que Importan Estos Datos',
+			// Step 6 scenario labels
+			step6Continuation: 'Continuacion',
+			step6Statehood: 'Estadidad',
+			step6AcceleratedDecline: 'Declive Acelerado',
+			step6Probability: 'probabilidad',
 			// Step content
 			step0p1: 'La poblacion de Puerto Rico ha declinado en',
 			step0p1b: 'personas desde 2010, una perdida del 16% en solo catorce anos. Esto no es declive natural sino exodo: huracanes, colapso economico y austeridad han impulsado a una generacion a buscar oportunidades en el continente.',
@@ -175,9 +212,9 @@
 			step5p1: 'Puerto Rico ha celebrado multiples referendums de estatus. En 2012, el 61% voto por la estadidad, pero la participacion fue limitada. En 2017, el 97% eligio estadidad, pero solo el 23% participo debido a boicots. En 2020, el 52.5% voto Si en una simple pregunta de estadidad con mayor participacion.',
 			step5p2: 'El Congreso no ha actuado. La Ley de Estatus de Puerto Rico paso la Camara en 2022 pero murio en el Senado. Otro intento en 2024 no avanzo. Mientras tanto, la isla permanece en el limbo: ciudadanos pero no votantes, contribuyentes pero no representados, americanos pero no del todo.',
 			step5p3: 'Con un electorado menguante y envejecido, la pregunta del mandato se vuelve compleja. El 52% de una participacion menor tiene mas o menos peso que el 48% de una mayor? Cuantas personas deben votar por la estadidad antes de que el Congreso actue? El debate del estatus nos sobrevivira a todos.',
-			step6p1: 'Continuacion (60% probabilidad): Las tendencias actuales persisten. La poblacion cae a 2.6 millones, el electorado a 1.46 millones. Los terceros partidos se estabilizan alrededor del 30%. El estatus permanece sin resolver. Puerto Rico sigue adelante, sin prosperar ni colapsar.',
-			step6p2: 'Estadidad (15%): El Congreso actua. La inversion federal fluye. La migracion se estabiliza o se revierte. Puerto Rico gana 5 votos electorales y 4 escanos en la Camara, mas representacion que varios estados existentes combinados. La participacion rebota cuando la ciudadania gana significado.',
-			step6p3: 'Declive Acelerado (20%): Desastres climaticos o choques economicos aceleran el exodo. La poblacion cae por debajo de 2 millones para 2040. El electorado se vuelve geriatrico. La infraestructura colapsa. La isla se vuelve economicamente inviable como unidad autonoma.',
+			step6p1: 'Las tendencias actuales persisten. La poblacion cae a 2.6 millones, el electorado a 1.46 millones. Los terceros partidos se estabilizan alrededor del 30%. El estatus permanece sin resolver. Puerto Rico sigue adelante, sin prosperar ni colapsar.',
+			step6p2: 'El Congreso actua. La inversion federal fluye. La migracion se estabiliza o se revierte. Puerto Rico gana 5 votos electorales y 4 escanos en la Camara, mas representacion que varios estados existentes combinados. La participacion rebota cuando la ciudadania gana significado.',
+			step6p3: 'Desastres climaticos o choques economicos aceleran el exodo. La poblacion cae por debajo de 2 millones para 2040. El electorado se vuelve geriatrico. La infraestructura colapsa. La isla se vuelve economicamente inviable como unidad autonoma.',
 			step7p1: 'Esto no se trata solo de estadisticas. Detras de cada numero hay una familia decidiendo si quedarse o irse, un joven sopesando su futuro, un mayor viendo su comunidad vaciarse. Las elecciones son como las democracias toman decisiones colectivas. Cuando el electorado se reduce, tambien lo hace la capacidad democratica.',
 			step7p2: 'Los datos que hemos explorado a lo largo de estos doce capitulos cuentan una historia de transformacion sin resolucion. El sistema politico de Puerto Rico se esta adaptando a fuerzas en gran parte fuera de su control: politica federal, economia global, cambio climatico y el peso acumulado del estatus colonial.',
 			step7p3: 'Entender estos patrones es el primer paso para darles forma.',
@@ -205,6 +242,7 @@
 			electoralVotes: 'Votos Electorales',
 			houseSeats: 'Escanos en la Camara',
 			senators: 'Senadores',
+			statehoodComparison: 'Mas que Wyoming, Vermont, Alaska y DC combinados',
 			// Conclusion section
 			thankYouTitle: 'Gracias por Leer',
 			thankYouP1: 'Esta serie de periodismo de datos fue creada usando datos abiertos de la Comision Estatal de Elecciones de Puerto Rico y la Oficina del Censo de EE.UU. Todo el codigo, datos y metodologia estan disponibles en GitHub para verificacion, reproduccion y extension.',
@@ -309,12 +347,12 @@
 		}
 	});
 
-	// Chart labels based on language
-	let historicalLabel = $derived($language === 'en' ? 'Historical' : 'Historico');
-	let projectedLabel = $derived($language === 'en' ? 'Projected' : 'Proyectado');
-	let registeredLabel = $derived($language === 'en' ? 'Registered Voters' : 'Votantes Registrados');
-	let actualVotesLabel = $derived($language === 'en' ? 'Actual Votes' : 'Votos Reales');
-	let thirdPartiesLabel = $derived($language === 'en' ? 'Third Parties' : 'Terceros Partidos');
+	// Chart labels based on language (using content object)
+	let historicalLabel = $derived(content.labelHistorical);
+	let projectedLabel = $derived(content.labelProjected);
+	let registeredLabel = $derived(content.labelRegisteredVoters);
+	let actualVotesLabel = $derived(content.labelActualVotes);
+	let thirdPartiesLabel = $derived(content.labelThirdParties);
 
 	// Derived data for population chart with projection band
 	let populationSeries = $derived(() => {
@@ -437,8 +475,8 @@
 						series={populationSeries()}
 						width={500}
 						height={340}
-						xLabel={$language === 'en' ? 'Year' : 'Ano'}
-						yLabel={$language === 'en' ? 'Population' : 'Poblacion'}
+						xLabel={content.axisYear}
+						yLabel={content.axisPopulation}
 						xFormat={(v) => String(v)}
 						yFormat={formatPopulation}
 						showArea={true}
@@ -450,8 +488,8 @@
 						series={electorateSeries()}
 						width={500}
 						height={340}
-						xLabel={$language === 'en' ? 'Year' : 'Ano'}
-						yLabel={$language === 'en' ? 'Voters' : 'Votantes'}
+						xLabel={content.axisYear}
+						yLabel={content.axisVoters}
 						xFormat={(v) => String(v)}
 						yFormat={formatVoters}
 						showArea={false}
@@ -463,10 +501,10 @@
 						series={ageSeries()}
 						width={500}
 						height={340}
-						xLabel={$language === 'en' ? 'Year' : 'Ano'}
-						yLabel={$language === 'en' ? 'Age' : 'Edad'}
+						xLabel={content.axisYear}
+						yLabel={content.axisAge}
 						xFormat={(v) => String(v)}
-						yFormat={(v) => `${v} ${$language === 'en' ? 'years' : 'anos'}`}
+						yFormat={(v) => `${v} ${content.unitYears}`}
 						showArea={false}
 					/>
 					<p class="viz-note">{content.vizNoteAging}</p>
@@ -476,8 +514,8 @@
 						series={partySeries()}
 						width={500}
 						height={340}
-						xLabel={$language === 'en' ? 'Year' : 'Ano'}
-						yLabel={$language === 'en' ? 'Vote Share' : 'Porcentaje del Voto'}
+						xLabel={content.axisYear}
+						yLabel={content.axisVoteShare}
 						xFormat={(v) => String(v)}
 						yFormat={formatPercent}
 						showArea={false}
@@ -503,7 +541,7 @@
 				{content.step0p1} <span class="stat">600,000</span> {content.step0p1b}
 			</p>
 			<p>
-				{content.step0p2a} <span class="stat">2.6 {$language === 'en' ? 'million' : 'millones'}</span>
+				{content.step0p2a} <span class="stat">2.6 {content.unitMillion}</span>
 				{content.step0p2b}
 			</p>
 			<p>{content.step0p3}</p>
@@ -519,13 +557,13 @@
 		<Step active={currentStep === 2} index={2}>
 			<h3>{content.step2Title}</h3>
 			<p>
-				{content.step2p1a} <span class="stat">2.44 {$language === 'en' ? 'million' : 'millones'}</span>
-				{content.step2p1b} <span class="stat">1.99 {$language === 'en' ? 'million' : 'millones'}</span>
+				{content.step2p1a} <span class="stat">2.44 {content.unitMillion}</span>
+				{content.step2p1b} <span class="stat">1.99 {content.unitMillion}</span>
 				{content.step2p1c}
 			</p>
 			<p>
-				{content.step2p2a} <span class="stat">1.85 {$language === 'en' ? 'million' : 'millones'}</span>
-				{content.step2p2b} <span class="stat">1.46 {$language === 'en' ? 'million' : 'millones'}</span>.
+				{content.step2p2a} <span class="stat">1.85 {content.unitMillion}</span>
+				{content.step2p2b} <span class="stat">1.46 {content.unitMillion}</span>.
 				{content.step2p2c}
 			</p>
 			<p>{content.step2p3}</p>
@@ -559,9 +597,9 @@
 
 		<Step active={currentStep === 6} index={6}>
 			<h3>{content.step6Title}</h3>
-			<p><strong>{$language === 'en' ? 'Continuation' : 'Continuacion'} (60% {$language === 'en' ? 'probability' : 'probabilidad'}):</strong> {content.step6p1}</p>
-			<p><strong>{$language === 'en' ? 'Statehood' : 'Estadidad'} (15%):</strong> {content.step6p2}</p>
-			<p><strong>{$language === 'en' ? 'Accelerated Decline' : 'Declive Acelerado'} (20%):</strong> {content.step6p3}</p>
+			<p><strong>{content.step6Continuation} (60% {content.step6Probability}):</strong> {content.step6p1}</p>
+			<p><strong>{content.step6Statehood} (15%):</strong> {content.step6p2}</p>
+			<p><strong>{content.step6AcceleratedDecline} (20%):</strong> {content.step6p3}</p>
 		</Step>
 
 		<Step active={currentStep === 7} index={7}>
@@ -666,7 +704,7 @@
 				</div>
 			</div>
 			<p class="statehood-comparison">
-				{whatIfStatehood.comparison || ($language === 'en' ? "More than Wyoming, Vermont, Alaska, and DC combined" : "Mas que Wyoming, Vermont, Alaska y DC combinados")}
+				{whatIfStatehood.comparison || content.statehoodComparison}
 			</p>
 		</div>
 	</section>

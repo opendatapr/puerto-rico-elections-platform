@@ -31,10 +31,13 @@
 			totalVotes: 'Total Votes',
 			// Ballot viz
 			ballotTitle: 'Ballot',
+			ballotOffice: 'PLEBISCITE',
 			ballotQuestion2020: '"Should Puerto Rico be admitted immediately into the Union as a State?"',
 			ballotQuestion2012Q1: 'Q1: "Do you agree that Puerto Rico should continue to have its present form of territorial political status?"',
 			ballotQuestion2012Q2: 'Q2: "Which status would you prefer?"',
 			ballotQuestionGeneral: '"Vote for your preferred political status option:"',
+			// Step 0 stat
+			six: 'six',
 			// Turnout viz
 			turnoutTitle: 'Turnout Across All Plebiscites',
 			turnoutSubtitle: 'Gray bars indicate boycotted elections',
@@ -172,10 +175,13 @@
 			totalVotes: 'Votos Totales',
 			// Ballot viz
 			ballotTitle: 'Papeleta',
+			ballotOffice: 'PLEBISCITO',
 			ballotQuestion2020: '"Debe Puerto Rico ser admitido inmediatamente a la Union como un Estado?"',
 			ballotQuestion2012Q1: 'P1: "Esta usted de acuerdo con que Puerto Rico continue teniendo su forma actual de estatus politico territorial?"',
 			ballotQuestion2012Q2: 'P2: "Cual estatus preferiria?"',
 			ballotQuestionGeneral: '"Vote por su opcion de estatus politico preferida:"',
+			// Step 0 stat
+			six: 'seis',
 			// Turnout viz
 			turnoutTitle: 'Participacion en Todos los Plebiscitos',
 			turnoutSubtitle: 'Las barras grises indican elecciones boicoteadas',
@@ -371,6 +377,55 @@
 		noneOfAbove: content.noneOfAbove
 	});
 
+	// Ballot option translations (English -> localized)
+	let ballotOptionTranslations = $derived<Record<string, string>>({
+		// Common status options
+		'Statehood': content.statehood,
+		'Commonwealth (ELA)': content.commonwealth,
+		'Independence': content.independence,
+		'Free Association': content.freeAssociation,
+		'None of the Above': content.noneOfAbove,
+		'Territorial Commonwealth': content.commonwealth,
+		'Free Association/Independence': $language === 'en' ? 'Free Association/Independence' : 'Libre Asociacion/Independencia',
+		'Current Territory': $language === 'en' ? 'Current Territory' : 'Territorio Actual',
+		// 2012 ballot
+		'Q1: Keep status? (Yes/No)': $language === 'en' ? 'Q1: Keep status? (Yes/No)' : 'P1: Mantener estatus? (Si/No)',
+		'Q2: Statehood / Free Association / Independence': $language === 'en' ? 'Q2: Statehood / Free Association / Independence' : 'P2: Estadidad / Libre Asociacion / Independencia',
+		// 2020 ballot
+		'Yes': $language === 'en' ? 'Yes' : 'Si',
+		'No': 'No'
+	});
+
+	// Function to translate ballot option
+	function translateBallotOption(option: string): string {
+		return ballotOptionTranslations[option] || option;
+	}
+
+	// Context and congress response translations for summary table
+	let contextTranslations = $derived<Record<string, string>>({
+		'First status referendum': $language === 'en' ? 'First status referendum' : 'Primer referendum de estatus',
+		'Post-Cold War vote': $language === 'en' ? 'Post-Cold War vote' : 'Voto post-Guerra Fria',
+		'PPD boycotted, "None of the Above" won': $language === 'en' ? 'PPD boycotted, "None of the Above" won' : 'PPD boicoteo, "Ninguna de las Anteriores" gano',
+		'500K+ left Q2 blank': $language === 'en' ? '500K+ left Q2 blank' : '500K+ dejaron P2 en blanco',
+		'Lowest turnout in PR history': $language === 'en' ? 'Lowest turnout in PR history' : 'Participacion mas baja en historia de PR',
+		'First simple majority Yes': $language === 'en' ? 'First simple majority Yes' : 'Primera mayoria simple Si'
+	});
+
+	let congressResponseTranslations = $derived<Record<string, string>>({
+		'No action': $language === 'en' ? 'No action' : 'Sin accion',
+		'Requested funds for binding vote': $language === 'en' ? 'Requested funds for binding vote' : 'Solicito fondos para voto vinculante',
+		'Dismissed due to low turnout': $language === 'en' ? 'Dismissed due to low turnout' : 'Descartado por baja participacion',
+		'HR 1522 introduced but not passed': $language === 'en' ? 'HR 1522 introduced but not passed' : 'HR 1522 presentado pero no aprobado'
+	});
+
+	function translateContext(context: string): string {
+		return contextTranslations[context] || context;
+	}
+
+	function translateCongressResponse(response: string): string {
+		return congressResponseTranslations[response] || response;
+	}
+
 	// Bar data for results visualization
 	let resultsBarData = $derived(() => {
 		const p = activePlebiscite;
@@ -559,7 +614,7 @@
 						<div class="ballot-header">
 							<div class="ballot-seal">PR</div>
 							<div class="ballot-title">
-								<span class="ballot-office">PLEBISCITO</span>
+								<span class="ballot-office">{content.ballotOffice}</span>
 								<span class="ballot-year">{activePlebiscite.year}</span>
 							</div>
 						</div>
@@ -576,7 +631,7 @@
 							{#each activePlebiscite.ballotOptions as option, i}
 								<div class="ballot-option">
 									<div class="ballot-checkbox"></div>
-									<span class="ballot-option-text">{option}</span>
+									<span class="ballot-option-text">{translateBallotOption(option)}</span>
 								</div>
 							{/each}
 						</div>
@@ -609,7 +664,7 @@
 			<h3>{content.step0Title}</h3>
 			<p>{content.step0p1}</p>
 			<p>
-				{content.step0p2} <span class="stat">six</span>
+				{content.step0p2} <span class="stat">{content.six}</span>
 				{content.step0p2b}
 			</p>
 			<p>{content.step0p3}</p>
@@ -752,8 +807,8 @@
 						<span class="col-year">{p.year}</span>
 						<span class="col-result">{p.statehood.toFixed(1)}%</span>
 						<span class="col-turnout">{p.turnout}%</span>
-						<span class="col-note">{p.context}</span>
-						<span class="col-congress">{p.congressResponse}</span>
+						<span class="col-note">{translateContext(p.context)}</span>
+						<span class="col-congress">{translateCongressResponse(p.congressResponse)}</span>
 					</div>
 				{/each}
 			</div>
